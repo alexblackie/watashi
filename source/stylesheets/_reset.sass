@@ -1,0 +1,32 @@
+//-----------------------------------------------------------------------------
+// Reset
+//-----------------------------------------------------------------------------
++global-reset
+
+
+//-----------------------------------------------------------------------------
+// Base Styles
+//-----------------------------------------------------------------------------
+body
+  +antialiased
+  font-size:   $font-size-base
+  font-family: $font-family-primary
+  color:       $color-text
+
+  +at-breakpoint($break-mobile)
+    font-size: 0.8em
+
+p, ul, ol, blockquote
+  margin: 1em 0
+
+  &:last-child
+    margin-bottom: 0
+
+a
+  text-decoration: underline
+  color:           $color-highlight
+
+h1, h2, h3, h4
+  margin:      1em 0
+  font-family: $font-family-secondary
+  font-weight: $font-weight-bold

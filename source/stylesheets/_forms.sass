@@ -1,0 +1,59 @@
+//-----------------------------------------------------------------------------
+// Forms
+//-----------------------------------------------------------------------------
+input[type='text'],
+input[type='email'],
+input[type='search'],
+input[type='password'],
+textarea
+  +appearance(none)
+  +box-sizing(border-box)
+  +span-columns(12 omega)
+  +antialiased
+  padding:     $padding-input
+  font:
+    size:      1em
+    family:    $font-family-secondary
+    weight:    400
+  line-height: 1em
+  color:       $color-text
+  background:  white
+  border:      1px solid $color-input-border
+
+  &:focus
+    outline: 0
+
+textarea
+  font-family: $font-family-primary
+  line-height: 1.75em
+
+
+//-----------------------------------------------------------------------------
+// Form layout
+//-----------------------------------------------------------------------------
+.field
+  +pie-clearfix
+  padding:       $padding-input
+  margin:        $padding-input 0
+  border-bottom: 1px solid $color-input-border
+
+  input,
+  textarea
+    padding: 0
+    border:  none
+
+
+//-----------------------------------------------------------------------------
+// New Article form
+//-----------------------------------------------------------------------------
+.article-form
+  input,
+  textarea
+    padding: 0
+    border:  none
+
+  .article-header-title input
+    font-weight: 700
+
+  .article-excerpt textarea
+    font-family: $font-family-secondary

@@ -1,0 +1,66 @@
+//-----------------------------------------------------------------------------
+// Navigation
+//-----------------------------------------------------------------------------
+#main-menu-toggle
+  display:         none
+  position:        absolute
+  top:             ($height-header / 2) - 12px
+  right:           $gutter-width
+  width:           24px
+  height:          24px
+  font:            0/0 x
+  color:           transparent
+  background:      image-url('menu-toggle.svg') no-repeat 50% 50%
+  background-size: 12px 12px
+  border:          2px solid black
+  border-radius:   5px
+
+  +at-breakpoint-mobile
+    display: block
+
+.main-menu
+  ul
+    margin: 0
+    list-style: none
+
+    +at-breakpoint-mobile
+      margin-top: 20px
+
+  .main-menu-item
+    display: inline
+
+    a
+      display:         inline-block
+      height:          $height-header
+      margin-left:     5px
+      padding:         0 25px
+      font-size:       1.125em
+      font-family:     $font-family-secondary
+      line-height:     $height-header
+      text-decoration: none
+      color:           $color-text
+      border:          1px solid $color-grey-light
+      border-radius:   $height-header
+
+      +at-breakpoint-mobile
+        +box-sizing(border-box)
+        display:       block
+        width:         100%
+        border-width:  0 0 1px 0
+        border-radius: 0
+
+      &:hover
+        text-decoration:  none
+        background-color: $color-grey-light
+
+    &.main-menu-item-current a,
+    .articles-controller &.main-menu-item-articles a,
+    .pages-controller.about-view &.main-menu-item-about a,
+    .pages-controller.contact-view &.main-menu-item-contact a
+      text-decoration:  none
+      color:            white
+      background-color: $color-highlight
+
+      +at-breakpoint-mobile
+        color:            $color-highlight
+        background-color: transparent

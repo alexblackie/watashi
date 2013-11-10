@@ -1,0 +1,42 @@
+!!!
+%head
+  %meta( charset='UTF-8' )
+  %meta( name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" )
+
+  %title
+    = current_page.data.title ? current_page.data.title : 'Untitled'
+    &rsaquo; Alex Blackie
+
+  = stylesheet_link_tag '//fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Gudea:400,700'
+  = stylesheet_link_tag 'site'
+
+%body( class="#{ page_classes }" )
+
+  %header.site-header
+    .container
+      %h1.name= link_to 'Alex Blackie', '/'
+
+      %a#main-menu-toggle( href='#' ) Menu
+      %nav.main-menu
+        %ul
+          %li.main-menu-item.main-menu-item-articles= link_to 'Articles', '/'
+          %li.main-menu-item.main-menu-item-about= link_to 'About', '/about.html'
+          %li.main-menu-item.main-menu-item-contact= link_to 'Contact', '/contact.html'
+
+  .contentwrapper
+    .container= yield
+
+  %footer.site-footer
+    .container
+      .site-footer-copyleft
+        Design, code, and content &copy; #{ Date.today.strftime('%Y') } Alex Blackie.<br>
+        Pretty much All Rights Reserved.
+
+      %ul.site-footer-links
+        %li= link_to 'Email',   'mailto:alex@alexblackie.com'
+        %li= link_to 'Github',  'https://github.com/alexblackie'
+        %li= link_to 'Twitter', 'https://twitter.com/alexblackie'
+        %li= link_to 'Last.fm', 'https://last.fm/user/linux_nerd'
+
+  = javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'
+  = javascript_include_tag 'site'

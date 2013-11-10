@@ -1,0 +1,27 @@
+---
+pageable: true
+---
+
+%header.page-header
+  %h1.page-header-title
+    Archive for&nbsp;
+    - case page_type
+    - when 'day'
+      = Date.new(year, month, day).strftime('%B %e, %Y')
+    - when 'month'
+      = Date.new(year, month, 1).strftime('%B %Y')
+    - when 'year'
+      = year
+
+- page_articles.each do |article|
+  %article( class='article-in-list' )
+    .article-publish-date= article.date.strftime("%B %d, %Y")
+    %h1.article-title= link_to article.title, article.url
+
+- if paginate
+  %nav.pagination
+    - if prev_page
+      .previous-page= link_to 'Previous page', prev_page
+
+    - if next_page
+      .next-page= link_to 'Next page', next_page
