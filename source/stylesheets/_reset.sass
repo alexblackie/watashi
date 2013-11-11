@@ -23,8 +23,12 @@ p, ul, ol, blockquote
     margin-bottom: 0
 
 a
-  text-decoration: underline
-  color:           $color-highlight
+  text-decoration: none
+  color:           $color-text
+  border-bottom:   1px solid $color-grey
+
+  &:hover
+    background-color: $color-grey-light
 
 h1, h2, h3, h4
   margin:      1em 0
