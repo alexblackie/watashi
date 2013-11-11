@@ -1,0 +1,51 @@
+---
+title: Me.
+---
+
+
+%section.page-about-me
+  %header.page-header
+    %h1.page-title About Me.
+
+  .page-about-hero
+    %figure.page-about-hero-image= image_tag 'https://secure.gravatar.com/avatar/f58be3177db5045a55679425ef1b2755?size=360', width: 180
+    .page-about-hero-text
+      :markdown
+        Developer at [Metalab][ml] by day, grade 12 student also by day&hellip;
+        Sometimes I play drums, and sometimes I manage servers. Generally, I can
+        be found behind glowing liquid crystals most hours of the day.
+
+        [ml]: http://metalabdesign.com/
+
+  .page-about-content
+    :markdown
+      At the ripe old age of nine, I discovered a book gathering dust in my
+      parents&rsquo; closet: &ldquo;HTML Complete&rdquo;. It was this 1063-page
+      book that started what would dictate the next several years of my life. It
+      started with my super-secret spy company intranet, now to amazing projects
+      at [Metalab][mlwork]. I have been writing code around eight years now.
+
+      [mlwork]: http://metalabdesign.com/work/
+
+%header.page-header
+  %h1.page-title About This.
+
+  .page-about-content
+    :markdown
+      This is my blog. It is powered by [Middleman][mm], [Susy][susy], and
+      [Rackspace Cloud Files][rscf]. The deployment is done automatically using
+      [middleman-sync][mmsync] every time I push to `master` (all thanks to
+      [Jenkins][jci]). Static HTML gives me the speed and ease-of-hosting that I
+      desire, with the flexibility to do pretty much anything (and in any
+      markup language I want).
+
+      Everything is available to everyone. Feel free to poke around [the Jenkins
+      build][thebuild], or checkout the [Github repo][gh].
+
+      [mm]:       http://middlemanapp.com/
+      [susy]:     http://susy.oddbird.net/
+      [rscf]:     http://rackspace.com/cloud/files/
+      [mmsync]:   https://github.com/karlfreeman/middleman-sync
+      [jci]:      http://jenkins-ci.org/
+      [thebuild]: http://ci.alexblackie.com/job/alexblackie/
+      [gh]:       https://github.com/alexblackie/self
