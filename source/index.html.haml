@@ -2,13 +2,14 @@
 title: The Internet Sensation
 ---
 
-- @latest_article = page_articles.first
-%article( class='article article-latest' )
-  %header.article-header
-    %h1.article-header-title= link_to @latest_article.title, @latest_article
-  .article-excerpt= @latest_article.data.excerpt
+.container
+  - @latest_article = page_articles.first
+  %article( class='article article-latest' )
+    %header.article-header
+      %h1.article-header-title= link_to @latest_article.title, @latest_article
+    .article-excerpt= @latest_article.data.excerpt
 
-- page_articles.each do |article|
-  %article( class='article-in-list' )
-    .article-publish-date= article.date.strftime("%B %d, %Y")
-    %h1.article-title= link_to article.title, article.url
+  - page_articles.each do |article|
+    %article( class='article-in-list' )
+      .article-publish-date= article.date.strftime("%B %d, %Y")
+      %h1.article-title= link_to article.title, article.url
