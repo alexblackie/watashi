@@ -10,6 +10,9 @@
   = stylesheet_link_tag '//fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Gudea:400,700'
   = stylesheet_link_tag 'site'
 
+  - if current_page.data.art
+    = stylesheet_link_tag 'art-direction/' + current_page.data.art
+
 %body( class="#{ page_classes }" )
 
   %header.site-header
