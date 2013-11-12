@@ -6,4 +6,8 @@
         .article-header-meta Published #{ current_page.date.strftime("%B %d, %Y") }
 
       .article-excerpt= current_page.data.excerpt
+
+      - if current_page.data.poster
+        %figure.article-poster= image_tag 'posters/' + current_page.data.poster, width: 940
+
       .article-content= yield
