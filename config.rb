@@ -9,16 +9,6 @@ require 'susy'
 #-----------------------------------------------------------------------------
 activate :automatic_image_sizes
 
-activate :sync do |sync|
-  sync.fog_provider          = 'Rackspace'
-  sync.fog_directory         = ENV['RSCF_CONTAINER']
-  sync.fog_region            = ENV['RSCF_REGION']
-  sync.rackspace_username    = ENV['RSCF_USERNAME']
-  sync.rackspace_api_key     = ENV['RSCF_KEY']
-  sync.existing_remote_files = 'delete'
-  sync.after_build           = false
-end
-
 
 #-----------------------------------------------------------------------------
 # Blog
