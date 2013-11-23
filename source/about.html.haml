@@ -40,19 +40,26 @@ title: Me.
       .page-about-tech-text
         :markdown
           This is my blog. It is powered by [Middleman][mm], [Susy][susy], and
-          [Rackspace Cloud Files][rscf]. The deployment is done automatically using
-          [middleman-sync][mmsync] every time I push to `master` (all thanks to
-          [Jenkins][jci]). Static HTML gives me the speed and ease-of-hosting that I
-          desire, with the flexibility to do pretty much anything (and in any
-          markup language I want).
+          [the Rackspace Cloud][rsc]. The deployment is done automatically
+          every time I push to `master` (all thanks to [Jenkins][jci]). Static
+          HTML gives me the speed and ease-of-hosting that I desire, with the
+          flexibility to do pretty much anything (and in any markup language I
+          want).
 
-          Everything is available to everyone. Feel free to poke around [the Jenkins
-          build][thebuild], or checkout the [Github repo][gh].
+          The server is one of the [Performance Cloud Servers][rsperf]
+          Rackspace launched not too long ago. It has 1 vCPU, 1GB RAM, 20GB of
+          RAID-10 SSD storage, and a 200mbps connection. It's running the
+          latest (non-LTS) release of Ubuntu, NGINX, and PHP-FPM (for some old
+          sites that still use PHP).
+
+          Everything is available to everyone. Feel free to poke around [the
+          Jenkins job][thebuild], or checkout the [Github repo][gh].
 
           [mm]:       http://middlemanapp.com/
           [susy]:     http://susy.oddbird.net/
-          [rscf]:     http://rackspace.com/cloud/files/
+          [rsc]:      http://rackspace.com/cloud/servers/
           [mmsync]:   https://github.com/karlfreeman/middleman-sync
           [jci]:      http://jenkins-ci.org/
+          [rsperf]:   http://www.rackspace.com/blog/got-the-need-for-speed-meet-performance-cloud-servers/
           [thebuild]: http://ci.alexblackie.com/job/alexblackie/
           [gh]:       https://github.com/alexblackie/self
