@@ -9,7 +9,7 @@
                                                                           |___/
 ```
 
-![Jenkins status](http://ci.alexblackie.com/buildStatus/icon?job=alexblackie)
+[![Jenkins status](http://ci.alexblackie.com/buildStatus/icon?job=alexblackie)](http://ci.alexblackie.com/job/alexblackie)
 
 This is a [Middleman][middleman] project, hosted on [Cloud Files][cloudfiles],
 and managed through [Jenkins][jenkins] for testing and auto-deployments.
