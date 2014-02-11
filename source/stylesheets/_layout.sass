@@ -3,10 +3,10 @@
 //-----------------------------------------------------------------------------
 .site-header
   +pie-clearfix
-  height:        $height-header
-  padding:       $padding-header 0
-  font-size:     0.85em
-  border-bottom: 1px solid $color-grey-light
+  height:           $height-header
+  padding:          $padding-header 0
+  background-color: $background-header
+  border-bottom:    1px solid darken($background-header, 5%)
 
   +at-breakpoint-mobile
     height:    auto
@@ -26,9 +26,11 @@
     > a
       text-decoration: none
       color:           $color-text
+      border:          none
 
       &:hover
-        color: black
+        color:      black
+        background: transparent
 
   .main-menu
     +span-columns(8 omega)

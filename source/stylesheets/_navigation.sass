@@ -39,8 +39,8 @@
       line-height:     $height-header
       text-decoration: none
       color:           $color-text
-      border:          1px solid $color-grey-light
-      border-radius:   $height-header
+      border:          none
+      border-radius:   10px
 
       +at-breakpoint-mobile
         +box-sizing(border-box)
@@ -51,7 +51,7 @@
 
       &:hover
         text-decoration:  none
-        background-color: $color-grey-light
+        background-color: darken($background-header, 2%)
 
     &.main-menu-item-current a,
     .index &.main-menu-item-articles a,
