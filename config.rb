@@ -11,6 +11,21 @@ activate :automatic_image_sizes
 
 
 #-----------------------------------------------------------------------------
+# Deploy to Cloudfront via middleman-sync
+#-----------------------------------------------------------------------------
+activate :sync do |sync|
+  sync.fog_provider          = 'AWS'
+  sync.fog_directory         = ENV['AWS_BUCKET']
+  sync.fog_region            = 'us-west-2'
+  sync.aws_access_key_id     = ENV['AWS_ACCESS']
+  sync.aws_secret_access_key = ENV['AWS_SECRET']
+  sync.existing_remote_files = 'keep'
+  sync.gzip_compression      = true
+  sync.after_build           = false
+end
+
+
+#-----------------------------------------------------------------------------
 # Blog
 #-----------------------------------------------------------------------------
 activate :blog do |blog|
