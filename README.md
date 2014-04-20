@@ -8,8 +8,7 @@
                                                                            __/ |
                                                                           |___/
 ```
-
-[![Jenkins status](http://ci.alexblackie.com/buildStatus/icon?job=alexblackie)](http://ci.alexblackie.com/job/alexblackie)
+[![Build Status](http://ci.alexblackie.com/buildStatus/icon?job=self)](http://ci.alexblackie.com/job/self/)
 
 This is a [Middleman][middleman] project, hosted on [the Rackspace
 Cloud][cloud], and managed through [Jenkins][jenkins] for testing and
