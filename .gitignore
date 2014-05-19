@@ -1,0 +1,5 @@
+# Ignore modules (minification deps)
+node_modules/
+
+# Ignore built files
+build/
