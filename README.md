@@ -5,6 +5,9 @@ there have been many more before this). Everything is purposefully brutally
 simple: static HTML (written by hand), a heavy two lines of CSS, and a Makefile
 to compile it all.
 
+The site is automatically built and deployed [via
+Jenkins](http://ci.alexblackie.com/job/alexblackie.com/).
+
 ## 0. Getting started
 1. `git clone https://github.com/alexblackie/self.git`
 2. `cd self`
