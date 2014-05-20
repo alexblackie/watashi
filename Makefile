@@ -1,14 +1,24 @@
-ARTICLES=$(shell ls www/articles)
+HTMLFILES=www/index.html $(wildcard www/articles/*.html)
+TXTFILES=$(wildcard www/*.html)
+CSSFILES=$(wildcard www/assets/*.css)
+HTMLTARGETS=$(HTMLFILES:www/%.html=build/%.html)
 
-build:
-	mkdir -p build/assets build/articles
+all: build
+
+node_modules:
 	npm install minify
-	node_modules/.bin/minify www/index.html > build/index.html
-	$(foreach article,$(ARTICLES),cat www/articles/$(article) ga.txt | node_modules/.bin/minify -html > build/articles/$(article);)
-	cat www/assets/*.css | node_modules/.bin/minify -css > build/assets/site.css
-	cp -r www/assets/images build/assets
-	cat ga.txt >> build/index.html
+
+build/assets/site.css: $(CSSFILES) node_modules
+	@mkdir -p $(dir $@)
+	cat $(CSSFILES) | node_modules/.bin/minify -css > $@
+
+build/%.html: www/%.html ga.txt node_modules
+	@mkdir -p $(dir $@)
+	cat $< ga.txt | node_modules/.bin/minify -html > $@
+
+build: build/assets/site.css $(HTMLTARGETS)
 
 clean:
-	rm -rf build/
-	rm -rf node_modules
+	rm -Rf build/ node_modules
+
+.PHONY: all build clean deps
