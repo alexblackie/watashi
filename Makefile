@@ -21,4 +21,7 @@ build: build/assets/site.css $(HTMLTARGETS)
 clean:
 	rm -Rf build/ node_modules
 
+server:
+	@pushd www/; python -m SimpleHTTPServer 8000; popd;
+
 .PHONY: all build clean deps
