@@ -24,4 +24,7 @@ clean:
 server:
 	@pushd www/; python -m SimpleHTTPServer 8000; popd;
 
+deploy:
+	rsync -rv build/* nibbler_deploy:public/alexblackie.com
+
 .PHONY: all build clean deps
