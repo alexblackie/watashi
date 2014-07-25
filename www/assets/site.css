@@ -2,7 +2,29 @@
   * alexblackie dot com
   */
 
+@import url("//fonts.googleapis.com/css?family=Source+Code+Pro:400");
+
 body {
   max-width: 500px;
+  margin: 50px auto;
+  font-family: 'Source Code Pro';
+  font-size: 13px;
   line-height: 1.5em;
-}
+  color: #596E75;
+  background-color: #002833; }
+
+a {
+  text-decoration: none;
+  color: #32A198; }
+  a:hover {
+    color: #B4881D; }
+
+h1, h2, h3, h4 {
+  line-height: 1.25em;
+  color: #839496; }
+
+hr {
+  height: 2px;
+  background: #003540;
+  outline: 0;
+  border: 0; }
