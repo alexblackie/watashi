@@ -1,0 +1,46 @@
+//-----------------------------------------------------------------------------
+// Reset
+//-----------------------------------------------------------------------------
++global-reset
+
+
+//-----------------------------------------------------------------------------
+// Base Styles
+//-----------------------------------------------------------------------------
+body
+  +antialiased
+  font-family:      $font-family-primary
+  font-size:        $font-size-base
+  line-height:      $leading-base
+  color:            $color-text
+  background-color: #efefef
+
+a
+  text-decoration: none
+  color: $color-highlight
+
+  &:hover
+    text-decoration: underline
+
+strong
+  font-weight: $font-weight-bold
+
+em
+  font-weight: $font-weight-normal
+  font-style:  italic
+
+h1, h2, h3, h4
+  font-family: $font-family-secondary
+  font-weight: $font-weight-bold
+  line-height: 1.25em
+  color:       $color-text-dark
+
+hr
+  height:     2px
+  background: #eee
+  outline:    0
+  border:     0
+
+p, ul, ol,
+h1, h2, h3, h4
+  +content-padding

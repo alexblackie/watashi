@@ -1,5 +1,7 @@
-# Ignore modules (minification deps)
-node_modules/
-
-# Ignore built files
-build/
+/.bundle
+/build
+/.sass-cache
+/.cache
+.DS_Store
+/.env
+/provision.log

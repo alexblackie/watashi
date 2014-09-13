@@ -1,22 +1,23 @@
-This is my humble slice of the internets.
+```
+   ___  _            ______ _            _    _
+  / _ \| |           | ___ \ |          | |  (_)
+ / /_\ \ | _____  __ | |_/ / | __ _  ___| | ___  ___
+ |  _  | |/ _ \ \/ / | ___ \ |/ _` |/ __| |/ / |/ _ \
+ | | | | |  __/>  <  | |_/ / | (_| | (__|   <| |  __/
+ \_| |_/_|\___/_/\_\ \____/|_|\__,_|\___|_|\_\_|\___|
+```
 
-I've taken an über-minimalist approach with this revision (dubbed v2.0, however
-there have been many more before this). Everything is purposefully brutally
-simple: static HTML (written by hand), a heavy two lines of CSS, and a Makefile
-to compile it all.
+This is my slice of the internet. It's built using [Middleman], [Sass], [Susy],
+and [Breakpoint]. It's quite easy to set up.
 
-The site is automatically built and deployed [via
-Jenkins](http://ci.alexblackie.com/job/alexblackie.com/).
+Ensure you have a working install of Ruby locally, and `bundler` installed.
 
-## 0. Getting started
-1. `git clone https://github.com/alexblackie/self.git`
-2. `cd self`
+1. `bundle install` to install dependencies
+2. `bundle exec middleman server` to start the local development server
+3. `open http://localhost:4567/`
 
-## 1. Local development
-1. `bin/server.sh` (may need to mark as executable first)
-2. `open http://localhost:8000/`
 
-## 2. Building for production
-1. `make`
-
-Everything is minified and put in `./build/`.
+[Middleman]: http://middlemanapp.com/
+[Sass]: http://sass-lang.com/
+[Susy]: http://susy.oddbird.net/
+[Breakpoint]: http://breakpoint-sass.com/

@@ -1,0 +1,41 @@
+//-----------------------------------------------------------------------------
+// Single Article
+//-----------------------------------------------------------------------------
+.article
+  .article-header
+    margin-bottom: $padding-mobile
+
+  .article-header-date
+    +content-padding
+    display:     block
+    font-family: $font-family-secondary
+    font-size:   0.9em
+    color:       $color-text-light
+
+    +breakpoint($break-desktop)
+      padding: 0 $padding-desktop
+
+  p
+    margin: 0 0 1em
+
+
+//-----------------------------------------------------------------------------
+// Article List
+//-----------------------------------------------------------------------------
+.article-list
+  margin:     0
+  list-style: none
+  color:      #999
+
+.article-list-item
+  padding: 10px 0
+
+  +breakpoint($break-desktop)
+    padding: 5px 0
+
+  a
+    display: block
+
+    +breakpoint($break-desktop)
+      float: left
+      width: 60%
