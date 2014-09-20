@@ -1,0 +1,14 @@
+---
+title:      "The Internet Sensation™"
+big_header: true
+pageable:   true
+---
+
+%header.page-header
+  %h1.page-title My Writings
+
+%ul.article-list( role='menu' )
+  - page_articles.each_with_index do |article, i|
+    %li.article-list-item( role='menuitem' )
+      = link_to article.title, article
+      = article.date.strftime('%B %e, %Y')
