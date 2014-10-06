@@ -7,17 +7,15 @@
  \_| |_/_|\___/_/\_\ \____/|_|\__,_|\___|_|\_\_|\___|
 ```
 
-This is my slice of the internet. It's built using [Middleman], [Sass], [Susy],
-and [Breakpoint]. It's quite easy to set up.
+There is no setup. There are no dependencies. There is only pure, unadultered
+HTML and CSS.
 
-Ensure you have a working install of Ruby locally, and `bundler` installed.
+It is glorious; bask in its purity of soul; revere its simplicity.
 
-1. `bundle install` to install dependencies
-2. `bundle exec middleman server` to start the local development server
-3. `open http://localhost:4567/`
+## 0. Getting Set Up
 
+1. Open `index.html` in a web browser
 
-[Middleman]: http://middlemanapp.com/
-[Sass]: http://sass-lang.com/
-[Susy]: http://susy.oddbird.net/
-[Breakpoint]: http://breakpoint-sass.com/
+## 1. Deployment
+
+1. Upload directory to a web server

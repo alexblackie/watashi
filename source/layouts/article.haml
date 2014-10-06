@@ -1,7 +1,0 @@
-= wrap_layout :layout do
-  %article.article.article-single
-    %header.page-header.article-header
-      %h1.article-header-title= current_page.data.title
-      %time.article-header-date Published on #{ current_page.data.date.strftime("%B %d, %Y") }
-
-    .article-content= yield
