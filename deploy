@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rsync -ra --progress ./* prod-sf01:/srv/alexblackie.com
+rsync -ra --progress --exclude 'README.md' --exclude 'deploy' ./* prod-sf01:/srv/alexblackie.com
