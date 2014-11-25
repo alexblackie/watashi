@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rsync -ra --progress ./* prod-sf01:/srv/alexblackie.com
