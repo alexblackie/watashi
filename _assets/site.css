@@ -38,8 +38,14 @@ header {
 	width: 40%; }
 
 section ul {
-	margin: 0 0 0 1em;
-	padding: 0; }
+	margin: 0;
+	padding: 0;
+	list-style: none; }
+
+	section ul li:before {
+		content: "\00BB";
+		margin-right: 10px;
+	}
 
 section h3 {
 	margin: 0 0 20px;
