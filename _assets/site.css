@@ -1,8 +1,53 @@
 /**
- * alexblackie.com - version 1*10^74
+ * alexblackie.com - version 1.0*10^75
  */
 
 body {
+	margin: 25px auto;
 	max-width: 680px;
-	font-family: "Dejavu Serif", serif;
+	font-family: "PT Serif", serif;
 	line-height: 1.5em; }
+
+a {
+	color: #00c; }
+
+h1, h2, h3 {
+	font-family: "PT Sans", sans-serif; }
+
+header {
+	padding: 25px 0;
+	text-align: center;
+	border-bottom: 3px solid #00c; }
+
+	header h1 {
+		font-size: 5em; }
+
+	header h2 {
+		font-family: "PT Serif", serif;
+		font-size: 1.5em;
+		font-style: italic;
+		font-weight: 400; }
+
+.intro {
+	margin: 25px 0 50px;
+	font-size: 1.2em;
+	line-height: 1.6em; }
+
+.find-me {
+	float: left;
+	width: 40%; }
+
+section ul {
+	margin: 0 0 0 1em;
+	padding: 0; }
+
+section h3 {
+	margin: 0 0 20px;
+	font-size: 2em; }
+
+@media (max-width: 500px) {
+	.find-me,
+	.read-me {
+		float: none;
+		width: auto; }
+}
