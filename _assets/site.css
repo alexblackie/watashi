@@ -44,6 +44,7 @@ header {
 	text-align: center;
 	border-bottom: 3px solid #00c; }
 	header h1 {
+		margin-bottom: 0;
 		font-size: 5em;
 		line-height: 1.125em; }
 	header h2 {
