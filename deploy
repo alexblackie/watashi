@@ -1,3 +1,0 @@
-#!/bin/sh
-
-rsync -ra --progress --exclude 'README.md' --exclude 'deploy' ./* deploy@www01:/usr/local/www/alexblackie.com
