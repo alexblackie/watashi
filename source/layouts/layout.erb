@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= current_page.data.title || "The Middleman" %></title>
+    <%= stylesheet_link_tag "site" %>
+  </head>
+
+  <body class="<%= page_classes %>">
+    <div class="container">
+      <header id="site-header">
+        <h1><%= link_to "Alex Blackie", "/" %></h1>
+        <h2>The Internet Sensation&trade;</h2>
+      </header>
+
+      <div role="main" id="site-content">
+        <%= yield %>
+      </div>
+
+      <div id="site-sidebar">
+        <nav>
+          <ul>
+            <% data.menu.each do |item| %>
+              <li><%= link_to item.name, item.url %></li>
+            <% end %>
+          </ul>
+        </nav>
+
+        <div class="powered-by">
+          <div class="powered-by-freebsd">
+            <a href="https://www.freebsdfoundation.org/donate" target="_blank"><img src="https://www.freebsdfoundation.org/assets/proud_donor.gif" alt="Proud Donor" title="FreeBSD Foundation Donor" width="75" height="90"></a>
+            <p>This site is proudly served by FreeBSD.</p>
+          </div>
+
+          <p>
+            Built with <a href="https://middlemanapp.com/">Middleman</a>.<br>
+            Get the source <a href="https://github.com/alexblackie/self">on Github</a>.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

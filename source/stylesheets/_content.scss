@@ -1,0 +1,7 @@
+#site-content {
+  @include span(9 omega);
+
+  *:first-child {
+    margin-top: 0;
+  }
+}

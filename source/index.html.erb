@@ -1,0 +1,18 @@
+---
+title: The Internet Sensation
+---
+
+<article class="post post-page">
+  <div class="post-header">
+    <h1>My Weblog</h1>
+  </div>
+
+  <div class="post-content">
+    <% page_articles.each do |article| %>
+      <article class="post post-member">
+        <span>(<%= article.date.strftime("%Y-%m-%d") %>)</span>
+        <h1><%= link_to article.title, article %></h1>
+      </article>
+    <% end %>
+  </div>
+</article>

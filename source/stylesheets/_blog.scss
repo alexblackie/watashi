@@ -1,0 +1,42 @@
+.post-single {
+  .post-header {
+    margin-bottom: 25px;
+    text-align: center;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .post-header-meta {
+    margin-top: 10px;
+    color: darkgrey;
+  }
+
+  figure {
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    background-color: whitesmoke;
+  }
+}
+
+.post-content {
+  line-height: 1.25em;
+}
+
+.post-member {
+  padding: 5px 0;
+  border-bottom: 1px dotted grey;
+
+  h1 {
+    margin: 0 10px 0 0;
+    font-size: 1em;
+  }
+
+  span {
+    float: left;
+    margin-right: 10px;
+    color: dimgrey;
+  }
+}

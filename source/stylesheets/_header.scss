@@ -1,0 +1,25 @@
+#site-header {
+  height: $height-header;
+  padding: $padding-header;
+  margin-bottom: 20px;
+  line-height: $height-header;
+  background-color: $color-background-header;
+
+  h1 {
+    float: left;
+    margin: 0 25px 0 0;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  h2 {
+    float: left;
+    margin: 0;
+    font-size: 1em;
+    font-style: italic;
+    color: darkgoldenrod;
+  }
+}
