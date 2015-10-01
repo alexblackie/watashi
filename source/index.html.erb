@@ -19,13 +19,11 @@ layout: layout
   </div>
 </div></header>
 
-<div class="container">
-  <article class="post post-page">
-    <div class="post-header">
-      <h1>My Weblog</h1>
-    </div>
+<div class="container" id="home-content">
+  <div class="home-column home-column-weblog">
+    <h1 class="home-column-title">My Weblog</h1>
 
-    <div class="post-content">
+    <div class="home-column-content">
       <% page_articles.each do |article| %>
         <article class="post post-member">
           <span>(<%= article.date.strftime("%Y-%m-%d") %>)</span>
@@ -33,5 +31,18 @@ layout: layout
         </article>
       <% end %>
     </div>
-  </article>
+  </div>
+
+  <div class="home-column home-column-about">
+    <h1 class="home-column-title">On the Line</h1>
+
+    <div class="home-column-content">
+      <ul>
+        <li>Email: <%= link_to "alex@alexblackie.com", "mailto:alex@alexblackie.com" %></li>
+        <li>Twitter: <%= link_to "@alexblackie", "https://twitter.com/alexblackie" %></li>
+        <li>Github: <%= link_to "@alexblackie", "https://github.com/alexblackie" %></li>
+        <li>Freenode: <code>alexblackie</code></li>
+      </ul>
+    </div>
+  </div>
 </div>
