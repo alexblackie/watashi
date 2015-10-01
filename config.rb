@@ -1,9 +1,14 @@
+activate :syntax
+
 set :css_dir,    'stylesheets'
 set :js_dir,     'javascripts'
 set :images_dir, 'images'
 
 activate :directory_indexes
 activate :minify_html
+
+set :markdown_engine, :redcarpet
+set :markdown, fenced_code_blocks: true
 
 activate :blog do |blog|
   blog.permalink = "{title}"

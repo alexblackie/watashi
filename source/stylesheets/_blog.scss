@@ -5,6 +5,7 @@
 
     h1 {
       margin: 0;
+      font-size: 2.5em;
     }
   }
 
@@ -14,15 +15,33 @@
   }
 
   figure {
-    margin: 0;
-    padding: 20px 0;
+    margin: 0 0 1em;
+    padding: 10px;
     text-align: center;
     background-color: whitesmoke;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 
 .post-content {
-  line-height: 1.25em;
+  line-height: 1.4em;
+
+  h2, h3, h4 {
+    margin: 2em 0 0 0;
+    font-family: $font-family-primary;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+  }
 }
 
 .post-member {

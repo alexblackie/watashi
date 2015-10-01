@@ -1,25 +1,88 @@
-#site-header {
-  height: $height-header;
-  padding: $padding-header;
-  margin-bottom: 20px;
-  line-height: $height-header;
+#site-header-home {
+  padding: $padding-header-home;
   background-color: $color-background-header;
+  text-align: center;
+
+  .titles:after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 5px;
+    margin: 50px auto 0;
+    background-color: $color-highlight;
+  }
 
   h1 {
-    float: left;
-    margin: 0 25px 0 0;
+    margin: 0;
+    font-size: 5em;
+    line-height: 1em;
 
     a {
-      color: inherit;
+      color: white;
       text-decoration: none;
     }
   }
 
   h2 {
-    float: left;
-    margin: 0;
+    margin: 10px 0 0 0;
     font-size: 1em;
     font-style: italic;
-    color: darkgoldenrod;
+    font-family: $font-family-primary;
+    font-weight: normal;
+    color: rgba(white, 0.5);
+  }
+
+  .intro {
+    @include pad(2, 2);
+    margin-top: 50px;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    color: rgba(white, 0.75);
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+#site-header {
+  height: $height-header;
+  line-height: $height-header;
+  background-color: $color-background-header;
+  text-align: center;
+
+  h1 {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 1.25em;
+    text-transform: uppercase;
+
+    &:after {
+      content: "|";
+      display: inline-block;
+      margin-left: 15px;
+      color: rgba(white, 0.5);
+      font-weight: 400;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  h2 {
+    display: inline-block;
+    margin: 0;
+    font-family: $font-family-primary;
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.1em;
+    color: rgba(white, 0.5);
   }
 }

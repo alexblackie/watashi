@@ -1,5 +1,6 @@
 #site-content {
-  @include span(9 omega);
+  @include pad(3, 3);
+  padding-top: 50px;
 
   *:first-child {
     margin-top: 0;
