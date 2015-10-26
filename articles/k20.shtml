@@ -3,7 +3,10 @@
 
 <h2><!--#echo var="pagetitle"--></h2>
 
-<p><img alt="k20" src="/images/k20/omninas.jpg"></p>
+<div class="figure">
+	<img alt="k20" src="/images/k20/omninas.jpg" />
+</div>
+
 <p>
 	Christmas, 2013: through a crazy sale on my favourite technology
 	e-retailer I purchased a Shuttle OmniNAS K20, a consumer-grade NAS, for
