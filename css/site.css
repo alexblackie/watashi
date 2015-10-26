@@ -1,0 +1,65 @@
+/**
+ * alexblackie.com
+ * 2015-10-25
+ */
+
+/* GLOBAL
+ * -----------------------------------------------------------------------------
+ */
+body {
+	width: 700px;
+}
+
+code {
+	padding: 2px 5px;
+	background: gainsboro;
+}
+
+pre > code {
+	display: block;
+	padding: 3px 10px;
+	max-height: 600px;
+	overflow: auto;
+	border: 1px solid silver;
+}
+
+
+/* LAYOUT
+ * -----------------------------------------------------------------------------
+ */
+#header,
+#footer {
+	padding: 1em;
+	background: lightblue;
+	overflow: hidden;
+}
+
+#header div {
+	float: left;
+}
+
+#header h1,
+#header p {
+	margin: 0;
+}
+
+#header #nav {
+	float: right;
+	margin-top: 1.25em;
+}
+
+#main {
+	margin: 1em 0;
+	line-height: 1.4em;
+}
+
+#footer {
+	background: gainsboro;
+}
+
+#footer :first-child {
+	margin-top: 0;
+}
+#footer :last-child {
+	margin-bottom: 0;
+}

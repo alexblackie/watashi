@@ -1,0 +1,20 @@
+<!--#set var="pagetitle" value="The Internet Sensation&trade;"-->
+<!--#include virtual="/partials/_header.shtml"-->
+
+<p>
+	<big>
+		I'm just some punk-ass teenager in Canada who writes code
+		for <a href="http://stembolt.com/">Stembolt</a> and runs
+		servers for <a href="https://www.blackieops.com">BlackieOps</a>.
+		I drink a dangerous amount of coffee.
+	</big>
+</p>
+
+<h2>Weblog Articles</h2>
+<ul>
+	<li>(2015-01-04) <a href="/articles/k20.shtml">Hacking the Shuttle OmniNAS K20</a></li>
+	<li>(2014-11-14) <a href="/articles/x205ta.shtml">Asus X205TA Netbook Review</a></li>
+	<li>(2014-10-18) <a href="/articles/yosemite.shtml">Falling Down the Mountain</a></li>
+</ul>
+
+<!--#include virtual="/partials/_footer.shtml"-->

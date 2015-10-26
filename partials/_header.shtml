@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title><!--#echo var="pagetitle"--> | Alex Blackie</title>
+		<link rel="stylesheet" href="/css/site.css" type="text/css" />
+	</head>
+	<body>
+		<div id="header">
+			<div>
+				<h1><a href="/">Alex Blackie</a></h1>
+				<p><em>The Internet Sensation&trade;</em></p>
+			</div>
+
+			<div id="nav">
+				<a href="mailto:alex@alexblackie.com">E.Mail</a> |
+				<a href="https://github.com/alexblackie">Github</a> |
+				<a href="https://twitter.com/alexblackie">Twitter</a> |
+				<a href="https://pgp.mit.edu/pks/lookup?op=get&amp;search=0xA231E0F2D35D0D47">GPG</a>
+			</div>
+		</div>
+
+		<div id="main">
