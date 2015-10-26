@@ -29,7 +29,7 @@
 	support. It was the pinnacle of modern computing.
 </p>
 
-<hr>
+<hr/>
 
 <p>
 	In October 2013, Apple released OS&nbsp;X 10.9 &ldquo;Mavericks&rdquo;. At
@@ -61,7 +61,7 @@
 	Apple <em>could</em> actually do great things post-Jobs.
 </p>
 
-<hr>
+<hr/>
 
 <p>
 	And then, just a couple days ago, OS&nbsp;X Yosemite was released to the
@@ -80,7 +80,7 @@
 </p>
 
 <div class="figure">
-	<img src="/images/yosemite/filevault.jpg" alt="Filevault ugly" %>
+	<img src="/images/yosemite/filevault.jpg" alt="Filevault ugly" />
 </div>
 
 <p>
@@ -176,7 +176,7 @@
 	For example, these:
 </p>
 
-<figure class="gallery">
+<div class="figure">
 	<img src="/images/yosemite/stocks.jpg" alt="Stocks highlighting is weird" />
 	<img src="/images/yosemite/quicktime.jpg" alt="Quicktime is just broken" />
 </div>
@@ -204,7 +204,7 @@
 	unacceptable, especially to those of us who are adults.
 </p>
 
-<hr>
+<hr/>
 
 <p>
 	While everything I've pointed out here may seem minor on its own, it is the
