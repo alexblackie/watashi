@@ -53,6 +53,11 @@ pre > code {
 	line-height: 1.4em;
 }
 
+#main img {
+	max-width: 100%;
+	height: auto;
+}
+
 #footer {
 	background: gainsboro;
 }
