@@ -1,0 +1,26 @@
+<!--#set var="pagetitle" value="Things I Like"-->
+<!--#include virtual="/partials/_header.shtml"-->
+
+<p>
+	<big>
+		I am often called out for my over-use of the word "Terrible" while
+		describing software. To my credit, the majority of software is, in
+		fact, terrible and broken.
+	</big>
+</p>
+
+<p>
+	In an effort to be less pessimistic, this is a list of software that I
+	enjoy using and will whole-heartedly recommend.
+</p>
+
+<hr>
+
+<ul>
+	<li><a href="https://freebsd.org/">FreeBSD</a></li>
+	<li><a href="https://libvirt.org/">libvirt</a></li>
+	<li><a href="https://tmux.github.io/">tmux</a></li>
+</ul>
+
+
+<!--#include virtual="/partials/_footer.shtml"-->
