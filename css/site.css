@@ -13,8 +13,14 @@ body {
 	color: #404040;
 }
 
-a:link {
+a {
 	color: darkslateblue;
+	text-decoration: none;
+	border-bottom: 1px solid lightgrey;
+}
+
+a:hover {
+	border-bottom-color: darkslateblue;
 }
 
 code {
@@ -47,6 +53,7 @@ pre > code {
 
 #header a {
 	color: white;
+	border: none;
 }
 
 #header div {
@@ -69,6 +76,9 @@ pre > code {
 #header #nav {
 	float: right;
 	margin-top: 1.25em;
+}
+#header #nav a {
+	text-decoration: underline;
 }
 
 #main {
