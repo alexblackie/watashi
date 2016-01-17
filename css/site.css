@@ -105,6 +105,17 @@ pre > code {
 	border: none;
 }
 
+#footer .footer-left {
+	float: left;
+}
+
+#footer .footer-right {
+	float: right;
+	margin: 0;
+	max-width: 400px;
+	text-align: right;
+}
+
 #footer :first-child {
 	margin-top: 0;
 }
@@ -158,5 +169,12 @@ big {
 
 	#main {
 		padding: 0 15px;
+	}
+
+	#footer .footer-right,
+	#footer .footer-left {
+		float: none;
+		margin: 20px 0;
+		text-align: center;
 	}
 }

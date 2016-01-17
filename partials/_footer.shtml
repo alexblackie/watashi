@@ -1,14 +1,22 @@
 		</div>
 
 		<div id="footer">
-			<p>&copy; 2015 Alex Blackie. This site is <a href="https://github.com/alexblackie/self">open-source</a>.</p>
-			<p class="badges">
-				<a href="https://validator.w3.org/check?uri=referer"><img src="/images/valid-xhtml10.png" alt="Valid XHTML 1.0" /></a>
-				<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="/images/valid-css.gif" alt="Valid CSS!" /></a>
-				<a href="https://mozilla.org/"><img src="/images/firefox.png" alt="Best Viewed in Firefox" /></a>
-				<a href="https://freebsd.org/"><img src="/images/freebsd.png" alt="Served by FreeBSD." /></a>
-				<img src="/images/comodo.png" alt="Secred By Comodo PositiveSSL" />
-			</p>
+			<div class="footer-left">
+				<p>&copy; 2015 Alex Blackie. This site is <a href="https://github.com/alexblackie/self">open-source</a>.</p>
+				<p class="badges">
+					<a href="https://validator.w3.org/check?uri=referer"><img src="/images/valid-xhtml10.png" alt="Valid XHTML 1.0" /></a>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="/images/valid-css.gif" alt="Valid CSS!" /></a>
+					<a href="https://mozilla.org/"><img src="/images/firefox.png" alt="Best Viewed in Firefox" /></a>
+					<a href="https://freebsd.org/"><img src="/images/freebsd.png" alt="Served by FreeBSD." /></a>
+					<img src="/images/comodo.png" alt="Secred By Comodo PositiveSSL" />
+				</p>
+			</div>
+
+			<div class="footer-right">
+				<p class="credits">
+					This site served by <a href="https://freebsd.org/">FreeBSD</a> running on dedicated servers from <a href="https://ixsystems.com/">iXSystems</a>.
+				</p>
+			</div>
 		</div>
 
 		<script type="text/javascript">
