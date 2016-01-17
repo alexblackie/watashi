@@ -2,11 +2,13 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title><!--#echo var="pagetitle"--> | Alex Blackie</title>
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:400,700" type="text/css" />
 		<link rel="stylesheet" href="/css/site.css" type="text/css" />
 	</head>
-	<body>
+	<body class="<!--#echo var="classes" -->">
 		<div id="header">
 			<div>
 				<h1><a href="/">Alex Blackie</a></h1>

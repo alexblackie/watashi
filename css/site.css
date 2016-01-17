@@ -7,7 +7,14 @@
  * -----------------------------------------------------------------------------
  */
 body {
-	width: 700px;
+	max-width: 1200px;
+	margin: 0 auto;
+	font-family: "PT Serif", serif;
+	color: #404040;
+}
+
+a:link {
+	color: darkslateblue;
 }
 
 code {
@@ -29,9 +36,17 @@ pre > code {
  */
 #header,
 #footer {
-	padding: 1em;
-	background: lightblue;
+	padding: 2em;
 	overflow: hidden;
+}
+
+#header {
+	color: white;
+	background-color: darkslateblue;
+}
+
+#header a {
+	color: white;
 }
 
 #header div {
@@ -41,6 +56,14 @@ pre > code {
 #header h1,
 #header p {
 	margin: 0;
+}
+
+#header h1 {
+	font-size: 2.5em;
+}
+
+#header h1 a {
+	text-decoration: none;
 }
 
 #header #nav {
@@ -58,7 +81,13 @@ pre > code {
 	height: auto;
 }
 
+.article-single #main {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
 #footer {
+	margin-top: 2em;
 	background: gainsboro;
 }
 
@@ -67,4 +96,53 @@ pre > code {
 }
 #footer :last-child {
 	margin-bottom: 0;
+}
+
+
+/* COMPONENTS
+ * -----------------------------------------------------------------------------
+ */
+big {
+	display: block;
+	padding: 50px 200px;
+	font-size: 2em;
+	line-height: 1.25em;
+	text-align: center;
+}
+
+
+/* RESPONSIVE OVERRIDES
+ * -----------------------------------------------------------------------------
+ */
+@media screen and (max-width: 980px) { /* "Small desktop" */
+	big {
+		padding: 25px 50px;
+	}
+}
+
+@media screen and (max-width: 768px) { /* "Tablet" */
+	big {
+		padding: 25px;
+	}
+}
+
+@media screen and (max-width: 512px) { /* "Mobile" */
+	#header,
+	#footer {
+		text-align: center;
+	}
+
+	#header div,
+	#header #nav {
+		float: none;
+	}
+
+	big {
+		padding: 20px 15px;
+		font-size: 1.25em;
+	}
+
+	#main {
+		padding: 0 15px;
+	}
 }

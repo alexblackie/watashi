@@ -1,4 +1,5 @@
 <!--#set var="pagetitle" value="Falling Down the Mountain"-->
+<!--#set var="classes" value="article-single" -->
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
