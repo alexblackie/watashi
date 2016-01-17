@@ -101,6 +101,10 @@ pre > code {
 	background: gainsboro;
 }
 
+#footer .badges a {
+	border: none;
+}
+
 #footer :first-child {
 	margin-top: 0;
 }
