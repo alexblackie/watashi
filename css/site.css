@@ -168,6 +168,10 @@ big {
 		float: none;
 	}
 
+	#header #nav a {
+		line-height: 3em;
+	}
+
 	big {
 		padding: 20px 15px;
 		font-size: 1.25em;
