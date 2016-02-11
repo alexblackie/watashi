@@ -176,6 +176,12 @@ big {
 }
 
 @media screen and (max-width: 512px) { /* "Mobile" */
+	pre > code {
+		margin: 1.5em -15px;
+		padding: 15px;
+		border-radius: 0;
+	}
+
 	#header,
 	#footer {
 		text-align: center;
