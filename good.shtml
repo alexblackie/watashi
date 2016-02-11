@@ -1,5 +1,5 @@
 <!--#set var="pagetitle" value="Things I Like"-->
-<!--#set var="classes" value="page-narrow"-->
+<!--#set var="classes" value="article-single"-->
 <!--#include virtual="/partials/_header.shtml"-->
 
 <p>
@@ -7,8 +7,6 @@
 	However, there are many projects and pieces of software that I truly enjoy.
 	This page is an attempt to catalogue all of those things.
 </p>
-
-<hr>
 
 <ul>
 	<li><a href="https://freebsd.org/">FreeBSD</a></li>

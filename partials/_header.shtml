@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title><!--#echo var="pagetitle"--> | Alex Blackie</title>
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Serif:400,700" type="text/css" />
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" type="text/css" />
 		<link rel="stylesheet" href="/css/site.css" type="text/css" />
 	</head>
 	<body class="<!--#echo var="classes" -->">
@@ -16,6 +16,7 @@
 			</div>
 
 			<div id="nav">
+				<a href="/good.shtml">The Good List</a>
 				<a href="mailto:alex@alexblackie.com">E.Mail</a>
 				<a href="https://github.com/alexblackie">Github</a>
 				<a href="https://twitter.com/alexblackie">Twitter</a>

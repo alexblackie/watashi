@@ -7,20 +7,9 @@
  * -----------------------------------------------------------------------------
  */
 body {
-	max-width: 1200px;
+	max-width: 980px;
 	margin: 0 auto;
-	font-family: "PT Serif", serif;
-	color: #404040;
-}
-
-a {
-	color: darkslateblue;
-	text-decoration: none;
-	border-bottom: 1px solid lightgrey;
-}
-
-a:hover {
-	border-bottom-color: darkslateblue;
+	font-family: "Source Sans Pro", serif;
 }
 
 code {
@@ -54,14 +43,7 @@ hr {
 }
 
 #header {
-	color: white;
-	background-color: darkslateblue;
-}
-
-#header a {
-	color: white;
-	border: none;
-	text-decoration: none;
+	border-bottom: 1px solid gainsboro;
 }
 
 #header div {
@@ -81,17 +63,10 @@ hr {
 	float: right;
 	margin-top: 2em;
 }
+
 #header #nav a {
-	margin: 0 5px;
-	padding: 5px 20px;
-	border: 2px solid rgba(255,255,255, 0.4);
-	border-radius: 100px; /* pill shape */
-}
-#header #nav a:hover {
-	background-color: rgba(255,255,255, 0.1);
-}
-#header #nav a:active {
-	border-color: white;
+	display: inline-block;
+	margin: 0 10px;
 }
 
 #main {
@@ -111,11 +86,19 @@ hr {
 
 #footer {
 	margin-top: 2em;
-	background: gainsboro;
+	color: #888;
+	border-top: 1px solid gainsboro;
 }
 
-#footer .badges a {
-	border: none;
+#footer a {
+	color: #555;
+}
+
+#footer img {
+	opacity: 0.6;
+}
+#footer img:hover {
+	opacity: 1;
 }
 
 #footer .footer-left {
@@ -125,7 +108,7 @@ hr {
 #footer .footer-right {
 	float: right;
 	margin: 0;
-	max-width: 400px;
+	max-width: 300px;
 	text-align: right;
 }
 
@@ -142,18 +125,12 @@ hr {
  */
 big {
 	display: block;
-	padding: 50px 200px;
-	font-size: 2em;
+	padding: 50px 100px;
+	font-size: 1.5em;
 	line-height: 1.25em;
 	text-align: center;
 }
 
-/* PAGE TYPES
- * -----------------------------------------------------------------------------
- */
-.page-narrow #main {
-	margin: 50px 225px;
-}
 
 /* RESPONSIVE OVERRIDES
  * -----------------------------------------------------------------------------
