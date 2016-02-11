@@ -34,7 +34,7 @@
 	while now without any issues.
 </p>
 
-<h2>Creating the container</h2>
+<h3>Creating the container</h3>
 
 <p>
 	We will be working on a fresh install of CentOS 7, but this process is
@@ -81,7 +81,7 @@
 	dropped back to your host machine.
 </p>
 
-<h2>Aside: kernel auditing and containers</h2>
+<h3>Aside: kernel auditing and containers</h3>
 
 <p>
 	If you ignore this section and continue trying to boot the container, you
@@ -107,7 +107,7 @@
 
 <pre><code># grub2-mkconfig -o /etc/grub2.cfg</code></pre>
 
-<h2>Configuring the base system</h2>
+<h3>Configuring the base system</h3>
 
 <p>
 	We now have a skeleton of a container installed, but we still need to
@@ -139,7 +139,7 @@
 	whatever you usually use).
 </p>
 
-<h2>Managing the container</h2>
+<h3>Managing the container</h3>
 
 <p>
 	While the <code>/var/lib/machines</code> prefix at the beginning may have
@@ -160,7 +160,7 @@
 <pre><code># systemctl start systemd-nspawn@cool-container
 # systemctl stop systemd-nspawn@cool-container</code></pre>
 
-<h2>Accessing the container</h2>
+<h3>Accessing the container</h3>
 
 <p>
 	Accessing a running container can be a bit tricky; one option is to install

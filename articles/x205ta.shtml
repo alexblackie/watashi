@@ -29,7 +29,7 @@
 	shipping costs).
 </p>
 
-<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="table-of-contents">Table of Contents</h3>
 
 <ul>
   <li><a href="#box">The Packaging</a></li>
@@ -41,7 +41,7 @@
 
 <p><a name="box"></a></p>
 
-<h2 id="the-packaging">The Packaging</h2>
+<h3 id="the-packaging">The Packaging</h3>
 
 <p>Let's start with something trivial and boring: the box.</p>
 
@@ -63,7 +63,7 @@
 
 <p><a name="hardware"></a></p>
 
-<h2 id="the-hardware">The Hardware</h2>
+<h3 id="the-hardware">The Hardware</h3>
 
 <p>
 	For a $170 computer, I had zero expectations. I have used low-end PC
@@ -73,7 +73,7 @@
 
 <p>Simply put, I was wrong.</p>
 
-<h3 id="the-keyboard">The Keyboard</h3>
+<h4 id="the-keyboard">The Keyboard</h4>
 
 <p>
 	I want to start with what is probably the highlight of this machine: the
@@ -90,7 +90,7 @@
 	using it.
 </p>
 
-<h3 id="the-body">The Body</h3>
+<h4 id="the-body">The Body</h4>
 
 <p>
 	The body on this machine is totally solid. I can't seem to find any points
@@ -105,7 +105,7 @@
 	I would worry about.
 </p>
 
-<h3 id="the-size">The Size</h3>
+<h4 id="the-size">The Size</h4>
 
 <p>
 	This is one of the smallest and thinnest laptops I've used. It's not quite
@@ -128,7 +128,7 @@
 	dimensions.
 </p>
 
-<h3 id="the-screen">The Screen</h3>
+<h4 id="the-screen">The Screen</h4>
 
 <p>
 	The screen is a 1366x768 TN panel with a glossy finish. Personally, I dislike
@@ -145,7 +145,7 @@
 	computer, it's pretty good.
 </p>
 
-<h3 id="the-trackpad">The Trackpad</h3>
+<h4 id="the-trackpad">The Trackpad</h4>
 
 <p>
 	The trackpad is another strong point of this laptop. I'd even venture to say
@@ -166,13 +166,13 @@
 	than the one on my Thinkpad.
 </p>
 
-<h3 id="the-webcam">The Webcam</h3>
+<h4 id="the-webcam">The Webcam</h4>
 
 <p>
 	This thing has a webcam. It's blurry, grainy, slow, and 480p. It is terrible.
 </p>
 
-<h3 id="the-audio">The Audio</h3>
+<h4 id="the-audio">The Audio</h4>
 
 <p>
 	The on-board audio is also surprisingly not bad. If you usually use
@@ -213,7 +213,7 @@
 	when on a lap.
 </p>
 
-<h3 id="the-lack-of-vents">The Lack of Vents</h3>
+<h4 id="the-lack-of-vents">The Lack of Vents</h4>
 
 <p>
 	One thing I immediately noticed was: there are no holes. No vents, no gaps,
@@ -224,7 +224,7 @@
 
 <p><a name="performance"></a></p>
 
-<h2 id="performance">Performance</h2>
+<h3 id="performance">Performance</h3>
 
 <p>"But Alex&hellip;" you cry, "how does it <em>perform</em>?!"</p>
 
@@ -257,7 +257,7 @@
 
 <p>Luckily, it does much more than that.</p>
 
-<h3 id="minecraft">Minecraft</h3>
+<h4 id="minecraft">Minecraft</h4>
 
 <p>
 	Just for fun, I decided to play a video game. I installed Minecraft,
@@ -272,7 +272,7 @@
 	casual game when you have nothing else, this works enough.
 </p>
 
-<h3 id="the-cpu">The CPU</h3>
+<h4 id="the-cpu">The CPU</h4>
 
 <p>
 	The Bay Trail Atom performs pretty well, but it definitely doesn't break
@@ -287,7 +287,7 @@
 	services and applications running.
 </p>
 
-<h3 id="the-storage">The Storage</h3>
+<h4 id="the-storage">The Storage</h4>
 
 <p>
 	Interestingly, it appears this laptop uses SD-based internal storage (yes,
@@ -317,7 +317,7 @@
 	seemed so large&hellip;
 </p>
 
-<h3 id="general-use">General Use</h3>
+<h4 id="general-use">General Use</h4>
 
 <p>
 	I committed to doing everything for an entire day on this machine – including
@@ -339,7 +339,7 @@ Slack open</li>
 
 <p>And not only that, but I did it all on battery.</p>
 
-<h3 id="the-battery">The Battery</h3>
+<h4 id="the-battery">The Battery</h4>
 
 <p>
 	The battery life of this laptop is by far one of the most appealing features.  I
@@ -360,7 +360,7 @@ Slack open</li>
 
 <p><a name="software"></a></p>
 
-<h2 id="the-software">The Software</h2>
+<h3 id="the-software">The Software</h3>
 
 <p>
 	Out-of-the-box, we get Windows 8.1 "with Bing" (I'm still not sure what
@@ -369,7 +369,7 @@ Slack open</li>
 	somewhere&hellip;
 </p>
 
-<h3 id="bloatware">Bloatware</h3>
+<h4 id="bloatware">Bloatware</h4>
 
 <p>
 	Perhaps the most surprising thing about this laptop is the <em>lack</em> of
@@ -390,7 +390,7 @@ Slack open</li>
 	have my vote, especially for computers with 32-bit EFIs&hellip;
 </p>
 
-<h3 id="bit-efi">32-Bit EFI</h3>
+<h4 id="bit-efi">32-Bit EFI</h4>
 
 <p>
 	Here comes the biggest kicker of them all: the laptop ships with a
@@ -431,7 +431,7 @@ Slack open</li>
 
 <p><a name="usecase"></a></p>
 
-<h2 id="conclusion">Conclusion</h2>
+<h3 id="conclusion">Conclusion</h3>
 
 <p>
 	With power like this at a price like this, and now with everything moving

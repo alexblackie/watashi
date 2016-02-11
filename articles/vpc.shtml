@@ -29,7 +29,7 @@ nearly any deployment, however.</p>
 will get public IPs and you will allow public SSH to them. NAT introduces yet
 another level of complexity and is out-of-scope for this document.</p>
 
-<h2>0. Exploring VPCs</h2>
+<h3>0. Exploring VPCs</h3>
 
 <p>Before we go off clicking buttons, we should first understand everything that
 makes up a VPC, why we need each bit, and how each thing relates to the rest of
@@ -58,7 +58,7 @@ the system.</p>
 
 <p>That should hopefully be enough so that we can get clicking.</p>
 
-<h2>1. Setting up the VPC</h2>
+<h3>1. Setting up the VPC</h3>
 
 <p>First off we need to create the VPC itself. Head to the VPC section of the AWS
 Console and click &quot;Create VPC&quot;.</p>
@@ -78,7 +78,7 @@ Set, Route Table, and Network ACL by default.</p>
 
 <p>Other than the Route Table, you can ignore these, for the most part.</p>
 
-<h2>2. Getting to the Internet</h2>
+<h3>2. Getting to the Internet</h3>
 
 <p>A small detail most people miss, and one that is non-obvious later on, is a VPC
 has no internet access by default. If you launch an Opsworks Instance into a VPC
@@ -109,7 +109,7 @@ target field should auto-complete when you focus it).</p>
 
 <p>Congratulations, you just saved yourself hours of painful debugging later.</p>
 
-<h2>3. Subnets</h2>
+<h3>3. Subnets</h3>
 
 <p>Probably the most important part of the VPC is the subnet. A subnet is
 essentially the same as its physical-network counterpart. Each subnet gets a
@@ -139,7 +139,7 @@ subnets for database instances, spread across at least two availability zones</p
 Public IP&quot; and check the checkbox. We will want public IP addresses on all of
 our web servers, since we&#39;re not setting up any NAT stuff.</p>
 
-<h2>4. Security Groups</h2>
+<h3>4. Security Groups</h3>
 
 <p>Finally, the last VPC component we need to configure is Security Groups.
 Security Groups act as a sort of firewall, filtering which ports and which types
@@ -173,7 +173,7 @@ from any IP address.</p>
 your VPC. Since we&#39;re entering an IP range, it will complain about &quot;No results&quot;
 -- you can ignore these complaints.</p>
 
-<h2>Coffee break</h2>
+<h3>Coffee break</h3>
 
 <p>You&#39;ve now set up a VPC worthy of being used. Now you can start launching RDS
 instances, setting up Opsworks apps, perhaps even exploring security groups more

@@ -89,11 +89,6 @@ hr {
 	height: auto;
 }
 
-.article-single #main {
-	max-width: 700px;
-	margin: 0 auto;
-}
-
 #footer {
 	margin-top: 2em;
 	color: #888;
@@ -142,6 +137,26 @@ big {
 	font-size: 1.5em;
 	line-height: 1.25em;
 	text-align: center;
+}
+
+
+/* WEBLOG
+ * -----------------------------------------------------------------------------
+ */
+.article-single #main {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.article-single h2 {
+	margin: 2em 0 1em;
+	font-size: 2em;
+	line-height: 1em;
+	text-align: center;
+}
+
+.article-single h3 {
+	margin: 2em 0 1em;
 }
 
 
