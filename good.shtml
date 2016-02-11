@@ -19,7 +19,7 @@
 <ul>
 	<li><a href="https://freebsd.org/">FreeBSD</a></li>
 	<li><a href="https://github.com/jhawthorn/fzy">fzy</a></li>
-	<li><a href="https://redis.io/">Redis</a></li>
+	<li><a href="http://redis.io/">Redis</a></li>
 	<li><del><a href="https://tmux.github.io/">tmux</a></del> - Broke my trust with 2.1 where they made a breaking change in a point-release (<code>mode-mouse</code> to <code>mouse</code>)</li>
 </ul>
 
