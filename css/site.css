@@ -12,6 +12,10 @@ body {
 	font-family: "Source Sans Pro", serif;
 }
 
+a {
+	color: #00A9E0;
+}
+
 code {
 	padding: 2px 5px;
 	background: gainsboro;
@@ -57,6 +61,11 @@ hr {
 
 #header h1 {
 	font-size: 2.5em;
+}
+
+#header h1 a {
+	text-decoration: none;
+	color: inherit;
 }
 
 #header #nav {
