@@ -1,17 +1,11 @@
 <!--#set var="pagetitle" value="Things I Like"-->
+<!--#set var="classes" value="page-narrow"-->
 <!--#include virtual="/partials/_header.shtml"-->
 
 <p>
-	<big>
-		I am often called out for my over-use of the word "Terrible" while
-		describing software. To my credit, the majority of software is, in
-		fact, terrible and broken.
-	</big>
-</p>
-
-<p>
-	In an effort to be less pessimistic, this is a list of software that I
-	enjoy using and will whole-heartedly recommend.
+	I have been told I am incredibly jaded. This is, for the most part, true.
+	However, there are many projects and pieces of software that I truly enjoy.
+	This page is an attempt to catalogue all of those things.
 </p>
 
 <hr>
@@ -20,8 +14,7 @@
 	<li><a href="https://freebsd.org/">FreeBSD</a></li>
 	<li><a href="https://github.com/jhawthorn/fzy">fzy</a></li>
 	<li><a href="http://redis.io/">Redis</a></li>
-	<li><del><a href="https://tmux.github.io/">tmux</a></del> - Broke my trust with 2.1 where they made a breaking change in a point-release (<code>mode-mouse</code> to <code>mouse</code>)</li>
+	<li><del><a href="https://tmux.github.io/">tmux</a></del> - Broke my trust in 2.1 with a breaking change in a point-release (<code>mode-mouse</code>)</li>
 </ul>
-
 
 <!--#include virtual="/partials/_footer.shtml"-->
