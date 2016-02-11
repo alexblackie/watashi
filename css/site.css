@@ -93,6 +93,9 @@ hr {
 #footer a {
 	color: #555;
 }
+#footer a:hover {
+	color: #222;
+}
 
 #footer img {
 	opacity: 0.6;
