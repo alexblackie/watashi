@@ -200,4 +200,9 @@ big {
 		margin: 20px 0;
 		text-align: center;
 	}
+
+	.page-narrow #main {
+		margin: 20px 10px;
+
+	}
 }
