@@ -18,15 +18,16 @@ a {
 
 code {
 	padding: 2px 5px;
-	background: gainsboro;
+	background: #efefef;
 }
 
 pre > code {
 	display: block;
-	padding: 3px 10px;
+	padding: 10px 140px;
+	margin: 0 -140px;
 	max-height: 600px;
 	overflow: auto;
-	border: 1px solid silver;
+	border-radius: 10px;
 }
 
 hr {
