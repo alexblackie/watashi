@@ -12,6 +12,7 @@
 
 <ul>
 	<li><a href="https://freebsd.org/">FreeBSD</a></li>
+	<li><a href="http://open-zfs.org/">OpenZFS</a></li>
 	<li><a href="https://github.com/jhawthorn/fzy">fzy</a></li>
 	<li><a href="http://redis.io/">Redis</a></li>
 	<li><del><a href="https://tmux.github.io/">tmux</a></del> - Broke my trust in 2.1 with a breaking change in a point-release (<code>mode-mouse</code>)</li>
