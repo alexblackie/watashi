@@ -9,11 +9,7 @@
 body {
 	max-width: 980px;
 	margin: 0 auto;
-	font-family: "Source Sans Pro", serif;
-}
-
-a {
-	color: #00A9E0;
+	font-family: "Source Sans Pro", sans-serif;
 }
 
 code {
@@ -27,7 +23,6 @@ pre > code {
 	margin: 0 -140px;
 	max-height: 600px;
 	overflow: auto;
-	border-radius: 10px;
 }
 
 hr {
@@ -135,7 +130,7 @@ big {
 	display: block;
 	padding: 50px 100px;
 	font-size: 1.5em;
-	line-height: 1.25em;
+	line-height: 1.4em;
 	text-align: center;
 }
 
