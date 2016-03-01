@@ -1,0 +1,19 @@
+figure {
+	margin: 2em -140px;
+	padding: 0;
+}
+
+.article-single h3 {
+	font-size: 1.5em;
+}
+
+.threesome aside {
+	overflow: hidden; /* clearfix */
+}
+.threesome aside img {
+	float: left;
+	width: calc(50% - 0.25em);
+}
+.threesome aside img:first-child {
+	margin-right: 0.5em;
+}

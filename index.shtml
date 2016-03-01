@@ -12,6 +12,7 @@
 
 <h2>Weblog Articles</h2>
 <ul>
+	<li>(2015-03-06) <a href="/articles/x250.shtml">Thinkpad X250: It's actually great.</a></li>
 	<li>(2015-11-08) <a href="/articles/vpc.shtml">AWS VPCs: Getting Started</a></li>
 	<li>(2015-07-22) <a href="/articles/nspawn.shtml">Quick and Dirty Containers with systemd</a></li>
 	<li>(2015-01-04) <a href="/articles/k20.shtml">Hacking the Shuttle OmniNAS K20</a></li>
