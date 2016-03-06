@@ -6,10 +6,14 @@
 /* GLOBAL
  * -----------------------------------------------------------------------------
  */
+html {
+	font-size: 17px;
+}
+
 body {
 	max-width: 980px;
 	margin: 0 auto;
-	font-family: "Source Sans Pro", sans-serif;
+	font-family: "Source Serif Pro", sans-serif;
 }
 
 code {
@@ -30,6 +34,10 @@ hr {
 	height: 1px;
 	background-color: gainsboro;
 	border: none;
+}
+
+h1, h2 {
+	font-family: "Source Sans Pro", sans-serif;
 }
 
 
@@ -76,7 +84,7 @@ hr {
 
 #main {
 	margin: 1em 0;
-	line-height: 1.4em;
+	line-height: 1.6em;
 }
 
 #main img {
