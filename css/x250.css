@@ -17,3 +17,9 @@ figure {
 .threesome aside img:first-child {
 	margin-right: 0.5em;
 }
+
+@media screen and (max-width: 512px) {
+	figure {
+		margin: 2em 0;
+	}
+}
