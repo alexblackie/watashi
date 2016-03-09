@@ -3,6 +3,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted July 22, 2015</div>
 
 <p>
 	Docker and other containerization technologies are making the rounds in the

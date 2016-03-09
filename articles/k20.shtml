@@ -3,6 +3,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted January 04, 2015</div>
 
 <div class="figure">
 	<img alt="k20" src="/images/k20/omninas.jpg" />

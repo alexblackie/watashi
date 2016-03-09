@@ -3,6 +3,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted November 08, 2015</div>
 
 <p>Amazon Web Services is an incredibly complex environment. Most of its features
 no one will ever use, and accomplishing what you assume to be trivial tasks can

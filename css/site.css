@@ -152,7 +152,7 @@ big {
 }
 
 .article-single h2 {
-	margin: 2em 0 1em;
+	margin: 2em 0 0;
 	font-size: 2em;
 	line-height: 1em;
 	text-align: center;
@@ -160,6 +160,12 @@ big {
 
 .article-single h3 {
 	margin: 2em 0 1em;
+}
+
+.article-single .meta {
+	margin: 1em 0 2em;
+	text-align: center;
+	color: grey;
 }
 
 

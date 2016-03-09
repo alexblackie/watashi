@@ -3,6 +3,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted November 14, 2014</div>
 
 <div class="figure">
 	<img src="/images/x205ta/the-machine.jpg" alt="The Machine." />

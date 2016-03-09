@@ -3,6 +3,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted October 18, 2014</div>
 
 <p>
 	My relationship with OS&nbsp;X started about four years ago. With my

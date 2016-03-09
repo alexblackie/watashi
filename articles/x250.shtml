@@ -4,6 +4,7 @@
 <!--#include virtual="/partials/_header.shtml"-->
 
 <h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted March 06, 2016</div>
 
 <figure class="threesome">
 	<img src="/images/x250/hero.jpg" alt="x250 on a desk" />
