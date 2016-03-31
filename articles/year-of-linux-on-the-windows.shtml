@@ -1,0 +1,100 @@
+<!--#set var="pagetitle" value="Year of Linux on the Windows"-->
+<!--#set var="classes" value="article-single" -->
+<!--#include virtual="/partials/_header.shtml"-->
+
+<h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted March 31, 2016</div>
+
+<p>
+	Yesterday was Microsoft's BUILD conference. I wasn't expecting anything of
+	much interest to come out of it, since I'm not a Windows developer, nor use
+	any Microsoft services on a regular basis. One of their announcements
+	really surprised me, however, and has me waiting in anticipation:
+	<a href="http://www.theverge.com/2016/3/30/11331014/microsoft-windows-linux-ubuntu-bash">Linux syscall emulation in the Windows kernel</a>.
+</p>
+
+<p>
+	Firstly, I need to confess. For the majority of the month of February this
+	year I ran Windows 10 Pro as my primary operating system. Through a
+	combination of HyperV, Putty, and a little Samba magic I had a fairly
+	reasonable development environment on Windows using Debian Stable. I used
+	this setup at work doing real things for an entire month, and no one
+	noticed. My productivity was not hampered and I got to reap the benefits of
+	a real desktop OS. Eventually I gave up, since the performance constraints
+	of a VM on an ultrabook using networked filesystems just wasn't cutting it,
+	and reinstalled Fedora which I am still using now.
+</p>
+
+<p>
+	I do miss using Windows as an OS, however. Things <em>just worked</em>, and
+	everything had a cohesive design language. No longer did I have to cringe
+	at Linux GUIs, worry that plugging in a monitor would crash my desktop
+	environment, or be afraid to plug in a USB DAC in fear that it would
+	randomly set the volume to 100%. I only use Linux on the desktop for its
+	tools; the "desktop" part has never been a strength.
+</p>
+
+<p>
+	In the past I have often lamented that, "If only I could get Windows with a
+	UNIX userland, it would be perfect." Well, here we are.
+</p>
+
+<p>
+	This isn't to say I'm going to wipe every machine I own immediately &mdash;
+	it has yet to be seen if this emulation is performant, stable, or
+	compatible with anything more than the limited demo of "wow we ran webrick
+	and <code>ls</code>". Real-world testing with real applications and large,
+	complex software will be the tell-tale sign whether this is viable or just
+	a cool trick.
+</p>
+
+<p>
+	And, obviously, this being Microsoft, there is likely some evil business
+	reason for this new Linux push they've been doing. I'd be a fool for not
+	questioning their motives in abandoning vendor lock-in and embracing their
+	competition. But I'm willing to take that risk; Windows 10 is surprisingly
+	pleasant to use, but it's still Windows and not the friendliest development
+	platform unless you're Microsoft all the way down.
+</p>
+
+<p>
+	I am also hoping other vendors and projects see this as an opportunity.
+	Specifically, I'd love to see RedHat step up and provide a similar
+	kernel-less package for the Fedora userland so we could have more than just
+	Ubuntu and its mediocrity.
+</p>
+
+<hr>
+
+<p>
+	Linux on the Desktop, while it has been improving, is still just <em>not
+	quite</em> there yet. Linux emulation on Windows might be a nice
+	middle-ground between the buying power of a giant company and the
+	familiarity and power of a UNIX userland&hellip; It sounds a lot like what
+	OS X used to be.
+</p>
+
+<p>
+	And <em>that</em> is what I believe Microsoft is going after: burnt-out OS
+	X users. I know a lot of computer "power users" who have been endlessly
+	frustrated with the recent decline of Apple software quality, and a lot of
+	them have been eyeing (or have already switched) to Linux. If, when I
+	originally made the switch back to Linux, I was offered Windows with a
+	Linux userland, I would have likely taken it instead (in fact, there was a
+	brief period where I switched to a Windows 8.1 machine and an EC2 instance
+	as my development environment, but ultimately went back to Linux).
+</p>
+
+<p>
+	If Microsoft wants to expand into being the new
+	&ldquo;<a href="http://www.mackungfu.org/dump/apple_unix_ad.jpg">Unix OS for Professionals</a>&rdquo;
+	I am all for it. With OS X rotting from the inside-out, there is a gap in
+	the UNIX desktop market and if that's what Microsoft is targeting I think
+	they could do very well.
+</p>
+
+<p>
+	Am I skeptical? Yes. Am I also hopeful? Absolutely.
+</p>
+
+<!--#include virtual="/partials/_footer.shtml"-->
