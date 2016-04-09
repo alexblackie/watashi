@@ -46,7 +46,7 @@ h1, h2 {
  */
 #header,
 #footer {
-	padding: 2em;
+	padding: 2em 0;
 	overflow: hidden;
 }
 
