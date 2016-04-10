@@ -168,6 +168,15 @@ big {
 	color: grey;
 }
 
+.article-single .figure.pull-right {
+	float: right;
+	max-width: 40%;
+}
+
+.article-single .figure {
+	text-align: center;
+}
+
 
 /* RESPONSIVE OVERRIDES
  * -----------------------------------------------------------------------------
