@@ -22,6 +22,7 @@
 	<li><a href="http://redis.io/">Redis</a></li>
 	<li><a href="https://www.atlassian.com/software/jira">JIRA</a></li>
 	<li><a href="http://www.rebar3.org/">rebar3</a></li>
+	<li><a href="https://fedoraproject.org/wiki/Dnf">DNF</a> (awful name, but easily <em>the best</em> package manager)</li>
 
 	<li><del><a href="https://tmux.github.io/">tmux</a></del> - Broke my trust in 2.1 with a breaking change in a point-release (<code>mode-mouse</code>)</li>
 </ul>
