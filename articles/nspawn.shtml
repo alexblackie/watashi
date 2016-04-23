@@ -45,7 +45,7 @@
 	be different (and you&#39;ll be using <code>dnf</code>)&hellip;
 </p>
 
-<hr>
+<hr />
 
 <p>
 	First step is to &quot;install&quot; a new root filesystem into a
@@ -189,7 +189,7 @@
 	within a second (i.e., fast).
 </p>
 
-<hr>
+<hr />
 
 <p>
 	In conclusion, <code>systemd-nspawn</code> is an interesting technology

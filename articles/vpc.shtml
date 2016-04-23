@@ -16,7 +16,7 @@ functionality is of much use to anyone that is using the Cloud. If you need
 <em>that much</em> control over your network, you likely have the means, and would be
 better off, to throw a bunch of Cisco gear in a rack somewhere.</p>
 
-<hr>
+<hr />
 
 <p>This guide aims to illustrate how to get a working VPC up and ready for
 deployment as fast as possible. None of it is particularly difficult, it is more
