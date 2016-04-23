@@ -1,4 +1,4 @@
-figure {
+.figure {
 	margin: 2em -140px;
 	padding: 0;
 }
@@ -7,19 +7,19 @@ figure {
 	font-size: 1.5em;
 }
 
-.threesome aside {
+.threesome .bottom {
 	overflow: hidden; /* clearfix */
 }
-.threesome aside img {
+.threesome .bottom img {
 	float: left;
 	width: calc(50% - 0.25em);
 }
-.threesome aside img:first-child {
+.threesome .bottom img:first-child {
 	margin-right: 0.5em;
 }
 
 @media screen and (max-width: 512px) {
-	figure {
+	.figure {
 		margin: 2em 0;
 	}
 }
