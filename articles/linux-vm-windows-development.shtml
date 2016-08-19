@@ -1,4 +1,4 @@
-<!--#set var="pagetitle" value="Sane Development on Windows using a Linux VM"-->
+<!--#set var="pagetitle" value="Sane Development on Windows With Linux"-->
 <!--#set var="classes" value="article-single" -->
 <!--#include virtual="/partials/_header.shtml"-->
 
