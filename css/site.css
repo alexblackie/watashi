@@ -177,6 +177,11 @@ big {
 	text-align: center;
 }
 
+.article-single .figure.wide {
+	margin-left: -140px;
+	margin-right: -140px;
+}
+
 
 /* RESPONSIVE OVERRIDES
  * -----------------------------------------------------------------------------
