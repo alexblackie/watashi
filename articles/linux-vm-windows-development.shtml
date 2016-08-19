@@ -1,0 +1,361 @@
+<!--#set var="pagetitle" value="Sane Development on Windows using a Linux VM"-->
+<!--#set var="classes" value="article-single" -->
+<!--#include virtual="/partials/_header.shtml"-->
+
+<h2><!--#echo var="pagetitle"--></h2>
+<div class="meta">Posted August 19, 2016</div>
+
+<p>
+	I have been <a href="/articles/ubuntu-on-windows-first-look.shtml">talking</a>
+	<a href="/articles/year-of-linux-on-the-windows.shtml">about</a> Windows
+	quite a bit more than usual lately, and in a much different light than
+	those who know me might be accustomed to. I have been <em>excited</em>
+	about the new Windows developments and have started following it as a
+	platform much more closely. Additionally, I now have three Windows
+	computers laying around my apartment -- that's three more than usual!
+</p>
+
+<p>
+	But none of this attention is unwarranted. Microsoft has been doing some
+	very interesting things with Windows 10, assuming you trade some of your
+	metadata to unlock them. For me, I find the first-class vendor support,
+	pleasant UI, and general cohesiveness to be refreshing, coming from a
+	Linux/Unix-heavy desktop. However, this pleasant OS has always been pushed
+	aside for me, as I require a Unix environment for any hope of getting work
+	done.
+</p>
+
+<p>
+	<a href="/articles/year-of-linux-on-the-windows.shtml">Bash on Windows</a>
+	was a big step in the right direction and something I found very exciting
+	&mdash; it could finally be the feature that brings me to Windows without
+	affecting my productivity.
+</p>
+
+<p>
+	Unfortunately, Bash on Windows, in its current state, is unusable still for
+	anything but small demos or playing around. I still can't run 256-colours,
+	tmux, or postgresql, just to name a few things that I rely upon.
+</p>
+
+<p>
+	So with Bash on Windows out of the question for the time being, that leads
+	me to the classic option: a virtual machine.
+</p>
+
+<hr>
+
+<p>
+	Some caveats before we continue on this journey: I am no longer using this
+	setup, and it is a bit crazy (I'm unsure if I would necessarily recommend
+	it). If you're stuck with Windows for some reason, or just really don't
+	want to dual-boot, this could be a reasonable solution; but if you're
+	looking for something to rely on for real work I don't think this is the
+	right thing.
+</p>
+
+<h3>A Note on Performance</h3>
+
+<p>
+	I have used two computers in this way: one was my Thinkpad X250 with an
+	i5-5200U, and the other the System76 Galago with an i7-4770HQ. The reason I
+	abandoned this setup was because I use my Thinkpad as my primary computer
+	and the i5 is just simply not strong enough to drive two OS's at once.
+	Additionally, the 8GB RAM available in both machines was too low to be
+	comfortable; I would recommend 12GB+ of RAM for this.  Running a test suite
+	in the VM took considerably longer than normal, which caused a lot of
+	frustration and inhibited productivity, so back to Fedora I went.
+</p>
+
+<p>
+	If you want to do anything productive with the setup, I would recommend
+	using a desktop computer or high-end laptop; anything less will just be
+	annoyingly sluggish.
+</p>
+
+<h3>Getting Set Up</h3>
+
+<p>
+	We're going to need a few tools to make this work. First off, I have only
+	tested this on Intel x86 hardware; no guarantees any of this works with AMD
+	or non-x86 hardware. Second, this requires Windows 10 Professional, not
+	Home, as we're going to be relying on HyperV, which is only available to
+	Pro licenses.
+</p>
+
+<p>
+	To enable HyperV, search for and open "Turn Windows Features On or Off",
+	scroll through the list and check "HyperV", then wait for it to do its
+	thing and reboot when it asks.
+</p>
+
+<h3>Networking</h3>
+
+<p>
+	Unlike VirtualBox, which provides a bridged NAT interface to share the host
+	network with the VM, HyperV forces you to either bridge directly to the
+	interface or use an internal-only network. Since you're likely going to
+	need Internet access in your VM, we're going for the former.
+</p>
+
+<p>
+	This does mean, however, that every time you connect to a network, you will
+	receive two IP addresses from DHCP -- one for your computer, and one for
+	the VM. If this seems fine to you, then congratulations on being less
+	easily annoyed than me.
+</p>
+
+<hr>
+
+<p>
+	Search for and open the "HyperV Manager" and let's get everything ready for
+	our VM.
+</p>
+
+<p>
+	The first step is to create the Virtual Switch. This is essentially a
+	direct comparison to a physical network switch -- it provides a way to
+	connect a bunch of machines together.
+</p>
+
+<ol>
+	<li>In the right-hand sidebar, click on "Virtual Switch Manager"</li>
+	<li>Under "Create virtual switch," select "External" and click "Create Virtual Switch"</li>
+	<li>Name it something reasonable, like "The Scary Internet" or "Outside World"</li>
+	<li>Under "Connection type," select which external network interface this switch should bind to. Unfortunately, if you are on a laptop and switch between wifi and ethernet often, this could become a pretty considerable pain in the ass, as you'll have to change this and reinitialise the network in the VM every time you switch between wifi and ethernet.</li>
+	<li>Click "Apply" to save the new switch.</li>
+</ol>
+
+<p>
+	That covers an Internet connection, but we still will want a second network
+	interface for internal communication between our VM and Windows. Luckily,
+	this is quite easy.
+</p>
+
+<ol>
+	<li>While still in the Virtual Switch Manager, select "New virtual network switch" and this time choose "Internal"</li>
+	<li>Name it something appropriate, like "Internal Network" or "My Privates"</li>
+	<li>Hit "Ok" to save and close the Virtual Switch Manager. You're done!</li>
+</ol>
+
+<p>
+	Now that we have our networks, we can create the VM itself.
+</p>
+
+<h3>Creating the VM</h3>
+
+<p>
+	Before you start, download a Linux ISO. I've had success running Debian and
+	CentOS, but had issues in the past with getting Fedora or FreeBSD running
+	without issues. For the purposes of this article, I'll be going with Debian
+	Stable (currently 8.5.0).
+</p>
+
+<ol>
+	<li>In the right-hand sidebar, click "New" and "Virtual Machine"</li>
+	<li>
+		Follow the wizard, picking values you feel appropriate, but make sure:
+		<ul>
+			<li>You choose "Generation 2"</li>
+			<li>You select the <strong>external</strong> Virtual Switch we created previously for "Configure Networking"</li>
+			<li>You select "Install an operating system from a bootable image file" and choose your Linux ISO.</li>
+		</ul>
+	</li>
+</ol>
+
+<div class="figure wide">
+	<img src="https://assets.alexblackie.com/linux-vm-windows-development/vm-summary.png" alt="Summary of VM settings" />
+</div>
+
+<p>
+	Once created, we're not quite done. HyperV assumes you're going to be
+	installing Windows so we need to tweak a few values to prepare the VM for
+	Linux. Find your VM in the list and right-click, choosing "Settings."
+</p>
+
+<ol>
+	<li>
+		Under "Security", uncheck "Enable Secure Boot." Unfortunately, this
+		prevents Linux guests from booting. However, unlike with Windows Server
+		2016, Secure Boot doesn't provide many tangible benefits for Linux so
+		disabling it is fine.
+	</li>
+	<li>
+		Depending on your available resources, you'll likely want to bump your
+		CPU virtual processors to equal the number of physical cores on your
+		machine (you can set this to whatever you want, I found this to be a
+		solid rule to go by, however).
+	</li>
+	<li>
+		While we're in here, let's also connect that second network.
+		<ol>
+			<li>Select "Add Hardware," choose "Network Adapter" and click "Add"</li>
+			<li>Select our <strong>internal</strong> Virtual Switch from the dropdown</li>
+		</ol>
+	</li>
+</ol>
+
+<p>
+	Hit "Ok" to save.
+</p>
+
+<h3>Install the OS</h3>
+
+<p>
+	Double-click your new VM and hit the "Start" icon in the toolbar. The
+	machine should come to life and boot from the ISO you selected. Install the
+	OS as normal and reboot the VM into the new OS.
+</p>
+
+<h3>Prepare for Use</h3>
+
+<p>
+	Unfortunately, the rest of this can't be as distro-agnostic as I'd like
+	(though systemd helps). All the further steps in this article will assume a
+	Debian 8.5.0 machine.
+</p>
+
+<h4>Set up the network</h4>
+
+<p>
+	While the external interface would have connected automatically, the
+	internal interface doesn't have any routers on it, so we need to configure
+	it to use a static IP. I'm going to use the `172.18.1.0/24` range of
+	private IP addresses, as it is unlikely to collide with any common LAN
+	setups.
+</p>
+
+<p>
+	First, on the Windows side&hellip;
+	<ol>
+		<li>Right-click on the Start button and select "Network Connections."</li>
+		<li>Find the internal adapter and right-click on it, selecting "Properties."</li>
+		<li>Select "Internet Protocol Version 4" and click "Properties"</li>
+		<li>Select "Use the following IP address" and enter:
+			<ul>
+				<li>IP Address: <code>172.18.1.1</code></li>
+				<li>Subnet mask: <code>255.255.255.0</code></li>
+				<li>Default gateway: leave blank</li>
+			</ul>
+		</li>
+		<li>Hit "Ok" and then "Close"</li>
+	</ol>
+</p>
+
+<p>
+	Then, switch back to the VM. Time to configure the Linux side of things.
+	Edit the `/etc/network/interfaces` file and put at the bottom:
+</p>
+
+<pre><code>auto eth1
+iface eth1 inet static
+	address 172.18.1.2
+	netmask 255.255.255.0</code></pre>
+
+<p>
+	Then reboot the VM.
+</p>
+
+<h4>Set up SSH</h4>
+
+<p>
+	So now you have a VM that is ready for connections. First, let's get out of
+	this TTY and get into a proper SSH session. We'll need to install and
+	enable openssh, if you didn't select it in the install.
+</p>
+
+<pre><code># apt-get install openssh-server
+# systemctl enable ssh
+# systemctl start ssh</code></pre>
+
+<p>
+	As an added security bonus, if we wanted to disallow connections from the
+	"public" IP address of the VM, and only allow our local Windows to connect,
+	we can edit <code>/etc/ssh/sshd_config</code> and set <code>ListenAddress 172.18.1.2</code>.
+	Restart sshd with <code>systemctl restart ssh</code> and now your SSH is
+	only accessible from your Windows machine.
+</p>
+
+<p>
+	Now download and install a Windows SSH client like
+	<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a> or
+	Chrome's <a href="https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo?hl=en">Secure Shell</a>
+	app. Connect to the IP address <code>172.18.1.2</code> with the username of
+	the user in the VM. You should be prompted for that user's password, and
+	then have a shell. You can now close the VM window and it will keep running
+	in the background; just use SSH from now on to get features like copy/paste
+	and 256-colours.
+</p>
+
+<h4>Sharing Files</h4>
+
+<p>
+	It's probably desirable for Windows to be able to access the files in the
+	VM so you can copy things between the VM and host, use an external editor
+	like Atom or Visual Studio, or just get a GUI view of your files. For this,
+	we can create a Samba share.
+</p>
+
+<pre><code># apt-get install samba-server
+# systemctl enable smbd</code></pre>
+
+<p>
+	Now choose a place to store your code. I like <code>/home/alex/code</code> but choose
+	what you wish. Create that folder, and now let's share it. Edit
+	<code>/etc/samba/smb.conf</code>, and add to the bottom:
+</p>
+
+<pre><code>[codes]
+	path = /home/alex/code
+	read only = no
+	browseable = yes
+	valid users = alex
+	guest ok = no</code></pre>
+
+<p>
+	Then set a password for your user to use when mounting the share. This
+	could be the same as your Unix password, or something completely different.
+</p>
+
+<pre><code># smbpasswd -a alex</code></pre>
+
+<p>
+	And finally, restart Samba with <code>systemctl restart smbd</code>.
+</p>
+
+<p>
+	Now, within Windows Explorer&hellip;
+	<ol>
+		<li>Go to "This PC" then "Computer", "Map Network Drive."</li>
+		<li>Choose a sick letter like Z or X</li>
+		<li>For folder, use <code>\\172.18.1.2\codes</code> (or whatever you put in the square brackets in <code>smb.conf</code>)</li>
+		<li>Check "Connect using different credentials"</li>
+		<li>When it asks, enter the <code>smbpasswd</code> username you gave as <code>-a</code> and password. Check "Remember my Credentials" if you're lazy.</li>
+</p>
+
+<p>
+	And with that, you should now have a new network drive available that is
+	the <code>~/code</code> directory in the VM!
+</p>
+
+<hr />
+
+<h3>In Conclusion</h3>
+
+<p>
+	Thus concludes the set up portion. From here, you have essentially a new
+	computer to use. Install your dotfiles, compile your languages, etc.
+</p>
+
+<p>
+	I hope this was at least informative, if maybe even a bit helpful. At the
+	very least maybe you learned something about networking or how great
+	Hyper-V is, and now you can't use KVM without longing for the Hyper-V
+	Management Console. But I digress&hellip;
+</p>
+
+<p>
+	Enjoy your new Linux-within-Windows monstrosity.
+</p>
+
+<!--#include virtual="/partials/_footer.shtml"-->
