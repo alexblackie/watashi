@@ -220,9 +220,9 @@
 <p>
 	While the external interface would have connected automatically, the
 	internal interface doesn't have any routers on it, so we need to configure
-	it to use a static IP. I'm going to use the `172.18.1.0/24` range of
-	private IP addresses, as it is unlikely to collide with any common LAN
-	setups.
+	it to use a static IP. I'm going to use the <code>172.18.1.0/24</code>
+	range of private IP addresses, as it is unlikely to collide with any common
+	LAN setups.
 </p>
 
 <p>
@@ -244,7 +244,7 @@
 
 <p>
 	Then, switch back to the VM. Time to configure the Linux side of things.
-	Edit the `/etc/network/interfaces` file and put at the bottom:
+	Edit the <code>/etc/network/interfaces</code> file and put at the bottom:
 </p>
 
 <pre><code>auto eth1
