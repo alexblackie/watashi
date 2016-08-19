@@ -343,7 +343,7 @@ iface eth1 inet static
 <h3>In Conclusion</h3>
 
 <p>
-	Thus concludes the set up portion. From here, you have essentially a new
+	Thus concludes the setup portion. From here, you have essentially a new
 	computer to use. Install your dotfiles, compile your languages, etc.
 </p>
 
