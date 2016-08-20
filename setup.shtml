@@ -1,0 +1,83 @@
+<!--#set var="pagetitle" value="My Setup"-->
+<!--#set var="classes" value="article-single"-->
+<!--#include virtual="/partials/_header.shtml"-->
+
+<h2>My Setup</h2>
+
+<p>
+	I take great enjoyment of reading about how other people use their
+	computers and desks. Sites like
+	<a href="https://usesthis.com/">UsesThis</a> and
+	<a href="http://simpledesks.net/">Simple Desks</a> have taken many hours of
+	my life, and I have taken inspiration from them many times. I realised that
+	I don't really talk about my setup, outside of the commits for
+	<a href="https://git.blackieops.com/alexblackie/dotfiles">my dotfiles</a>,
+	so this page will serve as a perpetually-updated reference for how I'm
+	currently using my computer.
+</p>
+
+<div class="figure wide">
+	<a href="https://assets.alexblackie.com/setup-terminal.png">
+		<img src="https://assets.alexblackie.com/setup-terminal.png" alt="Screenshot from my laptop" />
+	</a>
+</div>
+
+<h3>Software</h3>
+
+<p>
+	I'm currently running <a href="https://getfedora.org/">Fedora 24</a> with
+	the <a href="https://i3wm.org/">i3 Window Manager</a>. The terminal is <a
+	href="http://st.suckless.org/">st</a> from the folks at suckless, running a
+	light colourscheme (Base16 "Google" light).
+</p>
+
+<p>
+	Both the window manager and terminal are using Terminus 10px. Having an
+	unantialiased monospace font everywhere I can helps me forget about how
+	awful font hinting on Linux can be.
+</p>
+
+<p>
+	All of my development is done within
+	<a href="https://docker.com/">Docker</a>, using
+	<a href="https://git.blackieops.com/alexblackie/dev_containers">a few custom containers</a>
+	I've built to support all the environments I commonly use.
+</p>
+
+<h3>Hardware</h3>
+
+<p>
+	My primary computer is still my Lenovo Thinkpad X250, with a Intel
+	i5-5200U, 8GB RAM, 512GB SSD, 20-hour average battery life, and 12.5" IPS
+	1366x768 display. I <a href="/articles/x250.shtml">wrote a review</a> of
+	this machine previously, and still absolutely love it.
+</p>
+
+<p>
+	At home I use a single 24"
+	<a href="https://www.ncix.com/detail/asus-pa248q-24-1in-widescreen-led-82-73621.htm">Asus PA248Q</a>
+	monitor beside my laptop, with a
+	<a href="http://www.ncix.com/detail/filco-majestouch-2-cherry-mx-87-70720.htm">Filco Majestouch 2 TKL (Browns)</a>,
+	and a <a href="https://www.amazon.ca/Mionix-Multi-Color-Ergonomic-Optical-MNX-01-25001-G/dp/B00XJZ59Y0">Mionix Castor</a>
+	mouse.
+</p>
+
+<p>
+	For audio, I have a
+	<a href="https://www.mayflowerelectronics.com/shop/digital-to-analog-converters/objective2-odac-combo-with-rear-power/">O2+ODAC</a>
+	from Mayflower Electronics, which is driving a pair of
+	<a href="https://www.massdrop.com/buy/akg-k7xx-massdrop-first-edition-headphones">AKG K7XX Massdrop-edition</a>
+	headphones.
+</p>
+
+<hr/>
+
+<p>
+	Obligatory desk photo:
+</p>
+
+<div class="figure wide">
+	<img src="https://assets.alexblackie.com/setup-desk.jpg" alt="My Desk!" />
+</div>
+
+<!--#include virtual="/partials/_footer.shtml"-->
