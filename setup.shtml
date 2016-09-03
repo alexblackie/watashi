@@ -26,22 +26,20 @@
 
 <p>
 	I'm currently running <a href="https://getfedora.org/">Fedora 24</a> with
-	the <a href="https://i3wm.org/">i3 Window Manager</a>. The terminal is <a
-	href="http://st.suckless.org/">st</a> from the folks at suckless, running a
-	light colourscheme (Base16 "Google" light).
-</p>
-
-<p>
-	Both the window manager and terminal are using Terminus 10px. Having an
-	unantialiased monospace font everywhere I can helps me forget about how
-	awful font hinting on Linux can be.
+	the default GNOME 3 desktop. I've been a GNOME guy all my life, and I
+	really like some of the modern desktop niceties like easy
+	network, bluetooth, sound, etc. widgets in the top bar; 3D compositing; and
+	a generally pleasant and cohesive UI. I stick with a lot of the standard
+	GNOME tools: GNOME Terminal, Nautilus, Boxes, etc.
 </p>
 
 <p>
 	All of my development is done within
 	<a href="https://docker.com/">Docker</a>, using
 	<a href="https://git.blackieops.com/alexblackie/dev_containers">a few custom containers</a>
-	I've built to support all the environments I commonly use.
+	I've built to support all the environments I commonly use. For the basics,
+	I rely heavily on vim, tmux, and Git. I switch every couple months between
+	Chrome and Firefox.
 </p>
 
 <h3>Hardware</h3>
@@ -54,9 +52,11 @@
 </p>
 
 <p>
-	At home I use a single 24"
+	At home I use a 24"
 	<a href="https://www.ncix.com/detail/asus-pa248q-24-1in-widescreen-led-82-73621.htm">Asus PA248Q</a>
-	monitor beside my laptop, with a
+	monitor beside a 27"
+	<a href="http://www.ncix.com/detail/asus-pb278q-27in-led-backlit-1f-76578.htm">Asus PB278Q</a>,
+	both powered by my laptop. For HIDs, I have a
 	<a href="http://www.ncix.com/detail/filco-majestouch-2-cherry-mx-87-70720.htm">Filco Majestouch 2 TKL (Browns)</a>,
 	and a <a href="https://www.amazon.ca/Mionix-Multi-Color-Ergonomic-Optical-MNX-01-25001-G/dp/B00XJZ59Y0">Mionix Castor</a>
 	mouse.
