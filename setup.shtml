@@ -11,7 +11,7 @@
 	<a href="http://simpledesks.net/">Simple Desks</a> have taken many hours of
 	my life, and I have taken inspiration from them many times. I realised that
 	I don't really talk about my setup, outside of the commits for
-	<a href="https://git.blackieops.com/alexblackie/dotfiles">my dotfiles</a>,
+	<a href="https://github.com/alexblackie/dotfiles">my dotfiles</a>,
 	so this page will serve as a perpetually-updated reference for how I'm
 	currently using my computer.
 </p>
@@ -36,7 +36,7 @@
 <p>
 	All of my development is done within
 	<a href="https://docker.com/">Docker</a>, using
-	<a href="https://git.blackieops.com/alexblackie/dev_containers">a few custom containers</a>
+	<a href="https://github.com/alexblackie/dev_containers">a few custom containers</a>
 	I've built to support all the environments I commonly use. For the basics,
 	I rely heavily on vim, tmux, and Git. I switch every couple months between
 	Chrome and Firefox.
