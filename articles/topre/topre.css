@@ -64,7 +64,7 @@ header {
   align-items: center;
   height: 450px;
   margin-bottom: 2em;
-  background: transparent url("/articles/topre/hero.jpg");
+  background: transparent url("https://assets.alexblackie.com/topre/hero.jpg");
   background-size: cover;
 }
 header h1 {
@@ -114,7 +114,7 @@ footer .credits {
  */
 #feeling {
   padding-top: 300px;
-  background: url("perspective.jpg") no-repeat;
+  background: url("https://assets.alexblackie.com/topre/perspective.jpg") no-repeat;
   background-size: contain;
 }
 
