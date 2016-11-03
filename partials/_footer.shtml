@@ -11,7 +11,7 @@
 
 			<div class="footer-right">
 				<p class="credits">
-					This site served by <a href="https://freebsd.org/">FreeBSD</a> running on dedicated servers from <a href="https://ixsystems.com/">iXSystems</a>.
+					This site served by <a href="http://nginx.org/">nginx</a> running on cloud servers from <a href="https://www.digitalocean.com/">DigitalOcean</a>.
 				</p>
 			</div>
 		</div>
