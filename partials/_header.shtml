@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<title><!--#echo var="pagetitle"--> | Alex Blackie</title>
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Serif+Pro:400,700" type="text/css" />
+		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Khula:400,700|Roboto+Condensed:700" type="text/css" />
 		<link rel="stylesheet" href="/css/site.css" type="text/css" />
 		<!--#if expr="${stylesheet}"-->
 			<link rel="stylesheet" href="/css/<!--#echo var="stylesheet"-->.css" type="text/css" />
