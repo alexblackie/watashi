@@ -1,0 +1,20 @@
+.blackiebadge {
+	position: absolute;
+	left: 0;
+	top: 20px;
+	z-index: 99999;
+	width: 120px;
+	height: 34px;
+	padding-left: 38px;
+	border: none;
+	background: white url("/images/me-cutout.jpg") no-repeat bottom left;
+	background-size: 32px 32px;
+	line-height: 38px;
+	font-family: sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	border-radius: 0 32px 32px 0;
+}
