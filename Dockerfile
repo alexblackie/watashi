@@ -6,7 +6,7 @@ RUN echo "server { \
 	root /srv/www/; \
 	location / { \
 		ssi on; \
-		index index.shtml; \
+		index index.shtml index.html; \
 	} \
 }" > /etc/nginx/conf.d/self.conf
 RUN mkdir /srv/www
