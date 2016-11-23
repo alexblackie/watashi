@@ -13,14 +13,7 @@ html {
 body {
 	max-width: 980px;
 	margin: 0 auto;
-	font-family: "Khula", sans-serif;
-}
-
-a {
-	color: #859900;
-}
-a:hover {
-	color: #666;
+	font-family: serif;
 }
 
 code {
@@ -44,7 +37,7 @@ hr {
 }
 
 h1, h2 {
-	font-family: "Roboto Condensed", sans-serif;
+	font-family: sans-serif;
 }
 
 
@@ -59,10 +52,7 @@ h1, h2 {
 
 #header {
 	position: relative;
-	padding-left: 140px;
 	border-bottom: 1px solid gainsboro;
-	background: url("/images/me-cutout.jpg") no-repeat left bottom;
-	background-size: 128px;
 }
 
 #header div {
