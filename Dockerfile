@@ -1,14 +1,15 @@
-FROM nginx:latest
-RUN rm /etc/nginx/conf.d/default.conf
+FROM nginx:alpine
+
+ADD . /srv/www
+
 RUN echo "server { \
 	listen 80; \
 	server_name localhost; \
-	root /srv/www/; \
+	root /srv/www; \
 	location / { \
 		ssi on; \
 		index index.shtml index.html; \
 	} \
-}" > /etc/nginx/conf.d/self.conf
-RUN mkdir /srv/www
-VOLUME /srv/www
+}" > /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
