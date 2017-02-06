@@ -1,251 +1,48 @@
-/**
- * alexblackie.com
- * 2015-10-25
- */
-
-/* GLOBAL
- * -----------------------------------------------------------------------------
- */
-html {
-	font-size: 17px;
-}
-
 body {
-	max-width: 980px;
-	margin: 0 auto;
-	font-family: serif;
+	max-width: 720px;
 }
 
-code {
-	padding: 2px 5px;
-	background: #efefef;
-}
-
-pre > code {
+pre code {
 	display: block;
-	padding: 10px 140px;
-	margin: 0 -140px;
-	max-height: 600px;
+	max-height: 480px;
+	padding: 2em;
+	background: gainsboro;
 	overflow: auto;
 }
 
-hr {
-	margin: 1.5em 0;
-	height: 1px;
-	background-color: gainsboro;
-	border: none;
-}
-
-h1, h2 {
-	font-family: sans-serif;
-}
-
-
-/* LAYOUT
- * -----------------------------------------------------------------------------
- */
-#header,
-#footer {
-	padding: 2em 0;
-	overflow: hidden;
-}
-
-#header {
-	position: relative;
-	border-bottom: 1px solid gainsboro;
-}
-
-#header div {
-	float: left;
-}
-
-#header h1,
-#header p {
-	margin: 0;
-}
-
-#header h1 {
-	font-size: 3em;
-}
-
-#header h1 a {
-	text-decoration: none;
-	color: inherit;
-}
-
-#header #nav {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-#header #nav a {
-	display: inline-block;
-	margin: 0 5px;
-	padding: 5px 15px;
-	border: 1px solid gainsboro;
-	border-top-width: 2px;
-	border-bottom: none;
-	text-decoration: none;
-}
-
-#main {
-	margin: 1em 0;
-	line-height: 1.6em;
-}
-
-#main img {
+img {
 	max-width: 100%;
 	height: auto;
 }
 
-#footer {
-	margin-top: 2em;
-	color: #888;
-	border-top: 1px solid gainsboro;
-}
-
-#footer a {
-	color: #555;
-}
-#footer a:hover {
-	color: #222;
-}
-
-#footer img {
-	opacity: 0.6;
-}
-#footer img:hover {
-	opacity: 1;
-}
-
-#footer .footer-left {
-	float: left;
-}
-
-#footer .footer-right {
-	float: right;
+#header h1 {
 	margin: 0;
-	max-width: 300px;
-	text-align: right;
+	font-size: 3em;
+}
+#header h1 a {
+	color: inherit;
+	text-decoration: none;
 }
 
-#footer :first-child {
-	margin-top: 0;
+#nav {
+	margin: 1em 0;
 }
-#footer :last-child {
-	margin-bottom: 0;
+#nav a {
+	margin: 0.5em;
 }
 
+#main p,
+#main li {
+	line-height: 1.25em;
+}
 
-/* COMPONENTS
- * -----------------------------------------------------------------------------
- */
-big {
+#main .meta {
+	font-style: italic;
+}
+
+#main big {
 	display: block;
-	padding: 50px 100px;
-	margin-bottom: 50px;
+	margin: 2em 0;
 	font-size: 1.5em;
-	border-bottom: 1px solid gainsboro;
-	line-height: 1.4em;
-	text-align: center;
-}
-
-
-/* WEBLOG
- * -----------------------------------------------------------------------------
- */
-.article-single #main {
-	max-width: 700px;
-	margin: 0 auto;
-}
-
-.article-single h2 {
-	margin: 2em 0 0;
-	font-size: 2em;
-	line-height: 1em;
-	text-align: center;
-}
-
-.article-single h3 {
-	margin: 2em 0 1em;
-}
-
-.article-single .meta {
-	margin: 1em 0 2em;
-	text-align: center;
-	color: grey;
-}
-
-.article-single .figure.pull-right {
-	float: right;
-	max-width: 40%;
-}
-
-.article-single .figure {
-	text-align: center;
-}
-
-.article-single .figure.wide {
-	margin-left: -140px;
-	margin-right: -140px;
-}
-
-
-/* RESPONSIVE OVERRIDES
- * -----------------------------------------------------------------------------
- */
-@media screen and (max-width: 980px) { /* "Small desktop" */
-	big {
-		padding: 25px 50px;
-	}
-}
-
-@media screen and (max-width: 768px) { /* "Tablet" */
-	big {
-		padding: 25px;
-	}
-}
-
-@media screen and (max-width: 512px) { /* "Mobile" */
-	pre > code {
-		margin: 1.5em -15px;
-		padding: 15px;
-		border-radius: 0;
-	}
-
-	#header,
-	#footer {
-		text-align: center;
-	}
-
-	#header div,
-	#header #nav {
-		float: none;
-	}
-
-	#header #nav a {
-		line-height: 3em;
-	}
-
-	big {
-		padding: 20px 15px;
-		font-size: 1.25em;
-	}
-
-	#main {
-		padding: 0 15px;
-	}
-
-	#footer .footer-right,
-	#footer .footer-left {
-		float: none;
-		margin: 20px 0;
-		text-align: center;
-	}
-
-	.page-narrow #main {
-		margin: 20px 10px;
-
-	}
+	line-height: 1.25em;
 }

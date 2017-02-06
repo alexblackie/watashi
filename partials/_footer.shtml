@@ -1,19 +1,13 @@
 		</div>
 
-		<div id="footer">
-			<div class="footer-left">
-				<p>&copy; 2015 Alex Blackie. This site is <a href="https://github.com/alexblackie/self">open-source</a>.</p>
-				<p class="badges">
-					<a href="https://validator.w3.org/check?uri=referer"><img src="//assets.alexblackie.com/valid-xhtml10.png" alt="Valid XHTML 1.0" /></a>
-					<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="//assets.alexblackie.com/valid-css.gif" alt="Valid CSS!" /></a>
-				</p>
-			</div>
+		<hr />
 
-			<div class="footer-right">
-				<p class="credits">
-					This site served by <a href="http://nginx.org/">nginx</a> running on cloud servers from <a href="https://www.digitalocean.com/">DigitalOcean</a>.
-				</p>
-			</div>
+		<div id="footer">
+			<p>&copy; 2015 Alex Blackie. This site is <a href="https://github.com/alexblackie/self">open-source</a>.</p>
+			<p class="badges">
+				<a href="https://validator.w3.org/check?uri=referer"><img src="//assets.alexblackie.com/valid-xhtml10.png" alt="Valid XHTML 1.0" /></a>
+				<a href="https://jigsaw.w3.org/css-validator/check/referer"><img src="//assets.alexblackie.com/valid-css.gif" alt="Valid CSS!" /></a>
+			</p>
 		</div>
 	</body>
 </html>

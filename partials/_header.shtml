@@ -13,17 +13,19 @@
 	<body class="<!--#echo var="classes" -->">
 		<div id="header">
 			<div>
-				<h1><a href="/">Alex Blackie</a></h1>
-				<p><em>The Internet Sensation&trade;</em></p>
+				<h1 title="The Internet Sensation&trade;"><a href="/">Alex Blackie</a></h1>
 			</div>
 
 			<div id="nav">
-				<a href="/setup.shtml">My Setup</a>
-				<a href="mailto:alex@alexblackie.com">E.Mail</a>
-				<a href="https://github.com/alexblackie">Code</a>
-				<a href="https://twitter.com/alexblackie">Twitter</a>
+				<a href="/cv.html">My CV</a> |
+				<a href="/setup.shtml">My Setup</a> |
+				<a href="mailto:alex@alexblackie.com">E.Mail</a> |
+				<a href="https://github.com/alexblackie">Code</a> |
+				<a href="https://twitter.com/alexblackie">Twitter</a> |
 				<a href="https://pgp.mit.edu/pks/lookup?op=get&amp;search=0xA231E0F2D35D0D47">GPG</a>
 			</div>
 		</div>
+
+		<hr />
 
 		<div id="main">
