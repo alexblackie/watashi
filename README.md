@@ -20,9 +20,9 @@ version of nginx is installed.
 
 ### With Docker
 
-Contrary to the theme of the rest of the site, a`Dockerfile` is included. For a
-local dev server (for SSI), simply:
+Contrary to the theme of the rest of the site, a Dockerfile is included. For
+a local dev server (for SSI), simply:
 
-1. `docker build -t self-nginx .`
-2. `docker run -it --rm -v `pwd`:/srv/www -p 8080:80 self-nginx`
+1. `docker build -f Dockerfile.dev -t self-dev .`
+2. `docker run -it --rm -v `pwd`:/srv/www -p 8080:80 self-dev`
 3. `xdg-open http://localhost:8080/`
