@@ -17,20 +17,19 @@
 </p>
 
 <div class="figure wide">
-	<a href="https://assets.alexblackie.com/setup-gnome-20160902.png">
-		<img src="https://assets.alexblackie.com/setup-gnome-20160902.png" alt="Screenshot from my laptop" />
+	<a href="https://assets.alexblackie.com/setup-2017.jpg">
+		<img src="https://assets.alexblackie.com/setup-2017.jpg" alt="Screenshot from my laptop" />
 	</a>
 </div>
 
 <h3>Software</h3>
 
 <p>
-	I'm currently running <a href="https://getfedora.org/">Fedora 24</a> with
-	the default GNOME 3 desktop. I've been a GNOME guy all my life, and I
-	really like some of the modern desktop niceties like easy
-	network, bluetooth, sound, etc. widgets in the top bar; 3D compositing; and
-	a generally pleasant and cohesive UI. I stick with a lot of the standard
-	GNOME tools: GNOME Terminal, Nautilus, Boxes, etc.
+	I'm currently running the latest <a href="https://getfedora.org/">Fedora</a>
+	with the default GNOME 3 desktop. I've been a GNOME guy all my life, and I
+	really like some of the modern desktop niceties like easy configuration, 3D
+	compositing, and a generally pleasant and cohesive UI. I stick with a lot of
+	the standard GNOME tools: GNOME Terminal, Nautilus, Boxes, etc.
 </p>
 
 <p>
@@ -45,21 +44,27 @@
 <h3>Hardware</h3>
 
 <p>
-	My primary computer is still my Lenovo Thinkpad X250, with a Intel
+	My primary machine is a Lenovo Thinkpad T460p, with an Intel i5-6440HQ CPU,
+	16GB RAM, 512GB SSD, and 1080p IPS display. It was generously provided by
+	<a href="https://www.getflow.com/">my employer</a>.
+</p>
+
+<p>
+	My secondary/home computer is still my Lenovo Thinkpad X250, with an Intel
 	i5-5200U, 8GB RAM, 512GB SSD, 20-hour average battery life, and 12.5" IPS
 	1366x768 display. I <a href="/articles/x250.shtml">wrote a review</a> of
 	this machine previously, and still absolutely love it.
 </p>
 
 <p>
-	At home I use a 24"
-	<a href="https://www.ncix.com/detail/asus-pa248q-24-1in-widescreen-led-82-73621.htm">Asus PA248Q</a>
-	monitor beside a 27"
-	<a href="http://www.ncix.com/detail/asus-pb278q-27in-led-backlit-1f-76578.htm">Asus PB278Q</a>,
-	both powered by my laptop. For HIDs, I have a
+	For displays, I use a single
+	<a href="http://www.ncix.com/detail/asus-pb278q-27in-led-backlit-1f-76578.htm">Asus PB278Q</a>.
+	For HIDs, I have a
 	<a href="http://www.ncix.com/detail/filco-majestouch-2-cherry-mx-87-70720.htm">Filco Majestouch 2 TKL (Browns)</a>,
-	and a <a href="https://www.amazon.ca/Mionix-Multi-Color-Ergonomic-Optical-MNX-01-25001-G/dp/B00XJZ59Y0">Mionix Castor</a>
-	mouse.
+	and the glorious
+	<a href="https://www.amazon.ca/Logitech-Master-Wireless-Mouse-910-004337/dp/B00TZR3WRM/">Logitech MX Master</a>.
+	However, a lot of the time I just work on the laptop itself as the 1080p
+	screen is plenty for my needs.
 </p>
 
 <p>
@@ -69,15 +74,5 @@
 	<a href="https://www.massdrop.com/buy/akg-k7xx-massdrop-first-edition-headphones">AKG K7XX Massdrop-edition</a>
 	headphones.
 </p>
-
-<hr/>
-
-<p>
-	Obligatory desk photo:
-</p>
-
-<div class="figure wide">
-	<img src="https://assets.alexblackie.com/setup-my-desk-20160902.jpg" alt="My Desk!" />
-</div>
 
 <!--#include virtual="/partials/_footer.shtml"-->
