@@ -1,7 +1,7 @@
 %define webroot /srv/www/alexblackie.com
 
 Name:      alexblackie.com
-Version:   1
+Version:   %{version}
 Release:   1%{?dist}
 Summary:   The alexblackie.com website files and configuration.
 License:   BSD 3-Clause
