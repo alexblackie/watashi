@@ -4,7 +4,7 @@ module Watashi
   class Application
 
     ROUTE_MAP = {
-      "/" => "Watashi::Controllers::RootController",
+      "/" => {class: "Watashi::Controllers::RootController", methods: ["GET"]},
     }.freeze
 
     # Route a request to the correct controller based on the given data.
@@ -13,12 +13,17 @@ module Watashi
     # @param env [Rack::Env] the full Rack environment
     # @return [Array] a Rack-compatible response array.
     def call(env)
+      request_method = env["REQUEST_METHOD"]
       path = "/" + env["SCRIPT_NAME"]
+      route = ROUTE_MAP[path]
 
-      # TODO: whitelist and normalise methods
-      Object.const_get(ROUTE_MAP[path])
-        .new(env)
-        .public_send(env["REQUEST_METHOD"].downcase.to_sym)
+      if route[:methods].include?(request_method)
+        Object.const_get(route[:class])
+          .new(env)
+          .public_send(request_method.downcase)
+      else
+        [405, {}, ["Error 405: Unsupported HTTP method.\n"]]
+      end
     end
 
   end
