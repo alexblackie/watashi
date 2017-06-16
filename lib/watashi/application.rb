@@ -4,7 +4,7 @@ module Watashi
   class Application
 
     ROUTE_MAP = {
-      "/" => "Watashi::Controllers::RootController"
+      "/" => "Watashi::Controllers::RootController",
     }.freeze
 
     # Route a request to the correct controller based on the given data.
@@ -14,6 +14,8 @@ module Watashi
     # @return [Array] a Rack-compatible response array.
     def call(env)
       path = "/" + env["SCRIPT_NAME"]
+
+      # TODO: whitelist and normalise methods
       Object.const_get(ROUTE_MAP[path])
         .new(env)
         .public_send(env["REQUEST_METHOD"].downcase.to_sym)
