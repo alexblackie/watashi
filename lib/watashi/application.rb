@@ -16,12 +16,16 @@ module Watashi
       request_method = env["REQUEST_METHOD"]
       route = ROUTE_MAP[env["PATH_INFO"]]
 
+      unless route
+        return Watashi::Controllers::ErrorsController.new(env).not_found
+      end
+
       if route[:methods].include?(request_method)
         Object.const_get(route[:class])
           .new(env)
           .public_send(request_method.downcase)
       else
-        [405, {}, ["Error 405: Unsupported HTTP method.\n"]]
+        Watashi::Controllers::ErrorsController.new(env).unsupported_method
       end
     end
 
