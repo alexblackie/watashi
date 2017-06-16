@@ -3,7 +3,7 @@ module Watashi
     class RootController < AbstractController
 
       def get
-        respond(body: "it werks")
+        respond(template: "index")
       end
 
     end
