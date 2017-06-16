@@ -15,4 +15,8 @@ The app will start on `[::1]:9292`.
 
 ## Testing
 
-Soon.
+There is an RSpec test suite that you should always run.
+
+```
+$ bundle exec rspec
+```
