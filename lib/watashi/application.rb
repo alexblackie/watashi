@@ -14,8 +14,7 @@ module Watashi
     # @return [Array] a Rack-compatible response array.
     def call(env)
       request_method = env["REQUEST_METHOD"]
-      path = "/" + env["SCRIPT_NAME"]
-      route = ROUTE_MAP[path]
+      route = ROUTE_MAP[env["PATH_INFO"]]
 
       if route[:methods].include?(request_method)
         Object.const_get(route[:class])
