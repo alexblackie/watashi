@@ -4,7 +4,7 @@ module Watashi
   class Application
 
     ROUTE_MAP = {
-      "/" => {class: "Watashi::Controllers::RootController", methods: ["GET"]},
+      %r{^/$} => {class: "RootController", methods: ["GET"]}
     }.freeze
 
     # Route a request to the correct controller based on the given data.
@@ -14,14 +14,16 @@ module Watashi
     # @return [Array] a Rack-compatible response array.
     def call(env)
       request_method = env["REQUEST_METHOD"]
-      route = ROUTE_MAP[env["PATH_INFO"]]
+      route = ROUTE_MAP.detect do |reg, target|
+        env["PATH_INFO"].match(reg)
+      end[1]
 
       unless route
         return Watashi::Controllers::ErrorsController.new(env).not_found
       end
 
       if route[:methods].include?(request_method)
-        Object.const_get(route[:class])
+        Object.const_get("Watashi::Controllers::#{route[:class]}")
           .new(env)
           .public_send(request_method.downcase)
       else
