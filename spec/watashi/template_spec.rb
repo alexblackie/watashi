@@ -9,7 +9,7 @@ RSpec.describe Watashi::Template do
 
     context "with a valid template" do
       it "renders the template" do
-        expect(service.render("test_page")).to match /<h1>rendered/
+        expect(service.render("test_page")).to match(/<h1>rendered/)
       end
 
       it "only renders it once" do
