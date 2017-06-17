@@ -1,4 +1,9 @@
+require "rack/test"
 require "watashi"
+
+def app
+  Watashi::Application.new
+end
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -8,6 +13,8 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  config.include Rack::Test::Methods, type: :request
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.filter_run_when_matching :focus
