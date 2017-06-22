@@ -1,6 +1,7 @@
 source "https://rubygems.org/"
 
 gem "rack"
+gem "mimemagic"
 
 group :development, :test do
   gem "pry"

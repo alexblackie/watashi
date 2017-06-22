@@ -4,7 +4,8 @@ module Watashi
   class Application
 
     ROUTE_MAP = {
-      %r{^/$} => {class: "RootController", methods: ["GET"]}
+      %r{^/$} => {class: "RootController", methods: ["GET"]},
+      %r{^/assets/(?<name>.+)$} => {class: "StaticController", methods: ["GET"]}
     }.freeze
 
     # Route a request to the correct controller based on the given data.
