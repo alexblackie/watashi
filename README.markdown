@@ -1,4 +1,4 @@
-# 私
+# 私 [![Build Status](https://ci.blackieops.com/job/watashi-tests/badge/icon)](https://ci.blackieops.com/job/watashi-tests)
 
 This is a WIP attempt to rebuild my website with more software for some reason.
 
