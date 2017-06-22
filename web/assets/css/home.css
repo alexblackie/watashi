@@ -1,0 +1,31 @@
+.intro {
+  margin: 0 3em 3em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  color: black;
+}
+
+.home-two-up {
+  overflow: hidden;
+}
+  .home-two-up .column {
+    float: left;
+    width: 50%;
+  }
+  .home-two-up .column h2 {
+    margin-top: 0;
+  }
+
+  .home-two-up dt,
+  .home-two-up dd {
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+  }
+  .home-two-up dt {
+    float: left;
+    width: 25%;
+    font-weight: bold;
+  }
+  .home-two-up dd {
+    margin: 0;
+  }

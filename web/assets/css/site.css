@@ -5,8 +5,13 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Overpass",  sans-serif;
   background-color: #f3f3f3;
+  color: #444;
+}
+
+a {
+  color: #4E74BD;
 }
 
 

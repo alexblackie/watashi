@@ -4,7 +4,8 @@ module Watashi
 
       def get
         respond(template: "index", context: {
-          page_title: "The Internet Sensation&trade;"
+          page_title: "The Internet Sensation&trade;",
+          stylesheets: ["home"]
         })
       end
 
