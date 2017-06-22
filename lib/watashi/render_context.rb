@@ -24,7 +24,7 @@ module Watashi
     # Sort of a hack, since if a var doesn't exist it will try and call a method
     # and so we'll end up here...
     def method_missing(m, *args, &block)
-      "No such context key: #{m}"
+      nil
     end
 
   end

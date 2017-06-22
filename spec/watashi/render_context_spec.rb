@@ -12,7 +12,7 @@ RSpec.describe Watashi::RenderContext do
   describe "#method_missing" do
     it "returns a nice message for unset variables" do
       service = described_class.new
-      expect(eval("not_a_thing", service.get_binding)).to match(/No such context key/)
+      expect(eval("not_a_thing", service.get_binding)).to be_nil
     end
   end
 
