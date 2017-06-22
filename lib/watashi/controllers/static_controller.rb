@@ -13,7 +13,7 @@ module Watashi
 
           respond(body: asset_body, headers: {"Content-Type" => mime})
         else
-          Watashi::Controllers::ErrorsController.new(@env).not_found
+          respond_error(:not_found)
         end
       end
 

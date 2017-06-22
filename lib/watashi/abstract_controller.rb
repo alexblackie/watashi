@@ -66,6 +66,10 @@ module Watashi
       ]
     end
 
+    def respond_error(meth)
+      Watashi::Controllers::ErrorsController.new(@env).public_send(meth)
+    end
+
     def unsupported_method
       [405, {}, ["Error 405: Method not supported on this resource.\n"]]
     end
