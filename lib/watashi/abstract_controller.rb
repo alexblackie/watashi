@@ -15,8 +15,11 @@ module Watashi
     # Instance Methods
     # --------------------------------------------------------------------------
 
-    def initialize(env)
+    # @param env [Rack::Env] The Rack ENV
+    # @param captures [MatchData] The named captures from the route regex
+    def initialize(env, captures=nil)
       @env = env
+      @captures = captures
       @templates = Watashi::Template.new
     end
 

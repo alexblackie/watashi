@@ -14,9 +14,11 @@ module Watashi
     # @return [Array] a Rack-compatible response array.
     def call(env)
       request_method = env["REQUEST_METHOD"]
-      route = ROUTE_MAP.detect do |reg, target|
-        env["PATH_INFO"].match(reg)
-      end[1]
+
+      route = ROUTE_MAP.map do |exp, meta|
+        next unless matches = env["PATH_INFO"].match(exp)
+        meta.merge({captures: matches})
+      end.compact.first
 
       unless route
         return Watashi::Controllers::ErrorsController.new(env).not_found
@@ -24,7 +26,7 @@ module Watashi
 
       if route[:methods].include?(request_method)
         Object.const_get("Watashi::Controllers::#{route[:class]}")
-          .new(env)
+          .new(env, route[:captures])
           .public_send(request_method.downcase)
       else
         Watashi::Controllers::ErrorsController.new(env).unsupported_method
