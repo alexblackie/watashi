@@ -6,11 +6,12 @@ module Watashi
 
       def get
         asset_file = File.join(ASSET_PATH, @captures[:name])
+
         if File.exist?(asset_file)
+          mime = Watashi::Mime.detect_from_path(asset_file)
           asset_body = File.read(asset_file)
-          mime = MimeMagic.by_path(asset_file)
-          mime ||= OpenStruct.new(type: "text/plain")
-          respond(body: asset_body, headers: {"Content-Type" => mime.type})
+
+          respond(body: asset_body, headers: {"Content-Type" => mime})
         else
           Watashi::Controllers::ErrorsController.new(@env).not_found
         end
