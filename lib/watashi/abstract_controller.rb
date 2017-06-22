@@ -56,7 +56,7 @@ module Watashi
 
     def respond(code: 200, headers: {}, body: "", template: nil)
       if template
-        body = @templates.render("index")
+        body = @templates.render(template)
       end
 
       [
