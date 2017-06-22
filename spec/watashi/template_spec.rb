@@ -12,8 +12,13 @@ RSpec.describe Watashi::Template do
         expect(service.render("test_page")).to match(/<h1>rendered/)
       end
 
+      it "renders the layout around the template" do
+        expect(service.render("test_page")).to match(/doctype html/)
+      end
+
       it "only renders it once" do
-        expect(File).to receive(:read).exactly(1).times.and_call_original
+        # once for the layout, once for the partial
+        expect(File).to receive(:read).exactly(2).times.and_call_original
         service.render("test_page")
         service.render("test_page")
       end

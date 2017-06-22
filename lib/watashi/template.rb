@@ -1,4 +1,5 @@
 module Watashi
+
   # Renders ERB templates and caches them in-memory.
   class Template
 
@@ -7,21 +8,27 @@ module Watashi
     def initialize(template_path: DEFAULT_TEMPLATE_PATH)
       @renders = {}
       @template_path = template_path
+      @raw_layout = File.read(File.join(@template_path, "layout.erb"))
     end
 
     # Render an ERB template with the given name, and cache the result for
     # subsequent calls.
     #
     # @param template [String] the name of a template
+    # @param context [Hash] key/value pairs of variables to bind the template
     # @return [String] the ERB render result
-    def render(template)
+    def render(template, context = {})
       return @renders[template] if @renders[template]
 
       path = File.join(@template_path, template + ".erb")
       return nil unless File.exist?(path)
 
-      template_string = File.read(path)
-      @renders[template] = ERB.new(template_string).result
+      context.merge!({
+        partial: ERB.new(File.read(path)).result
+      })
+
+      render_context = Watashi::RenderContext.new(context)
+      @renders[template] = ERB.new(@raw_layout).result(render_context.get_binding)
     end
 
   end

@@ -54,9 +54,9 @@ module Watashi
 
   private
 
-    def respond(code: 200, headers: {}, body: "", template: nil)
+    def respond(code: 200, headers: {}, body: "", template: nil, context: nil)
       if template
-        body = @templates.render(template)
+        body = @templates.render(template, context)
       end
 
       [

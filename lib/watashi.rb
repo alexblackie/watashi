@@ -2,6 +2,7 @@ require "mimemagic"
 require "ostruct"
 
 require "watashi/application"
+require "watashi/render_context"
 require "watashi/template"
 require "watashi/abstract_controller"
 require "watashi/mime"

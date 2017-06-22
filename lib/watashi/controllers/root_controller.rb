@@ -3,7 +3,9 @@ module Watashi
     class RootController < AbstractController
 
       def get
-        respond(template: "index")
+        respond(template: "index", context: {
+          page_title: "The Internet Sensation&trade;"
+        })
       end
 
     end
