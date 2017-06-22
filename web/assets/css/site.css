@@ -1,3 +1,52 @@
+
+/*******************************************************************************
+ * Global Defaults and Resets
+ ******************************************************************************/
+
 body {
-  font-family: "Comic Sans MS", cursive;
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f3f3f3;
+}
+
+
+/*******************************************************************************
+ * Structure and Layout Classes
+ ******************************************************************************/
+
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+
+/*******************************************************************************
+ * Site Sections
+ ******************************************************************************/
+
+#siteHeader,
+#siteFooter,
+#siteContent {
+  padding: 2em 0;
+}
+
+#siteHeader {
+  border-bottom: 1px solid #BF423F;
+  background-color: #F25450;
+}
+  #siteHeader h1 {
+    margin: 0;
+  }
+    #siteHeader h1 a {
+      color: white;
+      text-decoration: none;
+    }
+
+#siteContent {
+  background-color: white;
+}
+
+#siteFooter {
+  border-top: 1px solid gainsboro;
+  line-height: 1.5em;
 }

@@ -1,13 +1,29 @@
 <!doctype html>
 <head>
   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
   <title><%= page_title %> | Alex Blackie</title>
   <link rel="stylesheet" href="/assets/css/site.css" type="text/css">
 </head>
 <body>
 
-<h1>layout</h1>
+  <header id="siteHeader">
+    <div class="container">
+      <h1><a href="/">Alex Blackie</a></h1>
+    </div>
+  </header>
 
-<%= partial %>
+  <div id="siteContent">
+    <div class="container">
+      <%= partial %>
+    </div>
+  </div>
+
+  <footer id="siteFooter">
+    <div class="container">
+      &copy; 2013-2017 Alex Blackie.<br>
+      This site is <a href="https://github.com/alexblackie/watashi">open source</a> and released under the a BSD-style License.
+    </div>
+  </footer>
 
 </body>
