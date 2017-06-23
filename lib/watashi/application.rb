@@ -8,6 +8,10 @@ module Watashi
       %r{^/assets/(?<name>.+)$} => {class: "StaticController", methods: ["GET"]}
     }.freeze
 
+    def initialize
+      Watashi::Config.populate(ENV["WATASHI_ENV"] || "development")
+    end
+
     # Route a request to the correct controller based on the given data.
     #
     # @param path [String] the domain-relative path being requested.

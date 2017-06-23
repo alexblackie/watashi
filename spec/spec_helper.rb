@@ -1,3 +1,5 @@
+ENV["WATASHI_ENV"] ||= "test"
+
 require "rack/test"
 require "watashi"
 

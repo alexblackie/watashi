@@ -1,6 +1,8 @@
 require "mimemagic"
 require "ostruct"
+require "yaml"
 
+require "watashi/config"
 require "watashi/application"
 require "watashi/render_context"
 require "watashi/template"
