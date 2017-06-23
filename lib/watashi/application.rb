@@ -14,7 +14,11 @@ module Watashi
     # @param env [Rack::Env] the full Rack environment
     # @return [Array] a Rack-compatible response array.
     def call(env)
-      request_method = env["REQUEST_METHOD"]
+      # Handle legacy routes by redirecting to new one
+      if env["PATH_INFO"].end_with?(".shtml")
+        new_path = env["PATH_INFO"].gsub(/\.shtml/, "")
+        return [301, {"Location" => new_path}, [""]]
+      end
 
       route = ROUTE_MAP.map do |exp, meta|
         next unless matches = env["PATH_INFO"].match(exp)
@@ -25,6 +29,7 @@ module Watashi
         return Watashi::Controllers::ErrorsController.new(env).not_found
       end
 
+      request_method = env["REQUEST_METHOD"]
       if route[:methods].include?(request_method)
         Object.const_get("Watashi::Controllers::#{route[:class]}")
           .new(env, route[:captures])

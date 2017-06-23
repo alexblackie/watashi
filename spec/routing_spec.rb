@@ -21,6 +21,13 @@ RSpec.describe "Request Routing", type: :request do
     end
   end
 
+  describe "GET a legacy path" do
+    it "redirects to the new one" do
+      get("/about.shtml")
+      expect(last_response.headers["Location"]).to eq("/about")
+    end
+  end
+
   describe "GET an asset" do
     before { get("/assets/css/site.css") }
 
