@@ -3,22 +3,14 @@ module Watashi
     class ArticlesController < AbstractController
 
       def get
-        slug = @captures[:slug]
-        content_file = File.join(Watashi::BASE_DIR, "web", "articles", "#{slug}.html")
-        meta_file = File.join(Watashi::BASE_DIR, "web", "articles", "#{slug}.yml")
-
-        unless File.exist?(content_file) && File.exist?(meta_file)
-          return respond_error(:not_found)
-        end
-
-        meta = YAML.load_file(meta_file)
-        content = File.read(content_file)
+        article = Watashi::Domain::Article.find(@captures[:slug])
+        return respond_error(:not_found) unless article
 
         respond(template: "article_show", context: {
-          body: content,
-          page_title: meta["title"],
-          date: meta["date"].strftime("%b %d, %Y"),
-          stylesheets: meta["stylesheets"]
+          body: article.content,
+          page_title: article.title,
+          date: article.published_on,
+          stylesheets: article.stylesheets
         })
       end
 

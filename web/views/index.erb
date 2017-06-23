@@ -16,7 +16,7 @@
 
     <ul class="home-post-list">
       <% articles.each do |article| %>
-        <li><a href="/articles/<%= article["slug"] %>"><%= article["title"] %></a></li>
+        <li><a href="/articles/<%= article.slug %>"><%= article.title %></a> (<%= article.date %>)</li>
       <% end %>
     </ul>
   </div>
