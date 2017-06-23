@@ -1,0 +1,176 @@
+<p>Amazon Web Services is an incredibly complex environment. Most of its features
+no one will ever use, and accomplishing what you assume to be trivial tasks can
+take a considerable amount of time and energy before anything works (or you give
+up). The AWS veterans I know complain about VPCs constantly, and rightfully so.
+Setting up a VPC properly involves a lot of steps and it&#39;s nearly impossible to
+do anything without the knowledge of all the components and how they interact.
+I am of the opinion VPCs are woefully over-designed and doubt that much of the
+functionality is of much use to anyone that is using the Cloud. If you need
+<em>that much</em> control over your network, you likely have the means, and would be
+better off, to throw a bunch of Cisco gear in a rack somewhere.</p>
+
+<hr />
+
+<p>This guide aims to illustrate how to get a working VPC up and ready for
+deployment as fast as possible. None of it is particularly difficult, it is more
+just a lot of small things that need to be clicked, checked, or attached.</p>
+
+<p>For demonstration purposes, we will be assuming this VPC will hold a web
+application deployed via Opsworks. The majority of the steps here will work for
+nearly any deployment, however.</p>
+
+<p><strong>Note</strong>: we will not be covering NAT here. This guide assumes all your servers
+will get public IPs and you will allow public SSH to them. NAT introduces yet
+another level of complexity and is out-of-scope for this document.</p>
+
+<h3>0. Exploring VPCs</h3>
+
+<p>Before we go off clicking buttons, we should first understand everything that
+makes up a VPC, why we need each bit, and how each thing relates to the rest of
+the system.</p>
+
+<ul>
+  <li><strong>VPC</strong> - The obvious first concept is that of the VPC. A VPC, or &quot;Virtual
+  Private Cloud&quot;, is Amazon&#39;s word for what is essentially a container around a
+  network. A VPC is the highest-level and is an umbrella around all other
+  resources.</li>
+  <li><strong>Subnet</strong> - A subnet is essentially a DHCP server for a chunk of your VPCs
+  IP range. Instances must go in a subnet, and are assigned internal IP
+  addresses from it.</li>
+  <li><strong>Security Group</strong> - These can be thought of kind of like firewalls. Instances
+  in one security group cannot talk to instances in another security group
+  unless explicitly allowed. Security groups also limit external traffic very
+  similarly to a traditional firewall in that you have to allow certain ports
+  to receive traffic. If you&#39;ve ever been unable to ping or ssh into your VPC&#39;ed
+  servers, it was likely a problem with the security group.</li>
+  <li><strong>Route Table</strong> - Each VPC gets a route table that defines how to route
+  traffic. Basically exactly the same as regular routing on real networks.</li>
+  <li><strong>Internet Gateway</strong> - The magic connection to the internet that for some
+  reason has to be added manually. Adding one of these to the VPC allows
+  connections to the outside world.</li>
+</ul>
+
+<p>That should hopefully be enough so that we can get clicking.</p>
+
+<h3>1. Setting up the VPC</h3>
+
+<p>First off we need to create the VPC itself. Head to the VPC section of the AWS
+Console and click &quot;Create VPC&quot;.</p>
+
+<p><img alt="vpc_create" width="702" height="322" src="//assets.alexblackie.com/vpc/vpc_create.png" /></p>
+
+<p>I&#39;ve chosen the name <code>my-vpc</code> and the CIDR block of <code>10.20.30.0/24</code>. These both
+are fairly arbitrary and can be nearly anything you want. Depending on how many
+machines you plan to launch into your VPC, your CIDR block should reflect that.
+If you&#39;re not planning on having 200+ machines per subnet, then assigning a
+<code>/24</code> block for the whole VPC is totally reasonable.</p>
+
+<p>A keen eye will find that when creating a VPC, you are also given a DHCP Options
+Set, Route Table, and Network ACL by default.</p>
+
+<p><img alt="vpc free stuff" width="548" height="86" src="//assets.alexblackie.com/vpc/vpc_extras.png" /></p>
+
+<p>Other than the Route Table, you can ignore these, for the most part.</p>
+
+<h3>2. Getting to the Internet</h3>
+
+<p>A small detail most people miss, and one that is non-obvious later on, is a VPC
+has no internet access by default. If you launch an Opsworks Instance into a VPC
+without an internet connection, it will hang on boot for a very long time until
+it eventually fails.</p>
+
+<p>So let&#39;s add an Internet Gateway.</p>
+
+<p>Click on &quot;Internet Gateways&quot; in the sidebar, and create one. I usually name mine
+the same as the VPC it&#39;s going to be attached to.</p>
+
+<p><img alt="create igw" width="703" height="228" src="//assets.alexblackie.com/vpc/igw_create.png" /></p>
+
+<p>Once created, select it and click &quot;Attach to VPC&quot;. Then select your VPC from the
+dropdown.</p>
+
+<p><img alt="attach igw" width="659" height="239" src="//assets.alexblackie.com/vpc/igw_attach.png" /></p>
+
+<p>But wait, there&#39;s more! We still haven&#39;t told anything to <em>use</em> the IGW, we&#39;ve
+just told it to associate itself with a VPC.</p>
+
+<p>Head to the &quot;Route Tables&quot; section via the sidebar and select the route table
+for your new VPC. A pane will open at the bottom of the screen; navigate to the
+&quot;Routes&quot; tab and add a route for <code>0.0.0.0/0</code> that points to the new IGW (the
+target field should auto-complete when you focus it).</p>
+
+<p><img alt="add igw route" width="671" height="235" src="//assets.alexblackie.com/vpc/route_to_igw.png" /></p>
+
+<p>Congratulations, you just saved yourself hours of painful debugging later.</p>
+
+<h3>3. Subnets</h3>
+
+<p>Probably the most important part of the VPC is the subnet. A subnet is
+essentially the same as its physical-network counterpart. Each subnet gets a
+slice of the VPC&#39;s CIDR block, and resources launched in the subnet will be
+assigned an IP in that range via DHCP automatically.</p>
+
+<p>Since we allocated one Class-C block for our VPC, we&#39;re going to use <code>/26</code>
+blocks for our subnets, which is &frac14; of a Class-C. Each quarter will give us
+64 addresses (59 usable because AWS reserves a few), which should be plenty,
+even for large-scale deployments.</p>
+
+<p>Following with the web application deployment scenario, we&#39;ll need a database
+subnet and a subnet for our web servers. RDS requires us to have at least two
+subnets for database instances, spread across at least two availability zones</p>
+
+<p>Our network will end up looking something like this:</p>
+
+<ul>
+  <li><code>web01</code>: <code>10.20.30.128/26</code>, <code>us-east-1b</code></li>
+  <li><code>database01</code>: <code>10.20.30.0/26</code>, <code>us-east-1b</code></li>
+  <li><code>database02</code>: <code>10.20.30.64/26</code>, <code>us-east-1c</code></li>
+</ul>
+
+<p><img alt="subnets created omg" width="1059" height="139" src="//assets.alexblackie.com/vpc/subnets_created.png" /></p>
+
+<p>For the <code>web01</code> subnet, select it and under the actions dropdown select &quot;Modify
+Public IP&quot; and check the checkbox. We will want public IP addresses on all of
+our web servers, since we&#39;re not setting up any NAT stuff.</p>
+
+<h3>4. Security Groups</h3>
+
+<p>Finally, the last VPC component we need to configure is Security Groups.
+Security Groups act as a sort of firewall, filtering which ports and which types
+of traffic are allowed to pass through from the Scary Internet&trade; to the
+VPC.</p>
+
+<p>When creating a VPC, we get a default security group aptly named <code>default</code>. We
+are now faced with a decision: how much do we <em>really</em> care? Since the goal of
+this document is to get a VPC set up as fast as possible and with as little
+friction as possible, setting up a set of custom security groups is not going to
+get us to our goal any sooner, and provides only minimal benefit to us at the
+moment. Launching everything in the <code>default</code> security group is <em>totally fine</em>
+if you don&#39;t care about limiting inter-machine communication. For critical
+production setups, I would recommend looking into security groups as an extra
+level of security between your various layers of services, but for now <code>default</code>
+will serve us just fine.</p>
+
+<p>With that out of the way&hellip;</p>
+
+<p>Select the <code>default</code> security group for your VPC, and navigate to the &quot;Inbound
+Rules&quot; tab. You can see the one default rule allows all traffic between machines
+within the security group. We need to poke a couple holes for the services we
+want to be able to access publicly.</p>
+
+<p>Following with the Opsworks theme, I&#39;m going to open up ports for HTTP and SSH
+from any IP address.</p>
+
+<p><img alt="opening http and ssh" width="750" height="280" src="//assets.alexblackie.com/vpc/sg_open_ports.png" /></p>
+
+<p>The &quot;Source&quot; fields will attempt to auto-complete names of security groups in
+your VPC. Since we&#39;re entering an IP range, it will complain about &quot;No results&quot;
+-- you can ignore these complaints.</p>
+
+<h3>Coffee break</h3>
+
+<p>You&#39;ve now set up a VPC worthy of being used. Now you can start launching RDS
+instances, setting up Opsworks apps, perhaps even exploring security groups more
+and learning how to lock down your internal traffic. Perhaps you&#39;re feeling
+inspired and want to take it a step further with NAT instances and private
+LANs...</p>

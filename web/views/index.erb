@@ -15,7 +15,9 @@
     <h2>Things I've Written</h2>
 
     <ul class="home-post-list">
-      <li>TODO: populate posts</li>
+      <% articles.each do |article| %>
+        <li><a href="/articles/<%= article["slug"] %>"><%= article["title"] %></a></li>
+      <% end %>
     </ul>
   </div>
 

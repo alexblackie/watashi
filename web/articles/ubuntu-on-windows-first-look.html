@@ -1,0 +1,179 @@
+<p>
+  <a href="/articles/year-of-linux-on-the-windows.shtml">I was quite
+  excited</a> when I first heard about this "Bash on Ubuntu on Windows"
+  feature Microsoft announced at BUILD 2016. The first Windows Insider build
+  was released just a couple days before I am writing this, and last night
+  was the night the build installed on my Windows desktop at home. I, of
+  course, dove right in to the feature flipper and enabled the Linux
+  subsystem to play around. Here is how it went.
+</p>
+
+<hr />
+
+<h3>For want of a multiplexer</h3>
+<p>
+  My first goal was to get one of my projects up-and-running. This involved
+  setting up my dotfiles and compiling Ruby, and depending on the project
+  maybe even getting PostgreSQL set up. All of those tasks felt like common
+  but fairly advanced tasks, perfect to put the new feature through its
+  paces.
+</p>
+
+<p>
+  The first thing I tried to get running was good ol' tmux. It pulled in
+  through apt just as one would expect, but running the command produced a
+  non-success exit status and no STDOUT, nor any logs. <code>strace</code>
+  (which is installed by default; kudos for that) revealed it was failing
+  with an <code>ENOENT</code> on the tmux server socket... Strange.
+</p>
+
+<div class="figure">
+  <img src="https://assets.alexblackie.com/windows-ubuntu-first-look/tmux-nope.png" alt="tmux nope" />
+</div>
+
+<p>
+  In a stunning display of laziness, I gave up there and tried my luck with
+  GNU Screen. Unfortunately, no such luck was present and it also failed to
+  start, but with a nice error this time.
+</p>
+
+<div class="figure">
+  <img src="https://assets.alexblackie.com/windows-ubuntu-first-look/screen-even-more-nope.png" alt="screen even more nope" />
+</div>
+
+<p>
+  So it looks like getting a multiplexer will take a bit more research and
+  debugging. Despite the early failure, I continued.
+</p>
+
+<h3>Ruby</h3>
+
+<p>
+  I use <a href="https://github.com/postmodern/chruby">chruby</a> and <a
+    href="https://github.com/postmodern/ruby-install">ruby-install</a> to
+  manage my Rubies, and both worked just fine.
+</p>
+
+<p>
+  Compiling Ruby was the first real task I completed, and it's not a
+  particularly light task. It was noticably slow, and took a considerable
+  amount of time on my otherwise speedy desktop, but did eventually complete.
+  Speed is something I was expecting to sacrifice and it is a bit
+  disappointing currently; I am hoping speed is something they improve before
+  GA.
+</p>
+
+<h3>ZSH</h3>
+
+<p>
+  I am not a Bash user. So of course once it came to installing my dotfiles
+  first up was getting my shell.
+</p>
+
+<p>
+  ZSH does not work. At all.
+</p>
+
+<div class="figure">
+  <img src="https://assets.alexblackie.com/windows-ubuntu-first-look/yeah-no-zsh.png" alt="yeah no zsh" />
+</div>
+
+<p>
+  I was able to switch the default user's shell to ZSH, but it delays the
+  startup and eventually falls back to Bash once ZSH crashes. Running ZSH
+  manually reveals a slew of interesting errors and a broken rendering of my
+  prompt. Most commands end with an error from ZSH.
+</p>
+
+<p>
+  This is the first big dealbreaker for me. This is unusably broken and I am
+  not sure how to go about fixing or even debugging it. I feel like limiting
+  myself to Bash is simply not worth it, and if official support for
+  alternate shells never arrives this feature is dead to me.
+</p>
+
+<p>
+  <em>Even still</em>, I continue...
+</p>
+
+<hr />
+
+<h3>At least I can edit files maybe</h3>
+
+<p>
+  Disheartened by not getting my shell running, I attempted to run vim to
+  see if I could write this blog post through the emulation, which might have
+  been a nice way to test it. My dotfiles had installed my <code>vimrc</code>
+  so I should just be able to&hellip;
+</p>
+
+<div class="figure">
+  <img src="https://assets.alexblackie.com/windows-ubuntu-first-look/trying-to-edit-files.png" alt="trying to edit some goddamn files" />
+</div>
+
+<p>
+  Sigh. Looks like no 256-color support (or even like 8-color
+  support)&hellip; I <em>could</em> go full neckbeard and renounce syntax
+  highlighting, but honestly that's probably not going to happen.
+</p>
+
+<hr />
+
+<h3>Trying to run something</h3>
+
+<div class="figure pull-right">
+  <a href="https://assets.alexblackie.com/windows-ubuntu-first-look/trying-to-ruby.png">
+    <img src="https://assets.alexblackie.com/windows-ubuntu-first-look/trying-to-ruby.png" alt="trying to ruby" />
+  </a>
+</div>
+
+<p>
+  Losing faith, but hopeful still, I returned to Bash and cloned a simple
+  Middleman static site to see if I could get it to run. "Maybe if I can at
+  least get things running, then I can just switch to a GUI editor," I
+  thought to myself.
+</p>
+
+<p>
+  And my God, it did not want to run at all.
+</p>
+
+<p>
+  Since it is running as "root", bundler has some complaints but continues
+  anyway. However when it comes to building native extensions, everything
+  just dies. "Permission denied" feels like something is breaking down
+  between the filesystems -- the emulation layer seems to mark every file as
+  executable, so I imagine when it copies the native extensions to their
+  final place it also attempts to modify their exec bit or something and
+  Windows throws down the banhammer.
+</p>
+
+<p>
+  This is where I gave up.
+</p>
+
+<hr />
+
+<p>
+  With my hopes and dreams crushed, I return to my Fedora-on-the-desktop
+  laptop as my work machine and leave Windows Linux emulation alone for the
+  time being, at least when it comes to getting work done. I will continue to
+  play with it, see what I can fix or what will work. I will also keep up
+  with updates and see if anything gets faster or less broken as time goes on
+  and more people like me have time to run various environments and software
+  on top of it.
+</p>
+
+<p>
+  I am forgiving because this is still <em>very beta</em> software that
+  exists only in the fastest and most unstable update channel for Windows.
+  The feature is a bold undertaking and I think the progress Microsoft has
+  made thus far is already impressive. However, it is clear that they have
+  only the bare basics working, and anything straying from that just breaks
+  in a horrific way.
+</p>
+
+<p>
+  Despite this sour first experience, I am intrigued to see what further
+  updates bring and will be continuing to poke at it and see what I can do.
+</p>

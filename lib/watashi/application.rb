@@ -5,7 +5,8 @@ module Watashi
 
     ROUTE_MAP = {
       %r{^/$} => {class: "RootController", methods: ["GET"]},
-      %r{^/assets/(?<name>.+)$} => {class: "StaticController", methods: ["GET"]}
+      %r{^/assets/(?<name>.+)$} => {class: "StaticController", methods: ["GET"]},
+      %r{^/articles/(?<slug>.+)$} => {class: "ArticlesController", methods: ["GET"]}
     }.freeze
 
     def initialize

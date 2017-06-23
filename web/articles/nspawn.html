@@ -1,0 +1,209 @@
+<p>
+  Docker and other containerization technologies are making the rounds in the
+  Linux community, but a lowly hero lurks beneath now every major Linux
+  distro; enter <code>systemd-nspawn</code> containers.
+</p>
+
+<p>
+  systemd has arrived with mixed reviews -- you either love it or you hate it
+  -- but one thing stands for certain: it gets the job done. Regardless of
+  your emotions projected towards it, systemd is likely here to stay for a
+  while, so you might as well exploit as many features as you can out of it.
+</p>
+
+<p>
+  <code>systemd-nspawn</code> containers are akin to FreeBSD Jails more than
+  Docker containers. They&#39;re basically just a fancy <code>chroot</code>
+  with some handy built-in integrations with systemd. You can start, stop,
+  enable, and disable the containers as if they were regular services.
+</p>
+
+<p>
+  Keep in mind, however, that by its own admission,
+  <code>systemd-nspawn</code> is an experimental feature that hasn&#39;t been
+  thoroughly tested or audited. There are no guarantees of security or
+  stability; it&#39;s probably best to keep them out of production for the
+  time being. That said, here at BlackieOps we&#39;ve been using
+  <code>systemd-nspawn</code> containers for Jenkins, Stash, and Jira for a
+  while now without any issues.
+</p>
+
+<h3>Creating the container</h3>
+
+<p>
+  We will be working on a fresh install of CentOS 7, but this process is
+  possible on any system using systemd. The only difference will be the first
+  package installation step. Obviously, on Debian you will not be using
+  <code>yum</code>, and on Fedora your repo names and release versions will
+  be different (and you&#39;ll be using <code>dnf</code>)&hellip;
+</p>
+
+<hr />
+
+<p>
+  First step is to &quot;install&quot; a new root filesystem into a
+  directory.
+</p>
+
+<pre><code># yum -y --releasever=7 --nogpg --installroot=/var/lib/machines/cool-container \
+  --disablerepo='*' --enablerepo=base install systemd passwd yum centos-release
+</code></pre>
+
+<p>
+  This will create a directory,
+  <code>/var/lib/machines/cool-container</code>, and populate it with a new root
+  filesystem and a couple core packages.
+</p>
+
+<p>
+  Second, we need to enter into the container to set up some basic things
+  like the <code>root</code> password. We can use the
+  <code>systemd-nspawn</code> command directly for this:
+</p>
+
+<pre><code># systemd-nspawn -D /var/lib/machines/cool-container</code></pre>
+
+<p>
+  This drops you to a shell in the container without actually
+  &quot;booting&quot; anything inside of it (think of it as like
+  <code>chroot</code>-ing from a recovery mode. From here, we can set the
+  root password so we can log in later.
+</p>
+
+<p>
+  When you&#39;re done, just <code>^D</code> out as usual and you&#39;ll be
+  dropped back to your host machine.
+</p>
+
+<h3>Aside: kernel auditing and containers</h3>
+
+<p>
+  If you ignore this section and continue trying to boot the container, you
+  will likely get a warning before the container starts about the kernel
+  auditing subsystem. There are supposedly odd bugs that can surface if
+  auditing is enabled, so we&#39;re just going to disable it. If this worries
+  you, feel free to inspect the issue further, but since this is not a
+  production system it&#39;s probably fine.
+</p>
+
+<p>
+  We just need to add a flag to the kernel parameters in our bootloader. This
+  will vary between distros, but for CentOS it&#39;s as easy as editing the
+  <code>/etc/sysconfig/grub</code> file and changing the
+  <code>GRUB_CMDLINE_LINUX</code> variable by appending <code>audit=0</code>
+  to the list of parameters.
+</p>
+
+<p>
+  After editing the parameters, we&#39;ll need to regenerate our GRUB
+  configuration:
+</p>
+
+<pre><code># grub2-mkconfig -o /etc/grub2.cfg</code></pre>
+
+<h3>Configuring the base system</h3>
+
+<p>
+  We now have a skeleton of a container installed, but we still need to
+  actually configure what&#39;s inside of it, and get it prepped to start
+  automatically, or at least as a service from systemd.
+</p>
+
+<p>
+  Since we now have access to the <code>root</code> account, we can fully
+  &quot;boot&quot; the container:
+</p>
+
+<pre><code># systemd-nspawn -bD /var/lib/machines/cool-container
+</code></pre>
+
+<p>
+  The <code>-b</code> flag is short for <code>--boot</code> and basically
+  means <code>systemd-nspawn</code> will search for an init binary and
+  execute it. You&#39;ll see the standard boot log fly by, and then be
+  dropped at a standard PTY login prompt. Log in with the root credentials
+  you set up previously, and now we can start installing things as if we were
+  on a brand new machine.
+</p>
+
+<p>
+  Once you have your container set up and everything is running and
+  configured, you can exit by &quot;shutting down&quot; the container as if
+  it was a physical machine: <code>poweroff</code> or <code>halt</code> (or
+  whatever you usually use).
+</p>
+
+<h3>Managing the container</h3>
+
+<p>
+  While the <code>/var/lib/machines</code> prefix at the beginning may have
+  seemed arbitrary, in fact it was intentional -- containers in this
+  directory will be auto-discovered by systemd and we can enable and manage
+  them automatically.
+</p>
+
+<p>To have your container start with everything else when your host boots:</p>
+
+<pre><code># systemctl enable systemd-nspawn@cool-container</code></pre>
+
+<p>
+  And as you can perhaps guess, we can start and stop our container just as
+  any other service:
+</p>
+
+<pre><code># systemctl start systemd-nspawn@cool-container
+# systemctl stop systemd-nspawn@cool-container</code></pre>
+
+<h3>Accessing the container</h3>
+
+<p>
+  Accessing a running container can be a bit tricky; one option is to install
+  <code>openssh</code> in the container and have it run on a non-standard
+  port (as containers share the host&#39;s network interfaces).
+  Alternatively, you can access the machine through <code>machinectl</code>.
+</p>
+
+<p>
+  Just running <code>machinectl</code> without arguments will list all
+  running containers (and other VMs, etc). Interestingly, the older version
+  of <code>machinectl</code> on CentOS does not allow us to use the
+  <code>login</code> argument (so you may want to install
+  <code>openssh</code>)... If you&#39;re on Fedora (or a different more
+  up-to-date distro), we can use <code>machinectl login</code> command:
+</p>
+
+<pre><code># machinectl login cool-container</code></pre>
+
+<p>... which will drop us at that familiar PTY prompt.</p>
+
+<p>
+  Since we don&#39;t necessarily want to halt the container to escape from
+  this prompt, there is a panic button to disconnect: hit escape three times
+  within a second (i.e., fast).
+</p>
+
+<hr />
+
+<p>
+  In conclusion, <code>systemd-nspawn</code> is an interesting technology
+  that shows promise.  Its ubiquity through the proliferation of systemd
+  means containers are quite portable, easy to set up, and well-integrated
+  directly into the OS&#39;s init system.
+</p>
+
+<p>
+  Would I use it in production? Probably not. It&#39;s a very green
+  technology and its immaturity is worrisome enough that my sleep cycles
+  would be lessened dramatically by its deployment. For production
+  &quot;containers&quot;, FreeBSD Jails still provide the best security and
+  featureset.
+</p>
+
+<p>
+  For now, <code>systemd-nspawn</code> is staying on my internal
+  infrastructure, running my Atlassian stack, Jenkins, etc.; and it is
+  running those internal services quite well. But until its features are more
+  solidified and someone has verified it is at least moderately secure, it
+  won&#39;t be finding its way to my production stack for a few years
+  yet.
+</p>
