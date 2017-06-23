@@ -2,7 +2,7 @@ module Watashi
   module Controllers
     class StaticController < AbstractController
 
-      ASSET_PATH = File.join(File.dirname(__FILE__), "..", "..", "..", "web", "assets").freeze
+      ASSET_PATH = File.join(Watashi::BASE_DIR, "web", "assets").freeze
 
       def get
         asset_file = File.join(ASSET_PATH, @captures[:name])

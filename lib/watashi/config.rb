@@ -3,7 +3,7 @@ module Watashi
   # `config.yml` (or whatever name is passed to `populate`).
   class Config
 
-    CONFIG_PATH = File.join(File.dirname(__FILE__), "..", "..", "config")
+    CONFIG_PATH = File.join(Watashi::BASE_DIR, "config").freeze
 
     # Loads the config into memory from disk. Called automatically on the first
     # cold-get, but can be called manually to warm up.

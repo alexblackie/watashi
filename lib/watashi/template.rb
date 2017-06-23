@@ -2,7 +2,7 @@ module Watashi
   # Renders ERB templates.
   class Template
 
-    DEFAULT_TEMPLATE_PATH = File.join(File.dirname(__FILE__), "..", "..", "web", "views")
+    DEFAULT_TEMPLATE_PATH = File.join(Watashi::BASE_DIR, "web", "views").freeze
 
     def initialize(template_path: DEFAULT_TEMPLATE_PATH)
       @template_path = template_path
