@@ -23,5 +23,12 @@ RSpec.describe Watashi::Template do
       end
     end
 
+    context "with context" do
+      it "passes to both layout and partial" do
+        result = service.render("test_page", {page_title: "Testing!!"})
+        expect(result.scan(/Testing!!/).size).to eq(2)
+      end
+    end
+
   end
 end

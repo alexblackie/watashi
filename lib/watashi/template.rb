@@ -19,12 +19,11 @@ module Watashi
       path = File.join(@template_path, template + ".erb")
       return nil unless File.exist?(path)
 
-      context.merge!({
-        partial: ERB.new(File.read(path)).result
+      layout_context = context.merge({
+        partial: ERB.new(File.read(path)).result(Watashi::RenderContext.new(context).get_binding)
       })
 
-      render_context = Watashi::RenderContext.new(context)
-      ERB.new(@raw_layout).result(render_context.get_binding)
+      ERB.new(@raw_layout).result(Watashi::RenderContext.new(layout_context).get_binding)
     end
 
   end
