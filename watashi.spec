@@ -12,6 +12,12 @@ Requires: ruby >= 2.4.0
 /usr/bin/getent group watashi || /usr/sbin/groupadd -r watashi
 /usr/bin/getent passwd watashi || /usr/sbin/useradd -r -d /srv/watashi -g watashi -s /sbin/nologin watashi
 
+%postun
+if [ "$1" = "1" ]; then
+  # "1" means upgrade, not uninstall.
+  systemctl restart watashi
+fi
+
 %prep
 bundle install --deployment --binstubs
 tar -cf %{_sourcedir}/watashi.tar \
