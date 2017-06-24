@@ -1,4 +1,10 @@
-<h2><%= page_title %></h2>
-<div class="meta">Posted on <%= date %></div>
+<article class="article article-single">
+  <header>
+    <h1><%= page_title %></h1>
+    <div class="meta">Posted on <%= date %></div>
+  </header>
 
-<%= body %>
+  <div class="article-body">
+    <%= body %>
+  </div>
+</article>
