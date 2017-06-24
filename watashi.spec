@@ -6,6 +6,11 @@ Release:   1%{?dist}
 Summary:   The application that powers alexblackie.com.
 License:   BSD 3-Clause
 BuildArch: x86_64
+Requires: ruby >= 2.4.0
+
+%pre
+/usr/bin/getent group watashi || /usr/sbin/groupadd -r watashi
+/usr/bin/getent passwd watashi || /usr/sbin/useradd -r -d /srv/watashi -g watashi -s /sbin/nologin watashi
 
 %prep
 bundle install --deployment --binstubs
