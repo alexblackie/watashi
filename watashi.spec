@@ -1,7 +1,7 @@
 %define webroot /srv/watashi
 
 Name:      watashi
-Version:   1.0
+Version:   %{version}
 Release:   1%{?dist}
 Summary:   The application that powers alexblackie.com.
 License:   BSD 3-Clause
