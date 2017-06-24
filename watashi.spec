@@ -14,8 +14,8 @@ Requires: ruby >= 2.4.0
 
 %postun
 if [ "$1" = "1" ]; then
-  # "1" means upgrade, not uninstall.
-  systemctl restart watashi
+	# "1" means upgrade, not uninstall.
+	systemctl restart watashi
 fi
 
 %prep
@@ -25,7 +25,7 @@ tar -cf %{_sourcedir}/watashi.tar \
 	--exclude=README.markdown \
 	--exclude=watashi.spec \
 	--exclude=rpmbuild \
-  --exclude=watashi.service \
+	--exclude=watashi.service \
 	../../
 
 %description
