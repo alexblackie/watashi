@@ -6,7 +6,8 @@ module Watashi
         respond(template: "index", context: {
           page_title: "The Internet Sensation&trade;",
           stylesheets: ["home"],
-          articles: Watashi::Domain::Article.catalogue
+          articles: Watashi::Domain::Article.catalogue,
+          body_class: "page-home"
         })
       end
 

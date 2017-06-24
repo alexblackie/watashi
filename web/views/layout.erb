@@ -9,11 +9,19 @@
   <link rel="stylesheet" href="/assets/css/<%= name %>.css" type="text/css">
   <% end %>
 </head>
-<body>
+<body<% if body_class %> class="<%= body_class %>"<% end %>>
 
   <header id="siteHeader">
     <div class="container">
       <h1><a href="/">Alex Blackie</a></h1>
+
+      <nav id="siteNav">
+        <ul>
+          <li id="siteNav-home"><a href="/">Articles</a></li>
+          <li id="siteNav-setup"><a href="/setup">My Setup</a></li>
+          <li id="siteNav-cv"><a href="/cv">My CV</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 

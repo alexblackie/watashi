@@ -60,16 +60,55 @@ pre {
 }
 
 #siteHeader {
+  overflow: hidden;
   border-bottom: 1px solid #BF423F;
   background-color: #F25450;
 }
   #siteHeader h1 {
     margin: 0;
+    float: left;
+    font-size: 2em;
+    line-height: 1.5em;
   }
     #siteHeader h1 a {
       color: white;
       text-decoration: none;
     }
+
+#siteNav {
+  float: right;
+  height: 3em;
+  background: rgba(0,0,0, 0.1);
+  border-radius: 1em;
+}
+  #siteNav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #siteNav li {
+    display: inline-block;
+  }
+  #siteNav a {
+    display: inline-block;
+    height: 3em;
+    padding: 0 2em;
+    border-radius: 1em;
+    text-decoration: none;
+    line-height: 3em;
+    color: rgba(255,255,255, 0.75);
+  }
+    #siteNav a:hover {
+      color: white;
+    }
+
+    .page-home #siteNav-home a,
+    .page-setup #siteNav-setup a,
+    .page-cv #siteNav-cv a {
+      background-color: rgba(0,0,0, 0.1);
+      color: white;
+    }
+
 
 #siteContent {
   background-color: white;
