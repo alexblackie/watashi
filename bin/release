@@ -1,4 +1,14 @@
 #!/bin/sh
 
+# Helper script to create the rpm buildroot and build the package with the
+# right macros and flags.
+#
+# USAGE:
+#
+#         ./bin/release 420
+#
+# Where "420" is the version number to use for the package. This should be
+# incremented every time; the Jenkins build ID is a good one to use.
+
 mkdir -p rpmbuild/{BUILDROOT,BUILD,SOURCES}
-rpmbuild --sign -bb watashi.spec --define "_topdir `pwd`/rpmbuild"
+rpmbuild --sign -bb watashi.spec --define "_topdir `pwd`/rpmbuild"  --define="version $1"
