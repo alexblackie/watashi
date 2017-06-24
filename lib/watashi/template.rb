@@ -26,5 +26,13 @@ module Watashi
       ERB.new(@raw_layout).result(Watashi::RenderContext.new(layout_context).get_binding)
     end
 
+    # Checks if a template exists. Useful for gating before rendering.
+    #
+    # @param template [String] the template name
+    # @return [Boolean]
+    def exist?(template)
+      File.exists?(File.join(DEFAULT_TEMPLATE_PATH, template + ".erb"))
+    end
+
   end
 end

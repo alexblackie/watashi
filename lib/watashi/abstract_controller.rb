@@ -56,6 +56,7 @@ module Watashi
 
     def respond(code: 200, headers: {}, body: "", template: nil, context: {})
       if template
+        return respond_error(:not_found) unless @templates.exist?(template)
         body = @templates.render(template, context)
       end
 
