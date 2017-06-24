@@ -1,0 +1,12 @@
+[Unit]
+Description: Watashi
+
+[Service]
+ExecStart=/srv/watashi/bin/rackup
+User=watashi
+Restart=always
+Environment=WATASHI_ENV=production
+WorkingDirectory=/srv/watashi
+
+[Install]
+WantedBy=multi-user.target

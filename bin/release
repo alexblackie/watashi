@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p rpmbuild/{BUILDROOT,BUILD,SOURCES}
+rpmbuild -bb watashi.spec --define "_topdir `pwd`/rpmbuild"
