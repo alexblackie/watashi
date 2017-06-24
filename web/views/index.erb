@@ -14,11 +14,18 @@
   <div class="column">
     <h2>Things I've Written</h2>
 
-    <ul class="home-post-list">
-      <% articles.each do |article| %>
-        <li><a href="/articles/<%= article.slug %>"><%= article.title %></a> (<%= article.date %>)</li>
-      <% end %>
-    </ul>
+    <ol class="article-list">
+    <% articles.each do |article| %>
+      <li>
+        <a href="/articles/<%= article.slug %>">
+          <div class="article-list-date"><%= article.date %></div>
+          <div class="article-list-title">
+              <%= article.title %></a>
+          </div>
+        </a>
+      </li>
+    <% end %>
+    </ol>
   </div>
 
   <div class="column">

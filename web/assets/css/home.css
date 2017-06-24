@@ -10,7 +10,10 @@
 }
   .home-two-up .column {
     float: left;
-    width: 50%;
+    width: 49%;
+  }
+  .home-two-up .column:last-child {
+    margin-left: 2%;
   }
   .home-two-up .column h2 {
     margin-top: 0;
@@ -28,4 +31,31 @@
   }
   .home-two-up dd {
     margin: 0;
+  }
+
+ol.article-list {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 0;
+  list-style: none;
+}
+  .article-list a {
+    display: block;
+    text-decoration: none;
+  }
+  .article-list li {
+    overflow: hidden;
+    padding: 5px 0;
+    border-bottom: 1px solid gainsboro;
+  }
+
+.article-list-date {
+  float: left;
+  width: 21%;
+  color: #888;
+}
+
+.article-list-title {
+    text-decoration: underline;
   }
