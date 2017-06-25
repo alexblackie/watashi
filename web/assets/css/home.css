@@ -57,5 +57,37 @@ ol.article-list {
 }
 
 .article-list-title {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+
+/*******************************************************************************
+ * Media Queries
+ ******************************************************************************/
+
+@media screen and (max-width: 600px) {
+  .intro {
+    margin: 0 1em;
+    font-size: 1.25em;
   }
+
+  .home-two-up .column,
+  .home-two-up .column:last-child {
+    float: none;
+    width: auto;
+    margin: 2em 1em;
+  }
+
+  .article-list li,
+  .home-two-up dt,
+  .home-two-up dd {
+    padding: 0.75em 0;
+  }
+
+  .article-list-date {
+    width: 30%;
+  }
+  .article-list-title {
+    margin-left: 31%;
+  }
+}
