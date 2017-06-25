@@ -33,7 +33,7 @@ code {
 
 pre {
   padding: 1em;
-  max-height: 10em;
+  max-height: 30em;
   overflow: auto;
   background-color: #e8e8e8;
 }
