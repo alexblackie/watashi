@@ -175,6 +175,10 @@ pre {
     line-height: 1.5em;
   }
 
+  .article-body h2 {
+    margin-top: 2em;
+  }
+
   .article-body figure,
   .article-body .figure {
     margin: 2em -5em;
