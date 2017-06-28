@@ -2,6 +2,7 @@ source "https://rubygems.org/"
 
 gem "rack"
 gem "mimemagic"
+gem "puma"
 
 group :development, :test do
   gem "pry"
