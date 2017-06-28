@@ -6,11 +6,11 @@ Release:   1%{?dist}
 Summary:   The application that powers alexblackie.com.
 License:   BSD 3-Clause
 BuildArch: x86_64
-Requires: ruby >= 2.4.0
+Requires: ruby >= 2.4.0, gcc, gcc-c++, make
 
 %pre
 /usr/bin/getent group watashi || /usr/sbin/groupadd -r watashi
-/usr/bin/getent passwd watashi || /usr/sbin/useradd -r -d /srv/watashi -g watashi -s /sbin/nologin watashi
+/usr/bin/getent passwd watashi || /usr/sbin/useradd -r -d %{webroot} -g watashi -s /sbin/nologin watashi
 
 %postun
 if [ "$1" = "1" ]; then
@@ -18,8 +18,10 @@ if [ "$1" = "1" ]; then
 	systemctl restart watashi
 fi
 
+%post
+cd %{webroot} && /bin/bundle install --local --deployment --without development test
+
 %prep
-bundle install --deployment --binstubs
 tar -cf %{_sourcedir}/watashi.tar \
 	--exclude-vcs \
 	--exclude=README.markdown \
