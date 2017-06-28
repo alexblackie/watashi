@@ -27,8 +27,8 @@ hr {
 }
 
 p code {
-  padding: 1px 3px;
-  background: #e8e8e8;
+  padding: 3px 6px;
+  background: #efefef;
 }
 
 pre {
@@ -36,7 +36,7 @@ pre {
   padding: 1em;
   max-height: 30em;
   overflow: auto;
-  background-color: #e8e8e8;
+  background-color: #efefef;
   line-height: 1.5em;
 }
 
