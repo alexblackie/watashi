@@ -26,17 +26,45 @@ hr {
   background: gainsboro;
 }
 
-code {
+p code {
   padding: 1px 3px;
   background: #e8e8e8;
 }
 
 pre {
+  margin: 1em 0;
   padding: 1em;
   max-height: 30em;
   overflow: auto;
   background-color: #e8e8e8;
+  line-height: 1.5em;
 }
+
+
+/*******************************************************************************
+ * Code Blocks
+ ******************************************************************************/
+
+.code {
+  margin: 1.5em 0;
+}
+  .code pre {
+    margin: 0;
+    padding: 1em;
+  }
+
+.code-title {
+  margin: 1em 0 0 0;
+  padding: 0.5em 1em;
+  background: #f4f4f4;
+  border-bottom: 1px solid gainsboro;
+  font-family: monospace;
+  color: #777;
+}
+  .code-title::before {
+    content: "# ";
+    color: #aaa;
+  }
 
 
 /*******************************************************************************
