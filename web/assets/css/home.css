@@ -42,22 +42,21 @@ ol.article-list {
 }
   .article-list a {
     display: block;
-    text-decoration: none;
-  }
-  .article-list li {
-    overflow: hidden;
     padding: 5px 0;
     border-bottom: 1px solid gainsboro;
+    text-decoration: none;
+  }
+    .article-list a:hover  {
+      background-color: #f0f0f0;
+    }
+  .article-list li {
+    overflow: hidden;
   }
 
 .article-list-date {
   float: left;
   width: 21%;
   color: #888;
-}
-
-.article-list-title {
-  text-decoration: underline;
 }
 
 
