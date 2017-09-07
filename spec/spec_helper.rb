@@ -1,10 +1,13 @@
-ENV["WATASHI_ENV"] ||= "test"
+ENV["YOKUNAI_ENV"] ||= "test"
 
 require "rack/test"
 require "watashi"
 
 def app
-  Watashi::Application.new
+  Watashi::Application.new(
+    route_map: Watashi::ROUTES,
+    base_dir: Watashi::BASE_DIR
+  )
 end
 
 RSpec.configure do |config|

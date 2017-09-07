@@ -1,6 +1,6 @@
 module Watashi
   module Controllers
-    class RootController < AbstractController
+    class RootController < Yokunai::AbstractController
 
       def get
         respond(template: "index", context: {

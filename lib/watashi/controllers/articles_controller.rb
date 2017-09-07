@@ -1,6 +1,6 @@
 module Watashi
   module Controllers
-    class ArticlesController < AbstractController
+    class ArticlesController < Yokunai::AbstractController
 
       def get
         article = Watashi::Domain::Article.find(@captures[:slug])

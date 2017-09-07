@@ -1,7 +1,6 @@
 source "https://rubygems.org/"
 
-gem "rack"
-gem "mimemagic"
+gem "yokunai"
 gem "puma"
 
 group :development, :test do

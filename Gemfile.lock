@@ -27,17 +27,19 @@ GEM
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
     slop (3.6.0)
+    yokunai (0.1.4)
+      mimemagic (~> 0.3)
+      rack (~> 2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  mimemagic
   pry
   puma
-  rack
   rack-test
   rspec
+  yokunai
 
 BUNDLED WITH
-   1.15.1
+   1.15.4
