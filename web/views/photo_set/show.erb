@@ -1,0 +1,17 @@
+<article class="photo-set">
+
+  <% photo_set.photo_urls.each do |url| %>
+    <div class="photo-set-image">
+      <a href="<%= url %>"><img src="<%= url %>" alt="<%= photo_set.title %>"></a>
+    </div>
+  <% end %>
+
+  <div class="photo-set-content">
+    <h1><%= photo_set.title %></h1>
+
+    <div class="photo-set-content-body">
+      <%= photo_set.description %>
+    </div>
+  </div>
+
+</article>

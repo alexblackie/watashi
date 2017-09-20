@@ -133,7 +133,8 @@ pre {
 
     .page-home #siteNav-home a,
     .page-setup #siteNav-setup a,
-    .page-cv #siteNav-cv a {
+    .page-cv #siteNav-cv a,
+    .page-albums #siteNav-photos a {
       border-color: rgba(0,0,0, 0.05);
       color: #444;
     }

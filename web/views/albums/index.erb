@@ -1,0 +1,10 @@
+<h1><%= page_title %></h1>
+
+<div class="album-tiles">
+  <% albums.each do |a| %>
+    <a class="album-tile" href="/albums/<%= a.id %>">
+      <figure><img src="<%= a.cover_photo_url %>" alt="<%= a.title %>"></figure>
+      <div class="album-tile-title"><%= a.title %></div>
+    </a>
+  <% end %>
+</div>

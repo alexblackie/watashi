@@ -34,4 +34,10 @@ RSpec.configure do |config|
   end
 
   Kernel.srand config.seed
+
+  config.before(:suite) do
+    # call the app, just so we know it's booted and the config is populated,
+    # hooks have run, etc.
+    app
+  end
 end
