@@ -8,18 +8,26 @@
 }
 
 .album-tile {
-  display: flex;
   color: inherit;
   text-decoration: none;
-
-  width: 100%;
-  margin: 5px;
+  max-width: 32%;
+  margin: 1%;
   box-shadow: 0 1px 3px rgba(0,0,0, 0.2);
 }
 
+.album-tile figure {
+  margin: 0;
+  display:;
+}
+.album-tile figure img {
+  display: block;
+}
+
 .album-tile-title {
-  padding: 1em;
+  padding: 1em 0 0.8em;
   text-align: center;
+  font-size: 1.25em;
+  line-height: 1em;
 }
 
 
