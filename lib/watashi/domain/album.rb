@@ -20,7 +20,7 @@ module Watashi
       #
       # @return [String]
       def cover_photo_url
-        "#{ Yokunai::Config.get("cdn_base") }/albums/#{ @id }.jpg"
+        "#{ Yokunai::Config.get("cdn_base") }/photos/#{ @id }.jpg"
       end
 
     end
