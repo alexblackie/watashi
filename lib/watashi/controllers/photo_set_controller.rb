@@ -11,7 +11,7 @@ module Watashi
         respond(template: "photo_set/show", context: {
           page_title: "#{ photo_set.title } - #{ album.title }",
           stylesheets: ["albums"],
-          javascripts: ["masonry.min", "albums"],
+          javascripts: ["imagesloaded.min", "masonry.min", "albums"],
           body_class: "page-photoset",
           album: album,
           photo_set: photo_set
