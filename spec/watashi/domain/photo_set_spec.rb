@@ -2,10 +2,6 @@ require "spec_helper"
 
 RSpec.describe Watashi::Domain::PhotoSet do
 
-  before do
-    Yokunai::Config.populate("fixture")
-  end
-
   let(:entity) { described_class.new(data) }
   let(:data) {{
     "title" => "Mein Fotos",

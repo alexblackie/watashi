@@ -2,10 +2,6 @@ require "spec_helper"
 
 RSpec.describe Watashi::Domain::Album do
 
-  before do
-    Yokunai::Config.populate("fixture")
-  end
-
   let!(:album) { described_class.new(data) }
   let(:data) {{
     "title" => "An example album",
