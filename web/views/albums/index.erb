@@ -1,10 +1,17 @@
 <h1><%= page_title %></h1>
 
-<div class="album-tiles">
+<div class="albums">
   <% albums.each do |a| %>
-    <a class="album-tile" href="/albums/<%= a.id %>">
+    <div class="album">
       <figure><img src="<%= a.cover_photo_url %>" alt="<%= a.title %>"></figure>
-      <div class="album-tile-title"><%= a.title %></div>
-    </a>
+      <div class="album-data">
+        <h2 class="album-title"><%= a.title %></h2>
+        <ul class="album-photosets">
+          <% a.photo_sets.each do |ps| %>
+            <li><a href="/albums/<%= a.id %>/<%= ps.id %>"><%= ps.title %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   <% end %>
 </div>

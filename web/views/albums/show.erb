@@ -1,9 +1,0 @@
-<h2><%= page_title %></h2>
-
-<div class="photosets">
-  <% album.photo_sets.each do |ps| %>
-    <div class="photoset">
-      <a href="/albums/<%= album.id %>/<%= ps.id %>"><%= ps.title %></a>
-    </div>
-  <% end %>
-</div>

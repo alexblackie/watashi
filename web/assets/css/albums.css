@@ -1,33 +1,24 @@
 /*******************************************************************************
  * Albums
  ******************************************************************************/
-.album-tiles {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-}
-
-.album-tile {
-  color: inherit;
-  text-decoration: none;
-  max-width: 32%;
+.album {
+  overflow: hidden;
   margin: 1%;
   box-shadow: 0 1px 3px rgba(0,0,0, 0.2);
 }
 
-.album-tile figure {
+.album figure {
+  float: left;
   margin: 0;
-  display:;
+  max-width: 50%;
 }
-.album-tile figure img {
+.album figure img {
   display: block;
 }
 
-.album-tile-title {
-  padding: 1em 0 0.8em;
-  text-align: center;
-  font-size: 1.25em;
-  line-height: 1em;
+.album-data {
+  float: left;
+  margin-left: 2em;
 }
 
 
