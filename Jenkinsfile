@@ -11,7 +11,7 @@ pipeline {
 
       environment {
         GPG_KEY_DATA = credentials("signing_key_2017")
-        GPG_OWNERTRUST = credentials("signing_key_trust")
+        GPG_OWNERTRUST = credentials("signing_key_ownertrust")
       }
 
       steps {
