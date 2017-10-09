@@ -14,4 +14,4 @@ bundle package
 bundle install --binstubs --deployment --without development test
 
 mkdir -p rpmbuild/{BUILDROOT,BUILD,SOURCES}
-rpmbuild --sign -bb watashi.spec --define "_topdir `pwd`/rpmbuild"  --define="version $1"
+rpmbuild -bb watashi.spec --define "_topdir `pwd`/rpmbuild"  --define="version $1"
