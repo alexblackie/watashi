@@ -18,7 +18,11 @@ pipeline {
       // could write more software to try and solve this, but not sure if I
       // want that.
 
-      steps { sh "/bin/true" }
+      steps {
+        sshagent credentials("jenkins-20170909")
+        sh "ssh deploy@web01.he-fre1.blackieops.net sudo /usr/local/bin/blackieops-update watashi"
+        sh "ssh deploy@web02.he-fre1.blackieops.net sudo /usr/local/bin/blackieops-update watashi"
+      }
     }
   }
 }
