@@ -14,7 +14,7 @@ pipeline {
         sh "./bin/release $BUILD_ID"
 
         // Load the deploy ssh key
-        sshagent credentials("jenkins-20170909")
+        sshagent { credentials("jenkins-20170909") }
 
         // Upload RPM and update repo
         sh "scp rpmbuild/RPMS/x86_64/watashi-*.rpm deploy@repo.blackieops.com:inbox/"
