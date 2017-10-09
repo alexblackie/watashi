@@ -4,7 +4,7 @@ pipeline {
 
   stages {
     stage("Test") {
-      steps { sh "./ci" }
+      steps { sh "./.ci" }
     }
 
     stage("Build") {
