@@ -38,11 +38,21 @@
 
 .photo-set-content {
   box-sizing: border-box;
-  min-width: 64%;
+  min-width: 65%;
   max-width: 65%;
   padding: 2em;
   background: #f3f3f3;
+  font-size: 1.25em;
+  line-height: 1.5em;
 }
   .photo-set-content h1 {
     font-size: 2.5em;
+  }
+  .photo-set-content blockquote {
+    margin: 1em -2em;
+    padding: 1em 3em;
+    border-left: 8px solid #ccc;
+    font-style: italic;
+    background-color: #e8e8e8;
+    color: #666;
   }
