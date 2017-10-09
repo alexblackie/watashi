@@ -1,5 +1,4 @@
 .bundle
 /spec/examples.txt
-/config/*.yml
 /bin
 /rpmbuild
