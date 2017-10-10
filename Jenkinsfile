@@ -16,8 +16,7 @@ pipeline {
         // Load the deploy ssh key
         sshagent(credentials: ["jenkins-20170909"]) {
           // Upload RPM and update repo
-          sh "ssh-keyscan -H repo.blackieops.com >> ~/.ssh/known_hosts"
-          sh "scp rpmbuild/RPMS/x86_64/watashi-*.rpm deploy@repo.blackieops.com:inbox/"
+          sh "scp -o StrictHostKeyChecking=no rpmbuild/RPMS/x86_64/watashi-*.rpm deploy@repo.blackieops.com:inbox/"
           sh "rm -v rpmbuild/RPMS/x86_64/watashi-*.rpm"
         }
       }
