@@ -23,7 +23,7 @@ pipeline {
 
     stage("Clean") {
       when { branch "master" }
-      sh "rm -v rpmbuild/RPMS/x86_64/watashi-*.rpm"
+      steps { sh "rm -v rpmbuild/RPMS/x86_64/watashi-*.rpm" }
     }
   }
 }
