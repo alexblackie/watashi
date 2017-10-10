@@ -1,10 +1,12 @@
-# 私 [![Build Status](https://ci.blackieops.com/job/watashi-tests/badge/icon)](https://ci.blackieops.com/job/watashi-tests)
+# 私
 
-This is a WIP attempt to rebuild my website with more software for some reason.
+This is the application that runs [alexblackie dot com](https://www.alexblackie.com).
 
 ## Development
 
-This is a bare Rack application. Ensure you have the latest Ruby and Bundler.
+This is a Ruby application, using my own web framework,
+[Yokunai](https://github.com/alexblackie/yokunai). Ensure you have the latest
+Ruby and Bundler.
 
 ```
 $ bundle
