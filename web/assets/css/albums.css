@@ -55,6 +55,16 @@
     background-color: #e8e8e8;
     color: #666;
   }
+.photo-set-publish-date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em 1em 0.5em 1.25em;
+  font-size: 0.75em;
+  background: #e8e8e8;
+  color: #666;
+  border-bottom-left-radius: 10px;
+}
 
 /*******************************************************************************
  * Loading spinner

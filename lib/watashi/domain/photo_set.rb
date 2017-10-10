@@ -4,7 +4,7 @@ module Watashi
 
       PATH_KEY = "photo_sets".freeze
 
-      attr_reader :id, :title, :description, :photos, :album_id
+      attr_reader :id, :title, :description, :photos, :album_id, :date
 
       # @param data [Hash] the yaml data hash
       def initialize(data)
@@ -13,6 +13,7 @@ module Watashi
         @description = data["description"]
         @photos = data["photos"]
         @album_id = data["album_id"]
+        @date = data["date"]
       end
 
       # Return FQDN URLs to each photo ID listed in the YAML.
