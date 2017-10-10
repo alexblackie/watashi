@@ -45,6 +45,7 @@
   line-height: 1.5em;
 }
   .photo-set-content h1 {
+    line-height: 1.1em;
     font-size: 2.5em;
   }
   .photo-set-content blockquote {
@@ -55,6 +56,7 @@
     background-color: #e8e8e8;
     color: #666;
   }
+
 .photo-set-publish-date {
   position: absolute;
   top: 0;
@@ -64,6 +66,13 @@
   background: #e8e8e8;
   color: #666;
   border-bottom-left-radius: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .photo-set-content {
+    min-width: 99%;
+    font-size: 1rem;
+  }
 }
 
 /*******************************************************************************
