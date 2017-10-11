@@ -77,7 +77,7 @@ ol.article-list {
     margin: 2em 1em;
   }
 
-  .article-list li,
+  .article-list li a,
   .home-two-up dt,
   .home-two-up dd {
     padding: 0.75em 0;

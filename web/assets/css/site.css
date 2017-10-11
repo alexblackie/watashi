@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: "Overpass",  sans-serif;
-  background-color: #f0f0f0;
+  background-color: #f1f1f1;
   color: #444;
 }
 
@@ -136,6 +136,7 @@ pre {
     .page-cv #siteNav-cv a,
     .page-albums #siteNav-photos a {
       border-color: rgba(0,0,0, 0.05);
+      background-color: #fafafa;
       color: #444;
     }
 
@@ -206,12 +207,14 @@ pre {
   }
 
   #siteNav {
-    margin: 2em 0 0 0;
+    margin: 1em 0 0 0;
     float: none;
     height: auto;
   }
   #siteNav a {
+    margin: 0.5em 0;
     padding: 0 1.25em;
+    border-color: #e3e3e3;
   }
 
   .article header h1 {
@@ -228,4 +231,8 @@ pre {
     margin-right: -1em;
   }
 
+  #siteFooter {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
