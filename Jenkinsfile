@@ -17,6 +17,7 @@ pipeline {
         sshagent(credentials: ["jenkins-20170909"]) {
           // Upload RPM and update repo
           sh "scp -o StrictHostKeyChecking=no rpmbuild/RPMS/x86_64/watashi-*.rpm deploy@repo.blackieops.com:inbox/"
+          build job: "rpm-sign-trigger", wait: false
         }
       }
     }
