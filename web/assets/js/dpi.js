@@ -7,8 +7,8 @@
   var unitsElem = document.getElementById("units");
   unitsElem.addEventListener("change", function () {
     var diag = document.getElementById("diag");
-    if (unitsElem.value === "mm") { diag.value = diag.value * 25.4 }
-    if (unitsElem.value === "in") { diag.value = diag.value / 25.4 }
+    if (unitsElem.value === "mm") { diag.value = Math.round(diag.value * 25.4) }
+    if (unitsElem.value === "in") { diag.value = Math.round(diag.value / 25.4) }
   })
 
 
