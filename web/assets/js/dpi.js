@@ -2,6 +2,16 @@
 
   var form = document.getElementById("dpiForm");
 
+  // Automatically convert mm to in when you change the box.
+  // Doesn't actually affect any of the math, just a nice UX thing.
+  var unitsElem = document.getElementById("units");
+  unitsElem.addEventListener("change", function () {
+    var diag = document.getElementById("diag");
+    if (unitsElem.value === "mm") { diag.value = diag.value * 25.4 }
+    if (unitsElem.value === "in") { diag.value = diag.value / 25.4 }
+  })
+
+
   form.onsubmit = function (e) {
     e.preventDefault();
 
