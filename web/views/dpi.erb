@@ -1,0 +1,46 @@
+<h1><%= page_title %></h1>
+
+<p class="intro">
+  I did a bunch of math on the back of a receipt that was lying on my desk to
+  figure this out for my laptop, and figured I'd make a little app to do it for
+  me so I wouldn't have to do work again.
+</p>
+
+
+<hr>
+
+<form id="dpiForm">
+
+  <div class="field">
+    <label for="prop">Proportion</label>
+    <input type="text" name="propX" id="propX" size="2" value="16">
+    /
+    <input type="text" name="propY" id="propY" size="2" value="9">
+  </div>
+
+  <div class="field">
+    <label for="diag">Diagonal Size</label>
+    <input type="text" name="diag" id="diag" size="4" value="356">
+    <select name="units" id="units">
+      <option>mm</option>
+      <option>in</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="resx">Resolution (Horizontal)</label>
+    <input type="number" name="resx" id="resx" size="4" value="1920">
+  </div>
+
+  <div class="field">
+    <label for="resy">Resolution (Vertical)</label>
+    <input type="number" name="resy" id="resy" size="4" value="1080">
+  </div>
+
+  <div class="actions">
+    <button>Calculate DPI</button>
+  </div>
+
+</form>
+
+<div id="dpiResult"></div>

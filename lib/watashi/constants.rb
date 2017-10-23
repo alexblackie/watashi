@@ -11,6 +11,7 @@ module Watashi
     %r{^/albums/?$} => { class: "Watashi::Controllers::AlbumsController", methods: ["GET"]},
     %r{^/albums/(?<album_id>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/(?<id>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/?$} => {class: "Watashi::Controllers::PhotoSetController", methods: ["GET"]},
 
+    %r{^/dpi/?$} => { class: "Watashi::Controllers::DpiAppController", methods: ["GET"] },
 
     %r{^/(?<slug>.+)$} => {class: "Watashi::Controllers::PagesController", methods: ["GET"]}
   }.freeze
