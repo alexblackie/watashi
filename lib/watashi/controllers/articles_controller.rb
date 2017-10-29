@@ -3,7 +3,10 @@ module Watashi
     class ArticlesController < Yokunai::AbstractController
 
       def get
-        article = Watashi::Domain::Article.find(@captures[:slug])
+        article = Watashi::Services::DataBag
+          .new(model: Watashi::Domain::Article)
+          .one(@captures[:slug])
+
         return respond_error(:not_found) unless article
 
         respond(template: "article_show", context: {
