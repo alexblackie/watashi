@@ -21,6 +21,48 @@
   margin-left: 2em;
 }
 
+@media screen and (max-width: 640px) {
+  .album {
+    margin: 1em;
+    padding-bottom: 1em;
+  }
+
+  .album figure img {
+    height: 80px;
+    width: auto;
+  }
+
+  .album-data h2 {
+    margin: 0;
+    height: 80px;
+    padding-right: 1em;
+    text-align: right;
+    line-height: 80px;
+    background-color: #f3f3f3;
+  }
+
+  .album figure {
+    max-width: 40%;
+  }
+
+  .album-data {
+    float: none;
+    width: auto;
+    margin-left: 1em;
+  }
+
+  .album-data ul {
+    margin: 0;
+    padding: 1em;
+  }
+
+  .album-data li {
+    float: left;
+    width: 50%;
+    margin: 0.5em 0;
+  }
+}
+
 
 /*******************************************************************************
  * Photo Sets
