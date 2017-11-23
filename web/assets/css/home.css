@@ -1,8 +1,8 @@
 .intro {
-  margin: 0 3em 3em;
+  margin-bottom: 3em;
+  padding: 0 2em;
   font-size: 1.5em;
-  line-height: 1.5em;
-  color: black;
+  line-height: 1.6em;
 }
 
 .home-two-up {
