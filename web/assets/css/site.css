@@ -172,10 +172,15 @@ pre {
 
 .article-body {
   padding: 2em 5em;
+  font-size: 1.15rem;
 }
   .article-body p,
   .article-body li {
-    line-height: 1.5em;
+    line-height: 1.7em;
+  }
+
+  .article-body p {
+    margin: 0 0 2em 0;
   }
 
   .article-body h2 {
