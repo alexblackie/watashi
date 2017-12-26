@@ -198,6 +198,16 @@ pre {
  * Media Queries
  ******************************************************************************/
 
+@media screen and (min-width: 601px) and (max-width: 1152px) {
+  body {
+    font-size: 0.8em;
+  }
+
+  .container {
+    max-width: 95%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .container {
     max-width: 100%;
