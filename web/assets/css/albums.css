@@ -68,13 +68,17 @@
  * Photo Sets
  ******************************************************************************/
 .page-photoset #siteContent {
-  background: #363636;
+  background: #26323b;
 }
 
 .photo-set-image,
 .photo-set-content {
   max-width: 32%;
   margin: 0.5%;
+}
+
+.photo-set-image a {
+  border: none;
 }
 
 .photo-set-content {

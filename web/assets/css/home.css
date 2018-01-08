@@ -1,20 +1,65 @@
+body {
+  overflow-x: hidden;
+}
+
+#siteHeader {
+  border: none;
+  position: relative;
+  z-index: 8192;
+}
+
+#siteContent {
+  padding: 0;
+}
+
 .intro {
-  margin-bottom: 3em;
-  padding: 0 2em;
-  font-size: 1.5em;
+  position: relative;
+  padding: 2.5em 0 4em;
+  color: #bababa;
+  font-size: 1.25em;
+  font-family: "Source Code Pro", monospace;
   line-height: 1.6em;
 }
+  .intro p {
+    position: relative;
+    z-index: 8192;
+    margin: 0 0 0 3em;
+  }
+  .intro a {
+    color: #3dd3b3;
+  }
+    .intro a:hover {
+      color: #d33d5d;
+    }
+  .intro .intro-lead {
+    margin: 0 0 0.5em;
+  }
+  .intro .intro-lead::before {
+    content: ">_";
+    color: #fff;
+    font-size: 2em;
+    line-height: 0;
+  }
+  .intro::after {
+    content: "";
+    position: absolute;
+    top: -100em;
+    bottom: 0;
+    left: -100em;
+    right: -100em;
+    z-index: 1024;
+    display: block;
+    background-color: #26323b;
+    transform: rotate(-2.5deg);
+  }
 
 .home-two-up {
   overflow: hidden;
+  margin-top: -10em;
 }
-  .home-two-up .column {
-    float: left;
-    width: 49%;
-  }
-  .home-two-up .column:last-child {
-    margin-left: 2%;
-  }
+.home-two-up .column {
+  box-sizing: border-box;
+}
   .home-two-up .column h2 {
     margin-top: 0;
   }
@@ -22,7 +67,7 @@
   .home-two-up dt,
   .home-two-up dd {
     padding: 5px;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 1px solid #f3f3f3;
   }
   .home-two-up dt {
     float: left;
@@ -32,6 +77,19 @@
   .home-two-up dd {
     margin: 0;
   }
+
+.home-articles {
+  float: left;
+  width: 60%;
+  padding: 14em 4em 4em;
+  background-color: #efefef;
+}
+
+.home-contact {
+  float: left;
+  width: 40%;
+  padding: 13em 0 0 2em;
+}
 
 ol.article-list {
   margin: 0;
@@ -43,12 +101,9 @@ ol.article-list {
   .article-list a {
     display: block;
     padding: 5px 0;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 1px solid #e3e3e3;
     text-decoration: none;
   }
-    .article-list a:hover  {
-      background-color: #f0f0f0;
-    }
   .article-list li {
     overflow: hidden;
   }
@@ -64,17 +119,33 @@ ol.article-list {
  * Media Queries
  ******************************************************************************/
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 880px) {
   .intro {
-    margin: 0 1em;
-    font-size: 1.25em;
+    font-size: 1em;
+    padding: 0 1em 3em;
   }
+    .intro .intro-lead {
+      position: relative;
+    }
+      .intro .intro-lead::before {
+        display: none;
+      }
 
-  .home-two-up .column,
-  .home-two-up .column:last-child {
+    .intro p {
+      margin-left: 0;
+    }
+
+  .home-two-up .column {
     float: none;
     width: auto;
-    margin: 2em 1em;
+  }
+
+  .home-articles {
+    padding: 13em 0.5em 1em;
+  }
+
+  .home-contact {
+    padding-top: 3em;
   }
 
   .article-list li a,

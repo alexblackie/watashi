@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title><%= page_title %> | Alex Blackie</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass:400,700" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass:400,700|Source+Code+Pro:400,700" type="text/css">
   <link rel="stylesheet" href="/assets/css/site.css" type="text/css">
   <% (stylesheets || []).each do |name| %>
   <link rel="stylesheet" href="/assets/css/<%= name %>.css" type="text/css">
@@ -27,9 +27,9 @@
   </header>
 
   <div id="siteContent">
-    <div class="container">
+    <% unless full_width %><div class="container"><% end %>
       <%= partial %>
-    </div>
+    <% unless full_width %></div><% end %>
   </div>
 
   <footer id="siteFooter">

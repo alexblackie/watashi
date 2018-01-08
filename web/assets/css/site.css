@@ -5,15 +5,18 @@
 body {
   margin: 0;
   font-family: "Overpass",  sans-serif;
-  background-color: #f1f1f1;
+  background-color: #26323b;
   color: #444;
 }
 
 a {
-  color: #4E74BD;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #3dd3b3;
 }
   a:hover {
-    color: black;
+    color: #d33d5d;
+    border-color: #d33d5d;
   }
 
 img {
@@ -92,7 +95,7 @@ pre {
 
 #siteHeader {
   overflow: hidden;
-  border-bottom: 1px solid gainsboro;
+  background-color: #26323b;
 }
   #siteHeader h1 {
     margin: 0;
@@ -100,10 +103,13 @@ pre {
     font-size: 2em;
     line-height: 1.5em;
   }
-    #siteHeader h1 a {
-      color: #444;
-      text-decoration: none;
+    #siteHeader a {
+      color: rgba(255,255,255, 0.6);
+      border: none;
     }
+      #siteHeader a:hover {
+        color: #bababa;
+      }
 
 #siteNav {
   float: right;
@@ -121,32 +127,24 @@ pre {
     display: inline-block;
     height: 2.5em;
     padding: 0 2em;
-    border-radius: 1em;
-    text-decoration: none;
+    border-radius: 1em 0;
     line-height: 2.5em;
-    color: rgba(0,0,0, 0.4);
-    border: 2px solid transparent;
   }
-    #siteNav a:hover {
-      color: #444;
-    }
 
     .page-home #siteNav-home a,
     .page-setup #siteNav-setup a,
     .page-cv #siteNav-cv a,
     .page-albums #siteNav-photos a {
-      border-color: rgba(0,0,0, 0.05);
-      background-color: #fafafa;
-      color: #444;
+      background-color: rgba(255,255,255, 0.1);
+      color: white;
     }
-
 
 #siteContent {
   background-color: white;
 }
 
 #siteFooter {
-  border-top: 1px solid gainsboro;
+  color: #bababa;
   line-height: 1.5em;
 }
 
@@ -171,12 +169,12 @@ pre {
   }
 
 .article-body {
-  padding: 2em 5em;
-  font-size: 1.15rem;
+  padding: 2em 3em;
+  font-size: 1.25rem;
 }
   .article-body p,
   .article-body li {
-    line-height: 1.7em;
+    line-height: 1.6em;
   }
 
   .article-body p {
@@ -192,23 +190,17 @@ pre {
     margin: 2em -5em;
     text-align: center;
   }
+    .article-body figure a,
+    .article-body .figure a {
+      border: none;
+    }
 
 
 /*******************************************************************************
  * Media Queries
  ******************************************************************************/
 
-@media screen and (min-width: 601px) and (max-width: 1152px) {
-  body {
-    font-size: 0.8em;
-  }
-
-  .container {
-    max-width: 95%;
-  }
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .container {
     max-width: 100%;
   }
@@ -229,7 +221,6 @@ pre {
   #siteNav a {
     margin: 0.5em 0;
     padding: 0 1.25em;
-    border-color: #e3e3e3;
   }
 
   .article header h1 {
@@ -238,6 +229,7 @@ pre {
 
   .article-body {
     padding: 2em 1em;
+    font-size: 1.15em;
   }
 
   .article-body figure,

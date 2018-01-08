@@ -10,7 +10,8 @@ module Watashi
           page_title: "The Internet Sensation&trade;",
           stylesheets: ["home"],
           articles: articles,
-          body_class: "page-home"
+          body_class: "page-home",
+          full_width: true
         })
       end
 

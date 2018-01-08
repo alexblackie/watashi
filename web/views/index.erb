@@ -1,50 +1,56 @@
 <div class="intro">
-  <p>
-    <strong>I&rsquo;m a programmer &amp; sysadmin living in Montréal, Québec, Canada.</strong>
-    <br>
-    I work as an API Developer and DevOps Lead for <a href="https://www.getflow.com/">Flow</a>
-    and am the founder of <a href="https://www.blackieops.com">BlackieOps</a>.
-    I write a lot of Elixir, Ruby, and Ansible. My free time is mainly consumed
-    with caring for my growing collection of servers or playing the drums.
-  </p>
+  <div class="container">
+    <p class="intro-lead">
+      <strong>I&rsquo;m a programmer &amp; sysadmin living in Montréal, Québec, Canada.</strong>
+    </p>
+
+    <p>
+      I work as an API Developer and DevOps Lead for <a href="https://www.getflow.com/">Flow</a>
+      and am the founder of <a href="https://www.blackieops.com">BlackieOps</a>.
+      I write a lot of Elixir, Ruby, and Ansible. My free time is mainly consumed
+      with caring for my growing collection of servers or playing the drums.
+    </p>
+  </div>
 </div>
 
-<div class="home-two-up">
-  <div class="column">
-    <h2>Things I've Written</h2>
+<div class="container">
+  <div class="home-two-up">
+    <div class="column home-articles">
+      <h2>Things I've Written</h2>
 
-    <ol class="article-list">
-    <% articles.each do |article| %>
-      <li>
-        <a href="/articles/<%= article.slug %>">
-          <div class="article-list-date"><%= article.date %></div>
-          <div class="article-list-title">
-              <%= article.title %>
-          </div>
-        </a>
-      </li>
-    <% end %>
-    </ol>
-  </div>
+      <ol class="article-list">
+      <% articles.each do |article| %>
+        <li>
+          <a href="/articles/<%= article.slug %>">
+            <div class="article-list-date"><%= article.date %></div>
+            <div class="article-list-title">
+                <%= article.title %>
+            </div>
+          </a>
+        </li>
+      <% end %>
+      </ol>
+    </div>
 
-  <div class="column">
-    <h2>Where I am</h2>
+    <div class="column home-contact">
+      <h2>Where I am</h2>
 
-    <dl>
-      <dt>Twitter</dt>
-      <dd><a href="https://twitter.com/alexblackie">@alexblackie</a></dd>
+      <dl>
+        <dt>Twitter</dt>
+        <dd><a href="https://twitter.com/alexblackie">@alexblackie</a></dd>
 
-      <dt>Github</dt>
-      <dd><a href="https://github.com/alexblackie">@alexblackie</a></dd>
+        <dt>Github</dt>
+        <dd><a href="https://github.com/alexblackie">@alexblackie</a></dd>
 
-      <dt>Instagram</dt>
-      <dd><a href="https://www.instagram.com/thealexblackie/">@thealexblackie</a></dd>
+        <dt>Instagram</dt>
+        <dd><a href="https://www.instagram.com/thealexblackie/">@thealexblackie</a></dd>
 
-      <dt>Email</dt>
-      <dd><a href="mailto:alex@alexblackie.com">alex@alexblackie.com</a></dd>
+        <dt>Email</dt>
+        <dd><a href="mailto:alex@alexblackie.com">alex@alexblackie.com</a></dd>
 
-      <dt>Keybase</dt>
-      <dd><a href="https://keybase.io/alexblackie">@alexblackie</a></dd>
-    </dl>
+        <dt>Keybase</dt>
+        <dd><a href="https://keybase.io/alexblackie">@alexblackie</a></dd>
+      </dl>
+    </div>
   </div>
 </div>
