@@ -18,11 +18,23 @@ module Watashi
       # Return model instances for all entries in the data bag.
       #
       # @param sort [Symbol] call this method and use its return value to sort
+      # @param per_page [Integer] Number of items to return
+      # @param page [Integer] Number of items to skip
       # @return [Array] list of instances of the given model
-      def all(sort: :id)
-        Dir.glob(File.join(@base_dir, "*.yml")).map do |f|
-          @model.new(read_yaml(f))
-        end.sort{|lhs, rhs| lhs.public_send(sort) <=> rhs.public_send(sort) }
+      def all(sort: :id, per_page: 10, page: 0)
+        per_page = 1 if per_page <= 0
+        offset = 0
+        offset = page * per_page if page > 0
+        next_offset = offset + (per_page - 1)
+
+        return [] if page > total_pages(per_page: per_page)
+
+        results = get_all()
+        .sort{|lhs, rhs| lhs.public_send(sort) <=> rhs.public_send(sort) }
+        .reverse
+        .slice(offset..next_offset)
+
+        results ? results : []
       end
 
       # Find a single record in the data bag.
@@ -35,6 +47,11 @@ module Watashi
         @model.new(read_yaml(path))
       end
 
+      # @param per_page [Integer] Total pages, given per_page number of pages
+      def total_pages(per_page:)
+        (get_all().size / per_page).round
+      end
+
       private
 
       def read_yaml(file)
@@ -42,6 +59,12 @@ module Watashi
           "id" => File.basename(file).gsub(/\.yml/, ""),
           "filename" => file
         })
+      end
+
+      def get_all
+        @entities ||= Dir
+        .glob(File.join(@base_dir, "*.yml"))
+        .map{ |f| @model.new(read_yaml(f)) }
       end
 
     end

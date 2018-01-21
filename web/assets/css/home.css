@@ -114,6 +114,17 @@ ol.article-list {
   color: #888;
 }
 
+.article-list-pagination {
+  overflow: auto;
+  padding-top: 1em;
+}
+.article-list-pagination-next {
+  float: right;
+}
+.article-list-pagination-previous {
+  float: left;
+}
+
 
 /*******************************************************************************
  * Media Queries

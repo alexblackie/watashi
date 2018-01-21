@@ -30,6 +30,14 @@
         </li>
       <% end %>
       </ol>
+      <nav class="article-list-pagination">
+        <% if (current_page - 1) >= 0 %>
+          <a class="article-list-pagination-previous" href="?page=<%= current_page - 1 %>">&larr; Newer</a>
+        <% end %>
+        <% if (current_page + 1) <= total_pages %>
+          <a class="article-list-pagination-next"  href="?page=<%= current_page + 1 %>">Older &rarr;</a>
+        <% end %>
+      </nav>
     </div>
 
     <div class="column home-contact">
