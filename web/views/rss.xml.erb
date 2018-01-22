@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alex Blackie's Blog</title>
+    <link>https://www.alexblackie.com/</link>
+    <pubDate><%= Time.now.strftime("%a, %d %b %Y %H:%M:%S UT") %></pubDate>
+    <description>A RSS feed for all my published articles.</description>
+    <language>en-ca</language>
+    <atom:link href="https://www.alexblackie.com/rss.xml" rel="self" type="application/rss+xml" />
+
+    <% articles.each do |article| %>
+      <item>
+        <title><%= article.title %></title>
+        <link>https://www.alexblackie.com/articles/<%= article.slug %></link>
+        <guid>https://www.alexblackie.com/articles/<%= article.slug %></guid>
+        <pubDate><%= article.date.strftime("%a, %d %b %Y %H:%M:%S GMT") %></pubDate>
+        <author>alex@alexblackie.com (Alex Blackie)</author>
+        <description></description>
+        <content:encoded><![CDATA[
+          <%= article.content %>
+        ]]></content:encoded>
+      </item>
+    <% end %>
+
+  </channel>
+</rss>

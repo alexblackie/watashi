@@ -8,6 +8,7 @@
   <% (stylesheets || []).each do |name| %>
   <link rel="stylesheet" href="/assets/css/<%= name %>.css" type="text/css">
   <% end %>
+  <link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/rss.xml"/>
 </head>
 <body<% if body_class %> class="<%= body_class %>"<% end %>>
 
