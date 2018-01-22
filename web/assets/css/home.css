@@ -84,6 +84,23 @@ body {
   padding: 14em 4em 4em;
   background-color: #efefef;
 }
+  .home-articles header {
+    overflow: hidden;
+  }
+  .home-articles h2 {
+    float: left;
+  }
+.home-articles-rss {
+  float: right;
+  border: none;
+}
+  .home-articles-rss svg {
+    width: 24px;
+    height: 24px;
+  }
+  .home-articles-rss:hover svg path {
+    fill: #d33d5d;
+  }
 
 .home-contact {
   float: left;
