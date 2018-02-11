@@ -1,0 +1,57 @@
+section {
+  overflow: hidden;
+  padding: 2em;
+  border-bottom: 1px solid gainsboro;
+  font-size: 1.25em;
+  line-height: 1.5em;
+}
+  section:last-child {
+    border-bottom-width: 0;
+  }
+
+.about-intro {
+  display: flex;
+}
+.about-intro figure {
+  margin: 0;
+  width: 40%;
+}
+.about-intro div {
+  padding-left: 2em;
+  width: 60%;
+}
+
+.about-skillz > div ul {
+  font-size: 0.9em;
+}
+
+.about-skillz-me,
+.about-skillz-past {
+  margin-top: 2em;
+}
+
+.about-history {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.timeline {
+  position: relative;
+  padding: 1em 2em 1em 3.5em;
+  margin-left: 2em;
+  border-left: 2px solid #eee;
+}
+  .timeline-step {
+    margin: 2em 0;
+  }
+    .timeline-step .date {
+      position: absolute;
+      left: 0;
+      padding: 0.5em 1em;
+      border: 1px solid gainsboro;
+      border-radius: 5px 0;
+      box-shadow: 1px 1px 3px rgba(0,0,0, 0.1);
+      background: white;
+      font-size: 0.75em;
+      line-height: 1em;
+      transform: translateX(-50%) translateY(-2px);
+    }

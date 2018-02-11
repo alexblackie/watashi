@@ -140,7 +140,8 @@ pre {
 
     .page-home #siteNav-home a,
     .page-setup #siteNav-setup a,
-    .page-albums #siteNav-photos a {
+    .page-albums #siteNav-photos a,
+    .page-about #siteNav-about a {
       background-color: rgba(255,255,255, 0.1);
       color: white;
     }
@@ -195,28 +196,28 @@ pre {
     margin-top: 2em;
   }
 
-  .article-body figure,
-  .article-body .figure {
-    margin: 2em -5em;
-    text-align: center;
+.article figure,
+.article .figure {
+  margin: 2em -5em;
+  text-align: center;
+}
+  .article figure:first-child,
+  .article .figure:first-child {
+    margin-top: 0;
   }
-    .article-body figure:first-child,
-    .article-body .figure:first-child {
-      margin-top: 0;
-    }
-    .article-body figure img,
-    .article-body .figure img {
-      transition: transform ease 0.2s;
-      box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-    }
-    .article-body figure a,
-    .article-body .figure a {
-      border: none;
-    }
-    .article-body figure a:hover img,
-    .article-body .figure a:hover img {
-      transform: translateY(-2px);
-    }
+  .article figure img,
+  .article .figure img {
+    transition: transform ease 0.2s;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+  }
+  .article figure a,
+  .article .figure a {
+    border: none;
+  }
+  .article figure a:hover img,
+  .article .figure a:hover img {
+    transform: translateY(-2px);
+  }
 
 
 /*******************************************************************************
