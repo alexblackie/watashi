@@ -18,6 +18,9 @@ a {
     color: #d33d5d;
     border-color: #d33d5d;
   }
+  a:active {
+    background-color: lightyellow;
+  }
 
 img {
   max-width: 100%;
@@ -110,6 +113,10 @@ pre {
       #siteHeader a:hover {
         color: #bababa;
       }
+      #siteHeader a:active {
+        transform: translateY(1px);
+        background: inherit;
+      }
 
 #siteNav {
   float: right;
@@ -139,19 +146,23 @@ pre {
       color: white;
     }
 
-#siteContent {
-  background-color: white;
-}
-
 #siteFooter {
   color: #bababa;
   line-height: 1.5em;
 }
+  #siteFooter a:active {
+    background-color: rgba(0,0,0, 0.3);
+  }
 
 
 /*******************************************************************************
  * Articles
  ******************************************************************************/
+
+.article {
+  background: white;
+  box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
+}
 
 .article header {
   padding: 2em 0;
@@ -190,9 +201,22 @@ pre {
     margin: 2em -5em;
     text-align: center;
   }
+    .article-body figure:first-child,
+    .article-body .figure:first-child {
+      margin-top: 0;
+    }
+    .article-body figure img,
+    .article-body .figure img {
+      transition: transform ease 0.2s;
+      box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+    }
     .article-body figure a,
     .article-body .figure a {
       border: none;
+    }
+    .article-body figure a:hover img,
+    .article-body .figure a:hover img {
+      transform: translateY(-2px);
     }
 
 

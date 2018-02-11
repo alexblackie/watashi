@@ -23,14 +23,11 @@ body {
   .intro p {
     position: relative;
     z-index: 8192;
-    margin: 0 0 0 3em;
+    margin: 0 3em;
   }
-  .intro a {
-    color: #3dd3b3;
+  .intro a:active {
+    background-color: rgba(0,0,0, 0.3);
   }
-    .intro a:hover {
-      color: #d33d5d;
-    }
   .intro .intro-lead {
     margin: 0 0 0.5em;
   }
@@ -40,22 +37,9 @@ body {
     font-size: 2em;
     line-height: 0;
   }
-  .intro::after {
-    content: "";
-    position: absolute;
-    top: -100em;
-    bottom: 0;
-    left: -100em;
-    right: -100em;
-    z-index: 1024;
-    display: block;
-    background-color: #26323b;
-    transform: rotate(-2.5deg);
-  }
 
 .home-two-up {
-  overflow: hidden;
-  margin-top: -10em;
+  display: flex;
 }
 .home-two-up .column {
   box-sizing: border-box;
@@ -63,7 +47,6 @@ body {
   .home-two-up .column h2 {
     margin-top: 0;
   }
-
   .home-two-up dt,
   .home-two-up dd {
     padding: 5px;
@@ -79,9 +62,8 @@ body {
   }
 
 .home-articles {
-  float: left;
   width: 60%;
-  padding: 14em 4em 4em;
+  padding: 4em;
   background-color: #efefef;
 }
   .home-articles header {
@@ -103,9 +85,9 @@ body {
   }
 
 .home-contact {
-  float: left;
   width: 40%;
-  padding: 13em 0 0 2em;
+  padding: 4em 0 0 2em;
+  background-color: white;
 }
 
 ol.article-list {
@@ -169,7 +151,7 @@ ol.article-list {
   }
 
   .home-articles {
-    padding: 13em 0.5em 1em;
+    padding: 2em 0.5em;
   }
 
   .home-contact {
