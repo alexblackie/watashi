@@ -185,6 +185,7 @@ pre {
 .article-body {
   padding: 2em 3em;
   font-size: 1.25rem;
+  font-family: "Source Serif Pro", serif;
 }
   .article-body p,
   .article-body li {
