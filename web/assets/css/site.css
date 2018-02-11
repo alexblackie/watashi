@@ -147,9 +147,12 @@ pre {
     }
 
 #siteFooter {
-  color: #bababa;
+  color: rgba(255,255,255, 0.5);
   line-height: 1.5em;
 }
+  #siteFooter a:not(:hover) {
+    border-color: rgba(255,255,255, 0.2);
+  }
   #siteFooter a:active {
     background-color: rgba(0,0,0, 0.3);
   }
