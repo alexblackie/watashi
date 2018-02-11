@@ -145,8 +145,10 @@ ol.article-list {
       margin-left: 0;
     }
 
+  .home-two-up {
+    flex-direction: column;
+  }
   .home-two-up .column {
-    float: none;
     width: auto;
   }
 
