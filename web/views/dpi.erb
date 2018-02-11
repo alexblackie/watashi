@@ -1,49 +1,54 @@
-<h1><%= page_title %></h1>
+<article class="article article-single">
+  <header>
+    <h1><%= page_title %></h1>
+  </header>
 
-<p class="intro">
-  I wanted to figure out the DPI of my laptop screen, but knew only its
-  resolution and diagonal measurement. A voice in the back of my mind told me
-  "you can solve this with mathematics!", and so I solved it on the back of a
-  receipt that was on my desk at the time. But then I wanted to know the DPI of
-  my <em>other</em> displays. So instead of doing more math, I wrote some
-  JavaScript to do it for me.
-</p>
+  <div class="article-body">
+    <p class="intro">
+      I wanted to figure out the DPI of my laptop screen, but knew only its
+      resolution and diagonal measurement. A voice in the back of my mind told me
+      "you can solve this with mathematics!", and so I solved it on the back of a
+      receipt that was on my desk at the time. But then I wanted to know the DPI of
+      my <em>other</em> displays. So instead of doing more math, I wrote some
+      JavaScript to do it for me.
+    </p>
 
+    <hr>
 
-<hr>
+    <form id="dpiForm">
 
-<form id="dpiForm">
+      <div class="field">
+        <label for="prop">Proportion</label>
+        <input type="text" name="propX" id="propX" size="2" value="16">
+        /
+        <input type="text" name="propY" id="propY" size="2" value="9">
+      </div>
 
-  <div class="field">
-    <label for="prop">Proportion</label>
-    <input type="text" name="propX" id="propX" size="2" value="16">
-    /
-    <input type="text" name="propY" id="propY" size="2" value="9">
+      <div class="field">
+        <label for="diag">Diagonal Size</label>
+        <input type="text" name="diag" id="diag" size="4" value="356">
+        <select name="units" id="units">
+          <option>mm</option>
+          <option>in</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="resx">Resolution (Horizontal)</label>
+        <input type="number" name="resx" id="resx" size="4" value="1920">
+      </div>
+
+      <div class="field">
+        <label for="resy">Resolution (Vertical)</label>
+        <input type="number" name="resy" id="resy" size="4" value="1080">
+      </div>
+
+      <div class="actions">
+        <button>Calculate DPI</button>
+      </div>
+
+    </form>
+
+    <div id="dpiResult"></div>
   </div>
-
-  <div class="field">
-    <label for="diag">Diagonal Size</label>
-    <input type="text" name="diag" id="diag" size="4" value="356">
-    <select name="units" id="units">
-      <option>mm</option>
-      <option>in</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label for="resx">Resolution (Horizontal)</label>
-    <input type="number" name="resx" id="resx" size="4" value="1920">
-  </div>
-
-  <div class="field">
-    <label for="resy">Resolution (Vertical)</label>
-    <input type="number" name="resy" id="resy" size="4" value="1080">
-  </div>
-
-  <div class="actions">
-    <button>Calculate DPI</button>
-  </div>
-
-</form>
-
-<div id="dpiResult"></div>
+</article>
