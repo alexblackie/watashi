@@ -1,0 +1,15 @@
+{
+  "name": "watashi",
+  "version": "1.0.0",
+  "description": "This is the application that runs [alexblackie dot com](https://www.alexblackie.com).",
+  "private": true,
+  "author": "Alex Blackie <alex@alexblackie.com>",
+  "license": "BSD-3",
+  "homepage": "https://github.com/alexblackie/watashi",
+  "devDependencies": {
+    "stylus": "^0.54.5"
+  },
+  "scripts": {
+    "build": "stylus -c -o web/assets/css/ web/assets/styles/*"
+  }
+}
