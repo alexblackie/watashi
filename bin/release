@@ -13,5 +13,8 @@
 bundle package
 bundle install --binstubs --deployment --without development test
 
+npm install
+npm run-script build
+
 mkdir -p rpmbuild/{BUILDROOT,BUILD,SOURCES}
 rpmbuild -bb watashi.spec --define "_topdir `pwd`/rpmbuild"  --define="version $1"
