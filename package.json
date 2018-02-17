@@ -10,7 +10,7 @@
     "stylus": "^0.54.5"
   },
   "scripts": {
-    "build": "stylus -c -o web/assets/css/ web/assets/styles/*",
-    "watch": "stylus -w -c -o web/assets/css/ web/assets/styles/*"
+    "build": "stylus -c -o web/assets/css/ web/assets/styles/*.styl",
+    "watch": "stylus -w -c -o web/assets/css/ web/assets/styles/*.styl"
   }
 }

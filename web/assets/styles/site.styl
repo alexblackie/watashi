@@ -1,22 +1,24 @@
+@import "includes/_constants";
+
 /*******************************************************************************
  * Global Defaults and Resets
  ******************************************************************************/
 
 body {
   margin: 0;
-  font-family: "Overpass",  sans-serif;
-  background-color: #26323b;
-  color: #444;
+  font-family: $fontFamilyDefault;
+  background-color: $colorBackgroundDark;
+  color: $colorText;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  border-bottom: 1px solid #3dd3b3;
+  border-bottom: 1px solid $colorHighlight;
 }
   a:hover {
-    color: #d33d5d;
-    border-color: #d33d5d;
+    color: $colorHighlightAlt;
+    border-color: $colorHighlightAlt;
   }
   a:active {
     background-color: lightyellow;
@@ -32,12 +34,12 @@ hr {
   margin: 3em;
   outline: 0;
   border: 0;
-  background: gainsboro;
+  background: $colorBorder;
 }
 
 p code {
   padding: 3px 6px;
-  background: #efefef;
+  background: $colorBackgroundDim;
 }
 
 pre {
@@ -45,7 +47,7 @@ pre {
   padding: 1em;
   max-height: 30em;
   overflow: auto;
-  background-color: #efefef;
+  background-color: $colorBackgroundDim;
   line-height: 1.5em;
 }
 
@@ -66,13 +68,13 @@ pre {
   margin: 1em 0 0 0;
   padding: 0.5em 1em;
   background: #f4f4f4;
-  border-bottom: 1px solid gainsboro;
-  font-family: monospace;
-  color: #777;
+  border-bottom: 1px solid $colorBorder;
+  font-family: $fontFamilyMono;
+  color: $colorTextLight;
 }
   .code-title::before {
     content: "# ";
-    color: #aaa;
+    color: $colorTextBright;
   }
 
 
@@ -98,13 +100,12 @@ pre {
 
 #siteHeader {
   overflow: hidden;
-  background-color: #26323b;
 }
   #siteHeader h1 {
     margin: 0;
     float: left;
     font-size: 2em;
-    line-height: 1.5em;
+    line-height: $heightHeader;
   }
     #siteHeader a {
       color: rgba(255,255,255, 0.6);
@@ -120,7 +121,7 @@ pre {
 
 #siteNav {
   float: right;
-  height: 3em;
+  height: $heightHeader;
 }
   #siteNav ul {
     margin: 0;
@@ -169,7 +170,7 @@ pre {
 
 .article header {
   padding: 2em 0;
-  border-bottom: 1px solid gainsboro;
+  border-bottom: 1px solid $colorBorder;
   text-align: center;
 }
   .article header h1 {
@@ -185,7 +186,7 @@ pre {
 .article-body {
   padding: 2em 3em;
   font-size: 1.25rem;
-  font-family: "Source Serif Pro", serif;
+  font-family: $fontFamilySerif;
 }
   .article-body p,
   .article-body li {
