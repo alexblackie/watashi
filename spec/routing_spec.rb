@@ -28,18 +28,4 @@ RSpec.describe "Request Routing", type: :request do
     end
   end
 
-  describe "GET an asset" do
-    before { get("/assets/css/site.css") }
-
-    it "fetches the file" do
-      # this is kind of a shitty thing but meh
-      # just checks for common css-like characters
-      expect(last_response.body).to match(%r/[{}:;]/)
-    end
-
-    it "detects the right mime type" do
-      expect(last_response.headers["Content-Type"]).to eq "text/css"
-    end
-  end
-
 end
