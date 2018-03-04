@@ -47,6 +47,11 @@ module Watashi
         @article["id"]
       end
 
+      # @return [Boolean] whether the article is held from publication
+      def held?
+        @article["hold"]
+      end
+
     end
   end
 end

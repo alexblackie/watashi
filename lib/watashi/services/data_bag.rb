@@ -32,6 +32,7 @@ module Watashi
         results = get_all()
         .sort{|lhs, rhs| lhs.public_send(sort) <=> rhs.public_send(sort) }
         .reverse
+        .select{ |m| m.respond_to?(:held?) ? !m.held? : true }
         .slice(offset..next_offset)
 
         results ? results : []

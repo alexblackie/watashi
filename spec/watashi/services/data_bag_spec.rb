@@ -10,6 +10,7 @@ RSpec.describe Watashi::Services::DataBag do
     def initialize(data)
       @id = data["id"]
       @title = data["title"]
+      @data = data
     end
   end
 
@@ -25,6 +26,24 @@ RSpec.describe Watashi::Services::DataBag do
 
     it "returns a list of models" do
       expect(subject.map(&:class).uniq).to eq [TestModel]
+    end
+
+    context "when a model supports holding" do
+      before do
+        TestModel.class_eval do
+          def held?
+            @data["hold"]
+          end
+        end
+      end
+
+      it "doesn't return held models" do
+        expect(subject.map(&:title)).to_not include("A third example")
+      end
+
+      it "still finds the unheld models" do
+        expect(subject.map(&:title)).to include("Example entry")
+      end
     end
 
     describe "pagination" do
