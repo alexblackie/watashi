@@ -14,6 +14,22 @@ RSpec.describe Watashi::Services::DataBag do
     end
   end
 
+  class TestHeldModel
+    PATH_KEY = "test_model".freeze
+
+    attr_reader :id, :title
+
+    def initialize(data)
+      @id = data["id"]
+      @title = data["title"]
+      @data = data
+    end
+
+    def held?
+      @data["hold"]
+    end
+  end
+
   let(:service) do
     described_class.new(
       model: TestModel,
@@ -29,12 +45,11 @@ RSpec.describe Watashi::Services::DataBag do
     end
 
     context "when a model supports holding" do
-      before do
-        TestModel.class_eval do
-          def held?
-            @data["hold"]
-          end
-        end
+      let(:service) do
+        described_class.new(
+          model: TestHeldModel,
+          base_dir: File.join(Watashi::BASE_DIR, "spec", "fixtures")
+        )
       end
 
       it "doesn't return held models" do
