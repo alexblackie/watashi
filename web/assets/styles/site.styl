@@ -102,63 +102,72 @@ pre {
 
 #siteHeader {
   overflow: hidden;
-}
-  #siteHeader h1 {
+
+  h1 {
     margin: 0;
     float: left;
     font-size: 2em;
     line-height: $heightHeader;
   }
-    #siteHeader a {
-      color: rgba(255,255,255, 0.6);
-      border: none;
+
+  a {
+    color: rgba(255,255,255, 0.6);
+    border: none;
+
+    &:hover {
+      color: #bababa;
     }
-      #siteHeader a:hover {
-        color: #bababa;
-      }
-      #siteHeader a:active {
-        transform: translateY(1px);
-        background: inherit;
-      }
+
+    &:active {
+      transform: translateY(1px);
+      background: inherit;
+    }
+  }
+}
 
 #siteNav {
   float: right;
   height: $heightHeader;
-}
-  #siteNav ul {
+
+  ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
-  #siteNav li {
+
+  li {
     display: inline-block;
   }
-  #siteNav a {
+
+  a {
     display: inline-block;
     height: 2.5em;
     padding: 0 2em;
     border-radius: 1em 0;
     line-height: 2.5em;
   }
+}
 
-    .page-home #siteNav-home a,
-    .page-setup #siteNav-setup a,
-    .page-albums #siteNav-photos a,
-    .page-about #siteNav-about a {
-      background-color: rgba(255,255,255, 0.1);
-      color: white;
-    }
+.page-home #siteNav-home a,
+.page-setup #siteNav-setup a,
+.page-albums #siteNav-photos a,
+.page-about #siteNav-about a {
+  background-color: rgba(255,255,255, 0.1);
+  color: white;
+}
 
 #siteFooter {
   color: rgba(255,255,255, 0.5);
   line-height: 1.5em;
-}
-  #siteFooter a:not(:hover) {
+
+  a:not(:hover) {
     border-color: rgba(255,255,255, 0.2);
   }
-  #siteFooter a:active {
+
+  a:active {
     background-color: rgba(0,0,0, 0.3);
   }
+}
 
 
 /*******************************************************************************
@@ -168,46 +177,48 @@ pre {
 .article {
   background: white;
   box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
-}
 
-.article header {
-  padding: 4em 0;
-  border-bottom: 1px solid $colorBorder;
-  text-align: center;
+  header {
+    padding: 4em 0;
+    border-bottom: 1px solid $colorBorder;
+    text-align: center;
+
+    h1 {
+      margin: 0 0 0.25em 0;
+      font-size: 3em;
+      letter-spacing: -0.05em;
+      color: black;
+    }
+
+    .meta {
+      color: #888;
+    }
+  }
 }
-  .article header h1 {
-    margin: 0 0 0.25em 0;
-    font-size: 3em;
-    letter-spacing: -0.05em;
-    color: black;
-  }
-  .article header .meta {
-    color: #888;
-  }
 
 .article-body {
   padding: 2em 3em;
   font-size: 1.25rem;
   font-family: $fontFamilySerif;
-}
-  .article-body p,
-  .article-body li {
+
+  p,
+  li {
     line-height: 1.6em;
   }
 
-  .article-body p {
+  p {
     margin: 0 0 2em 0;
   }
 
-  .article-body h2 {
+  h2 {
     margin-top: 2em;
   }
 
-  .article-body .spacey li {
+  .spacey li {
     margin: 0 0 1em 0;
   }
 
-  .article-body blockquote {
+  blockquote {
     margin: 1em -3em;
     padding: 1.5em 4em;
     background: $colorBackgroundDim;
@@ -217,28 +228,29 @@ pre {
     line-height: 1.65em;
   }
 
-.article figure,
-.article .figure {
-  margin: 2em -5em;
-  text-align: center;
+  figure,
+  .figure {
+    margin: 2em -5em;
+    text-align: center;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    img {
+      transition: transform ease 0.2s;
+      box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+    }
+
+    a {
+      border: none;
+
+      &:hover img {
+        transform: translateY(-2px);
+      }
+    }
+  }
 }
-  .article figure:first-child,
-  .article .figure:first-child {
-    margin-top: 0;
-  }
-  .article figure img,
-  .article .figure img {
-    transition: transform ease 0.2s;
-    box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-  }
-  .article figure a,
-  .article .figure a {
-    border: none;
-  }
-  .article figure a:hover img,
-  .article .figure a:hover img {
-    transform: translateY(-2px);
-  }
 
 
 /*******************************************************************************
@@ -252,20 +264,21 @@ pre {
 
   #siteHeader {
     text-align: center;
-  }
 
-  #siteHeader h1 {
-    float: none;
+    h1 {
+      float: none;
+    }
   }
 
   #siteNav {
     margin: 1em 0 0 0;
     float: none;
     height: auto;
-  }
-  #siteNav a {
-    margin: 0.5em 0;
-    padding: 0 1.25em;
+
+    a {
+      margin: 0.5em 0;
+      padding: 0 1.25em;
+    }
   }
 
   .article header h1 {
@@ -275,12 +288,12 @@ pre {
   .article-body {
     padding: 2em 1em;
     font-size: 1.15em;
-  }
 
-  .article-body figure,
-  .article-body .figure {
-    margin-left: -1em;
-    margin-right: -1em;
+    figure,
+    .figure {
+      margin-left: -1em;
+      margin-right: -1em;
+    }
   }
 
   #siteFooter {
