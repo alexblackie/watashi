@@ -1,0 +1,19 @@
+---
+pipeline:
+  setup:
+    image: docker
+    commands:
+      - docker build --rm -t alexblackie/watashi .
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  test:
+    image: alexblackie/watashi
+    commands:
+      - ./.ci
+  publish:
+    image: alexblackie/watashi
+    commands:
+      - bin/release "${DRONE_COMMIT_SHA}"
+    when:
+      branch: master
