@@ -15,5 +15,7 @@ pipeline:
     image: alexblackie/watashi
     commands:
       - bin/release "${DRONE_COMMIT_SHA}"
+      - curl -X POST -F "token=$CONDUCTOR_TOKEN" -F "file=@rpmbuild/RPMS/x86_64/watashi-${DRONE_COMMIT_SHA}-1.el7.centos.x86_64.rpm" https://repo.blackieops.com/api
+    secrets: [ conductor_token ]
     when:
       branch: master
