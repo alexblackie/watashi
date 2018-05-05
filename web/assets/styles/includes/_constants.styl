@@ -1,17 +1,40 @@
+// ----------------------------------------------------------------------------
+// Fonts and Typography
+// ----------------------------------------------------------------------------
 $fontFamilyDefault = "Overpass",  sans-serif;
 $fontFamilyMono = "Source Code Pro", monospace;
-$fontFamilySerif = "Source Serif Pro", serif;
 
-$colorHighlight = #3dd3b3;
-$colorHighlightAlt = #d33d5d;
 
-$colorBackgroundDark = #26323b;
-$colorBorder = gainsboro;
+// ----------------------------------------------------------------------------
+// Colour Palette
+// ----------------------------------------------------------------------------
+$paletteDarkWhite = #ededed;
+$paletteLightGrey = #aaa;
+$paletteGrey = #777;
+$paletteBlack = #343434;
+$paletteTeal = #3dd3b3;
+$palettePink = #d33d5d;
+$paletteDarkBlue = #26323b;
 
-$colorText = #444;
-$colorTextLight = #777;
-$colorTextBright = #aaa;
 
-$colorBackgroundDim = #efefef;
+// ----------------------------------------------------------------------------
+// Colour assignments
+// ----------------------------------------------------------------------------
+$colorHighlight = $paletteTeal;
+$colorHighlightAlt = $palettePink;
 
+$colorText = $paletteBlack;
+$colorTextLight = $paletteGrey;
+$colorTextBright = $paletteLightGrey;
+
+$colorBackgroundDim = $paletteDarkWhite;
+
+$colorBackgroundDark = $paletteDarkBlue;
+$colorBackgroundLight = $paletteLightGrey;
+$colorBorder = darken($paletteDarkWhite, 10%);
+
+
+// ----------------------------------------------------------------------------
+// Box Model
+// ----------------------------------------------------------------------------
 $heightHeader = 3rem;
