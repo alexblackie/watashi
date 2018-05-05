@@ -2,6 +2,11 @@
 title: A Review of the Dell Latitude 7214
 date: 2018-05-06
 hold: yes
+cover:
+  url: https://cdn.blackieops.com/alexblackie/dell-7214/cover.jpg
+  caption: Dell Latitude 7214 Rugged Extreme
+  width: 1200
+  height: 586
 toc:
   intro: Introduction
   landscape: The Rugged Landscape

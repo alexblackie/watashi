@@ -17,7 +17,8 @@ module Watashi
           stylesheets: article.stylesheets,
           toc: article.toc,
           full_width: !article.toc.nil?,
-          held: article.held?
+          held: article.held?,
+          cover: article.cover
         })
       end
 

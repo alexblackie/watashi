@@ -59,6 +59,19 @@ module Watashi
         @article["toc"]
       end
 
+      # A hash containing details on the cover/hero image. Define in YAML as:
+      #
+      # cover:
+      #   url: https://cdn.....
+      #   caption: A bunch of flowers
+      #   width: 1200
+      #   height: 420
+      #
+      # @return [Hash<Symbol,String>]
+      def cover
+        @article["cover"]
+      end
+
     end
   end
 end

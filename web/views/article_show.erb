@@ -10,6 +10,12 @@
     <div class="meta">Posted on <%= date %></div>
   </header>
 
+  <% if cover %>
+  <figure class="article-cover">
+    <img src="<%= cover["url"] %>" alt="<%= cover["caption"] %>" width="<%= cover["width"] %>" height="<%= cover["height"] %>">
+  </figure>
+  <% end %>
+
   <div class="article-meat">
     <% if toc %>
     <ol class="article-toc">
