@@ -22,18 +22,13 @@
   </a>
       </header>
 
-      <ol class="article-list">
-      <% articles.each do |article| %>
-        <li>
-          <a href="/articles/<%= article.slug %>">
-            <div class="article-list-date"><%= article.date %></div>
-            <div class="article-list-title">
-                <%= article.title %>
-            </div>
-          </a>
-        </li>
-      <% end %>
-      </ol>
+      <dl>
+        <% articles.each do |article| %>
+          <dt><%= article.date %></dt>
+          <dd><a href="/articles/<%= article.slug %>"><%= article.title %></a></dd>
+        <% end %>
+      </dl>
+
       <nav class="article-list-pagination">
         <% if (current_page - 1) >= 0 %>
           <a class="article-list-pagination-previous" href="?page=<%= current_page - 1 %>">&larr; Newer</a>
@@ -50,6 +45,9 @@
       <dl>
         <dt>Twitter</dt>
         <dd><a href="https://twitter.com/alexblackie">@alexblackie</a></dd>
+
+        <dt>GitLab</dt>
+        <dd><a href="https://projects.blackieops.com/explore/projects">projects.blackieops.com</a></dd>
 
         <dt>Github</dt>
         <dd><a href="https://github.com/alexblackie">@alexblackie</a></dd>

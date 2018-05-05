@@ -7,7 +7,6 @@
 body {
   margin: 0;
   font-family: $fontFamilyDefault;
-  background-color: $colorBackgroundDark;
   color: $colorText;
 }
 
@@ -15,14 +14,12 @@ a {
   text-decoration: none;
   color: inherit;
   border-bottom: 1px solid $colorHighlight;
-}
-  a:hover {
+
+  &:hover {
     color: $colorHighlightAlt;
     border-color: $colorHighlightAlt;
   }
-  a:active {
-    background-color: lightyellow;
-  }
+}
 
 img {
   max-width: 100%;
@@ -30,7 +27,7 @@ img {
 }
 
 hr {
-  height: 2px;
+  height: 1px;
   margin: 3em;
   outline: 0;
   border: 0;
@@ -40,6 +37,7 @@ hr {
 p code {
   padding: 3px 6px;
   font-size: 0.9em;
+  font-family: $fontFamilyMono;
   background: $colorBackgroundDim;
 }
 
@@ -49,8 +47,9 @@ pre {
   max-height: 30em;
   overflow: auto;
   background-color: $colorBackgroundDim;
-  font-size: 0.85em;
-  line-height: 1.6em;
+  font-size: 1.1em;
+  font-family: $fontFamilyMono;
+  line-height: 1.25em;
 }
 
 
@@ -60,11 +59,12 @@ pre {
 
 .code {
   margin: 1.5em $paddingContentX*-1;
-}
-  .code pre {
+
+  pre {
     margin: 0;
     padding: 1em $paddingContentX;
   }
+}
 
 .code-title {
   margin: 1em 0 0 0;
@@ -102,25 +102,17 @@ pre {
 
 #siteHeader {
   overflow: hidden;
+  border-bottom: 2px solid $colorBorderLight;
 
   h1 {
     margin: 0;
     float: left;
+    height: $heightHeader;
     font-size: 2em;
     line-height: $heightHeader;
-  }
 
-  a {
-    color: rgba(255,255,255, 0.6);
-    border: none;
-
-    &:hover {
-      color: #bababa;
-    }
-
-    &:active {
-      transform: translateY(1px);
-      background: inherit;
+    a {
+      border: none;
     }
   }
 }
@@ -141,10 +133,8 @@ pre {
 
   a {
     display: inline-block;
-    height: 2.5em;
-    padding: 0 2em;
-    border-radius: 1em 0;
-    line-height: 2.5em;
+    padding: 0 1.5em;
+    line-height: $heightHeader;
   }
 }
 
@@ -152,20 +142,18 @@ pre {
 .page-setup #siteNav-setup a,
 .page-albums #siteNav-photos a,
 .page-about #siteNav-about a {
-  background-color: rgba(255,255,255, 0.1);
+  background-color: $colorHighlight;
+  border-color: $colorHighlight;
   color: white;
 }
 
 #siteFooter {
-  color: rgba(255,255,255, 0.5);
+  padding-top: 3rem;
+  color: $colorTextLight;
   line-height: 1.5em;
 
   a:not(:hover) {
-    border-color: rgba(255,255,255, 0.2);
-  }
-
-  a:active {
-    background-color: rgba(0,0,0, 0.3);
+    border-color: $colorBorder;
   }
 }
 
@@ -175,12 +163,8 @@ pre {
  ******************************************************************************/
 
 .article {
-  background: white;
-  box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
-
   header {
     padding: 4em 0;
-    border-bottom: 1px solid $colorBorder;
     text-align: center;
 
     h1 {
@@ -197,8 +181,8 @@ pre {
 }
 
 .article-body {
-  padding: 2em $paddingContentX;
-  font-size: 1rem;
+  font-size: 1.1em;
+  padding: 0 $paddingContentX;
 
   p,
   li {
