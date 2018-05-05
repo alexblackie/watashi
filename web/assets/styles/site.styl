@@ -59,16 +59,16 @@ pre {
  ******************************************************************************/
 
 .code {
-  margin: 1.5em -3em;
+  margin: 1.5em $paddingContentX*-1;
 }
   .code pre {
     margin: 0;
-    padding: 1em 3em;
+    padding: 1em $paddingContentX;
   }
 
 .code-title {
   margin: 1em 0 0 0;
-  padding: 0.5em 3em;
+  padding: 0.5em ($paddingContentX - 1rem);
   background: #f4f4f4;
   border-bottom: 1px solid $colorBorder;
   font-family: $fontFamilyMono;
@@ -197,8 +197,8 @@ pre {
 }
 
 .article-body {
-  padding: 2em 3em;
-  font-size: 1.25rem;
+  padding: 2em $paddingContentX;
+  font-size: 1rem;
 
   p,
   li {
@@ -218,7 +218,7 @@ pre {
   }
 
   blockquote {
-    margin: 1em -3em;
+    margin: 1em $paddingContentX*-1;
     padding: 1.5em 4em;
     background: $colorBackgroundDim;
     border: solid $colorBorder;
