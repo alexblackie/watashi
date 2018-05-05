@@ -16,7 +16,8 @@ module Watashi
           date: article.published_on,
           stylesheets: article.stylesheets,
           toc: article.toc,
-          full_width: !article.toc.nil?
+          full_width: !article.toc.nil?,
+          held: article.held?
         })
       end
 
