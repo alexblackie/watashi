@@ -14,7 +14,9 @@ module Watashi
           body: article.content,
           page_title: article.title,
           date: article.published_on,
-          stylesheets: article.stylesheets
+          stylesheets: article.stylesheets,
+          toc: article.toc,
+          full_width: !article.toc.nil?
         })
       end
 

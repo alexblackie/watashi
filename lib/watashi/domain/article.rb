@@ -52,6 +52,13 @@ module Watashi
         @article["hold"]
       end
 
+      # The Table of Contents in the form of `{domId: "Label"}`.
+      #
+      # @return [Hash<Symbol,String>]
+      def toc
+        @article["toc"]
+      end
+
     end
   end
 end

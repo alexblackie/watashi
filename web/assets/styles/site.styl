@@ -236,6 +236,38 @@ pre {
   }
 }
 
+.article-meat {
+  margin: auto;
+  max-width: 1200px;
+}
+
+ol.article-toc {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  list-style: none;
+  text-align: left;
+  border-top: 3px solid $colorHighlight;
+
+  a {
+    display: block;
+    padding: 0.6em 1em 0.4em;
+    border-color: $colorBorderLight;
+  }
+}
+
+.article-body.with-toc {
+  margin-right: 25%;
+
+  figure {
+    margin-right: -1*($paddingContentX/2);
+  }
+}
+
 
 /*******************************************************************************
  * Media Queries
