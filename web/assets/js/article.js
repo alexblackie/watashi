@@ -6,7 +6,7 @@
   var anchorEls = document.querySelectorAll(".scrollAnchor");
   var anchors = {};
 
-  Array.prototype.forEach.call(anchorEls, function(el) {
+  anchorEls.forEach(function(el) {
     anchors[el.name] = el;
   });
 
@@ -15,19 +15,16 @@
 
   window.onscroll = function() {
     for (name in anchors) {
-      var el = anchors[name];
-      var rekt = el.getBoundingClientRect();
+      var rekt = anchors[name].getBoundingClientRect();
 
       if (rekt.top >= 0 && rekt.bottom <= window.innerHeight) {
-
         document
-          .querySelectorAll(".article-toc-link:not(#tocLink-" + el.name + ")")
+          .querySelectorAll(".article-toc-link:not(#tocLink-" + name + ")")
           .forEach(function(e) { e.classList.remove("active") });
 
-        document.querySelector("#tocLink-" + el.name).classList.add("active");
+        document.querySelector("#tocLink-" + name).classList.add("active");
       }
     }
   };
-
 
 })();
