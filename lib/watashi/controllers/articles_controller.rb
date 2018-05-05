@@ -15,6 +15,7 @@ module Watashi
           page_title: article.title,
           date: article.published_on,
           stylesheets: article.stylesheets,
+          javascripts: ["article"],
           toc: article.toc,
           full_width: !article.toc.nil?,
           held: article.held?,

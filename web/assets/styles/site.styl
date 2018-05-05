@@ -270,12 +270,19 @@ ol.article-toc {
   overflow: auto;
   list-style: none;
   text-align: left;
-  border-top: 3px solid $colorHighlight;
 
   a {
     display: block;
     padding: 0.6em 1em 0.4em;
-    border-color: $colorBorderLight;
+    border-top: 2px solid transparent;
+    border-bottom-color: $colorBorderLight;
+    transition: all 0.2s ease;
+
+    &.active {
+      border-color: $colorHighlight;
+      background-color: $colorHighlight;
+      color: white;
+    }
   }
 }
 
