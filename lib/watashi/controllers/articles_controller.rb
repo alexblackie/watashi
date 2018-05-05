@@ -10,6 +10,7 @@ module Watashi
         return respond_error(:not_found) unless article
 
         respond(template: "article_show", context: {
+          body_class: "page-article",
           body: article.content,
           page_title: article.title,
           date: article.published_on,
