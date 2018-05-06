@@ -56,5 +56,7 @@ toc:
         label: Linux Support
       - id: anywhere
         label: Working from Anywhere
+      - id: slots
+        label: Too Many Slots
   - id: brief
     label: In Brief
