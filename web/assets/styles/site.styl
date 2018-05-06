@@ -332,16 +332,13 @@ ol.article-toc {
   display: flex;
   padding: 0;
   margin: 1em 0;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-content: space-between;
   align-items: center;
 
   a {
-    margin-right: 0.75em;
+    max-width: 15%;
     border: none;
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   img {
@@ -430,8 +427,8 @@ ol.article-toc {
     flex-wrap: wrap;
 
     a {
-      max-width: 28%;
-      }
+      max-width: 32%;
+    }
   }
 
   #siteFooter {
