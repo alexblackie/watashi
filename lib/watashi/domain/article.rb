@@ -72,6 +72,18 @@ module Watashi
         @article["cover"]
       end
 
+      # A hash containing a list of images to display in a gallery-like
+      # fashion. In YAML it looks like:
+      #
+      # photostrip:
+      #   url: https://cdn....
+      #   caption: A vase
+      #
+      # @return [Hash<String,String>]
+      def photostrip
+        @article["photostrip"]
+      end
+
     end
   end
 end

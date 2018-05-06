@@ -10,11 +10,21 @@
     <div class="meta">Posted on <%= date %></div>
   </header>
 
-  <% if cover %>
-  <figure class="article-cover">
-    <img src="<%= cover["url"] %>" alt="<%= cover["caption"] %>" width="<%= cover["width"] %>" height="<%= cover["height"] %>">
-  </figure>
-  <% end %>
+  <div class="article-meat article-photos">
+    <% if cover %>
+    <figure class="article-cover">
+      <img src="<%= cover["url"] %>" alt="<%= cover["caption"] %>" width="<%= cover["width"] %>" height="<%= cover["height"] %>">
+    </figure>
+    <% end %>
+
+    <% if photostrip %>
+      <figure class="article-photostrip">
+        <% photostrip.each do |photo| %>
+          <a href="<%= photo["url"] %>"><img src="<%= photo["url"] %>" alt="<%= photo["caption"] %>"></a>
+        <% end %>
+      </figure>
+    <% end %>
+  </div>
 
   <div class="article-meat">
     <% if toc %>

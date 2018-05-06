@@ -6,6 +6,19 @@ cover:
   caption: Dell Latitude 7214 Rugged Extreme
   width: 1200
   height: 586
+photostrip:
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/normal.jpg
+    caption: Dell Latitude 7214 in laptop mode
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/flippy.jpg
+    caption: Dell Latitude 7214 in laptop-to-tablet transition
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/tablet.jpg
+    caption: Dell Latitude 7214 in tablet mode
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/left.jpg
+    caption: "Left-side ports: headset jack, HDMI, USB3-A"
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/right.jpg
+    caption: "Right-side ports: expresscard, smartcard, SSD bay access"
+  - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/back.jpg
+    caption: "Back ports: gigabit ethernet, USB2-A, RS232 Serial, VGA, Power"
 toc:
   - id: intro
     label: Introduction
