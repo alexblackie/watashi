@@ -20,7 +20,8 @@ module Watashi
           full_width: !article.toc.nil?,
           held: article.held?,
           cover: article.cover,
-          photostrip: article.photostrip
+          photostrip: article.photostrip,
+          og_meta: article.og_meta
         })
       end
 

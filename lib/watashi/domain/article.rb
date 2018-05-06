@@ -84,6 +84,16 @@ module Watashi
         @article["photostrip"]
       end
 
+      # OpenGraph metadata for Twitter, Facebook, oEmbed, etc.
+      #
+      # @return [Hash<Symbol,String>]
+      def og_meta
+        @article["og_meta"].merge({
+          "permalink" => "https://www.alexblackie.com/articles/#{ slug }",
+          "published_time" => date.to_s
+        })
+      end
+
     end
   end
 end

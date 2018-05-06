@@ -6,6 +6,12 @@ cover:
   caption: Dell Latitude 7214 Rugged Extreme
   width: 1200
   height: 586
+og_meta:
+  title: Review of the Dell Latitude 12 Rugged Extreme
+  image: https://cdn.blackieops.com/alexblackie/dell-7214/cover.jpg
+  description: >
+    I recently picked up the Dell Latitude 7214, a truly military-spec laptop.
+    Is it useable as a day-to-day notebook?
 photostrip:
   - url: https://cdn.blackieops.com/alexblackie/dell-7214/gallery/normal.jpg
     caption: Dell Latitude 7214 in laptop mode
