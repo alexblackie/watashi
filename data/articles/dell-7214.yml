@@ -7,10 +7,41 @@ cover:
   width: 1200
   height: 586
 toc:
-  intro: Introduction
-  landscape: The Rugged Landscape
-  ebay: Voyage to the Electronic Bay
-  hazards: Hazards Not Included
-  bad: The Bad
-  good: The Good
-  brief: In Brief
+  - id: intro
+    label: Introduction
+  - id: landscape
+    label: The Rugged Landscape
+  - id: ebay
+    label: Voyage to the Electronic Bay
+  - id: hazards
+    label: Hazards Not Included
+  - id: bad
+    label: The Bad
+    children:
+      - id: weight
+        label: Weight
+      - id: display
+        label: The Display
+      - id: touchpad
+        label: Touchpad
+      - id: handle
+        label: The Handle
+  - id: good
+    label: The Good
+    children:
+      - id: performance
+        label: Performance
+      - id: keyboard
+        label: The Keyboard
+      - id: thermals
+        label: Thermals
+      - id: battery
+        label: Battery and Power
+      - id: tablet
+        label: Convertible/Tablet Mode
+      - id: linux
+        label: Linux Support
+      - id: anywhere
+        label: Working from Anywhere
+  - id: brief
+    label: In Brief

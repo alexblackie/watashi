@@ -19,8 +19,19 @@
   <div class="article-meat">
     <% if toc %>
     <ol class="article-toc">
-      <% toc.each do |id, label| %>
-        <li><a class="article-toc-link" id="tocLink-<%= id %>" href="#<%= id %>"><%= label %></a></li>
+      <% toc.each do |t| %>
+        <li class="article-toc-link" id="tocLink-<%= t["id"] %>">
+          <a href="#<%= t["id"] %>"><%= t["label"] %></a>
+          <% if t["children"] %>
+            <ol class="article-toc-children">
+              <% t["children"].each do |c| %>
+                <li class="article-toc-link" id="tocLink-<%= c["id"] %>">
+                  <a href="#<%= c["id"] %>"><%= c["label"] %></a>
+                </li>
+              <% end %>
+            </ol>
+          <% end %>
+        </li>
       <% end %>
     </ol>
     <% end %>

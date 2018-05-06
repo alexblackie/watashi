@@ -268,9 +268,29 @@ ol.article-toc {
   width: 25%;
   margin: 0;
   padding: 0;
-  overflow: auto;
   list-style: none;
   text-align: left;
+
+  ol.article-toc-children {
+    display: none;
+    list-style: none;
+  }
+
+  > li.active {
+    ol {
+      display: block;
+    }
+
+    > a {
+      border-color: $colorHighlight;
+      background-color: $colorHighlight;
+      color: white;
+    }
+
+    li.active a {
+      background-color: $colorBorderLight;
+    }
+  }
 
   a {
     display: block;
@@ -278,12 +298,6 @@ ol.article-toc {
     border-top: 2px solid transparent;
     border-bottom-color: $colorBorderLight;
     transition: all 0.2s ease;
-
-    &.active {
-      border-color: $colorHighlight;
-      background-color: $colorHighlight;
-      color: white;
-    }
   }
 }
 

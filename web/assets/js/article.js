@@ -23,6 +23,10 @@
           .forEach(function(e) { e.classList.remove("active") });
 
         document.querySelector("#tocLink-" + name).classList.add("active");
+        var parentName = anchors[name].getAttribute("data-parent");
+        if (parentName) {
+          document.querySelector("#tocLink-" + parentName).classList.add("active");
+        }
       }
     }
   };
