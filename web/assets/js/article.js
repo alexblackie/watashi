@@ -17,7 +17,7 @@
     for (name in anchors) {
       var rekt = anchors[name].getBoundingClientRect();
 
-      if (rekt.top >= 0 && rekt.bottom <= window.innerHeight) {
+      if (rekt.top >= 0 && rekt.bottom <= (window.innerHeight / 2)) {
         document
           .querySelectorAll(".article-toc-link:not(#tocLink-" + name + ")")
           .forEach(function(e) { e.classList.remove("active") });
