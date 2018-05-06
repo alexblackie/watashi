@@ -31,4 +31,19 @@
     }
   };
 
+  /**
+   * Handle mobile ToC open/closing
+   */
+
+  var tocHandle = document.getElementById("tocHandle");
+  var toc = document.getElementById("toc");
+
+  tocHandle.addEventListener("click", function () {
+    toc.classList.toggle("open");
+  });
+
+  document.querySelectorAll(".article-toc-link").forEach(function (el) {
+    el.addEventListener("click", function () { toc.classList.remove("open"); });
+  });
+
 })();

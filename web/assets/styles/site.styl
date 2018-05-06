@@ -270,6 +270,7 @@ ol.article-toc {
   padding: 0;
   list-style: none;
   text-align: left;
+  transition: transform 0.3s ease;
 
   ol.article-toc-children {
     display: none;
@@ -304,6 +305,21 @@ ol.article-toc {
 .article-body.with-toc {
   margin-right: 25%;
   padding-left: 0;
+}
+
+#tocHandle {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: -2.5rem;
+  height: 2rem;
+  width: 2.5rem;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background: $colorHighlightAlt;
+  text-align: center;
+  line-height: 2rem;
+  color: white;
 }
 
 .article-cover {
@@ -366,11 +382,47 @@ ol.article-toc {
     padding: 2em 1em;
     font-size: 1.15em;
 
+    &.with-toc {
+      margin-right: 0;
+      padding-left: 1em;
+    }
+
     figure,
     .figure {
       margin-left: -1em;
       margin-right: -1em;
     }
+  }
+
+  .article-meat {
+    overflow: hidden;
+  }
+
+  ol.article-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    transform: translateX(100%);
+    background-color: white;
+    box-shadow: -1px 0px 4px rgba(0,0,0, 0.2);
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  #tocHandle {
+    display: block;
+  }
+
+  .article-photostrip {
+    flex-wrap: wrap;
+
+    a {
+      max-width: 28%;
+      }
   }
 
   #siteFooter {

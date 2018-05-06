@@ -28,7 +28,8 @@
 
   <div class="article-meat">
     <% if toc %>
-    <ol class="article-toc">
+    <ol class="article-toc" id="toc">
+      <button id="tocHandle">&sect;</button>
       <% toc.each do |t| %>
         <li class="article-toc-link" id="tocLink-<%= t["id"] %>">
           <a href="#<%= t["id"] %>"><%= t["label"] %></a>
