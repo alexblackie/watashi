@@ -88,6 +88,7 @@ module Watashi
       #
       # @return [Hash<Symbol,String>]
       def og_meta
+        return unless @article["og_meta"]
         @article["og_meta"].merge({
           "permalink" => "https://www.alexblackie.com/articles/#{ slug }",
           "published_time" => date.to_s

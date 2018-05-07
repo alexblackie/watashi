@@ -7,7 +7,6 @@ RSpec.describe Watashi::Domain::Article do
     "id" => "test-article",
     "title" => "Me Post",
     "date" => Date.parse("2063-04-05"),
-    "og_meta" => {"title" => "Me Post", description: "You won't believe it"},
     "filename" => File.join(File.dirname(__FILE__), "..", "..", "fixtures", "articles", "test-article.yml")
   }}
 
@@ -36,14 +35,26 @@ RSpec.describe Watashi::Domain::Article do
   describe "#og_meta" do
     subject { article.og_meta }
 
-    it "injects the permalink", :aggregate_failures do
-      expect(subject).to have_key("permalink")
-      expect(subject["permalink"]).to match /test-article/
+    context "with og_meta present" do
+      let(:data) do
+        super().merge({
+          "og_meta" => {"title" => "Me Post", description: "You won't believe it"},
+        })
+      end
+
+      it "injects the permalink", :aggregate_failures do
+        expect(subject).to have_key("permalink")
+        expect(subject["permalink"]).to match /test-article/
+      end
+
+      it "injects the published date", :aggregate_failures do
+        expect(subject).to have_key("published_time")
+        expect(subject["published_time"]).to eq("2063-04-05")
+      end
     end
 
-    it "injects the published date", :aggregate_failures do
-      expect(subject).to have_key("published_time")
-      expect(subject["published_time"]).to eq("2063-04-05")
+    context "without og_meta" do
+      it { is_expected.to be_nil }
     end
   end
 end
