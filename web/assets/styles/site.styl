@@ -125,17 +125,26 @@ pre {
 #siteHeader {
   overflow: hidden;
   border-bottom: 2px solid $colorBorderLight;
+}
+
+#siteBrand {
+  float: left;
+  height: $heightHeader;
 
   h1 {
     margin: 0;
-    float: left;
-    height: $heightHeader;
     font-size: 2em;
-    line-height: $heightHeader;
+    line-height: $heightHeader - 1.5em;
 
     a {
       border: none;
     }
+  }
+
+  > div {
+    margin-top: 0.5em;
+    font-style: italic;
+    color: $colorTextLight;
   }
 }
 
@@ -173,6 +182,7 @@ pre {
 
 #siteFooter {
   padding-top: 3rem;
+  border-top: 2px solid $colorBorderLight;
   color: $colorTextLight;
   line-height: 1.5em;
 
@@ -380,10 +390,10 @@ ol.article-toc {
 
   #siteHeader {
     text-align: center;
+  }
 
-    h1 {
-      float: none;
-    }
+  #siteBrand {
+    float: none;
   }
 
   #siteNav {
