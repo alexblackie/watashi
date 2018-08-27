@@ -1,0 +1,6 @@
+# Set service name - allowed characters: a-z, A-Z, 0-9, -, _ and space
+# Defaults to the name of your Rack app's class.
+service_name: watashi
+
+# Set custom APM Server URL (default: http://localhost:8200)
+server_url: "http://172.22.97.13:8200"
