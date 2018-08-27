@@ -6,6 +6,7 @@ ExecStart=/srv/watashi/bin/rackup
 User=watashi
 Restart=always
 Environment=YOKUNAI_ENV=production
+Environment=RACK_ENV=production
 WorkingDirectory=/srv/watashi
 
 [Install]
