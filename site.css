@@ -29,15 +29,6 @@ a:hover img { border-color: red }
   border: 15px solid white;
 }
 
-#sortOfMainContentIGuess {
-  color: lightgreen;
-  max-width: 85%;
-}
-
-#sortOfMainContentIGuess p + p {
-  color: pink;
-}
-
 #footer {
   display: flex;
   justify-content: space-between;
