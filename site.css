@@ -1,0 +1,48 @@
+body {
+  font-size: 1.25rem;
+  line-height: 1.25em;
+  background: black url("STARS.GIF") repeat 0 0;
+  font-family: "Comic Sans MS", "Chalkboard", cursive;
+}
+
+h1 { color: yellow; font-size: 2em; }
+
+a { color: blue; }
+a:hover { color: red; }
+
+a img { border: 2px solid blue; }
+a:hover img { border-color: red }
+
+#header {
+  text-align: center;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+}
+
+#mainContent {
+  box-sizing: border-box;
+  padding: 2rem;
+  background-color: lightyellow;
+  border: 15px solid white;
+}
+
+#sortOfMainContentIGuess {
+  color: lightgreen;
+  max-width: 85%;
+}
+
+#sortOfMainContentIGuess p + p {
+  color: pink;
+}
+
+#footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5rem;
+  color: grey;
+  font-size: 1rem;
+  line-height: 1em;
+}
