@@ -2,7 +2,7 @@ body {
   font-size: 1.25rem;
   line-height: 1.25em;
   background: black url("STARS.GIF") repeat 0 0;
-  font-family: "Comic Sans MS", "Chalkboard", cursive;
+  font-family: "Comic Sans MS", "Chalkboard", "Chilanka Regular", "Latin Modern Mono 10 Italic", cursive;
 }
 
 h1 { color: yellow; font-size: 2em; }
