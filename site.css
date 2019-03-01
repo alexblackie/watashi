@@ -1,6 +1,6 @@
 body {
   font-size: 1.25rem;
-  line-height: 1.25em;
+  line-height: 1.5em;
   background: black url("STARS.GIF") repeat 0 0;
   font-family: "Comic Sans MS", "Chalkboard", "Chilanka", cursive;
 }
@@ -28,6 +28,23 @@ a:hover img { border-color: red }
   background-color: lightyellow;
   border: 15px solid white;
 }
+
+#testimonials {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+  #testimonials blockquote {
+    width: 40%;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: aliceblue;
+    box-shadow: 0 0 50px 5px skyblue;
+  }
+
+  #testimonialsHeader {
+    color: white;
+  }
 
 #footer {
   display: flex;
