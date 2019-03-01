@@ -33,6 +33,7 @@ a:hover img { border-color: red }
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
   #testimonials blockquote {
     width: 40%;
