@@ -5,16 +5,16 @@ body {
   font-family: "Comic Sans MS", "Chalkboard", "Chilanka", cursive;
 }
 
-h1 { color: yellow; font-size: 2em; }
-
 a { color: blue; }
 a:hover { color: red; }
 
 a img { border: 2px solid blue; }
-a:hover img { border-color: red }
+a:hover img { border-color: red; }
 
 #header {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
@@ -24,9 +24,8 @@ a:hover img { border-color: red }
 
 #mainContent {
   box-sizing: border-box;
-  padding: 2rem;
-  background-color: lightyellow;
-  border: 15px solid white;
+  padding: 1rem 2rem;
+  background-color: antiquewhite;
 }
 
 #testimonials {
