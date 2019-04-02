@@ -48,6 +48,17 @@ header {
         color: var(--color-highlight);
       }
 
+footer {
+  margin-top: 4rem;
+  padding: 1rem 0;
+  font-size: 0.75em;
+  color: #777;
+  border-top: 1px solid gainsboro ;
+}
+  footer a {
+    color: #555;
+  }
+
 [role="main"] {
   padding: 0 4rem;
 }
