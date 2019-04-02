@@ -88,3 +88,9 @@ footer {
   padding: 0;
   list-style: none;
 }
+
+.page-meta {
+  margin: 1rem 0 2rem;
+  text-align: center;
+  color: #666;
+}
