@@ -30,8 +30,7 @@
   First step is to install a new root filesystem into a directory.
 </p>
 
-<pre><code>
-# yum -y --releasever=7 --nogpg --installroot=/var/lib/machines/cool-container \
+<pre><code># yum -y --releasever=7 --nogpg --installroot=/var/lib/machines/cool-container \
   --disablerepo='*' --enablerepo=base install systemd passwd yum centos-release
 </code></pre>
 
@@ -43,8 +42,7 @@
   Second, we need to enter into the container to set up some basic things like the <code>root</code> password. We can use the <code>systemd-nspawn</code> command directly for this:
 </p>
 
-<pre><code>
-# systemd-nspawn -D /var/lib/machines/cool-container
+<pre><code># systemd-nspawn -D /var/lib/machines/cool-container
 </code></pre>
 
 <p>
@@ -69,8 +67,7 @@
   After editing the parameters, we'll need to regenerate our GRUB configuration:
 </p>
 
-<pre><code>
-# grub2-mkconfig -o /etc/grub2.cfg
+<pre><code># grub2-mkconfig -o /etc/grub2.cfg
 </code></pre>
 
 <h3>Configuring the base system</h3>
@@ -83,8 +80,7 @@
   Since we now have access to the <code>root</code> account, we can fully &quot;boot&quot; the container:
 </p>
 
-<pre><code>
-# systemd-nspawn -bD /var/lib/machines/cool-container
+<pre><code># systemd-nspawn -bD /var/lib/machines/cool-container
 </code></pre>
 
 <p>
@@ -105,16 +101,14 @@
   To have your container start with everything else when your host boots:
 </p>
 
-<pre><code>
-# systemctl enable systemd-nspawn@cool-container
+<pre><code># systemctl enable systemd-nspawn@cool-container
 </code></pre>
 
 <p>
   And as you can perhaps guess, we can start and stop our container just as any other service:
 </p>
 
-<pre><code>
-# systemctl start systemd-nspawn@cool-container
+<pre><code># systemctl start systemd-nspawn@cool-container
 # systemctl stop systemd-nspawn@cool-container
 </code></pre>
 
@@ -128,8 +122,7 @@
   Just running <code>machinectl</code> without arguments will list all running containers (and other VMs, etc). Interestingly, the older version of <code>machinectl</code> on CentOS does not allow us to use the <code>login</code> argument (so you may want to install <code>openssh</code>)... If you're on Fedora (or a different more up-to-date distro), we can use <code>machinectl login</code> command:
 </p>
 
-<pre><code>
-# machinectl login cool-container
+<pre><code># machinectl login cool-container
 </code></pre>
 
 <p>

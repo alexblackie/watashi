@@ -27,6 +27,24 @@ hr {
   height: 2px;
 }
 
+pre,
+code {
+  font-family: "Fira Mono", monospace;
+  background-color: whitesmoke;
+}
+
+pre {
+  padding: 1.5rem;
+  line-height: 1.5em;
+  overflow: auto;
+}
+
+p code,
+li code {
+  padding: 2px 4px;
+  color: navy;
+}
+
 .container {
   margin: auto;
   max-width: 900px;
@@ -81,6 +99,13 @@ footer {
 [role="main"] h2,
 [role="main"] h3 {
   margin-top: 3rem;
+}
+
+[role="main"] pre {
+  margin-left: -4rem;
+  margin-right: -4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 .articles {
