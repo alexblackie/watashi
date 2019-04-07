@@ -1,21 +1,12 @@
 ---
-pipeline:
-  setup:
-    image: docker
-    commands:
-      - docker build --rm -t alexblackie/watashi .
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+kind: pipeline
+name: default
 
-  test:
-    image: alexblackie/watashi
-    commands:
-      - ./.ci
-  publish:
-    image: alexblackie/watashi
-    commands:
-      - bin/release "${DRONE_BUILD_NUMBER}"
-      - curl -X POST -F "token=$CONDUCTOR_TOKEN" -F "file=@rpmbuild/RPMS/x86_64/watashi-${DRONE_BUILD_NUMBER}-1.el7.x86_64.rpm" https://repo.blackieops.com/api
-    secrets: [ conductor_token ]
-    when:
-      branch: master
+steps:
+- name: test
+  image: ruby:2.4
+  commands:
+    - ./.ci
+  when:
+    branch:
+    - master
