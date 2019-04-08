@@ -15,15 +15,3 @@ steps:
   when:
     branch:
     - master
-
-- name: deploy
-  image: quay.io/honestbee/drone-kubernetes
-  namespace: default
-  deployment: alexblackie-com
-  repo: cr.blackieops.com/alexblackie.com
-  container: alexblackie-com
-  tag:
-  - ${DRONE_COMMIT_SHA:0:8}
-  when:
-    branch:
-    - master
