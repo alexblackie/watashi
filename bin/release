@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+GIT=git
+TAG="$($GIT rev-parse --short HEAD)"
+
+$GIT tag -s "$TAG" -m "Release version $TAG"
+$GIT push --tags
