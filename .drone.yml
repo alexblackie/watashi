@@ -3,7 +3,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: build and upload
+- name: container
   image: plugins/docker
   auto_tag: true
   settings:
