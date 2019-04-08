@@ -12,3 +12,6 @@ steps:
     password:
       from_secret: docker_password
     registry: cr.blackieops.com
+  when:
+    event:
+    - tag
