@@ -5,13 +5,25 @@ name: default
 steps:
 - name: container
   image: plugins/docker
-  auto_tag: true
   settings:
     repo: cr.blackieops.com/alexblackie.com
     username: deploy
     password:
       from_secret: docker_password
     registry: cr.blackieops.com
+    tags: ${DRONE_COMMIT_SHA:0:8}
   when:
-    event:
-    - tag
+    branch:
+    - master
+
+- name: deploy
+  image: quay.io/honestbee/drone-kubernetes
+  namespace: default
+  deployment: alexblackie-com
+  repo: cr.blackieops.com/alexblackie.com
+  container: alexblackie-com
+  tag:
+  - ${DRONE_COMMIT_SHA:0:8}
+  when:
+    branch:
+    - master

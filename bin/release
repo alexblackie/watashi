@@ -3,7 +3,7 @@
 set -euf -o pipefail
 
 GIT=git
-TAG="$($GIT rev-parse --short HEAD)"
+TAG="$(date +%Y%m%d%H%M%S)"
 
 $GIT tag -s "$TAG" -m "Release version $TAG"
 $GIT push --tags

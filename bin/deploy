@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -euf -o pipefail
-
-KUBECTL=kubectl
-GIT=git
-TAG="$($GIT rev-parse --short HEAD)"
-
-$KUBECTL set image deployment/alexblackie-com alexblackie-com=cr.blackieops.com/alexblackie.com:$TAG
