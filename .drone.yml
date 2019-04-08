@@ -1,0 +1,14 @@
+---
+kind: pipeline
+name: default
+
+steps:
+- name: build and upload
+  image: plugins/docker
+  auto_tag: true
+  settings:
+    repo: cr.blackieops.com/alexblackie.com
+    username: deploy
+    password:
+      from_secret: docker_password
+    registry: cr.blackieops.com
