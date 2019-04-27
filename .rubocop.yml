@@ -13,6 +13,9 @@ Style/Documentation:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+Style/NumericPredicate:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
@@ -43,3 +46,5 @@ Metrics/BlockLength:
 Naming/HeredocDelimiterNaming:
   Enabled: false
 
+Naming/AccessorMethodName:
+  Enabled: false

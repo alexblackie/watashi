@@ -66,9 +66,9 @@ module Watashi
       end
 
       def get_all
-        @entities ||= Dir
-                      .glob(File.join(@base_dir, "*.yml"))
-                      .map { |f| @model.new(read_yaml(f)) }
+        @get_all ||= Dir
+                     .glob(File.join(@base_dir, "*.yml"))
+                     .map { |f| @model.new(read_yaml(f)) }
       end
 
     end

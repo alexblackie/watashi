@@ -48,7 +48,7 @@ RSpec.describe Watashi::Domain::Article do
 
       it "injects the permalink", :aggregate_failures do
         expect(subject).to have_key("permalink")
-        expect(subject["permalink"]).to match /test-article/
+        expect(subject["permalink"]).to match(/test-article/)
       end
 
       it "injects the published date", :aggregate_failures do
