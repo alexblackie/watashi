@@ -6,8 +6,6 @@ module Watashi
   ROUTES = {
     %r{^/assets/(?<name>.+)$} => { class: "Yokunai::StaticController", methods: ["GET"] },
 
-    %r{^/rss.xml$} => { class: "Watashi::Controllers::FeedController", methods: ["GET"] },
-
     %r{^/articles/(?<slug>.+)$} => { class: "Watashi::Controllers::ArticlesController", methods: ["GET"] },
 
     %r{^/albums/?$} => { class: "Watashi::Controllers::AlbumsController", methods: ["GET"] },

@@ -8,7 +8,7 @@
     <language>en-ca</language>
     <atom:link href="https://www.alexblackie.com/rss.xml" rel="self" type="application/rss+xml" />
 
-    <% articles.each do |article| %>
+    <% local(:articles).each do |article| %>
       <item>
         <title><%= article.title %></title>
         <link>https://www.alexblackie.com/articles/<%= article.slug %></link>

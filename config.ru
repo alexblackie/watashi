@@ -11,6 +11,7 @@ legacy_app = Watashi::Application.new(
 
 router = Hanami::Router.new do
   get "/", to: Watashi::Controllers::Root::Index
+  get "/rss.xml", to: Watashi::Controllers::Rss::Index
 
   # Fallback: if no route matches, try the legacy app.
   get "/*", to: legacy_app
