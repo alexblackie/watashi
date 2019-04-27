@@ -1,0 +1,45 @@
+---
+AllCops:
+  Exclude:
+    - "bin/**/*"
+    - "vendor/**/*"
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Layout/EmptyLinesAroundClassBody:
+  EnforcedStyle: empty_lines_except_namespace
+
+Layout/SpaceInsideStringInterpolation:
+  EnforcedStyle: space
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+

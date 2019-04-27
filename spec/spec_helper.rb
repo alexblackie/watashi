@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV["YOKUNAI_ENV"] ||= "test"
 
 require "rack/test"
@@ -26,12 +28,10 @@ RSpec.configure do |config|
   config.example_status_persistence_file_path = "spec/examples.txt"
   config.disable_monkey_patching!
   config.warnings = true
-  config.profile_examples =  5
+  config.profile_examples = 5
   config.order = :random
 
-  if config.files_to_run.one?
-    config.default_formatter = "doc"
-  end
+  config.default_formatter = "doc" if config.files_to_run.one?
 
   Kernel.srand config.seed
 

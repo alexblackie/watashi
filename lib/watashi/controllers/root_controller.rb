@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Watashi
   module Controllers
     class RootController < Yokunai::AbstractController
 
-      DEFAULT_PER_PAGE = 8.freeze
+      DEFAULT_PER_PAGE = 8
 
       def get
         page = (request.params["page"] || 0).to_i
@@ -14,14 +16,14 @@ module Watashi
         )
 
         respond(template: "index", context: {
-          page_title: "The Internet Sensation&trade;",
-          stylesheets: ["home"],
-          articles: articles,
-          current_page: page,
-          total_pages: service.total_pages(per_page: DEFAULT_PER_PAGE),
-          body_class: "page-home",
-          full_width: true
-        })
+                  page_title: "The Internet Sensation&trade;",
+                  stylesheets: ["home"],
+                  articles: articles,
+                  current_page: page,
+                  total_pages: service.total_pages(per_page: DEFAULT_PER_PAGE),
+                  body_class: "page-home",
+                  full_width: true
+                })
       end
 
     end

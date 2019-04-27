@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe "Request Routing", type: :request do
-
   describe "GET /" do
     it "is successful" do
       get("/")
@@ -27,5 +28,4 @@ RSpec.describe "Request Routing", type: :request do
       expect(last_response.headers["Location"]).to eq("/about")
     end
   end
-
 end

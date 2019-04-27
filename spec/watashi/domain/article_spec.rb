@@ -1,14 +1,18 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Watashi::Domain::Article do
   subject(:article) { described_class.new(data) }
 
-  let(:data) {{
-    "id" => "test-article",
-    "title" => "Me Post",
-    "date" => Date.parse("2063-04-05"),
-    "filename" => File.join(File.dirname(__FILE__), "..", "..", "fixtures", "articles", "test-article.yml")
-  }}
+  let(:data) do
+    {
+      "id" => "test-article",
+      "title" => "Me Post",
+      "date" => Date.parse("2063-04-05"),
+      "filename" => File.join(File.dirname(__FILE__), "..", "..", "fixtures", "articles", "test-article.yml")
+    }
+  end
 
   describe "#published_on" do
     subject { article.published_on }
@@ -37,9 +41,9 @@ RSpec.describe Watashi::Domain::Article do
 
     context "with og_meta present" do
       let(:data) do
-        super().merge({
-          "og_meta" => {"title" => "Me Post", description: "You won't believe it"},
-        })
+        super().merge(
+          "og_meta" => { "title" => "Me Post", description: "You won't believe it" }
+        )
       end
 
       it "injects the permalink", :aggregate_failures do

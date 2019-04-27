@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Watashi
   module Domain
     class Page
 
-      PATH_KEY = "pages".freeze
+      PATH_KEY = "pages"
 
       attr_reader :id, :title, :stylesheets, :javascripts
 

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Watashi
   module Domain
     class Article
 
-      PATH_KEY = "articles".freeze
+      PATH_KEY = "articles"
 
       # @param file [Hash] the parsed yaml contents
       def initialize(data)
@@ -89,10 +91,11 @@ module Watashi
       # @return [Hash<Symbol,String>]
       def og_meta
         return unless @article["og_meta"]
-        @article["og_meta"].merge({
+
+        @article["og_meta"].merge(
           "permalink" => "https://www.alexblackie.com/articles/#{ slug }",
           "published_time" => date.to_s
-        })
+        )
       end
 
     end

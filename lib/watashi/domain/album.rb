@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Watashi
   module Domain
     class Album
 
-      PATH_KEY = "albums".freeze
+      PATH_KEY = "albums"
 
       attr_reader :id, :title, :publish_date, :photo_sets
 
@@ -12,7 +14,7 @@ module Watashi
         @title = data["title"]
         @publish_date = data["publish_date"]
         @photo_sets = data["photo_sets"].map do |id|
-          Watashi::Services::DataBag.new( model: Watashi::Domain::PhotoSet).one(id)
+          Watashi::Services::DataBag.new(model: Watashi::Domain::PhotoSet).one(id)
         end
       end
 
@@ -20,7 +22,7 @@ module Watashi
       #
       # @return [String]
       def cover_photo_url
-        "#{ Yokunai::Config.get("cdn_base") }/photos/#{ @id }.jpg"
+        "#{ Yokunai::Config.get('cdn_base') }/photos/#{ @id }.jpg"
       end
 
     end

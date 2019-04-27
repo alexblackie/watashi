@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Watashi
   module Domain
     class PhotoSet
 
-      PATH_KEY = "photo_sets".freeze
+      PATH_KEY = "photo_sets"
 
       attr_reader :id, :title, :description, :photos, :album_id, :date
 
@@ -21,7 +23,7 @@ module Watashi
       # @return [Array<String>]
       def photo_urls
         @photos.map do |id|
-          "#{ Yokunai::Config.get("cdn_base") }/photos/#{ @album_id }/#{ id }.jpg"
+          "#{ Yokunai::Config.get('cdn_base') }/photos/#{ @album_id }/#{ id }.jpg"
         end
       end
 

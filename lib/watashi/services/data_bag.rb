@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Watashi
   module Services
     # A Data Bag represents a collection of YAML that contains serial data.
@@ -29,13 +31,13 @@ module Watashi
 
         return [] if page > total_pages(per_page: per_page)
 
-        results = get_all()
-        .sort{|lhs, rhs| lhs.public_send(sort) <=> rhs.public_send(sort) }
-        .reverse
-        .select{ |m| m.respond_to?(:held?) ? !m.held? : true }
-        .slice(offset..next_offset)
+        results = get_all
+                  .sort { |lhs, rhs| lhs.public_send(sort) <=> rhs.public_send(sort) }
+                  .reverse
+                  .select { |m| m.respond_to?(:held?) ? !m.held? : true }
+                  .slice(offset..next_offset)
 
-        results ? results : []
+        results || []
       end
 
       # Find a single record in the data bag.
@@ -45,27 +47,28 @@ module Watashi
       def one(id)
         path = File.join(@base_dir, "#{ id }.yml")
         return nil unless File.exist?(path)
+
         @model.new(read_yaml(path))
       end
 
       # @param per_page [Integer] Total pages, given per_page number of pages
       def total_pages(per_page:)
-        (get_all().size / per_page).round
+        (get_all.size / per_page).round
       end
 
       private
 
       def read_yaml(file)
-        YAML.load_file(file).merge({
+        YAML.load_file(file).merge(
           "id" => File.basename(file).gsub(/\.yml/, ""),
           "filename" => file
-        })
+        )
       end
 
       def get_all
         @entities ||= Dir
-        .glob(File.join(@base_dir, "*.yml"))
-        .map{ |f| @model.new(read_yaml(f)) }
+                      .glob(File.join(@base_dir, "*.yml"))
+                      .map { |f| @model.new(read_yaml(f)) }
       end
 
     end

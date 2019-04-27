@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Watashi
   module Controllers
     class PagesController < Yokunai::AbstractController
@@ -8,17 +10,17 @@ module Watashi
 
         if meta.nil?
           return respond(code: 404, template: "pages/404", context: {
-            page_title: "HTTP 404: Resource Not Found",
-            stylesheets: ["error"]
-          })
+                           page_title: "HTTP 404: Resource Not Found",
+                           stylesheets: ["error"]
+                         })
         end
 
-        respond(template: "pages/#{slug}", context: {
-          page_title: meta.title,
-          body_class: "page-#{slug}",
-          stylesheets: meta.stylesheets,
-          javascripts: meta.javascripts
-        })
+        respond(template: "pages/#{ slug }", context: {
+                  page_title: meta.title,
+                  body_class: "page-#{ slug }",
+                  stylesheets: meta.stylesheets,
+                  javascripts: meta.javascripts
+                })
       end
 
     end

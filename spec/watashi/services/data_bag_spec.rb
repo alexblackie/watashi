@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe Watashi::Services::DataBag do
-
   class TestModel
-    PATH_KEY = "test_model".freeze
+
+    PATH_KEY = "test_model"
 
     attr_reader :id, :title
 
@@ -12,10 +14,12 @@ RSpec.describe Watashi::Services::DataBag do
       @title = data["title"]
       @data = data
     end
+
   end
 
   class TestHeldModel
-    PATH_KEY = "test_model".freeze
+
+    PATH_KEY = "test_model"
 
     attr_reader :id, :title
 
@@ -28,6 +32,7 @@ RSpec.describe Watashi::Services::DataBag do
     def held?
       @data["hold"]
     end
+
   end
 
   let(:service) do
@@ -122,5 +127,4 @@ RSpec.describe Watashi::Services::DataBag do
       end
     end
   end
-
 end

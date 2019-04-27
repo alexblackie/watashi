@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Watashi
   class Application < Yokunai::Application
 
@@ -5,7 +7,7 @@ module Watashi
       # Support legacy "shtml" URLs
       if env["PATH_INFO"].end_with?(".shtml")
         new_path = env["PATH_INFO"].gsub(/\.shtml/, "")
-        return [301, {"Location" => new_path}, [""]]
+        return [301, { "Location" => new_path }, [""]]
       end
 
       super

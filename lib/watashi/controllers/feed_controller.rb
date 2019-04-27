@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Watashi
   module Controllers
     class FeedController < Yokunai::AbstractController
@@ -15,7 +17,7 @@ module Watashi
 
         respond(
           body: ERB.new(File.read(template_path)).result(Yokunai::RenderContext.new(context).get_binding),
-          headers: {"Content-Type" => "application/rss+xml"},
+          headers: { "Content-Type" => "application/rss+xml" }
         )
       end
 
