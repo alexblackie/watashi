@@ -16,6 +16,9 @@ Style/EmptyMethod:
 Style/NumericPredicate:
   Enabled: false
 
+Style/RedundantSelf:
+  Enabled: false
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
