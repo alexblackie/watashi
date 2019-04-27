@@ -2,7 +2,6 @@ source "https://rubygems.org/"
 
 gem "yokunai"
 gem "puma"
-gem "elastic-apm"
 
 group :development, :test do
   gem "pry"
