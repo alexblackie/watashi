@@ -3,15 +3,15 @@
 require "spec_helper"
 
 RSpec.describe "Request Routing", type: :request do
-  describe "GET /" do
+  describe "GET /about" do
     it "is successful" do
-      get("/")
+      get("/about")
       expect(last_response.status).to eq(200)
     end
 
     it "calls the right controller" do
-      expect_any_instance_of(Watashi::Controllers::RootController).to receive(:get).and_call_original
-      get("/")
+      expect_any_instance_of(Watashi::Controllers::PagesController).to receive(:get).and_call_original
+      get("/about")
     end
   end
 
