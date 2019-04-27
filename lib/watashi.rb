@@ -1,3 +1,7 @@
+require "hanami/router"
+require "hanami/controller"
+require "hanami/view"
+
 require "yokunai"
 
 require "watashi/constants"
