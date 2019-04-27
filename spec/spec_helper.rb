@@ -6,10 +6,7 @@ require "rack/test"
 require "watashi"
 
 def app
-  Watashi::Application.new(
-    route_map: Watashi::ROUTES,
-    base_dir: Watashi::BASE_DIR
-  )
+  Watashi::Router
 end
 
 RSpec.configure do |config|

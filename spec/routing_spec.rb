@@ -8,11 +8,6 @@ RSpec.describe "Request Routing", type: :request do
       get("/about")
       expect(last_response.status).to eq(200)
     end
-
-    it "calls the right controller" do
-      expect_any_instance_of(Watashi::Controllers::PagesController).to receive(:get).and_call_original
-      get("/about")
-    end
   end
 
   describe "GET a non-existent route" do
