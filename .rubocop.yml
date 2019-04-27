@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - "bin/**/*"
     - "vendor/**/*"
+  TargetRubyVersion: 2.6
 
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
