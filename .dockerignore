@@ -1,0 +1,7 @@
+/spec
+/Dockerfile
+/README.md
+/tmp
+/public/assets
+/vendor/bundle
+/.git
