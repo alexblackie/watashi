@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 ENV["YOKUNAI_ENV"] ||= "test"
+ENV["HANAMI_ENV"] ||= "test"
 
 require "rack/test"
 require "watashi"
