@@ -4,8 +4,9 @@ name: default
 
 steps:
 - name: test
-  image: ruby:2.4
+  image: ruby:2.6
   commands:
+    - gem install bundler -v 2.0.1
     - ./.ci
   when:
     branch:
