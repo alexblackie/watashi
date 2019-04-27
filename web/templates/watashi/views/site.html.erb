@@ -49,9 +49,9 @@
   </header>
 
   <div id="siteContent">
-    <% unless local(:full_width) %><div class="container"><% end %>
+    <% unless local(:full_width) == true %><div class="container"><% end %>
       <%= yield %>
-    <% unless local(:full_width) %></div><% end %>
+    <% unless local(:full_width) == true %></div><% end %>
   </div>
 
   <footer id="siteFooter">
