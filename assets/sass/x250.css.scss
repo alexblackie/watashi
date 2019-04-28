@@ -1,0 +1,26 @@
+.figure {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 0;
+}
+
+.article-single h3 {
+  font-size: 1.5em;
+}
+
+.threesome .bottom {
+  overflow: hidden; /* clearfix */
+}
+.threesome .bottom img {
+  float: left;
+  width: calc(50% - 0.25em);
+}
+.threesome .bottom img:first-child {
+  margin-right: 0.5em;
+}
+
+@media screen and (max-width: 512px) {
+  .figure {
+    margin: 2em 0;
+  }
+}

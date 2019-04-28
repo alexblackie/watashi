@@ -3,7 +3,7 @@ FROM alpine:3.9
 ENV CONTAINER_VERSION=1 \
     HANAMI_ENV=production
 
-RUN apk add --no-cache nodejs npm gcc g++ make libc-dev libstdc++ \
+RUN apk add --no-cache gcc g++ make libc-dev libstdc++ \
       ruby ruby-rake ruby-bigdecimal ruby-json ruby-irb ruby-etc ruby-dev \
       libxml2-dev libxslt-dev postgresql-dev libpq
 
@@ -17,7 +17,6 @@ WORKDIR /app
 USER deploy
 
 RUN /usr/bin/bundle install --deployment --without development test
-
-RUN npm run build
+RUN /usr/bin/bundle exec hanami-assets --config=config/assets.rb
 
 CMD ["/usr/bin/bundle", "exec", "rackup", "-o", "0.0.0.0"]

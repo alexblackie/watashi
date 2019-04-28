@@ -1,0 +1,190 @@
+@import "includes/_constants";
+
+/*******************************************************************************
+ * Albums
+ ******************************************************************************/
+.album {
+  overflow: hidden;
+  margin: 1%;
+  border: 2px solid $colorBorderLight;
+
+  figure {
+    float: left;
+    margin: 0;
+    max-width: 50%;
+
+    img {
+      display: block;
+    }
+  }
+}
+
+.album-data {
+  float: left;
+  margin-left: 2em;
+  line-height: 1.65em;
+}
+
+@media screen and (max-width: 640px) {
+  .album {
+    margin: 1em;
+    padding-bottom: 1em;
+  }
+
+  .album figure img {
+    height: 80px;
+    width: auto;
+  }
+
+  .album-data h2 {
+    margin: 0;
+    height: 80px;
+    padding-right: 1em;
+    text-align: right;
+    line-height: 80px;
+    background-color: #f3f3f3;
+  }
+
+  .album figure {
+    max-width: 40%;
+  }
+
+  .album-data {
+    float: none;
+    width: auto;
+    margin-left: 1em;
+  }
+
+  .album-data ul {
+    margin: 0;
+    padding: 1em;
+  }
+
+  .album-data li {
+    float: left;
+    width: 50%;
+    margin: 0.5em 0;
+  }
+}
+
+
+/*******************************************************************************
+ * Photo Sets
+ ******************************************************************************/
+.page-photoset #siteContent {
+}
+
+.photo-set-image,
+.photo-set-content {
+  max-width: 32%;
+  margin: 0.5%;
+}
+
+.photo-set-image a {
+  border: none;
+}
+
+.photo-set-content {
+  box-sizing: border-box;
+  min-width: 65%;
+  max-width: 65%;
+  padding: 2em;
+  font-size: 1.25em;
+  line-height: 1.5em;
+  border: 2px solid $colorHighlight;
+}
+  .photo-set-content h1 {
+    line-height: 1.1em;
+    font-size: 2.5em;
+  }
+  .photo-set-content blockquote {
+    margin: 1em -2em;
+    padding: 1em 3em;
+    border-left: 8px solid $colorHighlight;
+    font-style: italic;
+    color: $colorTextLight;
+  }
+
+.photo-set-publish-date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em 1em 0.5em 1.25em;
+  font-size: 0.75em;
+  background: $colorHighlight;
+  color: white;
+  border-bottom-left-radius: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .photo-set-content {
+    min-width: 99%;
+    font-size: 1rem;
+  }
+}
+
+/*******************************************************************************
+ * Loading spinner
+ *
+ * Stolen (and modified) with love from https://projects.lukehaas.me/css-loaders/
+ ******************************************************************************/
+.loading {
+  height: 4em;
+  padding: 0 2em;
+  margin-bottom: 2em;
+  background-color: #121212;
+  color: #ddd;
+  overflow: hidden;
+}
+
+.loading-spinny, .loading-message {
+  float: left;
+}
+
+.loading-message {
+  margin-left: 1em;
+  font-size: 1.25em;
+  line-height: 4.2rem;
+}
+
+.loading-spinny,
+.loading-spinny:after {
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  margin-top: 1rem;
+}
+.loading-spinny {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 0.5em solid rgba(255, 255, 255, 0.2);
+  border-right: 0.5em solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.5em solid rgba(255, 255, 255, 0.2);
+  border-left: 0.5em solid white;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: spinny 600ms infinite linear;
+  animation: spinny 600ms infinite linear;
+}
+@-webkit-keyframes spinny {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinny {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

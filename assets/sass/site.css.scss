@@ -1,0 +1,477 @@
+@import "includes/_constants";
+
+/*******************************************************************************
+ * Global Defaults and Resets
+ ******************************************************************************/
+
+body {
+  margin: 0;
+  font-family: $fontFamilyDefault;
+  color: $colorText;
+
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid $colorHighlight;
+
+  &:hover {
+    color: $colorHighlightAlt;
+    border-color: $colorHighlightAlt;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  height: 1px;
+  margin: 3em;
+  outline: 0;
+  border: 0;
+  background: $colorBorder;
+}
+
+p code,
+li code {
+  padding: 3px 6px;
+  font-size: 0.9em;
+  font-family: $fontFamilyMono;
+  background: $colorBackgroundDim;
+}
+
+pre {
+  margin: 1em 0;
+  padding: 1em;
+  max-height: 30em;
+  overflow: auto;
+  background-color: $colorBackgroundDim;
+  font-size: 0.9em;
+  font-family: $fontFamilyMono;
+  line-height: 1.25em;
+}
+
+
+/*******************************************************************************
+ * Code Blocks
+ ******************************************************************************/
+
+.code {
+  margin: 1.5em $paddingContentX*-1;
+
+  pre {
+    margin: 0;
+    padding: 1em $paddingContentX;
+  }
+}
+
+.code-title {
+  margin: 1em 0 0 0;
+  padding: 0.5em ($paddingContentX - 1rem);
+  background: lighten($colorBackgroundDim, 50%);
+  border-bottom: 1px solid $colorBorder;
+  font-family: $fontFamilyMono;
+  color: $colorTextLight;
+}
+  .code-title::before {
+    content: "# ";
+    color: $colorTextBright;
+  }
+
+/*******************************************************************************
+ * Note blocks
+ ******************************************************************************/
+.note {
+  margin-bottom: 2em;
+  border: 2px solid $colorHighlightAlt;
+
+  .note-title {
+    padding: 0.5em 1em;
+    background-color: $colorHighlightAlt;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .note-body {
+    padding: 1em;
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }
+}
+
+/*******************************************************************************
+ * Structure and Layout Classes
+ ******************************************************************************/
+
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+
+/*******************************************************************************
+ * Site Sections
+ ******************************************************************************/
+
+#siteHeader,
+#siteFooter,
+#siteContent {
+  padding: 2em 0;
+}
+
+#siteHeader {
+  overflow: hidden;
+  border-bottom: 2px solid $colorBorderLight;
+}
+
+#siteBrand {
+  float: left;
+  height: $heightHeader;
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+    line-height: $heightHeader - 1.5rem;
+
+    a {
+      border: none;
+    }
+  }
+
+  > div {
+    margin-top: 0.5em;
+    font-style: italic;
+    color: $colorTextLight;
+  }
+}
+
+#siteNav {
+  float: right;
+  height: $heightHeader;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: inline-block;
+    padding: 0 1.5em;
+    line-height: $heightHeader;
+    border-bottom-width: 2px;
+  }
+}
+
+.page-home #siteNav-home a,
+.page-article #siteNav-home a,
+.page-albums #siteNav-photos a,
+.page-about #siteNav-about a {
+  background-color: $colorHighlight;
+  border-color: $colorHighlight;
+  color: white;
+}
+
+#siteFooter {
+  padding-top: 3rem;
+  border-top: 2px solid $colorBorderLight;
+  color: $colorTextLight;
+  line-height: 1.5em;
+
+  a:not(:hover) {
+    border-color: $colorBorder;
+  }
+}
+
+/*******************************************************************************
+ * Alerts
+ ******************************************************************************/
+.alert {
+  background: yellow;
+  padding: 1em 2em;
+  font-size: 1.25em;
+  text-align: center;
+}
+
+/*******************************************************************************
+ * Articles
+ ******************************************************************************/
+
+.article {
+  header {
+    padding: 4em 0;
+    text-align: center;
+
+    h1 {
+      margin: 0 0 0.25em 0;
+      font-size: 3em;
+      letter-spacing: -0.05em;
+      color: black;
+    }
+
+    .meta {
+      color: #888;
+    }
+  }
+}
+
+.article-body {
+  font-size: 1.1em;
+  padding: 0 $paddingContentX;
+
+  p,
+  li {
+    line-height: 1.6em;
+  }
+
+  p {
+    margin: 0 0 2em 0;
+  }
+
+  li p {
+    margin: 0 0 1em 0;
+  }
+
+  h2 {
+    margin-top: 2em;
+  }
+
+  .spacey li {
+    margin: 0 0 1em 0;
+  }
+
+  blockquote {
+    margin: 1em $paddingContentX*-1;
+    padding: 1.5em 4em;
+    background: $colorBackgroundDim;
+    border: solid $colorBorder;
+    border-width: 0 10px;
+    font-family: $fontFamilyDefault;
+    line-height: 1.65em;
+  }
+
+  figure,
+  .figure {
+    margin: 2em -5em;
+    text-align: center;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &.pull-right {
+      float: right;
+      margin: 0 0 0 1rem;
+    }
+
+    &.pull-left {
+      float: left;
+      margin: 0 1rem 0 0;
+    }
+
+    img {
+      transition: transform ease 0.2s;
+      box-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
+    }
+
+    a {
+      border: none;
+
+      &:hover img {
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.article-meat {
+  margin: auto;
+  max-width: 1200px;
+}
+
+ol.article-toc {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  transition: transform 0.3s ease;
+
+  ol.article-toc-children {
+    display: none;
+    list-style: none;
+  }
+
+  > li.active {
+    ol {
+      display: block;
+    }
+
+    > a {
+      border-color: $colorHighlight;
+      background-color: $colorHighlight;
+      color: white;
+    }
+
+    li.active a {
+      background-color: $colorBorderLight;
+    }
+  }
+
+  a {
+    display: block;
+    padding: 0.6em 1em 0.4em;
+    border-top: 2px solid transparent;
+    border-bottom-color: $colorBorderLight;
+    transition: all 0.2s ease;
+  }
+}
+
+.article-body.with-toc {
+  margin-right: 25%;
+  padding-left: 0;
+}
+
+#tocHandle {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: -2.5rem;
+  height: 2rem;
+  width: 2.5rem;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background: $colorHighlightAlt;
+  text-align: center;
+  line-height: 2rem;
+  color: white;
+}
+
+.article-cover {
+  padding: 0;
+  margin: 0 0 1em 0;
+  text-align: center;
+}
+
+.article-photostrip {
+  display: flex;
+  padding: 0;
+  margin: 0 0 1em 0;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: center;
+
+  a {
+    max-width: 15%;
+    border: none;
+  }
+
+  img {
+    display: inline-block;
+  }
+}
+
+
+/*******************************************************************************
+ * Media Queries
+ ******************************************************************************/
+
+@media screen and (max-width: 700px) {
+  .container {
+    max-width: 100%;
+  }
+
+  #siteHeader {
+    text-align: center;
+  }
+
+  #siteBrand {
+    float: none;
+  }
+
+  #siteNav {
+    margin: 1em 0 0 0;
+    float: none;
+    height: auto;
+
+    a {
+      margin: 0.5em 0;
+      padding: 0 1.25em;
+    }
+  }
+
+  .code pre,
+  .code .code-title {
+    font-size: 0.75em;
+  }
+
+  .article header h1 {
+    font-size: 2.5em;
+  }
+
+  .article-body {
+    padding: 2em 1em;
+    font-size: 1.15em;
+
+    &.with-toc {
+      margin-right: 0;
+      padding-left: 1em;
+    }
+
+    figure,
+    .figure {
+      margin-left: -1em;
+      margin-right: -1em;
+    }
+  }
+
+  .article-meat {
+    overflow: hidden;
+  }
+
+  ol.article-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    transform: translateX(100%);
+    background-color: white;
+    box-shadow: -1px 0px 4px rgba(0,0,0, 0.2);
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+
+  #tocHandle {
+    display: block;
+  }
+
+  .article-photostrip {
+    flex-wrap: wrap;
+
+    a {
+      max-width: 32%;
+    }
+  }
+
+  #siteFooter {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}

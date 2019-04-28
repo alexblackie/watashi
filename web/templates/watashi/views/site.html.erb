@@ -7,9 +7,9 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Overpass:400,700|Fira+Mono:400,700"
     type="text/css">
-  <link rel="stylesheet" href="/assets/css/site.css" type="text/css">
-  <% (local(:stylesheets) || []).each do |name| %>
-  <link rel="stylesheet" href="/assets/css/<%= name %>.css" type="text/css">
+  <%= stylesheet "site" %>
+  <% unless local(:stylesheets).nil? %>
+    <%= stylesheet *local(:stylesheets) %>
   <% end %>
   <link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/rss.xml"/>
 
@@ -61,8 +61,8 @@
     </div>
   </footer>
 
-  <% (local(:javascripts) || []).each do |name| %>
-    <script src="/assets/js/<%= name %>.js"></script>
+  <% unless local(:javascripts).nil? %>
+    <%= javascript *local(:javascripts) %>
   <% end %>
 
 </body>

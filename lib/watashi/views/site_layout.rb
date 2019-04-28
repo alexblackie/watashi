@@ -5,6 +5,7 @@ module Watashi
     class SiteLayout
 
       include Hanami::Layout
+      include Hanami::Assets::Helpers
 
     end
   end

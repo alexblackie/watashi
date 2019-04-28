@@ -2,6 +2,7 @@
 
 require "yaml"
 
+require "hanami/assets"
 require "hanami/router"
 require "hanami/controller"
 require "hanami/view"
@@ -25,6 +26,7 @@ require "watashi/controllers/photo_sets/index"
 require "watashi/controllers/photo_sets/show"
 
 require_relative "../config/hanami"
+require_relative "../config/assets"
 
 require "watashi/views/site_layout"
 require "watashi/views/root/index"

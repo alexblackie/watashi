@@ -1,6 +1,6 @@
 .bundle
 /spec/examples.txt
 /bin
-/rpmbuild
-/node_modules
-/web/assets/css
+/public/assets
+/public/assets.json
+/tmp
