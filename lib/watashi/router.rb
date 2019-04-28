@@ -12,6 +12,9 @@ module Watashi
 
     get "/articles/:id", to: Watashi::Controllers::Articles::Show
 
+    get "/albums", to: Watashi::Controllers::PhotoSets::Index
+    get "/albums/:album_id/:id", to: Watashi::Controllers::PhotoSets::Show
+
     # TODO: remove regex constraint once legacy app is gone.
     get "/:id", id: /(about|dpi)$/, to: Watashi::Controllers::Pages::Show
 

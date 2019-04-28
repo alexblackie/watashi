@@ -1,5 +1,5 @@
 <div class="albums">
-  <% albums.each do |a| %>
+  <% local(:albums).each do |a| %>
     <div class="album">
       <figure><img src="<%= a.cover_photo_url %>" alt="<%= a.title %>"></figure>
       <div class="album-data">

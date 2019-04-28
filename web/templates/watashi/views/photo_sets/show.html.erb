@@ -5,18 +5,18 @@
 
 <article class="photo-set">
 
-  <% photo_set.photo_urls.each do |url| %>
+  <% local(:photo_set).photo_urls.each do |url| %>
     <div class="photo-set-image">
       <a href="<%= url %>"><img src="<%= url %>" alt="<%= photo_set.title %>"></a>
     </div>
   <% end %>
 
   <div class="photo-set-content">
-    <div class="photo-set-publish-date"><%= photo_set.date.strftime("%B %d, %Y") %></div>
-    <h1><%= photo_set.title %></h1>
+    <div class="photo-set-publish-date"><%= local(:photo_set).date.strftime("%B %d, %Y") %></div>
+    <h1><%= local(:photo_set).title %></h1>
 
     <div class="photo-set-content-body">
-      <%= photo_set.description %>
+      <%= local(:photo_set).description %>
     </div>
   </div>
 

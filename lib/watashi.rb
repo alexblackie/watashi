@@ -21,6 +21,8 @@ require "watashi/controllers/root/index"
 require "watashi/controllers/rss/index"
 require "watashi/controllers/pages/show"
 require "watashi/controllers/articles/show"
+require "watashi/controllers/photo_sets/index"
+require "watashi/controllers/photo_sets/show"
 
 require_relative "../config/hanami"
 
@@ -29,8 +31,7 @@ require "watashi/views/root/index"
 require "watashi/views/rss/index"
 require "watashi/views/pages/show"
 require "watashi/views/articles/show"
-
-require "watashi/controllers/albums_controller"
-require "watashi/controllers/photo_set_controller"
+require "watashi/views/photo_sets/index"
+require "watashi/views/photo_sets/show"
 
 require "watashi/router"
