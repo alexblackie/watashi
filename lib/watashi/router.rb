@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Watashi
-  LegacyRouter = Watashi::Application.new(
+  LegacyRouter = Yokunai::Application.new(
     route_map: Watashi::ROUTES,
     base_dir: Watashi::BASE_DIR
   )
@@ -17,6 +17,9 @@ module Watashi
 
     # TODO: remove regex constraint once legacy app is gone.
     get "/:id", id: /(about|dpi)$/, to: Watashi::Controllers::Pages::Show
+
+    # Maintain `*.shtml` redirects from very legacy site
+    get "/:id.shtml", to: ->(env) { [301, {"Location" => "/#{ env["router.params"][:id] }"}, []] }
 
     # Fallback: if no route matches, try the legacy app.
     get "/*", to: Watashi::LegacyRouter

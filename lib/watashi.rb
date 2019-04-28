@@ -8,7 +8,6 @@ require "yokunai"
 
 require "watashi/constants"
 require "watashi/errors"
-require "watashi/application"
 require "watashi/domain/article"
 require "watashi/domain/album"
 require "watashi/domain/photo_set"
