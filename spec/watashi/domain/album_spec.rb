@@ -25,7 +25,7 @@ RSpec.describe Watashi::Domain::Album do
     end
 
     it "contains the cdn url" do
-      expect(subject).to include "cdn.example.com"
+      expect(subject).to include "cdn.blackieops.com"
     end
   end
 

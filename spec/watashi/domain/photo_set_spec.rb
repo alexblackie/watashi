@@ -23,7 +23,7 @@ RSpec.describe Watashi::Domain::PhotoSet do
     subject { entity.photo_urls }
 
     it "contains the CDN URL" do
-      expect(subject.sample).to include "cdn.example.com"
+      expect(subject.sample).to include "cdn.blackieops.com"
     end
 
     it "contains the photo id" do

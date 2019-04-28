@@ -8,10 +8,6 @@ gem "hanami-controller"
 gem "hanami-router"
 gem "hanami-view"
 
-# Kept around to run both apps in parallel until we move everything over to the
-# new Hanami stack.
-gem "yokunai"
-
 gem "puma"
 
 group :development, :test do

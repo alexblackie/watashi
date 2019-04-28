@@ -12,7 +12,7 @@ module Watashi
 
       # @param model [Class] the model class; must have at least a `.path_key` method; will be instantiated with the yaml data
       # @param base_dir [String] the absolute path to the application base directory (optional)
-      def initialize(model:, base_dir: Yokunai::Config.base_dir)
+      def initialize(model:, base_dir: Watashi::BASE_DIR)
         @base_dir = File.join(base_dir, "data", model::PATH_KEY)
         @model = model
       end

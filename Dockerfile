@@ -1,8 +1,7 @@
 FROM alpine:3.9
 
 ENV CONTAINER_VERSION=1 \
-    HANAMI_ENV=production \
-    YOKUNAI_ENV=production
+    HANAMI_ENV=production
 
 RUN apk add --no-cache nodejs npm gcc g++ make libc-dev libstdc++ \
       ruby ruby-rake ruby-bigdecimal ruby-json ruby-irb ruby-etc ruby-dev \

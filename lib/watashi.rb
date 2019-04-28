@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
+require "yaml"
+
 require "hanami/router"
 require "hanami/controller"
 require "hanami/view"
 
-require "yokunai"
-
 require "watashi/constants"
 require "watashi/errors"
+
 require "watashi/domain/article"
 require "watashi/domain/album"
 require "watashi/domain/photo_set"

@@ -23,7 +23,7 @@ module Watashi
       # @return [Array<String>]
       def photo_urls
         @photos.map do |id|
-          "#{ Yokunai::Config.get('cdn_base') }/photos/#{ @album_id }/#{ id }.jpg"
+          "#{ Watashi::CDN_BASE }/photos/#{ @album_id }/#{ id }.jpg"
         end
       end
 
