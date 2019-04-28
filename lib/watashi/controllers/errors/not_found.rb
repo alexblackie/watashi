@@ -1,18 +1,17 @@
-# frozen_string_literal: true
-
 module Watashi
   module Controllers
-    module Pages
-      class Show
+    module Errors
+      class NotFound
 
         include Hanami::Action
-        include Watashi::Controllers::HandleErrors
 
         def call(params)
-          slug = params[:id]
-          meta = Watashi::Services::DataBag.new(model: Watashi::Domain::Page).one(slug)
-
-          raise Watashi::Errors::RecordNotFound if meta.nil?
+          self.status = 404
+          slug = 404
+          meta = Watashi::Domain::Page.new({
+            "title" => "Error 404: Resource Not Found",
+            "stylesheets" => ["error"]
+          })
 
           ctx = {
             format: :html,

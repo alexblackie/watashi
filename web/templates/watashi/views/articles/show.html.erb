@@ -1,4 +1,4 @@
-<% if held %>
+<% if local(:held) %>
 <div class="alert">
   This article is UNPUBLISHED. You are viewing a semi-private draft.
 </div>
@@ -6,12 +6,12 @@
 
 <article class="article article-single">
   <header>
-    <h1><%= page_title %></h1>
-    <div class="meta">Posted on <%= date %></div>
+    <h1><%= local(:page_title) %></h1>
+    <div class="meta">Posted on <%= local(:date) %></div>
   </header>
 
   <div class="article-meat article-photos">
-    <% if cover %>
+    <% if cover = local(:cover) %>
     <figure class="article-cover">
       <img src="<%= cover["url"] %>" alt="<%= cover["caption"] %>" width="<%= cover["width"] %>" height="<%= cover["height"] %>">
     </figure>
@@ -19,7 +19,7 @@
 
     <% if photostrip %>
       <figure class="article-photostrip">
-        <% photostrip.each do |photo| %>
+        <% local(:photostrip).each do |photo| %>
           <a href="<%= photo["url"] %>"><img src="<%= photo["url"] %>" alt="<%= photo["caption"] %>"></a>
         <% end %>
       </figure>
@@ -27,10 +27,10 @@
   </div>
 
   <div class="article-meat">
-    <% if toc %>
+    <% if local(:toc) %>
     <ol class="article-toc" id="toc">
       <button id="tocHandle">&sect;</button>
-      <% toc.each do |t| %>
+      <% local(:toc).each do |t| %>
         <li class="article-toc-link" id="tocLink-<%= t["id"] %>">
           <a href="#<%= t["id"] %>"><%= t["label"] %></a>
           <% if t["children"] %>
@@ -47,7 +47,7 @@
     </ol>
     <% end %>
     <div class="article-body <% if toc %>with-toc<% end %>">
-      <%= body %>
+      <%= local(:body) %>
     </div>
   </div>
 </article>

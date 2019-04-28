@@ -9,6 +9,8 @@ module Watashi
     get "/", to: Watashi::Controllers::Root::Index
     get "/rss.xml", to: Watashi::Controllers::Rss::Index
 
+    get "/articles/:id", to: Watashi::Controllers::Articles::Show
+
     # TODO: remove regex constraint once legacy app is gone.
     get "/:id", id: /(about|dpi)$/, to: Watashi::Controllers::Pages::Show
 
