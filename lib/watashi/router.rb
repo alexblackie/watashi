@@ -1,5 +1,6 @@
-module Watashi
+# frozen_string_literal: true
 
+module Watashi
   LegacyRouter = Watashi::Application.new(
     route_map: Watashi::ROUTES,
     base_dir: Watashi::BASE_DIR
@@ -17,5 +18,4 @@ module Watashi
     # Fallback: if no route matches, try the legacy app.
     get "/*", to: Watashi::LegacyRouter
   end
-
 end

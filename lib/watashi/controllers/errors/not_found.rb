@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Watashi
   module Controllers
     module Errors
@@ -5,13 +7,13 @@ module Watashi
 
         include Hanami::Action
 
-        def call(params)
+        def call(_params)
           self.status = 404
           slug = 404
-          meta = Watashi::Domain::Page.new({
+          meta = Watashi::Domain::Page.new(
             "title" => "Error 404: Resource Not Found",
             "stylesheets" => ["error"]
-          })
+          )
 
           ctx = {
             format: :html,

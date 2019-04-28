@@ -18,7 +18,6 @@ module Watashi
           self.body = Watashi::Views::Articles::Show.render(format: :html, article: article)
         end
 
-
       end
     end
   end

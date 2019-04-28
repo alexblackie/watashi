@@ -6,7 +6,6 @@ require "hanami/view"
 
 require "yokunai"
 
-
 require "watashi/constants"
 require "watashi/errors"
 require "watashi/application"
