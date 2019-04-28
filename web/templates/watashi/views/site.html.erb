@@ -13,7 +13,7 @@
   <% end %>
   <link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/rss.xml"/>
 
-  <% if local(:og_meta) %>
+  <% unless local(:og_meta).nil? %>
     <% og_meta = local(:og_meta) %>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%= og_meta["title"] %>">
