@@ -1,0 +1,32 @@
+.projectCard {
+  border: 2px solid gainsboro;
+  border-radius: 0.25rem;
+}
+
+  .projectCard > a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+.projectName {
+  margin: 0.25rem 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.domain {
+  display: block;
+  font-weight: normal;
+  color: grey;
+  font-size: 0.75em;
+}
+
+.content {
+  line-height: 1.5rem;
+}
+
+.projectImage {
+  max-width: 30%;
+}

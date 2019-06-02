@@ -1,0 +1,44 @@
+.header {
+  padding: 3rem 0;
+}
+
+.header h1 {
+  margin: 2rem 0 0.5rem 0;
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.meta {
+  color: grey;
+}
+
+.content {
+  max-width: 75%;
+  margin: auto;
+}
+
+.content p,
+.content li,
+.content blockquote {
+  line-height: 1.6em;
+}
+
+.content h2,
+.content h3,
+.content h4 {
+  margin-top: 2em;
+}
+
+.cover {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: -3rem;
+  margin-right: -3rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 512px) {
+  .cover {
+    margin: 2em 0;
+  }
+}

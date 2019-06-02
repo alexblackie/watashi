@@ -1,0 +1,38 @@
+:root {
+  --color-highlight: #1b5199;
+}
+
+body {
+  margin: 0;
+  font-family: Lora, serif;
+}
+
+a {
+  color: var(--color-highlight);
+}
+  a:focus, a:active {
+    background-color: #ffffa0;
+  }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* This is referenced from markdown, so it can't use modular css. */
+.note {
+  margin-bottom: 2em;
+  border: 2px solid var(--color-highlight);
+}
+  .note .note-title {
+    padding: 0.5em 1em;
+    background-color: var(--color-highlight);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+  .note .note-body {
+    padding: 1em;
+    font-size: 0.9em;
+    line-height: 1.5em;
+  }

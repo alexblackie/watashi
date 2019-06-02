@@ -1,0 +1,35 @@
+.columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.articleColumn {
+  width: 65%;
+  margin-right: 5%;
+}
+
+.contactColumn {
+  flex-grow: 1;
+}
+  .contactColumn dt,
+  .contactColumn dd {
+    padding: 0.25rem;
+  }
+  .contactColumn dt {
+    float: left;
+    width: 30%;
+  }
+
+.articleList {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.articleList td {
+  padding: 0.5rem;
+  border-bottom: 1px solid gainsboro;
+}
+
+.articleList tr:nth-child(even) td {
+  background-color: whitesmoke;
+}

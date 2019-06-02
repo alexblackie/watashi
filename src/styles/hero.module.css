@@ -1,0 +1,51 @@
+.hero {
+  background-color: whitesmoke;
+  border-bottom: 2px solid gainsboro;
+}
+
+.container {
+  padding: 4rem 0;
+  max-width: 840px;
+  position: relative;
+}
+
+.withCta {
+  padding-bottom: 5rem;
+}
+
+.compressed {
+  padding: 2rem 0;
+}
+
+.lead {
+  margin: 0;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.text {
+  padding: 1rem 0 0 0;
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.cta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+  .cta a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0,0,0, 0.04);
+    text-decoration: none;
+    transition: padding 0.4s ease;
+  }
+  .cta a:hover {
+    padding-bottom: 1rem;
+    padding-top: 0.75rem;
+  }
+  .cta a::after {
+    content: " \2192";
+    text-decoration: none;
+  }
