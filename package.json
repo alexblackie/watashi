@@ -15,6 +15,6 @@
     "react-helmet": "^5.2.1"
   },
   "scripts": {
-    "now-build": "gatsby build"
+    "build": "gatsby build"
   }
 }
