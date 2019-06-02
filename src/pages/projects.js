@@ -1,4 +1,6 @@
 import React from "react";
+import Helmet from "react-helmet";
+
 import Layout from "../components/layout";
 import Container from "../components/container";
 import Hero from "../components/hero";
@@ -8,6 +10,8 @@ import projectStyles from "../styles/projects.module.css";
 
 export default () => (
   <Layout>
+    <Helmet title="Projects - Alex Blackie" />
+
     <Hero lead="Projects" compressed>
       <p>
         I am always finding new ways to exhaust my spare time. While most projects never get farther than my laptop, some make their way to the Internet. These are they.

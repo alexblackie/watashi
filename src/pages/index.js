@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import Helmet from "react-helmet";
+
 import Layout from "../components/layout";
 import Container from "../components/container";
 import Hero from "../components/hero";
@@ -7,6 +9,8 @@ import homeStyles from "../styles/home.module.css";
 
 export default ({ data }) => (
   <Layout>
+    <Helmet title="The Internet Sensation™ - Alex Blackie" />
+
     <Hero lead="Salut! Je suis un développeur de logiciel à Montréal 🇨🇦" ctaLink="/projects" ctaText="Things I’ve Done">
       I work as a Software Developer (DevOps &amp; API) at <a href="https://getflow.com">Flow</a> and sometimes do things as <a href="https://github.com/blackieops">BlackieOps</a>. Over the years I have been fortunate to work on many challenging projects ranging from JS frontend apps, to high-performance backend APIs, to globally-redundant infrastructure.
     </Hero>

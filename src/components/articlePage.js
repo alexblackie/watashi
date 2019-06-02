@@ -1,5 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Helmet from "react-helmet";
+
 import Layout from "./layout";
 import Container from "./container";
 
@@ -16,6 +18,8 @@ export default function Template({ data }) {
   const { frontmatter, html } = markdownRemark;
   return (
     <Layout>
+      <Helmet title={ `${ frontmatter.title } - Alex Blackie` } />
+
       <Container>
         <article>
           <header className={ articleStyles.header }>
