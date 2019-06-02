@@ -22,6 +22,7 @@
 .brand img {
   margin-right: 0.5rem;
   border-radius: 100%;
+  font-size: 1px; /* Fix repaint issue where image alt fucks up layout before img is loaded */
 }
 
 .nav a {
