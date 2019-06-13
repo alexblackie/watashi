@@ -34,9 +34,9 @@ render() {
 	EOF")
 
 	if [ "${3:-}" = "nowrite" ] ; then
-		echo $pageContent
+		echo "$pageContent"
 	else
-		echo $pageContent > $BUILD_DIR/$page.$ext
+		echo "$pageContent" > $BUILD_DIR/$page.$ext
 	fi
 }
 
