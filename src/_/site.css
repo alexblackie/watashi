@@ -111,6 +111,17 @@ table {
 		color: inherit;
 	}
 
+.siteContent .code pre {
+	margin-top: 0;
+}
+
+.siteContent .code-title {
+	overflow: auto;
+	padding: 0.5rem 1rem;
+	font-family: monospace;
+	border-bottom: 2px solid gainsboro;
+}
+
 .singleArticle--header {
 	padding:3rem 0;
 	margin-bottom: 2rem;
