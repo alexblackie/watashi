@@ -1,0 +1,12 @@
+$(allArticles <<'EOARTICLES'
+<item>
+	<title>$title</title>
+	<link>https://www.alexblackie.com/$(dirname $article)/</link>
+	<guid>https://www.alexblackie.com/$(dirname $article)/</guid>
+	<pubDate>$(formatDate $publishDate)</pubDate>
+	<author>alex@alexblackie.com (Alex Blackie)</author>
+	<description></description>
+	<content:encoded><![CDATA[ $content ]]></content:encoded>
+</item>
+EOARTICLES
+)

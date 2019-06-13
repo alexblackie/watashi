@@ -25,11 +25,17 @@ allArticles() {
 
 	IFS=$'\n'
 	sorted=($(sort -r <<<"${databag[*]}"))
+	templateString="$(while read template ; do echo $template ; done)"
 
 	for row in ${sorted[*]} ; do
 		article="$(echo $row | cut -f2- -d' ')"
 		eval "$(cat src/$article)"
-		echo "<tr><td>$(formatDate $publishDate)</td><td><a href=\"/$(dirname $article)/\">$title</a></td></tr>"
+		content="$(eval "cat <<-EOF
+			$(<src/${article/.meta/.html})
+		EOF")"
+		eval "cat <<-EOF
+			$templateString
+		EOF"
 	done
 	unset IFS
 }

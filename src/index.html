@@ -18,7 +18,13 @@
 			</thead>
 
 			<tbody>
-				$(allArticles)
+				$(allArticles <<-'EOARTICLES'
+				<tr>
+					<td>$(formatDate $publishDate)</td>
+					<td><a href="/$(dirname $article)/">$title</a></td>
+				</tr>
+EOARTICLES
+)
 			</tbody>
 		</table>
 	</div>

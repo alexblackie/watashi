@@ -12,22 +12,32 @@ fancyLog() {
 
 render() {
 	layout="${2:-site}"
+	ext="html"
 
 	[[ -e "src/$1.meta" ]] && eval "$(cat src/$1.meta)"
 
 	if [[ "$1" =~ "articles/" ]] && [[ "$layout" != "article" ]] ; then
 		# for articles, loop through render twice to wrap in the article layout
-		content="$(render $1 article)"
+		content="$(render $1 article nowrite)"
 	else
 		# Otherwise just read the page contents
+		if [[ -e "src/$1.xml" ]] ; then
+			ext="xml"
+		fi
 		content="$(eval "cat <<-EOF
-			$(<src/$1.html)
+			$(<src/$1.$ext)
 		EOF")"
 	fi
 
-	eval "cat <<-EOF
-		$(<src/_layouts/$layout.html)
-	EOF"
+	pageContent=$(eval "cat <<-EOF
+		$(<src/_layouts/$layout.$ext)
+	EOF")
+
+	if [ "${3:-}" = "nowrite" ] ; then
+		echo $pageContent
+	else
+		echo $pageContent > $BUILD_DIR/$page.$ext
+	fi
 }
 
 STARTTIME="$(date +%s)"
@@ -42,7 +52,7 @@ for sourceTemplate in $(find src -name '*.meta' | sed 's/src\///') ; do
 	mkdir -p $BUILD_DIR/$(dirname $page)
 
 	# subshell to prevent data leakage between renders
-	$(render $page > $BUILD_DIR/$page.html)
+	$(render $page)
 done
 
 fancyLog "Copying static assets"
