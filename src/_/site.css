@@ -88,6 +88,22 @@ table {
 	outline: none;
 }
 
+.siteContent code {
+	padding: 3px 5px;
+	background-color: whitesmoke;
+	color: navy;
+}
+
+.siteContent pre {
+	overflow: auto;
+	max-height: 33vh;
+	padding: 1.5rem;
+	background-color: whitesmoke;
+}
+	.siteContent pre code {
+		color: inherit;
+	}
+
 .singleArticle--header {
 	padding:3rem 0;
 	margin-bottom: 2rem;
