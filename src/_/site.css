@@ -179,6 +179,8 @@ table {
 	.homeColumns--column h2 { padding-left: .5rem; }
 	.homeColumns--contact { margin-top: 2rem; }
 
+	.singleArticle { padding-left: 1rem; padding-right: 1rem; }
+
 	table, thead, tbody, th, td, tr {
 		display: block;
 	}
