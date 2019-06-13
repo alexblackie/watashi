@@ -1,8 +1,8 @@
-# 私
+* 私
 
 This is the source for my website, [[https://www.alexblackie.com][alexblackie.com]].
 
-## Building
+** Building
 
 This site is constructed using a bespoke series of shell scripts (bash, sorry)
 that parse and assemble all the content and pages.
@@ -25,7 +25,7 @@ To watch for changes, combine this with a tool such as [[http://eradman.com/entr
 find src build.sh helpers.sh | entr -cr ./build.sh
 #+END_SRC
 
-## License
+** License
 
 All source code is licensed under the MIT license (full text follows). The
 content itself is not covered by this license.
