@@ -1,6 +1,12 @@
 title="DevOps in the Closet"
 publishDate="2018-06-18"
+
 coverUrl="https://cdn.blackieops.com/alexblackie/devops-closet/cover.jpg"
 coverAlt="A 12U rack of servers in a normal closet."
 coverWidth=1200
 coverHeight=529
+
+openGraphTitle="DevOps in the Closet"
+openGraphImageUrl="https://cdn.blackieops.com/alexblackie/devops-closet/cover.jpg"
+openGraphDescription="A story about running the rack in my closet behind a load balancer in the cloud."
+openGraphPermalink="https://www.alexblackie.com/articles/devops-in-the-closet/"

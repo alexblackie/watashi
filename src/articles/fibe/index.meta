@@ -1,2 +1,12 @@
 title="Taking Control of Bell Fibe"
 publishDate="2017-12-23"
+
+coverUrl="https://cdn.blackieops.com/alexblackie/fibe/sfp.jpg"
+coverAlt="SFP plugged into a rackmount switch."
+coverWidth=1920
+coverHeight=537
+
+openGraphTitle="Taking Control of Bell Fibe"
+openGraphImageUrl="https://cdn.blackieops.com/alexblackie/fibe/sfp.jpg"
+openGraphDescription="How I ditched Bell's router and plugged fibre right into my network."
+openGraphPermalink="https://www.alexblackie.com/articles/fibe/"

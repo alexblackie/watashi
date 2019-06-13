@@ -5,6 +5,21 @@
 	<title>$title &mdash; Alex Blackie</title>
 	<link rel="stylesheet" href="/_/site.css" type="text/css">
 	<link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
+
+	$(if [ "${openGraphTitle:-}" != "" ] ; then cat <<-EOOGMETA
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="$openGraphTitle">
+	<meta name="twitter:description" content="$openGraphDescription">
+	<meta name="twitter:image" content="$openGraphImageUrl">
+
+	<meta property="og:title" content="$openGraphTitle">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="$openGraphPermalink">
+	<meta property="og:description" content="$openGraphDescription">
+	<meta property="og:image" content="$openGraphImageUrl">
+	<meta property="article:published_time" content="$(formatDate $publishDate)">
+	EOOGMETA
+	fi)
 </head>
 <body>
 	<header class="siteHeader">
