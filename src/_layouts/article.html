@@ -4,6 +4,15 @@
 		<div class="singleArticle--header--meta">Published $(formatDate $publishDate) by Alex Blackie $([[ "${lastUpdateDate:-}" != "" ]] && echo "&middot; Updated $(formatDate $lastUpdateDate)")</div>
 	</header>
 
+	$(if [ "${coverUrl:-}" != "" ] ; then cat <<-EOCOVERFIGURE
+
+	<figure class="singleArticle--cover">
+		<img src="$coverUrl" alt="$coverAlt" width="$coverWidth" height="$coverHeight">
+	</figure>
+
+	EOCOVERFIGURE
+	fi)
+
 	<div class="singleArticle--body">
 		$content
 	</div>
