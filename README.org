@@ -17,7 +17,7 @@ To compile the site:
 ./build.sh
 #+END_SRC
 
-The files will be placed in `./_build`.
+The files will be placed in =./_build=.
 
 To watch for changes, combine this with a tool such as [[http://eradman.com/entrproject/][entr]]:
 
