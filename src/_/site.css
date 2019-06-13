@@ -80,6 +80,13 @@ table {
 	text-align: center;
 }
 
+.siteContent blockquote {
+	margin: 1rem 0;
+	padding: 1rem 4rem;
+	border-left: 4px solid gainsboro;
+	font-style: italic;
+}
+
 .siteContent hr {
 	margin: 2rem 0;
 	height: 2px;
