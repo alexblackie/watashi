@@ -1,0 +1,145 @@
+<div class="note">
+  <div class="note--title">Update 2018-07</div>
+  <div class="note--body">
+    As of July 2018 DigitalOcean <a href="https://www.digitalocean.com/docs/release-notes/2018/private-networking/">has begun rolling out</a>
+    true private networking that is isolated per-account. This is a great step
+    forward, and I sincerely hope other VPS providers follow suit. Until then,
+    this post is still relevant for basically every other provider.
+  </div>
+</div>
+
+<p>
+  A while ago I deployed a blog using DigitalOcean's infrastructure. I used
+  separate droplets for the database and web tier, and used the "private IP"
+  feature to only allow MySQL traffic over that interface. I noticed the
+  private network seemed larger than necessary for just hosting my own stuff,
+  so I did a little digging.
+</p>
+
+<p>
+  <strong>DigitalOcean's "private networking" is quite literally the opposite
+  of private.</strong> Your droplet's private IP will be in a shared subnet
+  with every other customer's if they end up on the same network as you. Do not
+  think for a minute you can "trust the LAN" or anything like that; I'm sure if
+  I scanned deeper I could find dozens of unauthenticated Redis and database
+  servers people inadvertently have opened to this not-so-private network.
+</p>
+
+<p>
+  <strong>Unfortunately, this isn't just DigitalOcean's problem.</strong> I
+  ran a couple tests from one of my instances on Linode and was shocked to find
+  their Private IP feature both assigns the address to the same interface as
+  the public IP, and shares the subnet with many other customers.  These are
+  just the two providers I have used; I would hazard to guess this is a common
+  practice among the smaller non-Openstack cloud providers.
+</p>
+
+<hr>
+
+<p>
+  To demonstrate this issue, I spun up a droplet in DigitalOcean's TOR-1
+  region. The private interface has the entire <code>10.137.0.0/16</code>
+  network routed, and I decided to try doing a basic scan to enumerate the
+  entire subnet.
+</p>
+
+<div class="code">
+  <div class="code-title">nmap -sn 10.137.0.0/16</div>
+<pre><code>Starting Nmap 6.40 ( http://nmap.org ) at 2018-03-03 17:06 UTC
+
+Nmap scan report for 10.137.0.4
+Host is up (0.0037s latency).
+MAC Address: F6:BF:AB:FF:ED:AA (Unknown)
+Nmap scan report for 10.137.0.5
+Host is up (0.0037s latency).
+MAC Address: AE:FC:E8:AD:78:7F (Unknown)
+[...]
+Nmap scan report for 10.137.255.252
+Host is up (0.0082s latency).
+MAC Address: 1A:73:75:CA:44:1A (Unknown)
+<strong>Nmap done: 65536 IP addresses (5588 hosts up) scanned in 229.23 seconds</strong>
+</code></pre></div>
+
+<p>
+  I have exactly one other droplet in that region, and yet my brand new droplet
+  can access <em>over five thousand</em> other customers' servers on a
+  supposedly "private" network. This is not only misleading, but the messaging
+  makes it sound like you can trust it; I don't even want to try and knock on
+  ports to see how many open-to-the-world services are running.
+</p>
+
+<p>
+  I won't pretend to be all-knowing and condescending: nothing about running
+  infrastructure is easy. However, having separate networks per customer would
+  make dramatic improvements to the service's scalability and security, and at
+  the very least having one VXLAN per customer seems like a painfully obvious
+  good practice.
+</p>
+
+<p>
+  To verify this, I spun up a droplet in two completely separate DigitalOcean
+  accounts (I added my personal CC to my work account to test this).
+</p>
+
+<p>
+  Right off-the-bat I was able to confirm that both droplets had private IP
+  addresses in the same subnet range. Then, on one droplet I started <code>nc
+  -l 64321</code>, and on the second I tried to <code>nmap</code> the private
+  IP of my second droplet. I was successful.
+</p>
+
+<div class="code">
+  <div class="code-title">nmap -sS -p64321 10.132.146.7</div>
+<pre><code>Starting Nmap 6.40 ( http://nmap.org ) at 2018-03-03 21:57 UTC
+Nmap scan report for 10.132.146.7
+Host is up (0.0056s latency).
+PORT      STATE SERVICE
+64321/tcp open  unknown
+MAC Address: 6A:1E:6E:F2:92:59 (Unknown)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.19 seconds
+</pre></code>
+</div>
+
+<p>
+  And here's an obligatory screenshot. The left-side droplet is running under
+  my personal account, the right-side droplet is under a completely different
+  account (but the droplets are in the same region).
+</p>
+
+<figure>
+  <a href="https://cdn.blackieops.com/alexblackie/private-network-clouds/cross-account-netcat.png">
+    <img src="https://cdn.blackieops.com/alexblackie/private-network-clouds/cross-account-netcat.png" alt="Terminal showing netcat communication between droplets in separate accounts">
+  </a>
+</figure>
+
+<p>
+  Luckily my further attempts to <code>tcpdump</code> the traffic between the
+  two hosts were unsuccessful. But one could still do a fair amount of damage
+  if someone entrusted a service like Redis or NFS to allow connections from
+  the entire network of the private interface.
+</p>
+
+<hr>
+
+<p>
+  I take great issue with these features being labelled "Private Networking" as
+  there is nothing private about them whatsoever. There's nothing stopping me
+  from spinning up a new server in the same region as you and suddenly I am on
+  the same "private" network as you.
+</p>
+
+<p>
+  By calling this feature "private", it implies privacy. This may mislead
+  people into setting up unsecured services because they assume the network
+  they are exposing them on is only for their consumption. As long as "hostile
+  LAN" practices are followed, having a public private network should be
+  <em>fine</em>, but I would strongly urge these cloud providers to implement
+  at the very least customer isolation, if not full OpenStack-style SDN.
+</p>
+
+<p>
+  I hope this post serves as a warning to anyone running services on the
+  "underdog" cloud providers: your private network is absolutely not private,
+  and you may have an unforseen attack vector left wide open.
+</p>

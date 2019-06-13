@@ -1,0 +1,10 @@
+<article class="singleArticle">
+	<header class="singleArticle--header">
+		<h1>$title</h1>
+		<div class="singleArticle--header--meta">Published $(formatDate $publishDate) by Alex Blackie $([[ "${lastUpdateDate:-}" != "" ]] && echo "&middot; Updated $(formatDate $lastUpdateDate)")</div>
+	</header>
+
+	<div class="singleArticle--body">
+		$content
+	</div>
+</article>
