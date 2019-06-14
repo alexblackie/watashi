@@ -69,6 +69,13 @@ table {
 	line-height: 1.5em;
 }
 
+.siteContent h2,
+.siteContent h3,
+.siteContent h4,
+.siteContent h5 {
+	margin-top: 2em;
+}
+
 .siteContent img {
 	max-width: 100%;
 	height: auto;
