@@ -58,6 +58,7 @@ done
 fancyLog "Copying static assets"
 mkdir -p "$BUILD_DIR/_"
 cp -r src/_ "$BUILD_DIR"
+cp src/favicon.ico "$BUILD_DIR"
 
 ENDTIME="$(date +%s)"
 echo
