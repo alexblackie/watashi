@@ -103,11 +103,13 @@ table {
 
 .siteContent pre {
 	overflow: auto;
-	max-height: 33vh;
+	max-height: 50vh;
 	padding: 1.5rem;
+	line-height: 1.25rem;
 	background-color: whitesmoke;
 }
 	.siteContent pre code {
+		padding: 0;
 		color: inherit;
 	}
 
@@ -120,6 +122,42 @@ table {
 	padding: 0.5rem 1rem;
 	font-family: monospace;
 	border-bottom: 2px solid gainsboro;
+}
+
+.siteContent .code-add,
+.siteContent .code-rem,
+.siteContent .code-hl {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	margin-left: -1.5rem;
+	margin-right: -1.5rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+}
+
+.siteContent .code-add {
+	background-color: #d6f9e0;
+}
+	.siteContent .code-add::before {
+		content: "+";
+	}
+
+.siteContent .code-rem {
+	background-color: #ffdce0;
+}
+	.siteContent .code-rem::before {
+		content: "-";
+	}
+
+.siteContent .code-add::before,
+.siteContent .code-rem::before {
+	position: absolute;
+	left: 0.5rem;
+}
+
+.siteContent .code-hl {
+	background-color: cornsilk;
 }
 
 .singleArticle--header {
