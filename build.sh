@@ -24,14 +24,14 @@ render() {
 		if [[ -e "src/$1.xml" ]] ; then
 			ext="xml"
 		fi
-		content="$(eval "cat <<-EOF
+		content="$(eval "cat <<EOF
 			$(<src/$1.$ext)
-		EOF")"
+		")"
 	fi
 
 	pageContent=$(eval "cat <<-EOF
 		$(<src/_layouts/$layout.$ext)
-	EOF")
+	")
 
 	if [ "${3:-}" = "nowrite" ] ; then
 		echo "$pageContent"
