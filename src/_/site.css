@@ -168,9 +168,7 @@ table {
 }
 
 .singleArticle--header {
-	padding:3rem 0;
-	margin-bottom: 2rem;
-	border-bottom: 2px solid gainsboro;
+	padding: 3rem 0 2rem;
 }
 	.singleArticle--header h1 {
 		margin: 0 0 0.5rem 0;
