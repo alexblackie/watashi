@@ -8,13 +8,13 @@ This site is constructed using a bespoke series of shell scripts (bash, sorry)
 that parse and assemble all the content and pages.
 
 There are no unusual dependencies. If you have the GNU coreutils, or a BSD
-userland, you have everything you need. The major players here are =bash=,
-=find=, =sed=, =cut=, and =cat=.
+userland, you have everything you need. The major players here are =make=,
+=bash=, =find=, and =cat=.
 
 To compile the site:
 
 #+BEGIN_SRC bash
-./build.sh
+make
 #+END_SRC
 
 The files will be placed in =./_build=.
@@ -22,7 +22,7 @@ The files will be placed in =./_build=.
 To watch for changes, combine this with a tool such as [[http://eradman.com/entrproject/][entr]]:
 
 #+BEGIN_SRC <bash>
-find src build.sh helpers.sh | entr -cr ./build.sh
+find . | grep -v _build | grep -v .git | entr -cr make
 #+END_SRC
 
 ** License
