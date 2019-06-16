@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+. "./helpers.sh"
+
+# Render a page to a string, with layout.
+#
+# Takes arguments:
+#
+#     - $1: name of meta file, eg., "pages/something/index.meta"
+#     - $2: (Optional) name of layout to use (default: "site")
+#     - $3: (Optional) file extension of content file (default: "html")
+#
+# Local variables:
+#
+#     - $content: (Optional) override the content to render.
+render() {
+	metaFile="$1"
+	pageDir="$(dirname $metaFile)"
+	layout="${2:-site}"
+	ext="${ext:-html}"
+
+	eval "$(cat $metaFile)"
+
+	if [ "${content:-}" = "" ] ; then
+		# Allow overriding content via pre-setting $content before calling
+		content="$(eval "cat <<EOF
+			$(<${metaFile/.meta/.$ext})
+EOF")"
+	fi
+
+	pageContent="$(eval "cat <<-EOF
+		$(<layouts/$layout.$ext)
+	EOF")"
+
+	if [ "$layout" = "article" ] ; then
+		# Articles have a nested layout and so have to be rendered twice.
+		content="$pageContent"
+		render $1
+	else
+		echo "$pageContent"
+	fi
+}
+
+render $@

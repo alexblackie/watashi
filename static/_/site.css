@@ -143,6 +143,10 @@ table {
 	padding-right: 1.5rem;
 }
 
+.siteContent .code-dim {
+	color: grey;
+}
+
 .siteContent .code-add {
 	background-color: #d6f9e0;
 }

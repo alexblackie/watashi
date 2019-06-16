@@ -18,10 +18,10 @@
 			</thead>
 
 			<tbody>
-				$(allArticles <<-'EOARTICLES'
+				$(renderArticles <<-'EOARTICLES'
 				<tr>
 					<td>$(formatDate $publishDate)</td>
-					<td><a href="/$(dirname $article)/">$title</a></td>
+					<td><a href="/$article/">$title</a></td>
 				</tr>
 EOARTICLES
 )

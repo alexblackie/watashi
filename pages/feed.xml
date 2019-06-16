@@ -1,4 +1,4 @@
-$(allArticles <<'EOARTICLES'
+$(renderArticles <<'EOARTICLES'
 <item>
 	<title>$title</title>
 	<link>https://www.alexblackie.com/$(dirname $article)/</link>
@@ -6,7 +6,7 @@ $(allArticles <<'EOARTICLES'
 	<pubDate>$(formatDate $publishDate)</pubDate>
 	<author>alex@alexblackie.com (Alex Blackie)</author>
 	<description></description>
-	<content:encoded><![CDATA[ $content ]]></content:encoded>
+	<content:encoded><![CDATA[ $(getArticleContent $article)]]></content:encoded>
 </item>
 EOARTICLES
 )
