@@ -1,0 +1,427 @@
+<p>
+	When you think of <code>bash</code>, you may not consider it suitable for
+	building websites. For the most part, you are probably correct. But I
+	wanted to try anyway. I don't buy into most trends in the frontend web
+	development community, so literally none of the "modern" static site
+	generators appeal to me. All of them feel overcomplicated, too niche, or
+	too javascript-y for my needs, which involve <em>just rendering a
+	website</em>.
+</p>
+
+<p>
+	Inspired by
+	<a href="https://www.johnhawthorn.com/2018/01/this-website-is-a-makefile/">John Hawthorn's makefile website workflow</a>,
+	I decided that was almost exactly what I wanted. However, I didn't really
+	want to depend on anything outside of standard unix tools (so no Ruby).
+	This is where bash comes in.
+</p>
+
+<h2>"uhhh"</h2>
+
+<p>
+	Look, hear me out. There are some reasons I actually ended up liking this:
+</p>
+
+<ul>
+	<li>All the normal benefits of building static sites</li>
+	<li>Really fast (sub-second full site builds on my laptop)</li>
+	<li>No dependencies outside of GNU/POSIX tools</li>
+	<li>It's kind of fun and weird</li>
+	<li>i don't need to install 2500 npm packages and learn a cool new templating language that will be obsolete and unmaintained in 4 months</li>
+</ul>
+
+<p>
+	Ultimately, this was just a fun project to make my personal site a little
+	more interesting. This really isn't something that is overly practical.
+	Nothing wrong with a little fun now and then, though!
+</p>
+
+<h2>The result</h2>
+
+<p>
+	Before we get in the weeds, let's see what the end-goal for project
+	structure is. I've removed a few things that are in my own site, just to
+	keep this example simple.
+</p>
+
+<div class="code">
+	<div class="code-title">$ tree -F --dirsfirst</div>
+<pre><code>.
+├── _build/
+│   └── ...
+├── bin/
+│   └── render*
+├── layouts/
+│   └── site.html
+├── pages/
+│   ├── some-page/
+│   │   ├── index.html
+│   │   └── index.meta
+│   ├── index.html
+│   └── index.meta
+├── static/
+│   ├── _/
+│   │   └── site.css
+│   └── favicon.ico
+├── Makefile
+└── helpers.sh</code></pre>
+</div>
+
+<p>
+	Basically, we have a directory for pages (<code>./pages</code>) and then one directory for each page, with a <code>.meta</code> file for metadata (title, variables, etc) and a <code>.html</code> file for the content itself.
+</p>
+
+<h2>Setting up <code>make</code></h2>
+
+<p>
+	Originally, I had started with pure bash -- just a single bash script that
+	handled the entire pipeline from finding the files, to parsing them, to
+	writing to a file. This actually worked out great, but was missing some
+	niceties like incremental builds, and meant a lot of it was sort of
+	"intertwined" where rendering a page had weird knowledge about where that
+	page should be written to disk.
+</p>
+
+<p>
+	So ultimately I decided simplifying the shell script to just render a page
+	to <code>stdout</code> and let good ol&rsquo; <code>make</code> handle the
+	reading and writing seemed like a more robust option.
+</p>
+
+<p>
+	Luckily, because we're just running one command and writing that to disk,
+	our Makefile can be pretty simple:
+</p>
+
+<div class="code">
+	<div class="code-title">Makefile</div>
+<pre><code><span class="code-dim"># Find all html and meta files in the pages directory</span>
+pageSources=\$(shell find pages -type f -name '*.html' -o -name '*.meta')
+
+<span class="code-dim"># Map all the html files in the list of sources to the target path in _build</span>
+pageTargets=\$(pageSources:pages/%.html=_build/%.html)
+
+all: \$(pageTargets)
+
+_build/%.html: pages/%.html pages/%.meta
+	<span class="code-dim"># Silently (@) make all directories leading up to our target file (\$@)</span>
+	@mkdir -p \$(dir \$@)
+
+	<span class="code-dim"># Run our render script, giving the source file name (\$&lt;), substring-
+	# replacing "html" with "meta" (as our script expects to be given
+	# the meta file). Write the output to the target filename (\$@)</span>
+	bin/render \$(&lt;:html=meta) &gt; \$@
+
+clean:
+	rm -rf _build/*</code></pre>
+</div>
+
+<p>
+	All this does is find all <code>*.meta</code> and <code>*.html</code>
+	files, and tell <code>make</code> that those should turn into a single HTML
+	file in <code>_build</code>, by running the <code>bin/render</code> script.
+	Of course, a lot of this is terse or a bit weird to read if you're
+	unfamiliar with Makefiles, but in the end it is rather simple, and provides
+	some pretty significant power for not a lot of code.
+</p>
+
+<h2>Proof of concept: straight renders</h2>
+
+<p>
+	To prove that this might actually work, the first thing to get going is a
+	just rendering the page HTML itself, with basic variable substitution for
+	things like page title, etc., but without a layout or any fancy stuff.
+</p>
+
+<p>
+	The general idea here is to parse our template files inside a Here
+	Document, which will give them full access to shell functions, local
+	variables, and any command they want, really. This is obviously a huge
+	security risk, but there should never be untrusted code being executed in
+	this context, so the realistic risk is pretty minimal.
+</p>
+
+<div class="code">
+	<div class="code-title">bin/render</div>
+<pre><code>#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+render() {
+	title="My web page"
+	\$(eval "cat &lt;&lt;EOF
+		\$(&lt;pages/\$1.html)
+EOF")
+}
+
+render \$@ </code></pre></div>
+
+<p>
+	In essence, what we're doing here is reading an HTML file in as a string,
+	which is interpolated into a heredoc, which is piped into <code>cat</code>,
+	which is in a string, which we are evaluating as if it were a script
+	itself. This means that the normal variable scope and expansion applies to
+	our template.
+</p>
+
+<p>
+	The <code>index.html</code> source file, for reference:
+</p>
+
+<div class="code">
+	<div class="code-title">pages/index.html</div>
+<pre><code>&lt;h1&gt;\$title&lt;/h1&gt;</code></pre>
+</div>
+
+<p>
+	And that's honestly about it. Everything else from here is just doing this
+	multiple times, or adding some sugar or abstractions. Speaking of, let's
+	make this nicer.
+</p>
+
+<h2>Adding a layout</h2>
+
+<p>
+	Currently we're just copying one file around, which isn't really helpful
+	for a static site builder! What really made this "click" was getting a
+	layout template wrapping the pages -- the most basic feature of any static
+	site generator.
+</p>
+
+<p>
+	So let's do that. All this is really doing is assigning the page to a
+	variable, then rendering the layout as if it was the page.
+</p>
+
+<div class="code">
+	<div class="code-title">bin/render</div>
+<pre><code>#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+render() {
+	title="My web page"
+<span class="code-rem">	\$(eval "cat &lt;&lt;EOF</span>
+<span class="code-add">	content=\$(eval "cat &lt;&lt;EOF</span>
+		\$(&lt;pages/\$1.html)
+EOF")
+
+<span class="code-add">	\$(eval "cat &lt;&lt;-EOF</span>
+<span class="code-add">		\$(&lt;layouts/site.html)</span>
+<span class="code-add">	EOF")</span>
+}
+
+render \$@
+</code></pre></div>
+
+<p>
+	In our layout, we can then just use <code>\$content</code> where we want to
+	render the page content.
+</p>
+
+<div class="code">
+	<div class="code-title">layouts/site.html</div>
+<pre><code>&lt;!doctype html&gt;
+&lt;title&gt;\$title&lt;/title&gt;
+<span class="code-hl">\$content</span></code></pre>
+
+<p>
+	We're getting pretty close to something useful. But hard-coding all our
+	metadata in the build script doesn't scale. Let's fix that.
+</p>
+
+
+<h2>Metadata is just scripts</h2>
+
+<p>
+	Previously I had mentioned <code>.meta</code> files, but up until now we
+	haven't used them.  Since our pages are being rendered within the context
+	of the bash script, we can source other scripts in dynamically. So, our
+	<code>.meta</code> files are just little bash scripts that are evaluated
+	right before render. Thus, they could contain variables, functions, calls
+	to external APIs or programs&hellip;
+</p>
+
+<p>
+	Here's the <code>.meta</code> file for our page:
+</p>
+
+<div class="code">
+	<div class="code-title">page/index.meta</div>
+<pre><code>title="My web page"
+lastUpdatedAt="2019-06-13"</code></pre>
+</div>
+
+<p>
+	And in the build script, all we need to do is source our <code>.meta</code>
+	file dynamically, as we do with the HTML template.
+</p>
+
+<div class="code">
+	<div class="code-title">bin/render</div>
+<pre><code>&hellip;
+render() {
+<span class="code-rem">	title="My web page"</span>
+<span class="code-add">	. "pages/\$1.meta"</span>
+	content=\$(eval "cat &lt;&lt;EOF
+		\$(&lt;pages/\$1.html)
+EOF")
+&hellip;</code></pre>
+</div>
+
+<p>
+	Another "lightbulb" moment is when you start to add shell functions. Want
+	to format a date? Good news! Basically every computer probably already has
+	<code>date(1)</code>.
+</p>
+
+<p>
+	We can just add more functions to the <code>bin/render</code> file, or if
+	we have a lot we can source a second file into it... It's just a shell
+	script, so I mean you can do whatever you want.
+</p>
+
+<div class="code">
+	<div class="code-title">bin/render</div>
+<pre><code>#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+<span class="code-add">formatDate() {</span>
+<span class="code-add">	echo \$(date -d "\$1" +"%B %-d %Y")</span>
+<span class="code-add">}</span>
+
+render() {
+&hellip;</code></pre>
+</div>
+
+<div class="code">
+	<div class="code-title">pages/index.html</div>
+<pre><code>&lt;h1&gt;\$title&lt;/h1&gt;
+Last updated: \$(formatDate \$lastUpdatedAt)</code></pre>
+</div>
+
+<p>
+	That's it. Now we can use ISO-8601 dates in our metadata, but still display
+	"human" dates on the site itself.
+</p>
+
+<p>
+	You can even combine it with Here Documents to make more complex render
+	helper functions. I do this on my site to dynamically discover blog
+	articles from the filesystem, parse and sort them based on their date in
+	metadata, and then render a provided template string with the new local
+	variables. It's a bit convoluted and gross to use as a direct example, so
+	here's a simplified one:
+</p>
+
+<div class="code">
+	<div class="code-title">build.sh</div>
+<pre><code>&hellip;
+
+renderItems() {
+	items=(one two three)
+	template="\$(while read template ; do echo \$template ; done)"
+
+	for item in \${items[*]} ; do
+		eval "cat &lt;&lt;-EOFOR
+			\$template
+		EOFOR"
+	done
+}
+
+&hellip;</code></pre>
+
+<div class="code">
+	<div class="code-title">pages/index.html</div>
+<pre><code>&hellip;
+
+&lt;ul&gt;
+\$(renderItems &lt;&lt;-EOTEMPLATE
+	&lt;li&gt;\$item&lt;/li&gt;
+EOTEMPLATE)
+&lt;/ul&gt;</code></pre>
+</div>
+
+<p>
+	At this point, that's basically 90% of a static site generator. You got
+	layouts, templates, and metadata variables with support for helper
+	functions, extenal "plugins" (normal CLI tools)&hellip; What more do you
+	need?
+</p>
+
+<h2>Assets</h2>
+
+<p>
+	Every site will have some CSS, JS, images, and whatever else. You could
+	call out to some preprocessor or crazy thing if you really wanted, but for
+	me I am happy with raw CSS and JS, so here is my asset pipeline:
+</p>
+
+<div class="code">
+	<div class="code-title">Makefile</div>
+<pre><code>pageSources=\$(shell find pages -type f -name '*.html' -o -name '*.meta')
+pageTargets=\$(pageSources:pages/%.html=_build/%.html)
+
+<span class="code-add">staticSources=\$(shell find static -type f)</span>
+<span class="code-add">staticTargets=\$(staticSources:static/%=_build/%)</span>
+
+<span class="code-rem">all: \$(pageTargets)</span>
+<span class="code-add">all: \$(pageTargets) \$(staticTargets)</span>
+
+&hellip;
+
+<span class="code-add">_build/%: static/%</span>
+<span class="code-add">	@mkdir -p \$(dir \$@)</span>
+<span class="code-add">	cp \$< \$@</span>
+
+&hellip;
+</code></pre>
+
+<p>
+	🖌👌✨
+</p>
+
+<h2>What's the catch?</h2>
+
+<p>
+	While the core idea proved to work out great, it was not without rough
+	edges. In the end, these all proved fine to work around or put up with, but
+	they exist nonetheless.
+</p>
+
+<ul>
+	<li><strong>Escaping normal content</strong> &mdash; since every page is parsed as a string, you need to be careful what that string contains. For example, "<code>I paid \$50</code>" needs to be "<code>I paid \\\$50</code>" to avoid <code>\$5</code> being parsed as a variable.</li>
+		<li><strong>Shell scripts kind of suck</strong> &mdash; shell scripting is not really a pleasant environment. Decades of weird decisions, cumbersome syntax... While shell scripts get you a powerful and highly extensible environment, that comes at a cost of some readability and "niceness" that you might expect from something like ERB or Handlebars, for example.</li>
+		<li><strong>Cross-OS compatibility is a nightmare</strong> &mdash; you'd think POSIX meant everything behaves the same but HA-HA NOPE good luck maintaining weird <code>if</code> statements to try and make sure you pass different flags to GNU vs. BSD <code>date</code> or <code>find</code> to support both platforms.</li>
+</ul>
+
+<h2>Also I left out a bunch of other stuff</h2>
+
+<p>
+	I have left out a significant amount of work and numerous features that are
+	implemented in the "real" version of this script that powers my site. You
+	are free to
+	<a href="https://github.com/alexblackie/watashi">peruse my website's source code</a>,
+	if you are curious. This post was intended not to be a guide or tutorial
+	but just a neat showcase of a semi-crazy idea.
+</p>
+
+<p>
+	In brief, some features that were pretty easy to add that my script ended
+	up supporting:
+
+	<ul>
+		<li>custom layouts per page</li>
+		<li>nested layouts for articles</li>
+		<li>xml pages and layouts (rss feed)</li>
+		<li>dynamically building list of articles from filesystem</li>
+	</ul>
+</p>
+
+<hr>
+
+<p>
+	This was a fun project for me, and the end result solved a real need.
+	Hopefully it was as interesting to you as it was me!
+</p>
