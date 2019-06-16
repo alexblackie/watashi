@@ -22,7 +22,7 @@ The files will be placed in =./_build=.
 To watch for changes, combine this with a tool such as [[http://eradman.com/entrproject/][entr]]:
 
 #+BEGIN_SRC <bash>
-find . | grep -v _build | grep -v .git | entr -cr make
+ag -l | entr -cr make
 #+END_SRC
 
 ** License
