@@ -104,12 +104,12 @@ pageTargets=\$(pageSources:pages/%.html=_build/%.html)
 all: \$(pageTargets)
 
 _build/%.html: pages/%.html pages/%.meta
-	<span class="code-dim"># Silently (@) make all directories leading up to our target file (\$@)</span>
+	<span class="code-dim">@# Silently (@) make all directories leading up to our target file (\$@)</span>
 	@mkdir -p \$(dir \$@)
 
-	<span class="code-dim"># Run our render script, giving the source file name (\$&lt;), substring-
-	# replacing "html" with "meta" (as our script expects to be given
-	# the meta file). Write the output to the target filename (\$@)</span>
+	<span class="code-dim">@# Run our render script, giving the source file name (\$&lt;), substring-
+	@# replacing "html" with "meta" (as our script expects to be given
+	@# the meta file). Write the output to the target filename (\$@)</span>
 	bin/render \$(&lt;:html=meta) &gt; \$@
 
 clean:
@@ -149,9 +149,9 @@ set -euf -o pipefail
 
 render() {
 	title="My web page"
-	\$(eval "cat &lt;&lt;EOF
-		\$(&lt;pages/\$1.html)
-EOF")
+	echo "\$(eval "cat &lt;&lt;EOF
+		\$(&lt;\${1/.meta/.html})
+EOF")"
 }
 
 render \$@ </code></pre></div>
@@ -201,14 +201,14 @@ set -euf -o pipefail
 
 render() {
 	title="My web page"
-<span class="code-rem">	\$(eval "cat &lt;&lt;EOF</span>
-<span class="code-add">	content=\$(eval "cat &lt;&lt;EOF</span>
-		\$(&lt;pages/\$1.html)
-EOF")
+<span class="code-rem">	echo "\$(eval "cat &lt;&lt;EOF</span>
+<span class="code-add">	content="\$(eval "cat &lt;&lt;EOF</span>
+		\$(&lt;\${1/.meta/.html})
+EOF")"
 
-<span class="code-add">	\$(eval "cat &lt;&lt;-EOF</span>
+<span class="code-add">	echo "\$(eval "cat &lt;&lt;-EOF</span>
 <span class="code-add">		\$(&lt;layouts/site.html)</span>
-<span class="code-add">	EOF")</span>
+<span class="code-add">	EOF")"</span>
 }
 
 render \$@
@@ -254,7 +254,9 @@ lastUpdatedAt="2019-06-13"</code></pre>
 
 <p>
 	And in the build script, all we need to do is source our <code>.meta</code>
-	file dynamically, as we do with the HTML template.
+	file dynamically, as we do with the HTML template. Since our render script
+	is being given the meta file as the first argument, we can just source
+	that:
 </p>
 
 <div class="code">
@@ -262,9 +264,9 @@ lastUpdatedAt="2019-06-13"</code></pre>
 <pre><code>&hellip;
 render() {
 <span class="code-rem">	title="My web page"</span>
-<span class="code-add">	. "pages/\$1.meta"</span>
+<span class="code-add">	. "\$1"</span>
 	content=\$(eval "cat &lt;&lt;EOF
-		\$(&lt;pages/\$1.html)
+		\$(&lt;\${1/.meta/.html})
 EOF")
 &hellip;</code></pre>
 </div>
