@@ -8,6 +8,20 @@ formatDate() {
 	else
 		echo $(date -jf "%Y-%m-%d" "$1" +"%B %-d %Y")
 	fi
+}
+
+# Takes an ISO-8601 datestamp and formats it as an RFC-822 timestamp.
+#
+# Generally useful for RSS feeds' "pubDate".
+formatRfc822Date() {
+	if date --version >/dev/null 2>&1 ; then
+		# BSD and GNU `date`, turns out, are very different. Only GNU date
+		# responds successfully to `--version`, so we're going to try and
+		# support both based on that.
+		echo $(date -d "$1" +"%a %d %b %Y %H:%M:%S %Z")
+	else
+		echo $(date -jf "%Y-%m-%d" "$1" +"%a %d %b %Y 09:00:00 %Z")
+	fi
 
 }
 

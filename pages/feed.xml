@@ -1,9 +1,9 @@
 $(renderArticles <<'EOARTICLES'
 <item>
 	<title>$title</title>
-	<link>https://www.alexblackie.com/$(dirname $article)/</link>
-	<guid>https://www.alexblackie.com/$(dirname $article)/</guid>
-	<pubDate>$(formatDate $publishDate)</pubDate>
+	<link>https://www.alexblackie.com/$article/</link>
+	<guid>https://www.alexblackie.com/$article/</guid>
+	<pubDate>$(formatRfc822Date $publishDate)</pubDate>
 	<author>alex@alexblackie.com (Alex Blackie)</author>
 	<description></description>
 	<content:encoded><![CDATA[ $(getArticleContent $article)]]></content:encoded>
