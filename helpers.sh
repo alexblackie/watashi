@@ -18,9 +18,9 @@ formatRfc822Date() {
 		# BSD and GNU `date`, turns out, are very different. Only GNU date
 		# responds successfully to `--version`, so we're going to try and
 		# support both based on that.
-		echo $(date -d "$1" +"%a %d %b %Y %H:%M:%S %Z")
+		echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
 	else
-		echo $(date -jf "%Y-%m-%d" "$1" +"%a %d %b %Y 09:00:00 %Z")
+		echo $(date -jf "%Y-%m-%d" "$1" +"%a, %d %b %Y 09:00:00 GMT")
 	fi
 
 }
