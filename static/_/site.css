@@ -1,7 +1,7 @@
 body {
 	max-width: 56rem;
 	margin: 0 auto;
-	font-family: sans-serif;
+	font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
 }
 
 table {
