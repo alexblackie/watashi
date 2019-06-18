@@ -52,6 +52,19 @@ table {
 	border-radius: 100%;
 }
 
+.siteMenu a {
+	display: inline-block;
+	margin-left: 0.5rem;
+	padding: 0.5rem 1.5rem;
+	border: 1px solid gainsboro;
+	color: inherit;
+	text-decoration: none;
+	transition: box-shadow 0.2s ease;
+}
+	.siteMenu a:hover {
+		box-shadow: 0 1px 10px rgba(0,0,0, 0.1);
+	}
+
 .siteFooter {
 	margin-top: 3rem;
 	padding: 2rem 0 6rem;
@@ -62,11 +75,6 @@ table {
 	.siteFooter a {
 		color: dimgrey;
 	}
-
-.siteMenu a {
-	display: inline-block;
-	margin-left: 2rem;
-}
 
 .siteContent p,
 .siteContent li,
