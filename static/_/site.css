@@ -231,6 +231,55 @@ figure.pullLeft {
 		width: 39%;
 	}
 
+
+.timeline {
+	position: relative;
+	padding: 2rem 2em 2em 3.5em;
+	margin-left: 2rem;
+	border-left: 2px dotted gainsboro;
+}
+	.timeline::before,
+	.timeline::after {
+		content: "";
+		position: absolute;
+		left: -1rem;
+		width: 2rem;
+		height: 4rem;
+	}
+
+	.timeline::before {
+		top: 0;
+		background-image: linear-gradient(white 40%, transparent 100%);
+	}
+	.timeline::after {
+		bottom: 0;
+		background-image: linear-gradient(transparent 0, white 60%);
+	}
+
+.timelineStep {
+	margin: 2rem 0;
+}
+	.timelineStep:last-child {
+		margin-bottom: 0;
+	}
+
+	.timelineStep p {
+		margin: 0;
+	}
+
+.timelineStep--date {
+	position: absolute;
+	left: 0;
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+	border-radius: 5px 0;
+	box-shadow: 1px 1px 3px rgba(0,0,0, 0.1);
+	background: white;
+	font-size: 0.75rem;
+	line-height: 1em;
+	transform: translateX(-50%) translateY(-2px);
+}
+
 @media screen and (max-width: 640px) {
 	.siteHeader { display: block; text-align: center; }
 	.siteHeader--brandLink { justify-content: center; margin-bottom: .5rem; }
