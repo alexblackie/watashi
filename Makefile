@@ -11,7 +11,7 @@ staticTargets=$(staticSources:static/%=_build/%)
 
 all: $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
 
-_build/articles/%/index.html: articles/%/index.html articles/%/index.meta
+_build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html
 	@mkdir -p $(dir $@)
 	bin/render $(<:html=meta) article > $@
 
@@ -19,7 +19,7 @@ _build/%.xml: pages/%.xml
 	@mkdir -p $(dir $@)
 	bin/render $(<:xml=meta) > $@
 
-_build/%.html: pages/%.html pages/%.meta
+_build/%.html: pages/%.html pages/%.meta layouts/site.html
 	@mkdir -p $(dir $@)
 	bin/render $(<:html=meta) > $@
 
