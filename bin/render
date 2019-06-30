@@ -30,7 +30,7 @@ render() {
 EOF")"
 	fi
 
-	pageContent="set -r ; $(eval "cat <<-EOF
+	pageContent="$(eval "set -r ; cat <<-EOF
 		$(<layouts/$layout.$ext)
 	EOF")"
 
