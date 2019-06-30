@@ -1,9 +1,10 @@
 # Takes an ISO-8601 datestamp and formats it as a "human" date.
 formatDate() {
-	if date --version >/dev/null 2>&1 ; then
+	if date --version | grep -q coreutils ; then
 		# BSD and GNU `date`, turns out, are very different. Only GNU date
 		# responds successfully to `--version`, so we're going to try and
-		# support both based on that.
+		# support both based on that, grepping for coreutils to be absolutely
+		# sure this is the date we expect.
 		echo $(date -d "$1" +"%B %-d %Y")
 	else
 		echo $(date -jf "%Y-%m-%d" "$1" +"%B %-d %Y")
@@ -14,10 +15,11 @@ formatDate() {
 #
 # Generally useful for RSS feeds' "pubDate".
 formatRfc822Date() {
-	if date --version >/dev/null 2>&1 ; then
+	if date --version | grep -q coreutils ; then
 		# BSD and GNU `date`, turns out, are very different. Only GNU date
 		# responds successfully to `--version`, so we're going to try and
-		# support both based on that.
+		# support both based on that, grepping for coreutils to be absolutely
+		# sure this is the date we expect.
 		echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
 	else
 		echo $(date -jf "%Y-%m-%d" "$1" +"%a, %d %b %Y 09:00:00 GMT")

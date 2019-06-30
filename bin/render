@@ -21,16 +21,16 @@ render() {
 	layout="${2:-site}"
 	ext="${ext:-html}"
 
-	eval "$(cat $metaFile)"
+	eval "set -r ; $(cat $metaFile)"
 
 	if [ "${content:-}" = "" ] ; then
 		# Allow overriding content via pre-setting $content before calling
-		content="$(eval "cat <<EOF
+		content="$(eval "set -r ; cat <<EOF
 			$(<${metaFile/.meta/.$ext})
 EOF")"
 	fi
 
-	pageContent="$(eval "cat <<-EOF
+	pageContent="set -r ; $(eval "cat <<-EOF
 		$(<layouts/$layout.$ext)
 	EOF")"
 
