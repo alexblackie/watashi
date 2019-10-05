@@ -37,19 +37,24 @@
 			</a>
 		</h1>
 
-		<nav class="siteMenu" role="navigation">
-			<a href="/">Articles</a>
-			<a href="/setup/">My Setup</a>
-			<a href="/about/">About Me</a>
-		</nav>
+		<input id="mobileHeaderToggle" type="checkbox" role="button" title="Toggle Menu">
+		<label id="mobileHeaderToggleIcon" for="mobileHeaderToggle">Menu</label>
+
+		<div class="mobileCollapsed">
+			<nav class="siteMenu" role="navigation">
+				<a href="/">Articles</a>
+				<a href="/setup/">My Setup</a>
+				<a href="/about/">About Me</a>
+			</nav>
+
+			<footer class="siteFooter">
+				&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.<br>
+				This site is <a href="https://github.com/alexblackie/watashi">open source</a> &middot; Powered by make, bash, nginx, and lots of coffee.
+			</footer>
+		</div>
 	</header>
 
 	<div class="siteContent">
 		$content
 	</div>
-
-	<footer class="siteFooter">
-		&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.<br>
-		This site is <a href="https://github.com/alexblackie/watashi">open source</a> &middot; Powered by make, bash, nginx, and lots of coffee.
-	</footer>
 </body>

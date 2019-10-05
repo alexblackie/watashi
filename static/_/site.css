@@ -1,7 +1,29 @@
 body {
-	max-width: 56rem;
+	display: flex;
+	max-width: 80rem;
 	margin: 0 auto;
 	font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+}
+
+#mobileHeaderToggle {
+	appearance: none;
+	opacity: 0;
+	visibility: none;
+	font-size: 0;
+}
+
+#mobileHeaderToggleIcon {
+	display: none;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	padding: 0.5em 1em;
+	border: 1px solid gainsboro;
+	border-radius: 0.25rem;
+}
+
+#mobileHeaderToggle:checked ~ #mobileHeaderToggleIcon {
+	box-shadow: inset 0 1px 5px lavender;
 }
 
 table {
@@ -23,11 +45,11 @@ table {
 	}
 
 .siteHeader {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 2rem 0 1rem;
-	border-bottom: 2px dotted gainsboro;
+	box-sizing: border-box;
+	width: 25%;
+	padding: 2rem;
+	text-align: center;
+	border-right: 2px dotted gainsboro;
 }
 
 .siteHeader h1 {
@@ -35,8 +57,6 @@ table {
 	font-size: 1.5rem;
 }
 .siteHeader--brandLink {
-	display: flex;
-	align-items: center;
 	color: inherit;
 	text-decoration: none;
 }
@@ -52,19 +72,29 @@ table {
 	border-radius: 100%;
 }
 
+.siteMenu {
+	margin-top: 2rem;
+}
+
 .siteMenu a {
-	display: inline-block;
-	margin-left: 0.5rem;
+	display: block;
+	margin: 0.5rem 0;
 	padding: 0.5rem 1.5rem;
+	text-align: center;
 	color: inherit;
 	text-decoration: none;
 	background-color: lavender;
 	border-radius: 0.25rem;
 }
 
+	.siteMenu a:hover {
+		background-color: #efeffb;
+	}
+
 .siteFooter {
+	font-size: 0.8em;
 	margin-top: 3rem;
-	padding: 2rem 0 6rem;
+	padding: 2rem 0 0;
 	border-top: 2px dotted gainsboro;
 	line-height: 1.5em;
 	color: grey;
@@ -72,6 +102,12 @@ table {
 	.siteFooter a {
 		color: dimgrey;
 	}
+
+.siteContent {
+	box-sizing: border-box;
+	width: 75%;
+	padding: 0 2rem;
+}
 
 .siteContent p,
 .siteContent li,
@@ -210,8 +246,13 @@ figure.polaroid img {
 }
 
 .pageIntro {
+	margin-top: 2rem;
 	font-size: 1.1em;
+	overflow: hidden;
 }
+	.pageIntro h2 {
+		line-height: 1.5em;
+	}
 
 .note {
 	margin-bottom: 2em;
@@ -290,28 +331,33 @@ figure.polaroid img {
 }
 
 @media screen and (max-width: 640px) {
-	.siteHeader { display: block; text-align: center; }
-	.siteHeader--brandLink { justify-content: center; margin-bottom: .5rem; }
-	.siteFooter { padding: 2rem 1rem; }
-
-	.siteMenu a {
-		margin-top: 0.5rem;
-	}
-
-	.pageIntro { padding: 1rem; }
-
-	.homeColumns { display: block; }
-	.homeColumns--column { width: auto; }
-	.homeColumns--column h2 { padding-left: .5rem; }
-	.homeColumns--contact { margin-top: 2rem; }
-
-	.singleArticle { padding-left: 1rem; padding-right: 1rem; }
-
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
-
+	body { flex-direction: column; }
+	table, thead, tbody, th, td, tr { display: block; }
 	table td:not(:last-child) { border-bottom: none; padding-bottom: 0; }
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
+
+	.siteHeader { width: 100%; text-align: center; }
+	.siteHeader--brandLink { justify-content: center; margin-bottom: .5rem; }
+	.siteContent { padding: 0 1rem; width: 100%; }
+	.siteFooter { padding: 2rem 1rem; }
+
+	#mobileHeaderToggleIcon { display: block; }
+	#mobileHeaderToggle ~ .mobileCollapsed { display: none; }
+	#mobileHeaderToggle:checked ~ .mobileCollapsed { display: block; }
+
+	.siteMenu a { margin-top: 0.5rem; }
+
+	figure.pullRight, figure.pullLeft, .siteContent figure { float: none; margin: 1rem -1rem; }
+
+	.pageIntro { margin-top: 0; padding: 1rem 0; }
+	.pageIntro h2 { margin-top: 0; }
+
+	.singleArticle--header { padding-top: 0 }
+	.singleArticle--header h1 { font-size: 2rem; }
+
+	.homeColumns { display: block; margin: 0 -1rem; }
+	.homeColumns--column { width: auto; }
+	.homeColumns--column h2 { padding-left: .5rem; }
+	.homeColumns--contact { margin-top: 2rem; }
 }
