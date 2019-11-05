@@ -1,8 +1,4 @@
 <p>
-	Alternatively, &ldquo;<em>How is <code>dnf</code> the only package manager that actually works??</em>&rdquo;
-</p>
-
-<p>
 	For a while now I have done all my dayjob work within a VM over SSH and
 	Samba. This has worked quite well, and meant I could keep my development
 	environment a bit more slow-moving (generally, the latest Ubuntu LTS) while
@@ -23,13 +19,14 @@
 </p>
 
 <p>
-	I forced off the VM and rebooted, which thankfully worked fine. So then I
-	tried to resume the upgrade.
+	As it turns out, the virtual disk image I had copied from another computer
+	was in VirtualBox format, and something in the driver in QEMU/KVM would
+	cause it to completely stall periodically. Of course, this failure occurred
+	at the worst time -- in the middle of installing updates -- and so this is
+	my tale of trying to repair the VM once I rebooted it.
 </p>
 
-<p>
-	<code>apt</code>, of course, was no help.
-</p>
+<hr>
 
 <div class="code">
 	<div class="code-title">~ % sudo apt update</div>
@@ -42,10 +39,10 @@ Reading state information... Done
 All packages are up to date.</code></pre></div>
 
 <p>
-	As always, make sure to notice and laugh out loud when you see the proud
-	<code>http://</code> plastered across your screen, knowing that even if you
-	added an <code>s</code> it would not work because Canonical do not provide
-	secure package mirrors, and unless you installed some extension package
+	As always, make sure to glare disapprovingly at the <code>http://</code>
+	plastered across your screen, knowing that even if you added an
+	<code>s</code> it would not work because no one seems to provide secure
+	Debian package mirrors, and unless you installed some extension package
 	(over plain HTTP of course) <code>apt</code> doesn't even support secure
 	connections.
 </p>
@@ -79,8 +76,7 @@ Reading state information... Done
 E: The package libgl1-mesa-dri needs to be reinstalled, but I can't find an archive for it.</code></pre></div>
 
 <p>
-	There it is - upgrading this package is what hosed the system to begin
-	with. Good to see there is at least a problem being logged somewhere.
+	At least we're getting an error again.
 </p>
 
 <p>
@@ -98,16 +94,16 @@ E: The package libgl1-mesa-dri needs to be reinstalled, but I can't find an arch
 <p>
 	Yes&hellip; Thanks, I know&hellip; &ldquo;Sorry, we can't remove this package
 	because we can't find a locally cached tarball to upgrade it, and
-	apparently aren't smart enough to figure out how to just redownload it from
-	the repo"&hellip;
+	apparently can't just redownload it from the repo&rdquo;&hellip;
 </p>
 
 <p>
 	With my hope dwindling, I finally tried the old <code>install -f</code>,
 	which works when you install a <code>deb</code> manually, which often
 	requires you to temporarily break your system until you <code>install -f</code>.
-	Installing a <code>deb</code> is a hilariously shitty process but that's
-	not the topic for today's discussion.
+	Installing a <code>deb</code> is an unfortunate process (that is slowly
+	getting better with <code>apt</code> replacing <code>apt-get</code>) but that's not the topic for
+	today's discussion.
 </p>
 
 <div class="code">
@@ -118,17 +114,12 @@ Reading state information... Done
 E: The package libgl1-mesa-dri needs to be reinstalled, but I can't find an archive for it.</code></pre></div>
 
 <p>
-	It did not work.
+	Nope.
 </p>
 
 <p>
 	My patience growing thin I finally resorted to copying and pasting the
-	error into a search engine, which so far is the only benefit to running
-	Ubuntu I can come up with.
-</p>
-
-<p>
-	StackOverflow, of course, delivered.
+	error into a search engine. StackOverflow, of course, delivered.
 </p>
 
 <div class="code">
@@ -143,52 +134,45 @@ E: The package libgl1-mesa-dri needs to be reinstalled, but I can't find an arch
   Removing libgl1-mesa-dri:amd64 (18.2.8-0ubuntu0~18.04.2) ...</code></pre></div>
 
 <p>
-	<code>dpkg</code>, of course, complains and moans about doing the literal
-	one and only solution to fixing the problem that it caused in the first
-	place. But does do as asked, and removes the broken package from the
-	system.
+	<code>dpkg</code>, of course, complains, but does do as asked, and removes
+	the broken package from the system. Finally.
 </p>
 
 <p>
 	Now I can finally just run <code>apt install --fix-broken</code> which
-	installed some random other packages I guess that were required. At this
-	point I am so tired of debugging this problem I do not care.
+	installed some various packages, their importance at this point not top of
+	mind. At this point I am so tired of trying to fix the system I do not
+	care.
 </p>
 
 <p>
 	I can now run <code>apt</code> again, and running a subsequent <code>apt upgrade</code> was successful.
 </p>
 
+<hr>
+
 <p>
-	After all of this, I just cannot help but think about <code>dnf</code> and
-	how none of this would have happened if the package manager in Debian was
-	built well and fully integrated. This split-brain between <code>apt</code>
-	and <code>dpkg</code>, with the user having to juggle a bunch of
-	non-memorable flags and commands for both just to figure out what the hell
-	is going on, let alone to repair a system. This also leads into one tool
-	not understanding the state of the other, leading to the situation of this
-	entire post.
+	After all of this, I just cannot help but think about <code>dnf</code>. I
+	have experienced failed upgrades in Fedora! It has happened! But because
+	<code>dnf</code> gracefully knows a previous transaction was aborted it has
+	facilities to resolve the situation, either through rolling back, retrying,
+	or at the very least just letting you see up front what the state of your
+	system is, without having to search for some arcane flags to a piece of
+	software you never interact with (<code>dpkg</code>).
 </p>
 
 <p>
-	I have experienced failed upgrades in Fedora! It has happened! But because
-	<code>dnf</code> is good software, it gracefully knows a previous
-	transaction was aborted and offers to resume it, or lets you roll it back
-	safely, or at least lets you see what is going on with your system and what
-	problems you might run into because of the failure.
+	The split-brain between <code>apt</code> and <code>dpkg</code> makes for a
+	bit of a confusing mess, especially when the state gets out of sync between
+	them, as was just chronicled in this post.
 </p>
 
 <p>
-	But don't worry:
-</p>
-
-<div class="code">
-	<div class="code-title">~ % apt -h</div>
-<pre><code>[...]
-
-This APT has Super Cow Powers.</code></pre></div>
-
-<p>
-	However, apparently "super cow powers" are not enough to safely install
-	package updates.
+	The focus on this in recent years with <code>apt</code> is a glimmer of
+	hope that this situation will improve in the Debian ecosystem. I work with
+	Ubuntu systems regularly, and I always pine for <code>dnf</code> or
+	<code>yum</code> most of the time. I sincerely hope Debian can catch up to
+	where <code>dnf</code> has pulled ahead, and help one of the most
+	widely-deployed operating systems in the world a little more stable and
+	trustworthy.
 </p>
