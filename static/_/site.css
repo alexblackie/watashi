@@ -66,11 +66,10 @@ table {
 		font-style: italic;
 		font-weight: normal;
 	}
-
-.siteHeader img {
-	margin-right: .5rem;
-	border-radius: 100%;
-}
+	.siteHeader--brandLink img {
+		margin-right: .5rem;
+		border-radius: 100%;
+	}
 
 .siteMenu {
 	margin-top: 2rem;
