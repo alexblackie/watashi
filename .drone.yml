@@ -1,0 +1,43 @@
+---
+kind: pipeline
+name: watashi
+
+steps:
+- name: smoke test build
+  image: alpine:3.11
+  commands:
+  - apk add --no-cache make bash coreutils py3-pygments
+  - make
+
+- name: container
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: dcr_username
+    password:
+      from_secret: dcr_password
+    repo: dcr.blackieops.com/alexblackie-com
+    registry: dcr.blackieops.com
+    tag: "${DRONE_COMMIT}"
+  when:
+    branch:
+    - deploy/production
+
+- name: kubeconfig
+  image: digitalocean/doctl:1.36.0
+  environment:
+    DIGITALOCEAN_ACCESS_TOKEN:
+      from_secret: digitalocean_access_token
+  commands:
+  - /app/doctl kubernetes cluster kubeconfig show prd-dtor > ./do.yaml
+  when:
+    branch:
+    - deploy/production
+
+- name: rollout
+  image: bitnami/kubectl:1.15
+  commands:
+  - kubectl --kubeconfig ./do.yaml --namespace default set image deploy/alexblackie-com "alexblackie-com=dcr.blackieops.com/alexblackie-com:${DRONE_COMMIT}"
+  when:
+    branch:
+    - deploy/production
