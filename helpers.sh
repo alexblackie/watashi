@@ -1,30 +1,13 @@
 # Takes an ISO-8601 datestamp and formats it as a "human" date.
 formatDate() {
-	if date --version | grep -q coreutils ; then
-		# BSD and GNU `date`, turns out, are very different. Only GNU date
-		# responds successfully to `--version`, so we're going to try and
-		# support both based on that, grepping for coreutils to be absolutely
-		# sure this is the date we expect.
-		echo $(date -d "$1" +"%B %-d %Y")
-	else
-		echo $(date -jf "%Y-%m-%d" "$1" +"%B %-d %Y")
-	fi
+	echo $(date -d "$1" +"%B %-d %Y")
 }
 
 # Takes an ISO-8601 datestamp and formats it as an RFC-822 timestamp.
 #
 # Generally useful for RSS feeds' "pubDate".
 formatRfc822Date() {
-	if date --version | grep -q coreutils ; then
-		# BSD and GNU `date`, turns out, are very different. Only GNU date
-		# responds successfully to `--version`, so we're going to try and
-		# support both based on that, grepping for coreutils to be absolutely
-		# sure this is the date we expect.
-		echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
-	else
-		echo $(date -jf "%Y-%m-%d" "$1" +"%a, %d %b %Y 09:00:00 GMT")
-	fi
-
+	echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
 }
 
 # Get a list of all directories in `articles`, sorted by their metadata's
