@@ -231,6 +231,34 @@ table {
 	font-style: italic;
 }
 
+.articleOldWarning {
+  position: relative;
+  padding: 1rem 5rem 1rem 9rem;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  background-color: whitesmoke;
+  border-bottom: 2px solid gainsboro;
+  font-size: 1.1rem;
+  line-height: 1.75em;
+}
+  .articleOldWarning::after {
+    content: "!";
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    border: 3px solid orange;
+    color: orange;
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 5rem;
+    text-align: center;
+  }
+
 figure.pullRight {
 	float: right;
 	margin: 0 0 0 1rem;
@@ -355,6 +383,18 @@ figure.polaroid img {
 
 	.singleArticle--header { padding-top: 0 }
 	.singleArticle--header h1 { font-size: 2rem; }
+
+  .articleOldWarning {
+    margin-bottom: 2rem;
+    padding: 1rem 1rem 1rem 6rem;
+    font-size: 1rem;
+  }
+    .articleOldWarning::after {
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      font-size: 1.5rem;
+    }
 
 	.homeColumns { display: block; margin: 0 -1rem; }
 	.homeColumns--column { width: auto; }

@@ -71,3 +71,15 @@ EOF"
 highlight() {
   pygmentize -f html -l "$1"
 }
+
+# Determine if an article is old (> 2 years)
+isThisOld() {
+  warningContent="$(while read c; do echo $c; done)"
+  postedAt=$(date --date="$1" +%s)
+  twoYearsAgo=$(date --date="-2 years" +%s)
+  if [ "$twoYearsAgo" -gt "$postedAt" ] ; then
+    cat <<-EOF
+    $warningContent
+EOF
+  fi
+}
