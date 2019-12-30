@@ -66,3 +66,8 @@ getArticleContent() {
 		$(<$1/index.html)
 EOF"
 }
+
+# Generate syntax-highlighted code blocks using python's pygments library.
+highlight() {
+  pygmentize -f html -l "$1"
+}

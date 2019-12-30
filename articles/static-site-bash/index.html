@@ -95,25 +95,28 @@
 
 <div class="code">
 	<div class="code-title">Makefile</div>
-<pre><code><span class="code-dim"># Find all html and meta files in the pages directory</span>
+$(highlight make <<'EOCODE'
+# Find all html and meta files in the pages directory</span>
 pageSources=\$(shell find pages -type f -name '*.html' -o -name '*.meta')
 
-<span class="code-dim"># Map all the html files in the list of sources to the target path in _build</span>
+# Map all the html files in the list of sources to the target path in _build
 pageTargets=\$(pageSources:pages/%.html=_build/%.html)
 
 all: \$(pageTargets)
 
 _build/%.html: pages/%.html pages/%.meta
-	<span class="code-dim">@# Silently (@) make all directories leading up to our target file (\$@)</span>
+	@# Silently (@) make all directories leading up to our target file (\$@)
 	@mkdir -p \$(dir \$@)
 
-	<span class="code-dim">@# Run our render script, giving the source file name (\$&lt;), substring-
+	@# Run our render script, giving the source file name (\$&lt;), substring-
 	@# replacing "html" with "meta" (as our script expects to be given
-	@# the meta file). Write the output to the target filename (\$@)</span>
+	@# the meta file). Write the output to the target filename (\$@)
 	bin/render \$(&lt;:html=meta) &gt; \$@
 
 clean:
-	rm -rf _build/*</code></pre>
+	rm -rf _build/*
+EOCODE
+)
 </div>
 
 <p>
@@ -143,18 +146,22 @@ clean:
 
 <div class="code">
 	<div class="code-title">bin/render</div>
-<pre><code>#!/usr/bin/env bash
+$(highlight bash <<'EOCODE'
+#!/usr/bin/env bash
 
 set -euf -o pipefail
 
 render() {
 	title="My web page"
-	echo "\$(eval "cat &lt;&lt;EOF
-		\$(&lt;\${1/.meta/.html})
+	echo "$(eval "cat <<EOF
+		$(<${1/.meta/.html})
 EOF")"
 }
 
-render \$@ </code></pre></div>
+render $@
+EOCODE
+)
+</div>
 
 <p>
 	In essence, what we're doing here is reading an HTML file in as a string,
