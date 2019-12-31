@@ -66,3 +66,9 @@ isThisOld() {
 EOF
   fi
 }
+
+# Takes a single argument, an icon name, and returns the SVG content for
+# embedding inline.
+icon() {
+	cat "icons/$1.svg"
+}

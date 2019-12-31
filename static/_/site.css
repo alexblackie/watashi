@@ -1,29 +1,7 @@
 body {
-	display: flex;
 	max-width: 80rem;
 	margin: 0 auto;
 	font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
-}
-
-#mobileHeaderToggle {
-	appearance: none;
-	opacity: 0;
-	visibility: none;
-	font-size: 0;
-}
-
-#mobileHeaderToggleIcon {
-	display: none;
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	padding: 0.5em 1em;
-	border: 1px solid gainsboro;
-	border-radius: 0.25rem;
-}
-
-#mobileHeaderToggle:checked ~ #mobileHeaderToggleIcon {
-	box-shadow: inset 0 1px 5px lavender;
 }
 
 table {
@@ -44,26 +22,52 @@ table {
 		background-color: #f8f8f8;
 	}
 
+.siteMain {
+	display: flex;
+}
+
+#mobileHeaderToggle {
+	display: none;
+	appearance: none;
+	opacity: 0;
+	font-size: 0;
+}
+
+#mobileHeaderToggleIcon {
+	display: none;
+	position: absolute;
+	top: 2rem;
+	right: 1rem;
+	padding: 0.5em 1em;
+	border: 1px solid lavender;
+	border-bottom-width: 2px;
+}
+
+#mobileHeaderToggle:checked ~ #mobileHeaderToggleIcon {
+	box-shadow: inset 0 1px 5px lavender;
+}
+
 .siteHeader {
 	box-sizing: border-box;
 	width: 25%;
-	padding: 2rem;
-	text-align: center;
-	border-right: 2px dotted gainsboro;
+	padding-top: 2rem;
+	border: 0 solid lavender;
+	border-right-width: 2px;
 }
+	.siteHeader h1 {
+		margin: 0;
+		font-size: 1.5rem;
+		line-height: 1em;
+	}
 
-.siteHeader h1 {
-	margin: 0;
-	font-size: 1.5rem;
-}
 .siteHeader--brandLink {
+	display: flex;
+	align-items: center;
 	color: inherit;
 	text-decoration: none;
 }
 	.siteHeader--brandLink em {
-		display: block;
 		font-size: 0.9rem;
-		font-style: italic;
 		font-weight: normal;
 	}
 	.siteHeader--brandLink img {
@@ -78,34 +82,42 @@ table {
 .siteMenu a {
 	display: block;
 	margin: 0.5rem 0;
-	padding: 0.5rem 1.5rem;
-	text-align: center;
+	padding: 1rem 1.5rem;
 	color: inherit;
 	text-decoration: none;
-	background-color: lavender;
-	border-radius: 0.25rem;
+	border: solid lavender;
+	border-width: 1px 0 2px 1px;
 }
-
 	.siteMenu a:hover {
-		background-color: #efeffb;
+		background-color: lavender;
+	}
+	.siteMenu .feather {
+		float: left;
+		width: 1.1em;
+		height: 1.1em;
+		margin-right: 0.5em;
 	}
 
 .siteFooter {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 0;
+	border-top: 2px solid lavender;
 	font-size: 0.8em;
-	margin-top: 3rem;
-	padding: 2rem 0 0;
-	border-top: 2px dotted gainsboro;
 	line-height: 1.5em;
 	color: grey;
 }
 	.siteFooter a {
 		color: dimgrey;
 	}
+	.siteFooter--links {
+		text-align: right;
+	}
 
 .siteContent {
 	box-sizing: border-box;
 	width: 75%;
-	padding: 0 2rem;
+	padding: 2rem 2rem 3rem;
 }
 
 .siteContent p,
@@ -273,11 +285,11 @@ figure.polaroid img {
 }
 
 .pageIntro {
-	margin-top: 2rem;
 	font-size: 1.1em;
 	overflow: hidden;
 }
 	.pageIntro h2 {
+		margin-top: 0;
 		line-height: 1.5em;
 	}
 
@@ -352,9 +364,17 @@ figure.polaroid img {
 	border-radius: 5px 0;
 	box-shadow: 1px 1px 3px rgba(0,0,0, 0.1);
 	background: white;
-	font-size: 0.75rem;
-	line-height: 1em;
 	transform: translateX(-50%) translateY(-2px);
+}
+
+.feather {
+	width: 1em;
+	height: 1em;
+}
+
+.withIcon .feather {
+	vertical-align: center;
+	margin-bottom: -0.15em;
 }
 
 @media screen and (max-width: 640px) {
@@ -364,16 +384,17 @@ figure.polaroid img {
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
 
-	.siteHeader { width: 100%; text-align: center; }
-	.siteHeader--brandLink { justify-content: center; margin-bottom: .5rem; }
+	.siteMain { display: block; }
+	.siteHeader { padding: 2rem 1rem; margin-bottom: 2rem; width: 100%; border-width: 0 0 2px 0; }
 	.siteContent { padding: 0 1rem; width: 100%; }
-	.siteFooter { padding: 2rem 1rem; }
+	.siteFooter { display: block; padding: 2rem 1rem; }
+	.siteFooter--links { text-align: center; margin-top: 1rem; }
 
 	#mobileHeaderToggleIcon { display: block; }
 	#mobileHeaderToggle ~ .mobileCollapsed { display: none; }
 	#mobileHeaderToggle:checked ~ .mobileCollapsed { display: block; }
 
-	.siteMenu a { margin-top: 0.5rem; }
+	.siteMenu a { border-right-width: 1px; margin: 0.5rem; }
 
 	figure.pullRight, figure.pullLeft, .siteContent figure { float: none; margin: 1rem -1rem; }
 
