@@ -1,8 +1,25 @@
+:root {
+	--color-brand-light: lavender;
+	--color-brand: blue;
+	--color-brand-dark: navy;
+	--color-highlight: red;
+}
+
 body {
 	max-width: 80rem;
 	margin: 0 auto;
-	font-family: sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+	font-family: overpass, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
 }
+
+a {
+	color: var(--color-brand);
+}
+	a:visited {
+		color: var(--color-brand-dark);
+	}
+	a:hover {
+		color: var(--color-highlight);
+	}
 
 table {
 	width: 100%;
@@ -39,19 +56,19 @@ table {
 	top: 2rem;
 	right: 1rem;
 	padding: 0.5em 1em;
-	border: 1px solid lavender;
+	border: 1px solid var(--color-brand-light);
 	border-bottom-width: 2px;
 }
 
 #mobileHeaderToggle:checked ~ #mobileHeaderToggleIcon {
-	box-shadow: inset 0 1px 5px lavender;
+	box-shadow: inset 0 1px 5px var(--color-brand-light);
 }
 
 .siteHeader {
 	box-sizing: border-box;
 	width: 25%;
 	padding-top: 2rem;
-	border: 0 solid lavender;
+	border: 0 solid var(--color-brand-light);
 	border-right-width: 2px;
 }
 	.siteHeader h1 {
@@ -60,7 +77,7 @@ table {
 		line-height: 1em;
 	}
 
-.siteHeader--brandLink {
+a.siteHeader--brandLink {
 	display: flex;
 	align-items: center;
 	color: inherit;
@@ -85,11 +102,11 @@ table {
 	padding: 1rem 1.5rem;
 	color: inherit;
 	text-decoration: none;
-	border: solid lavender;
+	border: solid var(--color-brand-light);
 	border-width: 1px 0 2px 1px;
 }
 	.siteMenu a:hover {
-		background-color: lavender;
+		background-color: var(--color-brand-light);
 	}
 	.siteMenu .feather {
 		float: left;
@@ -102,7 +119,7 @@ table {
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem 0;
-	border-top: 2px solid lavender;
+	border-top: 2px solid var(--color-brand-light);
 	font-size: 0.8em;
 	line-height: 1.5em;
 	color: grey;
@@ -162,7 +179,7 @@ table {
 
 .siteContent code {
 	padding: 3px 5px;
-	background-color: lavender;
+	background-color: var(--color-brand-light);
 	color: navy;
 }
 
@@ -285,12 +302,45 @@ figure.polaroid img {
 }
 
 .pageIntro {
-	font-size: 1.1em;
+	font-size: 1.5em;
 	overflow: hidden;
 }
+	.pageIntro-figured {
+		display: flex;
+		align-items: center;
+	}
+	.pageIntro-figured figure {
+		min-width: 25%;
+	}
+
 	.pageIntro h2 {
 		margin-top: 0;
-		line-height: 1.5em;
+	}
+
+	.pageIntro ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.pageIntro li {
+		display: flex;
+		align-items: center;
+		margin: 0.5em 0;
+	}
+	.pageIntro--icon {
+		flex-shrink: 0;
+		width: 2em;
+		height: 2em;
+		margin-right: 0.5em;
+		line-height: 2.5em;
+		text-align: center;
+		background-color: blue;
+		border-radius: 100%;
+	}
+	.pageIntro svg {
+		width: 1em;
+		height: 1em;
+		color: white;
 	}
 
 .note {
@@ -313,6 +363,9 @@ figure.polaroid img {
 	justify-content: space-between;
 	margin-top: 2rem;
 }
+	.homeColumns h2 {
+		margin-top: 0;
+	}
 	.homeColumns--articles {
 		width: 59%;
 	}
@@ -323,7 +376,7 @@ figure.polaroid img {
 
 .timeline {
 	position: relative;
-	padding: 2rem 2em 2em 3.5em;
+	padding: 2rem 2rem 4rem 3rem;
 	margin-left: 2rem;
 	border-left: 2px dotted gainsboro;
 }
@@ -338,11 +391,11 @@ figure.polaroid img {
 
 	.timeline::before {
 		top: 0;
-		background-image: linear-gradient(white 40%, transparent 100%);
+		background-image: linear-gradient(white 2rem, transparent 100%);
 	}
 	.timeline::after {
 		bottom: 0;
-		background-image: linear-gradient(transparent 0, white 60%);
+		background-image: linear-gradient(transparent 0, white 2rem);
 	}
 
 .timelineStep {
@@ -398,7 +451,7 @@ figure.polaroid img {
 
 	figure.pullRight, figure.pullLeft, .siteContent figure { float: none; margin: 1rem -1rem; }
 
-	.pageIntro { margin-top: 0; padding: 1rem 0; }
+	.pageIntro { margin-top: 0; padding: 1rem 0; font-size: 1.2rem; }
 	.pageIntro h2 { margin-top: 0; }
 
 	.singleArticle--header { padding-top: 0 }
