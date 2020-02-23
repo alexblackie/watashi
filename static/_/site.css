@@ -98,14 +98,18 @@ a.siteHeader--brandLink {
 
 .siteMenu a {
 	display: block;
-	margin: 0.5rem 0;
+	margin: 0.5rem 0 0.5rem 0.25rem;
 	padding: 1rem 1.5rem;
 	color: inherit;
 	text-decoration: none;
 	border: solid var(--color-brand-light);
 	border-width: 1px 0 2px 1px;
+	transition: margin 0.2s ease;
 }
 	.siteMenu a:hover {
+		margin-left: 0;
+	}
+	.siteMenu a.active {
 		background-color: var(--color-brand-light);
 	}
 	.siteMenu .feather {

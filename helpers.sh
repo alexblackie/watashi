@@ -10,6 +10,11 @@ formatRfc822Date() {
 	echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
 }
 
+navHighlight() {
+	target="$1"
+	[ "$target" = "${nav:-}" ] && echo "active"
+}
+
 # Get a list of all directories in `articles`, sorted by their metadata's
 # $publishDate value.
 #
