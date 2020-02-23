@@ -63,19 +63,19 @@ EOF"
 
 # Generate syntax-highlighted code blocks using python's pygments library.
 highlight() {
-  pygmentize -f html -l "$1"
+	pygmentize -f html -l "$1"
 }
 
 # Determine if an article is old (> 2 years)
 isThisOld() {
-  warningContent="$(while read c; do echo $c; done)"
-  postedAt=$(date --date="$1" +%s)
-  twoYearsAgo=$(date --date="-2 years" +%s)
-  if [ "$twoYearsAgo" -gt "$postedAt" ] ; then
-    cat <<-EOF
-    $warningContent
-EOF
-  fi
+	warningContent="$(while read c; do echo $c; done)"
+	postedAt=$(date --date="$1" +%s)
+	twoYearsAgo=$(date --date="-2 years" +%s)
+	if [ "$twoYearsAgo" -gt "$postedAt" ] ; then
+		cat <<-EOF
+		$warningContent
+		EOF
+	fi
 }
 
 # Takes a single argument, an icon name, and returns the SVG content for
