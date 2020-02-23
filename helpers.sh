@@ -12,8 +12,13 @@ formatRfc822Date() {
 
 # Get a list of all directories in `articles`, sorted by their metadata's
 # $publishDate value.
+#
+# $1 - number of articles to return, default 10
+# $2 - number of articles to offset by, default 0
 listArticlesByDate() {
 	bag=""
+	limit="${1:-10}"
+	offset="${2:-0}"
 
 	set +f
 	for articleDir in $(ls articles/) ; do
@@ -22,7 +27,7 @@ listArticlesByDate() {
 	done
 	set -f
 
-	sorted=($(echo -e $bag | sort -r | cut -f2- -d'@'))
+	sorted=($(echo -e $bag | sort -r | tail -n +$offset | head -n $limit | cut -f2- -d'@'))
 	echo "${sorted[*]}"
 }
 
@@ -31,7 +36,8 @@ listArticlesByDate() {
 #
 # Content is not loaded by default, for speed. Use `getArticleContent/1`.
 renderArticles() {
-	articles=($(listArticlesByDate))
+	maxCount="${1:-10}"
+	articles=($(listArticlesByDate $maxCount))
 	templateString="$(while read template ; do echo $template ; done)"
 
 	for article in ${articles[@]} ; do

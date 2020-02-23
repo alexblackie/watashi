@@ -29,7 +29,7 @@
 
 <div class="homeColumns">
 	<div class="homeColumns--column homeColumns--articles">
-		<h2>My Weblog <a href="/feed.xml">$(icon rss)</a></h2>
+		<h2>Latest Weblog Articles <a href="/feed.xml">$(icon rss)</a></h2>
 
 		<table>
 			<thead>
@@ -40,7 +40,7 @@
 			</thead>
 
 			<tbody>
-				$(renderArticles <<-'EOARTICLES'
+				$(renderArticles 10 <<-'EOARTICLES'
 				<tr>
 					<td>$(formatDate $publishDate)</td>
 					<td><a href="/$article/">$title</a></td>
@@ -49,6 +49,10 @@ EOARTICLES
 )
 			</tbody>
 		</table>
+
+		<p>
+			<a href="/articles">More Articles &rarr;</a>
+		</p>
 	</div>
 
 	<div class="homeColumns--column homeColumns--contact">

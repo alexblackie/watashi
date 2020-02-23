@@ -1,0 +1,25 @@
+<header class="pageIntro">
+	<h2>Weblog Article Archive</h2>
+	<p>
+		Here is every published article on this web site.
+	</p>
+</header>
+
+<table>
+	<thead>
+		<tr>
+			<th>Publish Date</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		$(renderArticles 9999999999 <<-'EOARTICLES'
+		<tr>
+			<td>$(formatDate $publishDate)</td>
+			<td><a href="/$article/">$title</a></td>
+		</tr>
+EOARTICLES
+)
+	</tbody>
+</table>

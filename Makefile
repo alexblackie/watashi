@@ -8,7 +8,6 @@ xmlPageTargets=$(pageSources:pages/%.xml=_build/%.xml)
 staticSources=$(shell find static -type f)
 staticTargets=$(staticSources:static/%=_build/%)
 
-
 all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
 
 check:
