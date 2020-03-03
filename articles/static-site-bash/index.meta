@@ -4,3 +4,4 @@ publishDate="2019-06-16"
 openGraphTitle="$title"
 openGraphDescription="You can get a pretty functional static site generator just using a bash script and some common Unix tools. Come see how."
 openGraphPermalink="https://www.alexblackie.com/articles/static-site-bash/"
+nav=articles
