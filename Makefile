@@ -28,6 +28,11 @@ _build/%.html: pages/%.html pages/%.meta layouts/site.html
 	@mkdir -p $(dir $@)
 	bin/render $(<:html=meta) > $@
 
+_build/_/site.css: static/_/site.css
+	@mkdir -p $(dir $@)
+	@# minify css by stripping tabs, newlines, and some spaces, separators, etc.
+	tr -d '\n\t' < $< | sed 's/;}/}/g; s/: /:/g; s/, /,/g; s/ {/{/g' > $@
+
 _build/%: static/%
 	@mkdir -p $(dir $@)
 	cp $< $@
