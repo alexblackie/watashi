@@ -21,8 +21,10 @@ steps:
     registry: dcr.blackieops.com
     tag: "${DRONE_COMMIT}"
   when:
-    branch:
-    - deploy/production
+    event:
+    - promote
+    target:
+    - production
 
 - name: kubeconfig
   image: digitalocean/doctl:1.36.0
@@ -32,13 +34,17 @@ steps:
   commands:
   - /app/doctl kubernetes cluster kubeconfig show prd-dtor > ./do.yaml
   when:
-    branch:
-    - deploy/production
+    event:
+    - promote
+    target:
+    - production
 
 - name: rollout
   image: bitnami/kubectl:1.15
   commands:
   - kubectl --kubeconfig ./do.yaml --namespace default set image deploy/alexblackie-com "alexblackie-com=dcr.blackieops.com/alexblackie-com:${DRONE_COMMIT}"
   when:
-    branch:
-    - deploy/production
+    event:
+    - promote
+    target:
+    - production
