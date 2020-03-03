@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -euf -o pipefail
-
-BUCKET="www.alexblackie.com"
-
-aws s3 sync --delete _build/ s3://$BUCKET/
