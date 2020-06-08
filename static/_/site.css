@@ -342,7 +342,7 @@ a.siteHeader--brandLink {
 
 .timeline {
 	position: relative;
-	padding: 2rem 2rem 4rem 3rem;
+	padding: 2rem 2rem 4rem 4rem;
 	margin-top: -2rem;
 	margin-left: 2rem;
 	border-left: 2px dotted var(--color-brand-light);
