@@ -345,7 +345,6 @@ a.siteHeader--brandLink {
 	padding: 2rem 2rem 4rem 3rem;
 	margin-top: -2rem;
 	margin-left: 2rem;
-	z-index: -1;
 	border-left: 2px dotted var(--color-brand-light);
 }
 	.timeline::before,
