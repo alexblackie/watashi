@@ -1,37 +1,36 @@
-* 私
+# 私
 
-This is the source for my website, [[https://www.alexblackie.com][alexblackie.com]].
+This is the source for my website, [alexblackie.com][0].
 
-** Building
+## Building
 
 This site is constructed using a bespoke series of shell scripts (bash, sorry)
 that parse and assemble all the content and pages.
 
-There are no unusual dependencies. If you have the GNU coreutils, or a BSD
-userland, you have everything you need. The major players here are =make=,
-=bash=, =find=, and =cat=.
+The only dependencies are the GNU coreutils (`make`, `find`, `cat`, `bash`) and
+Python's `pygmentize` CLI (usually available as `python-pygments` on Linuxes).
 
 To compile the site:
 
-#+BEGIN_SRC bash
-make
-#+END_SRC
+```bash
+$ make
+```
 
-The files will be placed in =./_build=.
+The files will be placed in `./_build`.
 
-To watch for changes, combine this with a tool such as [[http://eradman.com/entrproject/][entr]]:
+To watch for changes, combine this with a tool such as [entr][1]:
 
-#+BEGIN_SRC <bash>
-ag -l | entr -cr make
-#+END_SRC
+```bash
+$ ag -l | entr -cr make
+```
 
-** License
+## License
 
 All source code is licensed under the MIT license (full text follows). The
 content itself is not covered by this license.
 
-#+BEGIN_SRC
-Copyright 2019 Alex Blackie
+```
+Copyright 2019-2020 Alex Blackie
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -50,4 +49,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-#+END_SRC
+```
+
+[0]: https://www.alexblackie.com
+[1]: http://eradman.com/entrproject/
