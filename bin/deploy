@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Deploys to Github Pages by using git-subtree to push the build folder to the
+# magic Github branch. This requires the entire built site to be tracked in Git
+# which is gross and I hate it, but it works.
+
+set -euf -o pipefail
+
+git subtree push --prefix _build origin gh-pages
