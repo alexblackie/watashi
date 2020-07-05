@@ -8,7 +8,7 @@ xmlPageTargets=$(pageSources:pages/%.xml=_build/%.xml)
 staticSources=$(shell find static -type f)
 staticTargets=$(staticSources:static/%=_build/%)
 
-all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets) _build/CNAME
+all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets) _build/CNAME _build/.nojekyll
 
 check:
 ifeq (, $(shell which pygmentize))
@@ -18,6 +18,9 @@ endif
 
 _build/CNAME:
 	@echo "www.alexblackie.com" > $@
+
+_build/.nojekyll:
+	@touch $@
 
 _build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html
 	@mkdir -p $(dir $@)
