@@ -6,4 +6,12 @@
 
 set -euf -o pipefail
 
-git subtree push --prefix _build origin gh-pages
+# Use subtree to generate a branch with just the contents of _build
+git subtree split --prefix _build -b gh-pages
+
+# Just yeet it up there
+git push --force-with-lease origin gh-pages:gh-pages
+
+# We need to clean up the local branch otherwise it will complain that the
+# commits are not ancestors on subsequent builds.
+git branch -D gh-pages
