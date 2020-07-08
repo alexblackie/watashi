@@ -30,11 +30,11 @@
 		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
 	</head>
 	<body>
-		<div class="siteMain">
-			<header class="siteHeader">
+		<header class="siteHeader">
+			<div class="container">
 				<h1>
 					<a class="siteHeader--brandLink" href="/">
-						<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46"><br>
+						<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
 						<span>
 							Alex Blackie<br>
 							<em>The Internet Sensation&trade;</em>
@@ -52,21 +52,25 @@
 						<a class="$(navHighlight about)" href="/about/">$(icon user) About Me</a>
 					</nav>
 				</div>
-			</header>
+			</div>
+		</header>
 
+		<main class="container">
 			<div class="siteContent">
 				$content
 			</div>
-		</div>
+		</main>
 
 		<footer	class="siteFooter mobileCollapsed">
-			<p>
-				&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.
-			</p>
-			<p>
-				This site is <a class="withIcon" href="https://github.com/alexblackie/watashi">$(icon github) open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
-				Powered by make, bash, Kubernetes, and significant quantities of coffee.
-			</p>
+			<div class="container">
+				<p>
+					&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.
+				</p>
+				<p>
+					This site is <a class="withIcon" href="https://github.com/alexblackie/watashi">$(icon github) open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
+					Powered by make, bash, Kubernetes, and significant quantities of coffee.
+				</p>
+			</div>
 		</footer>
 	</body>
 </html>

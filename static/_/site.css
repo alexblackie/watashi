@@ -3,10 +3,14 @@
 }
 
 body {
-	max-width: 64rem;
-	margin: 0 auto;
+	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	font-size: 17px;
+}
+
+mark {
+	padding: 2px 4px;
+	background-color: papayawhip;
 }
 
 table {
@@ -23,6 +27,11 @@ table {
 		padding: .5rem;
 		border-bottom: 1px solid var(--color-brand-light);
 	}
+
+.container {
+	max-width: 64rem;
+	margin: 0 auto;
+}
 
 #mobileHeaderToggle {
 	display: none;
@@ -46,10 +55,6 @@ table {
 }
 
 .siteHeader {
-	display: flex;
-	justify-content: space-between;
-	box-sizing: border-box;
-	padding: 1rem;
 	border-bottom: 2px solid var(--color-brand-light);
 }
 	.siteHeader h1 {
@@ -70,7 +75,7 @@ a.siteHeader--brandLink {
 	}
 	.siteHeader--brandLink img {
 		margin-right: .5rem;
-		border-radius: 100%;
+		border-radius: 1rem;
 	}
 
 .siteMenu {
@@ -81,9 +86,11 @@ a.siteHeader--brandLink {
 	display: block;
 	margin: 0.5rem 0;
 	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
 }
 	.siteMenu a.active {
 		background-color: var(--color-brand-light);
+		color: inherit;
 	}
 	.siteMenu .feather {
 		float: left;
@@ -93,9 +100,6 @@ a.siteHeader--brandLink {
 	}
 
 .siteFooter {
-	display: flex;
-	justify-content: space-between;
-	padding: 1rem 0;
 	border-top: 2px solid var(--color-brand-light);
 	font-size: 0.8em;
 	line-height: 1.5em;
@@ -104,6 +108,15 @@ a.siteHeader--brandLink {
 	.siteFooter a {
 		color: dimgrey;
 	}
+
+
+.siteHeader .container,
+.siteFooter .container {
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 1rem 0;
+}
 
 .siteContent {
 	box-sizing: border-box;
@@ -182,6 +195,10 @@ a.siteHeader--brandLink {
 		background-color: whitesmoke;
 	}
 
+.siteContent .code {
+	margin: 2rem -6rem;
+}
+
 .siteContent .code pre {
 	margin-top: 0;
 }
@@ -190,6 +207,7 @@ a.siteHeader--brandLink {
 	overflow: auto;
 	padding: 0.5rem 1rem;
 	font-family: monospace;
+	font-size: 0.8em;
 	border-bottom: 2px solid var(--color-brand-light);
 }
 
@@ -234,16 +252,16 @@ a.siteHeader--brandLink {
 }
 
 .singleArticle--body {
-	padding: 0 4rem;
+	max-width: 40rem;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .singleArticle--header {
-	text-align: center;
-	margin-bottom: 2rem;
+	margin: 2rem 0 4rem;
 }
 	.singleArticle--header h1 {
 		margin: 0 0 0.5rem 0;
-		font-size: 2.5rem;
 	}
 
 .singleArticle--header--meta {
@@ -253,6 +271,9 @@ a.siteHeader--brandLink {
 .singleArticle .singleArticle--cover {
 	margin: 0 -2rem 2rem -2rem;
 }
+	.singleArticle--cover img {
+		border-radius: 1rem;
+	}
 
 .articleOldWarning {
 	padding: 1rem 5rem;
@@ -280,8 +301,8 @@ a.siteHeader--brandLink {
 }
 	.pageIntro h2,
 	.singleArticle--header h1 {
-		margin-top: 0;
-		font-size: 2.5rem;
+		margin-top: 2rem;
+		font-size: 2.75em;
 	}
 	.pageIntro p {
 		margin-top: 0;
@@ -398,13 +419,12 @@ a.siteHeader--brandLink {
 }
 
 @media screen and (max-width: 640px) {
-	body { font-size: 1rem; }
+	body { font-size: 15px; }
 	table, thead, tbody, th, td, tr { display: block; }
 	table td:not(:last-child) { border-bottom: none; padding-bottom: 0; }
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
 
-	.siteMain { display: block; }
 	.siteHeader {
 		flex-direction: column;
 		padding: 1rem;
@@ -425,12 +445,13 @@ a.siteHeader--brandLink {
 	.siteMenu a { border-right-width: 1px; margin: 0.5rem; }
 
 	.siteContent figure { float: none; margin: 1rem -1rem; }
+	.siteContent .code { margin: 2rem -1rem; font-size: 0.9em; }
 
-	.pageIntro { margin-top: 0; padding: 1rem 0; font-size: 1.2rem; }
+	.pageIntro { margin-top: 0; padding: 1rem 0; font-size: 1.2em; }
 	.pageIntro h2 { margin-top: 0; }
 
 	.singleArticle--header { padding-top: 0 }
-	.singleArticle--header h1 { font-size: 2rem; }
+	.singleArticle--header h1 { font-size: 2em; }
 
 	.singleArticle--body { padding: 0; }
 	.singleArticle figure.singleArticle--cover { margin: 1rem -1rem; }
@@ -438,7 +459,7 @@ a.siteHeader--brandLink {
 	.articleOldWarning {
 		margin: -2rem -1rem 2rem -1rem;
 		padding: 1rem;
-		font-size: 1rem;
+		font-size: 1em;
 	}
 	.articleOldWarning.withAside aside { font-size: 4rem; text-align: center; }
 
