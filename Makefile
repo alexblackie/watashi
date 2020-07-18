@@ -8,19 +8,13 @@ xmlPageTargets=$(pageSources:pages/%.xml=_build/%.xml)
 staticSources=$(shell find static -type f)
 staticTargets=$(staticSources:static/%=_build/%)
 
-all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets) _build/CNAME _build/.nojekyll
+all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
 
 check:
 ifeq (, $(shell which pygmentize))
 	$(error The python-pygements CLI, pygmentize, must be installed)
 endif
 	@/bin/true
-
-_build/CNAME:
-	@echo "www.alexblackie.com" > $@
-
-_build/.nojekyll:
-	@touch $@
 
 _build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html
 	@mkdir -p $(dir $@)
