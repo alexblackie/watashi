@@ -63,10 +63,44 @@
 <p>
 	Luckily, there is
 	<a href="https://docs.nextcloud.com/server/15/admin_manual/configuration_files/primary_storage.html">official documentation</a>
-	outlining how to set this up. The only thing I was unsure about was
-	migrating existing data to a new primary backend, which I'm still not sure
-	is possible. Nextcloud stores files in object storage as flat data-only
-	blobs, so it's not just as simple as copying some files around.
+	outlining how to set this up. It's quite simple, and just requires a few
+	lines in <code>config.php</code>:
+</p>
+
+<div class="code">
+	<div class="code-title">config.php</div>
+	$(highlight php <<'EOCODE'
+<?php
+[...]
+  'objectstore' => array (
+    'class' => 'OC\\Files\\ObjectStore\\S3',
+    'arguments' => array (
+      'bucket' => 'my-nextcloud-data-bucket',
+      'autocreate' => false,
+      'use_path_style' => true,
+      'port' => 9000,
+      'key' => 'AKIAxxx',
+      'secret' => 'asd+fx/xxxx=',
+      'hostname' => 'nxc-minio',
+      'use_ssl' => false,
+      'region' => 'ca-central-1',
+    ),
+  ),
+[...]
+EOCODE
+)
+</div>
+
+<p>
+	Astute readers may notice I am not pointing to S3 directly, but more on
+	that later.
+</p>
+
+<p>
+	The only thing I was unsure about was migrating existing data to a new
+	primary backend, which I'm still not sure is possible. Nextcloud stores
+	files in object storage as flat data-only blobs, so it's not just as simple
+	as copying some files around.
 </p>
 
 <p>
