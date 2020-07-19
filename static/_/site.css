@@ -425,36 +425,35 @@ a.siteHeader--brandLink {
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
 
-	.siteHeader {
-		flex-direction: column;
-		padding: 1rem;
-		margin-bottom: 2rem;
-	}
+	.siteHeader { margin-bottom: 1rem }
+
+	.siteHeader .container,
+	.siteFooter .container { flex-direction: column; padding: 1rem; }
 
 	.siteContent { padding: 0 1rem; width: 100%; }
-	.siteFooter { display: block; padding: 1rem; }
 
 	.compress { padding-left: 0; padding-right: 0; }
 
-	.mobileCollapsed { margin-top: 2rem; }
+	.mobileCollapsed { margin-top: 1rem; }
 
 	#mobileHeaderToggleIcon { display: block; }
 	#mobileHeaderToggle ~ .mobileCollapsed { display: none; }
 	#mobileHeaderToggle:checked ~ .mobileCollapsed { display: block; }
 
-	.siteMenu a { border-right-width: 1px; margin: 0.5rem; }
+	.siteMenu { display: block; }
 
 	.siteContent figure { float: none; margin: 1rem -1rem; }
 	.siteContent .code { margin: 2rem -1rem; font-size: 0.9em; }
 
 	.pageIntro { margin-top: 0; padding: 1rem 0; font-size: 1.2em; }
-	.pageIntro h2 { margin-top: 0; }
+	.pageIntro h2 { margin-top: 0; font-size: 2.5rem; }
 
-	.singleArticle--header { padding-top: 0 }
+	.singleArticle--header { padding-top: 0; margin-bottom: 2rem }
 	.singleArticle--header h1 { font-size: 2em; }
 
 	.singleArticle--body { padding: 0; }
-	.singleArticle figure.singleArticle--cover { margin: 1rem -1rem; }
+	.singleArticle figure.singleArticle--cover { margin: 0 -1rem; }
+	.singleArticle--cover img { border-radius: 0; }
 
 	.articleOldWarning {
 		margin: -2rem -1rem 2rem -1rem;
