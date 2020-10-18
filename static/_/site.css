@@ -1,16 +1,39 @@
 :root {
-	--color-brand-light: lavender;
+	--font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-family-mono: "Source Code Pro", Consolas, Menlo, "Ubuntu Mono", monospace;
+
+	--color-border: gainsboro;
+	--color-bg-content: white;
+	--color-bg-header: navy;
+	--color-bg-mark: papayawhip;
+	--color-bg-light: whitesmoke;
+	--color-highlight: gold;
+	--color-text: black;
+	--color-text-link: navy;
+	--color-text-inverse: white;
+	--color-text-muted: grey;
+
+	--color-bg-code: var(--color-bg-light);
+	--color-bg-code-add: #d6f9e0;
+	--color-bg-code-rem: #ffdce0;
+	--color-bg-code-hl: cornsilk;
 }
 
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	background-color: gainsboro;
+	font-family: var(--font-family-sans);
+	background-color: var(--color-border);
+	color: var(--color-text);
+}
+
+a {
+	color: var(--color-text-link);
 }
 
 mark {
 	padding: 2px 4px;
-	background-color: papayawhip;
+	color: inherit;
+	background-color: var(--color-bg-mark);
 }
 
 table {
@@ -21,11 +44,11 @@ table {
 		padding: .5rem;
 		text-align: left;
 		font-weight: bold;
-		border-bottom: 2px solid var(--color-brand-light);
+		border-bottom: 2px solid var(--color-border);
 	}
 	table td {
 		padding: .5rem;
-		border-bottom: 1px solid var(--color-brand-light);
+		border-bottom: 1px solid var(--color-border);
 	}
 
 .container {
@@ -53,8 +76,8 @@ table {
 }
 
 .siteHeader {
-	background-color: navy;
-	color: white;
+	background-color: var(--color-bg-header);
+	color: var(--color-text-inverse);
 }
 	.siteHeader h1 {
 		margin: 0;
@@ -84,7 +107,7 @@ a.siteHeader--brandLink {
 	display: block;
 	margin: 0.5rem 0;
 	padding: 0.5rem 1rem;
-	color: goldenrod;
+	color: var(--color-highlight);
 }
 	.siteMenu a.active {
 		color: inherit;
@@ -99,12 +122,11 @@ a.siteHeader--brandLink {
 .siteFooter {
 	font-size: 0.8em;
 	line-height: 1.5em;
-	color: grey;
+	color: var(--color-text-muted);
 }
 	.siteFooter a {
-		color: dimgrey;
+		color: var(--color-text);
 	}
-
 
 .siteHeader,
 .siteFooter {
@@ -115,7 +137,7 @@ a.siteHeader--brandLink {
 }
 
 .siteContent {
-	background-color: white;
+	background-color: var(--color-bg-content);
 	box-sizing: border-box;
 	padding: 2rem 2rem 3rem;
 }
@@ -148,14 +170,14 @@ a.siteHeader--brandLink {
 .siteContent blockquote {
 	margin: 1rem 0;
 	padding: 1rem 4rem;
-	border-left: 4px solid var(--color-brand-light);
+	border-left: 4px solid var(--color-border);
 	font-style: italic;
 }
 
 .siteContent hr {
 	margin: 2rem 0;
 	height: 2px;
-	background-color: var(--color-brand-light);
+	background-color: var(--color-border);
 	border: none;
 	outline: none;
 }
@@ -175,21 +197,23 @@ a.siteHeader--brandLink {
 
 .siteContent code {
 	padding: 3px 5px;
-	background-color: var(--color-brand-light);
-	color: navy;
+	font-family: var(--font-family-mono);
+	background-color: var(--color-bg-code);
+	color: inherit;
 }
 
 .siteContent pre {
 	overflow: auto;
 	max-height: 50vh;
 	padding: 1.5rem;
+	font-family: var(--font-family-mono);
 	line-height: 1.25em;
-	background-color: whitesmoke;
+	background-color: var(--color-bg-code);
 }
 	.siteContent pre code {
 		padding: 0;
 		color: inherit;
-		background-color: whitesmoke;
+		background-color: var(--color-bg-code);
 	}
 
 .siteContent .code {
@@ -203,9 +227,9 @@ a.siteHeader--brandLink {
 .siteContent .code-title {
 	overflow: auto;
 	padding: 0.5rem 1rem;
-	font-family: monospace;
+	font-family: var(--font-family-mono);
 	font-size: 0.8em;
-	border-bottom: 2px solid var(--color-brand-light);
+	border-bottom: 2px solid var(--color-border);
 }
 
 .siteContent .code-add,
@@ -225,14 +249,14 @@ a.siteHeader--brandLink {
 }
 
 .siteContent .code-add {
-	background-color: #d6f9e0;
+	background-color: var(--color-bg-code-add);
 }
 	.siteContent .code-add::before {
 		content: "+";
 	}
 
 .siteContent .code-rem {
-	background-color: #ffdce0;
+	background-color: var(--color-bg-code-rem);
 }
 	.siteContent .code-rem::before {
 		content: "-";
@@ -245,7 +269,7 @@ a.siteHeader--brandLink {
 }
 
 .siteContent .code-hl {
-	background-color: cornsilk;
+	background-color: var(--color-bg-code-hl);
 }
 
 .singleArticle--body {
@@ -273,8 +297,8 @@ a.siteHeader--brandLink {
 .articleOldWarning {
 	padding: 1rem 5rem;
 	margin: -2rem -2rem 2rem -2rem;
-	background-color: whitesmoke;
-	border-bottom: 2px solid var(--color-brand-light);
+	background-color: var(--color-bg-light);
+	border-bottom: 2px solid var(--color-border);
 }
 	.articleOldWarning .besideAside{
 		order: 101;
@@ -295,7 +319,7 @@ a.siteHeader--brandLink {
 	padding: 2rem;
 	font-size: 1.25em;
 	overflow: hidden;
-	background-color: gold;
+	background-color: var(--color-highlight);
 }
 	.pageIntro-inline {
 		margin-top: 0;
@@ -336,11 +360,11 @@ a.siteHeader--brandLink {
 
 .note {
 	margin-bottom: 2em;
-	border: 2px solid var(--color-brand-light);
+	border: 2px solid var(--color-border);
 }
 	.note--title {
 		padding: 0.5em 1em;
-		border-bottom: 2px solid var(--color-brand-light);
+		border-bottom: 2px solid var(--color-border);
 		font-weight: bold;
 		font-size: 1.2em;
 	}
@@ -374,7 +398,7 @@ a.siteHeader--brandLink {
 	padding: 2rem 2rem 4rem 4rem;
 	margin-top: -2rem;
 	margin-left: 2rem;
-	border-left: 2px dotted var(--color-brand-light);
+	border-left: 2px dotted var(--color-border);
 }
 	.timeline::before,
 	.timeline::after {
@@ -387,11 +411,11 @@ a.siteHeader--brandLink {
 
 	.timeline::before {
 		top: 0;
-		background-image: linear-gradient(white 2rem, transparent 100%);
+		background-image: linear-gradient(var(--color-bg-content) 2rem, transparent 100%);
 	}
 	.timeline::after {
 		bottom: 0;
-		background-image: linear-gradient(transparent 0, white 2rem);
+		background-image: linear-gradient(transparent 0, var(--color-bg-content) 2rem);
 	}
 
 .timelineStep {
@@ -409,9 +433,9 @@ a.siteHeader--brandLink {
 	position: absolute;
 	left: 0;
 	padding: 0.5em 1em;
-	border: 1px solid var(--color-brand-light);
+	border: 1px solid var(--color-border);
 	box-shadow: 1px 1px 3px rgba(0,0,0, 0.1);
-	background: white;
+	background: var(--color-bg-content);
 	transform: translateX(-50%) translateY(-2px);
 }
 
@@ -473,4 +497,31 @@ a.siteHeader--brandLink {
 	.homeColumns--column { width: auto; }
 	.homeColumns--column h2 { padding-left: .5rem; }
 	.homeColumns--contact { margin-top: 2rem; }
+}
+
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-border: #101010;
+		--color-bg-content: black;
+		--color-bg-code: var(--color-border);
+		--color-bg-mark: darkgoldenrod;
+		--color-bg-light: #222;
+		--color-text: white;
+		--color-text-inverse: var(--color-text);
+		--color-text-link: skyblue;
+		--color-highlight: darkgoldenrod;
+
+		--color-bg-code-add: #002200;
+		--color-bg-code-rem: #330000;
+		--color-bg-code-hl: #222200;
+	}
+
+	.pageIntro a {
+		color: inherit;
+	}
+
+	.siteContent code {
+		color: var(--color-highlight);
+	}
 }
