@@ -96,22 +96,22 @@
 <div class="code">
 	<div class="code-title">Makefile</div>
 $(highlight make <<'EOCODE'
-# Find all html and meta files in the pages directory</span>
-pageSources=\$(shell find pages -type f -name '*.html' -o -name '*.meta')
+# Find all html and meta files in the pages directory
+pageSources=$(shell find pages -type f -name '*.html' -o -name '*.meta')
 
 # Map all the html files in the list of sources to the target path in _build
-pageTargets=\$(pageSources:pages/%.html=_build/%.html)
+pageTargets=$(pageSources:pages/%.html=_build/%.html)
 
-all: \$(pageTargets)
+all: $(pageTargets)
 
 _build/%.html: pages/%.html pages/%.meta
-	@# Silently (@) make all directories leading up to our target file (\$@)
-	@mkdir -p \$(dir \$@)
+	@# Silently (@) make all directories leading up to our target file ($@)
+	@mkdir -p $(dir $@)
 
-	@# Run our render script, giving the source file name (\$&lt;), substring-
+	@# Run our render script, giving the source file name ($<), substring-
 	@# replacing "html" with "meta" (as our script expects to be given
-	@# the meta file). Write the output to the target filename (\$@)
-	bin/render \$(&lt;:html=meta) &gt; \$@
+	@# the meta file). Write the output to the target filename ($@)
+	bin/render $(<:html=meta) &gt; $@
 
 clean:
 	rm -rf _build/*
@@ -177,7 +177,10 @@ EOCODE
 
 <div class="code">
 	<div class="code-title">pages/index.html</div>
-<pre><code>&lt;h1&gt;\$title&lt;/h1&gt;</code></pre>
+$(highlight html <<'EOCODE'
+<h1>$title</h1>
+EOCODE
+)
 </div>
 
 <p>
@@ -256,8 +259,11 @@ render \$@
 
 <div class="code">
 	<div class="code-title">page/index.meta</div>
-<pre><code>title="My web page"
-lastUpdatedAt="2019-06-13"</code></pre>
+$(highlight bash <<'EOCODE'
+title="My web page"
+lastUpdatedAt="2019-06-13"
+EOCODE
+)
 </div>
 
 <p>
@@ -307,8 +313,11 @@ render() {
 
 <div class="code">
 	<div class="code-title">pages/index.html</div>
-<pre><code>&lt;h1&gt;\$title&lt;/h1&gt;
-Last updated: \$(formatDate \$lastUpdatedAt)</code></pre>
+$(highlight html <<'EOCODE'
+<h1>$title</h1>
+Last updated: $(formatDate $lastUpdatedAt)
+EOCODE
+)
 </div>
 
 <p>
@@ -327,31 +336,39 @@ Last updated: \$(formatDate \$lastUpdatedAt)</code></pre>
 
 <div class="code">
 	<div class="code-title">build.sh</div>
-<pre><code>&hellip;
+	$(highlight bash <<'EOCODE'
+...
 
 renderItems() {
 	items=(one two three)
-	template="\$(while read template ; do echo \$template ; done)"
+	template="$(while read template ; do echo $template ; done)"
 
-	for item in \${items[*]} ; do
-		eval "cat &lt;&lt;-EOFOR
-			\$template
+	for item in ${items[*]} ; do
+		eval "cat <<-EOFOR
+			$template
 		EOFOR"
 	done
 }
 
-&hellip;</code></pre>
+...
+EOCODE
+)
+</code></pre>
 </div>
 
 <div class="code">
 	<div class="code-title">pages/index.html</div>
-<pre><code>&hellip;
+$(highlight bash <<'EOCODE'
+...
 
-&lt;ul&gt;
-\$(renderItems &lt;&lt;-EOTEMPLATE
-	&lt;li&gt;\$item&lt;/li&gt;
-EOTEMPLATE)
-&lt;/ul&gt;</code></pre>
+<ul>
+$(renderItems <<-EOTEMPLATE
+	<li>$item</li>
+EOTEMPLATE
+)
+</ul>
+EOCODE
+)
 </div>
 
 <p>
