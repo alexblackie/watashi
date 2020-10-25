@@ -20,3 +20,5 @@ jobs:
         container_name: '$web'
         connection_string: ${{ secrets.ConnectionString }}
         sync: true
+        # Set cache hints to 2 days
+        extra_args: '--content-cache-control=public,max-age=172800'
