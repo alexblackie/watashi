@@ -1,0 +1,22 @@
+---
+name: Deploy to Azure
+on:
+  push:
+    branches:
+    - master
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Compile
+      run: make clean all
+
+    - name: Publish Artifacts
+      uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      with:
+        source_dir: public/
+        container_name: '$web'
+        connection_string: ${{ secrets.ConnectionString }}
+        sync: true
