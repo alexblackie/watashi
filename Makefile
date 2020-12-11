@@ -14,7 +14,7 @@ check:
 ifeq (, $(shell which pygmentize))
 	$(error The python-pygements CLI, pygmentize, must be installed)
 endif
-	@/bin/true
+	@true
 
 _build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html
 	@mkdir -p $(dir $@)
