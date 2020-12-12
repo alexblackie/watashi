@@ -1,0 +1,9 @@
+FROM alpine:3.12
+
+RUN apk add --no-cache coreutils bash make py3-pygments entr the_silver_searcher ruby ruby-io-console ruby-webrick ruby-etc && \
+	gem install foreman
+
+VOLUME /data
+WORKDIR /data
+
+CMD ["/data/bin/dev"]

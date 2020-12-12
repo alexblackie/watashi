@@ -24,6 +24,20 @@ To watch for changes, combine this with a tool such as [entr][1]:
 $ ag -l | entr -cr make
 ```
 
+### Building on macOS
+
+As mentioned, these scripts exclusively support the GNU coreutils tools. If you
+are on a non-GNU operation system such as macOS, a development-focused
+Dockerfile is provided as an easy way to get a compatible environment quickly.
+
+```
+$ docker build -f Dockerfile.dev -t watashi-dev .
+$ docker run -it --rm -v `pwd`:/data -p 3000:3000 watashi-dev
+```
+
+This will start both a web server (on port 3000), and a file watcher to
+recompile changes automatically.
+
 ## License
 
 Written content (prose) is (C) Alex Blackie.
