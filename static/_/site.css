@@ -182,18 +182,37 @@ a.siteHeader--brandLink {
 	outline: none;
 }
 
+.siteContent .aside {
+	float: right;
+	max-width: 33%;
+	padding: 1rem;
+	margin-right: -12rem;
+	margin-left: 2rem;
+	font-size: 0.8em;
+	background-color: var(--color-bg-mark);
+}
+	.siteContent .aside p:first-child {
+		margin-top: 0;
+	}
+	.siteContent .aside p:last-child {
+		margin-bottom: 0;
+	}
+
 .withAside {
 	display: flex;
+	align-items: flex-start;
 }
-.withAside aside {
-	width: 33%;
-	flex-shrink: 0;
-	order: 100;
-}
-
-.withAside .besideAside {
-	padding-right: 1rem;
-}
+	.withAside aside {
+		width: 33%;
+		flex-shrink: 0;
+		order: 100;
+	}
+	.withAside .besideAside {
+		padding-right: 1rem;
+	}
+	.withAside figure {
+		margin: 0;
+	}
 
 .siteContent code {
 	padding: 3px 5px;
@@ -470,6 +489,7 @@ a.siteHeader--brandLink {
 
 	.siteContent figure { float: none; margin: 1rem -1rem; }
 	.siteContent .code { margin: 2rem -1rem; font-size: 0.9em; }
+	.siteContent .aside { margin: 1rem; float: none; max-width: 100%; }
 
 	.pageIntro { margin: -1rem -1rem 2rem; padding: 1rem; font-size: 1.2em; }
 	.pageIntro h2 { margin-top: 0; font-size: 2.5rem; }
