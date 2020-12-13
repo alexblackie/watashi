@@ -1,0 +1,9 @@
+nav=articles
+
+title="Resiliency in SaaS codebases through productisation."
+publishDate="2020-12-14"
+
+openGraphTitle="$title"
+openGraphImageUrl=""
+openGraphDescription="SaaS codebases can get messy and tightly-coupled to their dependencies. Learn how to avoid this by thinking about them differently."
+openGraphPermalink="https://www.alexblackie.com/articles/better-saas-through-productisation/"
