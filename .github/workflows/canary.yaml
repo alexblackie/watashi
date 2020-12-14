@@ -7,6 +7,8 @@ on:
 jobs:
   upload:
     runs-on: ubuntu-latest
+    env:
+      WATASHI_ENV: canary
     steps:
     - uses: actions/checkout@v2
 

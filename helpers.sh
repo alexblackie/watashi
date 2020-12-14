@@ -15,6 +15,11 @@ navHighlight() {
 	[ "$target" = "${nav:-}" ] && echo "active"
 }
 
+# Get the current build environment. If unset, `development` is assumed.
+watashiEnv() {
+	echo "${WATASHI_ENV:-development}"
+}
+
 # Get a list of all directories in `articles`, sorted by their metadata's
 # $publishDate value.
 #

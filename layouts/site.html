@@ -28,7 +28,15 @@
 		EOOGMETA
 		fi)
 
+		$(if [ "$(watashiEnv)" = "production" ] ; then cat <<-EOAN
 		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
+		EOAN
+		fi)
+
+		$(if [ "$(watashiEnv)" != "production" ] ; then cat <<-EOROB
+		<meta name="robots" content="noarchive, noindex, nofollow">
+		EOROB
+		fi)
 	</head>
 	<body class="container">
 		<header class="siteHeader">
