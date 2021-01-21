@@ -31,7 +31,7 @@
 </section>
 
 <section id="reproducibility">
-	<h2>Reproducibility: I should be able to run the damn thing.</h2>
+	<h2>Reproducibility: I should be able to run the thing.</h2>
 
 	<aside class="aside">
 		<p>
@@ -71,16 +71,6 @@
 			run the software you make</mark>. A production environment
 		shouldn't be an elusive, one-off occurence; you should be able to
 		recreate production, and the steps should be obvious.
-	</p>
-
-	<p>
-		Lacking reproducibility is often indicative of much deeper, more
-		concerning problems. The aforementioned "QA" environment was indeed a
-		huge red flag that no one <em>truly</em> understood how to run the
-		entire application. We all ran various bits of it locally, but when it
-		came to running <em>everything</em>, such as the staging and production
-		environments, those were essentially a dusty house of undocumented
-		cards.
 	</p>
 
 	<p>
@@ -131,11 +121,18 @@
 	</p>
 
 	<p>
-		This also makes it easier to deploy multiple versions of your service
+		In essence, <mark>you should be the downstream and the upstream</mark>;
+		you should both develop the software, but also treat yourself as a
+		consumer of it. Don't take shortcuts to production just because you own
+		the whole pipeline.
+	</p>
+
+	<p>
+		This makes it easier to deploy multiple versions of your service
 		-- whether that means on-premises for a large enterprise customer, or
-		in a different geographic region for compliance purposes. In that
-		regard, ensuring your codebase is resilient and reproducible could be a
-		business-value feature!
+		in a different geographic region for compliance purposes. Ensuring your
+		codebase is resilient and reproducible could be a business-value
+		feature!
 	</p>
 </section>
 
