@@ -11,37 +11,67 @@
 </div>
 
 <figure class="cover">
-	<img src="https://cdn.blackie.zone/alexblackie/setup/2020-05.jpg" alt="Dell XPS 13 9380 on a laptop stand beside two monitors; mechanical keyboard and mouse in the foreground; a Macbook sits closed to the left.">
+	<img src="https://cdn.blackie.zone/alexblackie/setup/2021-02.jpg" alt="Two monitors in the centre displaying an empty macOS desktop; mechanical keyboard and trackpad in the foreground.">
 </figure>
 
 <div class="compress">
 	<h2>Hardware</h2>
 
 	<p>
-		My current &ldquo;Daily Driver&rdquo; computer is the <strong>Dell XPS 13
-		(9380)</strong>. It's plenty fast, thin and light, has a fantastic
-		screen, great WiFi performance, and a decently comfortable keyboard.
-		High-DPI under Linux is still hit-and-miss, but the laptop itself is
-		probably one of the best computers I've owned.
+		My current &ldquo;Daily Driver&rdquo; computer is the <strong>Macbook
+			Pro 13" (2020, Intel)</strong>. It's the last model before the M1
+		switch, just to save first-generation headaches. Apple won me back
+		after a few years of exclusive Linux on the Desktop&trade; with their
+		recent return to making really solid hardware, as well as the exciting
+		ARM-based future.
 	</p>
 
 	<p>
-		Primarily, I use 2x <strong>Dell U2415 24" 1200p Monitors</strong> (on a dual
-		monitor arm), a <a href="https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=3508"><strong>Varmilo Sakura TKL</strong></a>
-		mechanical keyboard with Cherry MX Brown switches, and a
-		<strong>Logitech MX Master</strong> (V1) mouse. Since video calls are a
-		frequent occurrence, I have a <strong>Logitech C920 webcam</strong> and
-		a <strong>Blue Yeti</strong> &ldquo;Blackout Edition&rdquo; microphone,
-		shock-mounted to a Blue mic boom. Everything is plugged into a
-		<strong>CalDigit TS3+ Thunderbolt Dock</strong> which allows me to live
-		the "one cable" lifestyle, and I love it.
+		Primarily, I use 2x <strong>Dell U2415 24" 1200p Monitors</strong>, a
+		<a href="https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=3508"><strong>Varmilo Sakura TKL</strong></a>
+		mechanical keyboard with Cherry MX Brown switches, and an
+		<strong>Apple Magic Trackpad 2</strong>. For looking good on video
+		calls I have a <strong>Logitech C920 webcam</strong>.
 	</p>
 
 	<p>
-		For work, I have a standard-issue <strong>15" Macbook Pro
-		(2019)</strong>, which plugs into the same Thunderbolt dock (the future
-		is here). I also swap out the MX Master for an <strong>Apple Magic
-		Trackpad</strong> because mouse support in macOS is insufferable.
+		For audio input, I use a <strong>Blue Yeti</strong> &ldquo;Blackout Edition&rdquo; microphone,
+		shock-mounted to a Blue mic boom. For audio output, I have a
+		<strong>Mayflower Electronics O2+ODAC</strong> driving a pair of
+		<strong>Beyerdynamic DT-770 Pro</strong>'s (the 250&ohm; variant). The
+		DT-770's are probably my favourite pair of headphones I have used to
+		date.
+	</p>
+
+	<p>
+		Everything is plugged into a <strong>CalDigit TS3+ Thunderbolt
+			Dock</strong> which allows me to live the "one cable" lifestyle,
+		and it makes my laptop-only reality a pleasant experience.
+	</p>
+
+	<p>
+		The laptop itself is held in a <a href="https://www.apple.com/ca/shop/product/HP9X2ZM/A/twelve-south-bookarc-stand-for-macbook"><strong>TwelveSouth BookArc Stand</strong></a>
+		which holds it vertically, meaning I can hide the laptop itself behind
+		my monitors for a cleaner aesthetic.
+	</p>
+
+	<p>
+		For my job, I have a standard-issue <strong>15" Macbook Pro
+			(2019)</strong>, which plugs into the same Thunderbolt dock. The
+		extra juice from the high-watt CPU and discrete GPU is certainly
+		nice, but it is just so dang big, and is a constant reminder
+		that I prefer smaller laptops.
+	</p>
+
+	<p>
+		I still have my <strong>Dell XPS 13 9380</strong>, but at this point I
+		have replaced it entirely with the Macbook Pro. The XPS 13 was a
+		fantastic laptop, but after only 1.5 years of ownership it has started
+		failing &mdash; the battery capacity has dropped to 52%, the webcam
+		shorts out if you move the lid, the trackpad doesn't click reliably,
+		and HiDPI under Linux is still very hit-or-miss. I wish I could
+		recommend it but it just did not last an acceptable amount of time
+		before degrading.
 	</p>
 
 	<h2>Software</h2>
@@ -50,32 +80,49 @@
 		Probably the most accurate and detailed information about my software setup
 		is <a href="https://github.com/alexblackie/dotfiles">my dotfiles</a> and
 		<a href="https://github.com/alexblackie/bootstart">the Ansible playbooks</a>
-		that I use to provision my workstations.
+		that I use to provision my computers. Otherwise...
 	</p>
 
 	<p>
-		For operating systems, I tend to stick to the latest <strong>Fedora
-		Workstation</strong> release. For my work-provided Macbook I am
-		of course stuck with macOS, unfortunately. For non-desktop machines,
-		<strong>CentOS</strong> is my server OS of choice, though Kubernetes
-		has made that less important in recent years.
+		I spend the significant majority of my time in <strong>Firefox</strong>
+		and <strong>neovim</strong>. At work I am often forced to use
+		<strong>VS Code</strong> which is &ldquo;fine.&rdquo; I use the
+		standard <strong>Terminal.app</strong> because I've used
+		<strong>tmux</strong> my entire life and don't need the approximately
+		one-billion features of iTerm2.
 	</p>
 
 	<p>
-		My desktop environment of choice has been <strong>GNOME</strong> for many
-		years, and I run it nearly stock, with only <a href="https://extensions.gnome.org/extension/517/caffeine/">two</a>
-		<a href="https://extensions.gnome.org/extension/906/sound-output-device-chooser/">extensions</a>
-		enabled. I spend a significant amount of my time
-		in <strong>Firefox</strong> and <strong>vim</strong>. While vim is my
-		default, I still frequently use my first love, <strong>Sublime Text</strong>,
-		which remains an incredibly solid and reliable editor.
+		I use a lot of containers, which on macOS unfortunately means
+		I'm stuck with <strong>Docker</strong>. It's still the best
+		experience for now, but I hope one day I can use
+		<code>podman</code> or some other, more open technology instead.
 	</p>
 
 	<p>
-		I exclusively use a local music library, all of which I have purchased and
-		built up over many years. On macOS I'm still unfortunately stuck using
-		<strong><s>iTunes</s> Music.app</strong>, which is very slow, clunky, and
-		buggy. On Linux, I use <a href="https://wiki.gnome.org/Apps/Lollypop"><strong>Lollypop</strong></a>
-		which works very well and is a model for how music library apps should be done.
+		I also use <a href="https://kapeli.com/dash"><strong>Dash</strong></a>
+		quite a bit for local and easily-searchable documentation for
+		various languages, libraries, and frameworks. Much faster than
+		searching the web, and everything being offline is nice.
+	</p>
+
+	<h2>The <em>Cloud&trade;</em></h2>
+
+	<p>
+		The majority of my personal cloud infrastructure runs on
+		<strong>Microsoft Azure</strong>, specifically
+		<strong>AKS</strong>, <strong>Azure Storage</strong>, and a few
+		standalone VMs. Everything is tracked and deployed with
+		<strong>Terraform</strong>, and everything is kept within
+		Canadian regions.
+	</p>
+
+	<p>
+		For file syncing and cloud storage, I run a private
+		<strong>Nextcloud</strong> installation for myself and my family
+		(I <a href="/articles/nextcloud-on-k8s/">have written in the
+			past</a> about how I run Nextcloud on Kubernetes). It's
+		been the key to getting us out of Google's ecosystem and I love
+		it just for that, even if it is a large PHP nightmare.
 	</p>
 </div>
