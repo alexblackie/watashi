@@ -69,13 +69,14 @@ table {
 #mobileHeaderToggleIcon {
 	display: none;
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 2rem;
+	right: 0.5rem;
 	padding: 1em 1.5em;
 }
 
 #mobileHeaderToggle:checked ~ #mobileHeaderToggleIcon {
-	background-color: black;
+	background-color: var(--color-highlight);
+	color: var(--color-text-inverse);
 }
 
 .siteHeader {
@@ -425,10 +426,19 @@ h2.pageTitle {
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
 
-	.siteHeader,
-	.siteFooter { flex-direction: column; padding: 1rem; }
+	.siteHeader .container,
+	.siteFooter .container { flex-direction: column; padding: 1rem; align-items: flex-start; }
 
-	.siteMenu { display: block; }
+	.siteMenu {
+		flex-direction: column;
+		position: absolute;
+		top: var(--height-header);
+		left: 0;
+		right: 0;
+		margin-top: 1rem;
+		background-color: var(--color-bg-content);
+		box-shadow: 0 2px 20px rgba(0,0,0, 0.15);
+	}
 
 	.mobileCollapsed { margin-top: 1rem; }
 	#mobileHeaderToggleIcon { display: block; }
@@ -448,7 +458,6 @@ h2.pageTitle {
 	.singleArticle figure.singleArticle--cover { margin: 0 -1rem; }
 
 	.articleOldWarning {
-		margin: -2rem -1rem 2rem -1rem;
 		padding: 1rem;
 		font-size: 1em;
 	}

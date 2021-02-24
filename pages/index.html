@@ -36,8 +36,7 @@
 
 		$(renderArticles 10 <<-'EOARTICLES'
 			<a href="/$article/" class="articleListItem">
-				$title
-				<div class="badge badge-sm">$(formatDate $publishDate)</div></td>
+				$title<div class="badge badge-sm">$(formatDate $publishDate)</div></td>
 			</a>
 EOARTICLES
 )
@@ -132,7 +131,8 @@ EOARTICLES
 	}
 
 .articleListItem {
-	display: block;
+	display: flex;
+	align-items: flex-start;
 	padding: 0.5rem 1rem;
 	margin-left: -1rem;
 	text-decoration: none;
@@ -217,12 +217,16 @@ EOARTICLES
 	.homeColumns--contact { width: var(--home-sidebar-width); }
 
 @media screen and (max-width: 640px) {
-	.pageIntro { margin: 1rem -1rem 2rem; padding: 1rem; font-size: 1.2em; }
-	.pageIntro h2 { margin-top: 0; font-size: 2.5rem; }
-	.homeColumns { display: block; margin: 0 -1rem; }
+	.homeHero { flex-direction: column; align-items: center; font-size: 1.2em; }
+	.homeHero img { max-width: 50%; }
+
+	.homeColumns { display: block; }
 	.homeColumns--column { width: auto; }
 	.homeColumns--column h2 { padding-left: .5rem; }
 	.homeColumns--contact { margin-top: 2rem; }
+
+	.articleListItem { flex-direction: column; margin-bottom: 1rem; }
+	.articleListItem .badge { margin-left: 0; }
 }
 
 @media (prefers-color-scheme: dark) {
