@@ -38,42 +38,48 @@
 		EOROB
 		fi)
 	</head>
-	<body class="container">
+	<body>
 		<header class="siteHeader">
-			<h1>
-				<a class="siteHeader--brandLink" href="/">
-					<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
-					<span>
-						Alex Blackie<br>
-						<em>The Internet Sensation&trade;</em>
-					</span>
-				</a>
-			</h1>
+			<div class="container">
+				<h1>
+					<a class="siteHeader--brandLink" href="/">
+						<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
+						<span>
+							Alex Blackie<br>
+							<em>The Internet Sensation&trade;</em>
+						</span>
+					</a>
+				</h1>
 
-			<input id="mobileHeaderToggle" type="checkbox" role="button" title="Toggle Menu">
-			<label id="mobileHeaderToggleIcon" for="mobileHeaderToggle">$(icon menu)</label>
+				<input id="mobileHeaderToggle" type="checkbox" role="button" title="Toggle Menu">
+				<label id="mobileHeaderToggleIcon" for="mobileHeaderToggle">$(icon menu)</label>
 
-			<div class="mobileCollapsed">
-				<nav class="siteMenu">
-					<a class="$(navHighlight articles)" href="/articles">$(icon book) Articles</a>
-					<a class="$(navHighlight setup)" href="/setup/">$(icon monitor) My Setup</a>
-					<a class="$(navHighlight about)" href="/about/">$(icon user) About Me</a>
-				</nav>
+				<div class="mobileCollapsed">
+					<nav class="siteMenu">
+						<a class="$(navHighlight articles)" href="/articles">$(icon book) Articles</a>
+						<a class="$(navHighlight setup)" href="/setup/">$(icon monitor) My Setup</a>
+						<a class="$(navHighlight about)" href="/about/">$(icon user) About Me</a>
+					</nav>
+				</div>
 			</div>
 		</header>
 
 		<main class="siteContent">
-			$content
+			<div class="container">
+				$content
+			</div>
 		</main>
 
 		<footer	class="siteFooter">
-			<p>
-				&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.
-			</p>
-			<p>
-				This site is <a class="withIcon" href="https://github.com/alexblackie/watashi">$(icon github) open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
-				Powered by make, bash, and significant quantities of coffee.
-			</p>
+			<div class="container">
+				<p>
+					&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.
+				</p>
+				<p>
+					This site is <a class="withIcon" href="https://github.com/alexblackie/watashi">$(icon github) open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
+					Powered by make, bash, and significant quantities of coffee.
+				</p>
+			</div>
 		</footer>
 	</body>
 </html>

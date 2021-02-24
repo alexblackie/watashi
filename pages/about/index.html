@@ -13,7 +13,7 @@
 		</p>
 
 		<aside>
-			<figure>
+			<figure class="cover">
 				<img src="/_/me.jpg" alt="A photo of Alex Blackie, looking past the camera." width="200" height="200">
 			</figure>
 		</aside>
@@ -60,3 +60,59 @@
 		</div>
 	</div>
 </section>
+
+<style>
+.pageTitle-timeline {
+	position: relative;
+	z-index: 8192;
+	font-weight: normal;
+}
+
+.timeline {
+	position: relative;
+	padding: 2rem 2rem 4rem 4rem;
+	margin-top: -2rem;
+	margin-left: 2rem;
+	border-left: 2px dotted var(--color-border);
+}
+	.timeline::before,
+	.timeline::after {
+		content: "";
+		position: absolute;
+		left: -1rem;
+		width: 2rem;
+		height: 4rem;
+	}
+
+	.timeline::before {
+		top: 0;
+		background-image: linear-gradient(var(--color-bg-content) 2rem, transparent 100%);
+	}
+	.timeline::after {
+		bottom: 0;
+		background-image: linear-gradient(transparent 0, var(--color-bg-content) 2rem);
+	}
+
+.timelineStep {
+	margin: 2rem 0;
+}
+	.timelineStep:last-child {
+		margin-bottom: 0;
+	}
+
+	.timelineStep p {
+		margin: 0;
+	}
+
+.timelineStep--date {
+	position: absolute;
+	left: 0;
+	padding: 0.5em 1em;
+	border: 1px solid var(--color-border);
+	border-radius: 0.25rem;
+	box-shadow: 1px 1px 3px rgba(0,0,0, 0.1);
+	background: var(--color-bg-content);
+	transform: translateX(-50%) translateY(-2px);
+}
+
+</style>

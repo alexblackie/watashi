@@ -15,12 +15,15 @@ EOWARN
 <article class="singleArticle">
 	<header class="singleArticle--header">
 		<h1>$title</h1>
-		<div class="singleArticle--header--meta">Published $(formatDate $publishDate) $([[ "${lastUpdateDate:-}" != "" ]] && echo "&middot; Updated $(formatDate $lastUpdateDate)")</div>
+		<div class="singleArticle--header--meta">
+			<div class="badge"><span>Published</span>$(formatDate $publishDate)</div>
+			$([[ "${lastUpdateDate:-}" != "" ]] && echo "<div class='badge'><span>Updated</span> $(formatDate $lastUpdateDate)</div>")
+		</div>
 	</header>
 
 	$(if [ "${coverUrl:-}" != "" ] ; then cat <<-EOCOVERFIGURE
 
-	<figure class="singleArticle--cover">
+	<figure class="singleArticle--cover cover">
 		<img src="$coverUrl" alt="$coverAlt" width="$coverWidth" height="$coverHeight">
 	</figure>
 

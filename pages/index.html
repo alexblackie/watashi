@@ -1,96 +1,238 @@
-<div class="pageIntro">
-	<ul>
-		<li>
-			<div class="pageIntro--icon">$(icon monitor)</div>
-			<div class="pageIntro--itemText">
-				I am a <strong>software developer</strong> with a passion for DevOps;
-			</div>
-		</li>
-		<li>
-			<div class="pageIntro--icon">$(icon navigation)</div>
-			<div class="pageIntro--itemText">
-				living in <strong>Montréal, Québec, Canada</strong>;
-			</div>
-		</li>
-		<li>
-			<div class="pageIntro--icon">$(icon briefcase)</div>
-			<div>
-				working as a Developer at <strong><a href="https://www.shopify.ca">Shopify</a></strong>,
-			</div>
-		</li>
-		<li>
-			<div class="pageIntro--icon">$(icon blackieops)</div>
-			<div class="pageIntro--itemText">
-				and also running <strong><a href="https://www.blackieops.com">BlackieOps</a></strong>.
-			</div>
-		</li>
-	</ul>
+<div class="homeHero">
+	<div class="homeHero--body">
+		<ul>
+			<li>
+				<div class="homeHero--icon">$(icon monitor)</div>
+				<div class="homeHero--itemText">
+					I am a <strong>software developer</strong> with a passion for DevOps;
+				</div>
+			</li>
+			<li>
+				<div class="homeHero--icon">$(icon navigation)</div>
+				<div class="homeHero--itemText">
+					living in <strong>Montréal, Québec, Canada</strong>;
+				</div>
+			</li>
+			<li>
+				<div class="homeHero--icon">$(icon briefcase)</div>
+				<div>
+					working as a Developer at <strong><a href="https://www.shopify.ca">Shopify</a></strong>,
+				</div>
+			</li>
+			<li>
+				<div class="homeHero--icon">$(icon blackieops)</div>
+				<div class="homeHero--itemText">
+					and also running <strong><a href="https://www.blackieops.com">BlackieOps</a></strong>.
+				</div>
+			</li>
+		</ul>
+	</div>
+	<img src="/_/portrait.jpg" alt="smiley alex">
 </div>
 
 <div class="homeColumns">
 	<div class="homeColumns--column homeColumns--articles">
 		<h2>Latest Weblog Articles <a href="/feed.xml">$(icon rss)</a></h2>
 
-		<table>
-			<thead>
-				<tr>
-					<th>Publish Date</th>
-					<th>Title</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				$(renderArticles 10 <<-'EOARTICLES'
-				<tr>
-					<td>$(formatDate $publishDate)</td>
-					<td><a href="/$article/">$title</a></td>
-				</tr>
+		$(renderArticles 10 <<-'EOARTICLES'
+			<a href="/$article/" class="articleListItem">
+				$title
+				<div class="badge badge-sm">$(formatDate $publishDate)</div></td>
+			</a>
 EOARTICLES
 )
-			</tbody>
-		</table>
-
-		<p>
-			<a href="/articles">More Articles &rarr;</a>
-		</p>
+		<a class="articleListItem articleListItem--more" href="/articles">More Articles &rarr;</a>
 	</div>
 
 	<div class="homeColumns--column homeColumns--contact">
-		<h2>Find Me On-Line</h2>
+		<h2>Find Me Online</h2>
 
-		<table>
-			<thead>
-				<tr>
-					<th>On</th>
-					<th>As</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Github</td>
-					<td><a href="https://github.com/alexblackie">@alexblackie</a></td>
-				</tr>
-				<tr>
-					<td>Github</td>
-					<td><a href="https://github.com/blackieops">@blackieops</a></td>
-				</tr>
-				<tr>
-					<td>Email</td>
-					<td><a href="mailto:alex@blackie.me">alex@blackie.me</a></td>
-				</tr>
-				<tr>
-					<td>GPG</td>
-					<td><a href="/GPG_2015">0xA231E0F2D35D0D47</a></td>
-				</tr>
-				<tr>
-					<td>Keybase</td>
-					<td><a href="https://keybase.io/alexblackie">@alexblackie</a></td>
-				</tr>
-				<tr>
-					<td>LinkedIn</td>
-					<td><a href="https://www.linkedin.com/in/alexblackie">alexblackie</a></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="contactCards">
+			<a href="mailto:alex@blackie.me" class="contactCard contactCard--email">
+				$(icon send)
+				<div>
+					<div class="contactCard--target">Email</div>
+					<div class="contactCard--name">alex@blackie.me</div>
+				</div>
+			</a>
+
+			<a href="https://github.com/alexblackie" class="contactCard contactCard--github">
+				$(icon github)
+				<div>
+					<div class="contactCard--target">Github</div>
+					<div class="contactCard--name">@alexblackie</div>
+				</div>
+			</a>
+
+			<a href="https://keybase.io/alexblackie" class="contactCard contactCard--keybase">
+				$(icon keybase)
+				<div>
+					<div class="contactCard--target">Keybase</div>
+					<div class="contactCard--name">@alexblackie</div>
+				</div>
+			</a>
+
+			<a href="https://www.linkedin.com/in/alexblackie" class="contactCard contactCard--in">
+				$(icon linkedin)
+				<div>
+					<div class="contactCard--target">LinkedIn</div>
+					<div class="contactCard--name">alexblackie</div>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
+
+<style>
+:root {
+	--home-sidebar-width: 34%;
+}
+
+.homeHero {
+	display: flex;
+	justify-content: space-between;
+	margin: 2rem -2rem 3rem -2rem;
+	font-size: 1.25em;
+	overflow: hidden;
+	background: rgb(117,29,191);
+	background: linear-gradient(90deg, rgba(117,29,191,1) 4%, rgba(65,17,180,1) 87%);
+	border-radius: 1rem;
+	box-shadow: 2px 2px 40px rgba(88,25,122, 0.3);
+	color: var(--color-text-inverse);
+}
+
+	.homeHero h2 { margin: 0 0 0.5em 0; font-size: 2.75em; }
+	.homeHero img { max-width: var(--home-sidebar-width); height: auto; }
+	.homeHero a { color: var(--color-text-inverse); }
+	.homeHero p { margin-top: 0; }
+	.homeHero ul { margin: 0; padding: 0; list-style: none; }
+	.homeHero li {
+		display: flex;
+		align-items: center;
+		margin: 0.75em 0;
+		line-height: 1rem;
+	}
+
+	.homeHero svg {
+		width: 1.25em;
+		height: 1.25em;
+	}
+
+	.homeHero--icon {
+		flex-shrink: 0;
+		margin-right: 0.5em;
+	}
+
+	.homeHero--itemText {
+		line-height: 1.2em;
+	}
+
+	.homeHero--body {
+		padding: 2rem;
+	}
+
+.articleListItem {
+	display: block;
+	padding: 0.5rem 1rem;
+	margin-left: -1rem;
+	text-decoration: none;
+	border-radius: 0.5rem;
+	transition: background 0.2s ease;
+}
+	.articleListItem:hover {
+		background-color: var(--color-bg-light);
+	}
+	.articleListItem .badge {
+		color: var(--color-text);
+	}
+	.articleListItem:hover .badge {
+		background-color: var(--color-bg-content);
+	}
+
+.articleListItem--more {
+	color: var(--color-text-muted);
+}
+
+.contactCard {
+	display: flex;
+	margin: 1rem 0;
+	padding: 1rem;
+	border-radius: 1rem;
+	color: inherit;
+	text-decoration: none;
+	font-size: 1.15rem;
+	transition: box-shadow 0.2s ease-in-out;
+}
+	.contactCard svg,
+	.contactCard .feather {
+		margin-right: 1rem;
+		width: 2rem;
+		height: auto;
+	}
+
+	.contactCard--target {
+		font-size: 0.75em;
+		font-weight: bold;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+
+	.contactCard--email {
+		background-color: #ffe7a2;
+	}
+		.contactCard--email:hover {
+			box-shadow: 0 0 1rem rgba(135,108,31, 0.15);
+		}
+
+	.contactCard--github {
+		background-color: #333;
+		color: var(--color-text-inverse);
+	}
+		.contactCard--github:hover {
+			box-shadow: 0 0 1rem rgba(0,0,0, 0.3);
+		}
+
+	.contactCard--keybase {
+		background-color: #3365ed;
+		color: var(--color-text-inverse);
+	}
+		.contactCard--keybase:hover {
+			box-shadow: 0 0 1rem rgba(51,101,236, 0.4);
+		}
+
+	.contactCard--in {
+		background-color: #f3f2ef;
+		color: #0068c5;
+	}
+		.contactCard--in:hover {
+			box-shadow: 0 0 0.75rem rgba(122,120,114, 0.15);
+		}
+
+.homeColumns {
+	display: flex;
+	justify-content: space-between;
+}
+	.homeColumns h2 { margin-top: 0; }
+	.homeColumns--articles { width: 64%; }
+	.homeColumns--contact { width: var(--home-sidebar-width); }
+
+@media screen and (max-width: 640px) {
+	.pageIntro { margin: 1rem -1rem 2rem; padding: 1rem; font-size: 1.2em; }
+	.pageIntro h2 { margin-top: 0; font-size: 2.5rem; }
+	.homeColumns { display: block; margin: 0 -1rem; }
+	.homeColumns--column { width: auto; }
+	.homeColumns--column h2 { padding-left: .5rem; }
+	.homeColumns--contact { margin-top: 2rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+	.contactCard--email {
+		background-color: #243959;
+	}
+
+	.contactCard--in {
+		background-color: #1473c8;
+		color: var(--color-text-inverse);
+	}
+}
+</style>
