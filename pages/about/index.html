@@ -70,9 +70,9 @@
 
 .timeline {
 	position: relative;
-	padding: 2rem 2rem 4rem 4rem;
-	margin-top: -2rem;
+	padding: 0 2rem 0 4rem;
 	margin-left: 2rem;
+	margin-bottom: -2rem;
 	border-left: 2px dotted var(--color-border);
 }
 	.timeline::before,
@@ -82,15 +82,6 @@
 		left: -1rem;
 		width: 2rem;
 		height: 4rem;
-	}
-
-	.timeline::before {
-		top: 0;
-		background-image: linear-gradient(var(--color-bg-content) 2rem, transparent 100%);
-	}
-	.timeline::after {
-		bottom: 0;
-		background-image: linear-gradient(transparent 0, var(--color-bg-content) 2rem);
 	}
 
 .timelineStep {
