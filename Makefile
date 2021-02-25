@@ -16,7 +16,7 @@ ifeq (, $(shell which pygmentize))
 endif
 	@true
 
-_build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html
+_build/articles/%/index.html: articles/%/index.html articles/%/index.meta layouts/site.html layouts/article.html
 	@mkdir -p $(dir $@)
 	bin/render $(<:html=meta) article > $@
 
