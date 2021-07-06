@@ -16,7 +16,7 @@ jobs:
       run: make clean all
 
     - name: Publish Artifacts
-      uses: bacongobbler/azure-blob-storage-upload@v1.1.1
+      uses: bacongobbler/azure-blob-storage-upload@v1.2.0
       with:
         source_dir: _build/
         container_name: '$web'
