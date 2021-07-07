@@ -1,18 +1,20 @@
 $(isThisOld "$publishDate" <<'EOWARN'
-<div class="articleOldWarning withAside">
-	<aside>
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-	</aside>
-	<p class="besideAside">
-		<strong>This article is over two years old.</strong> Life moves
-		quickly, and thus there is a good chance any references,
-		recommendations, or opinions in this content are out of date. Make sure
-		to verify any information independently.
-	</p>
+<div class="articleOldWarning">
+	<div class="container">
+		<aside>
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+		</aside>
+		<p>
+			<strong>This article is over two years old.</strong> Life moves
+			quickly, and thus there is a good chance any references,
+			recommendations, or opinions in this content are out of date. Make sure
+			to verify any information independently.
+		</p>
+	</div>
 </div>
 EOWARN
 )
-<article class="singleArticle">
+<article class="container singleArticle">
 	<header class="singleArticle--header">
 		<h1>$title</h1>
 		<div class="singleArticle--header--meta">

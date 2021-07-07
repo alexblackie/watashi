@@ -3,10 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
-		<title>$title &mdash; Alex Blackie</title>
+		<title>$([[ "${title:-}" != "" ]] && echo "$title &mdash; ")Alex Blackie</title>
 		<link rel="stylesheet" href="/_/site.css" type="text/css">
-		<link rel="stylesheet" href="/_/code.css" type="text/css">
-		<link rel="stylesheet" href="/_/code-dark.css" type="text/css" media="(prefers-color-scheme: dark)">
 		<link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
 
 		$(if [ "${openGraphTitle:-}" != "" ] ; then cat <<-EOOGMETA
@@ -42,32 +40,16 @@
 		<header class="siteHeader">
 			<div class="container">
 				<h1>
-					<a class="siteHeader--brandLink" href="/">
+					<a href="/">
 						<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
-						<span>
-							Alex Blackie<br>
-							<em>The Internet Sensation&trade;</em>
-						</span>
+						<span>Alex Blackie</span>
 					</a>
 				</h1>
-
-				<input id="mobileHeaderToggle" type="checkbox" role="button" title="Toggle Menu">
-				<label id="mobileHeaderToggleIcon" for="mobileHeaderToggle">$(icon menu)</label>
-
-				<div class="mobileCollapsed">
-					<nav class="siteMenu">
-						<a class="$(navHighlight articles)" href="/articles">$(icon book) Articles</a>
-						<a class="$(navHighlight setup)" href="/setup/">$(icon monitor) My Setup</a>
-						<a class="$(navHighlight about)" href="/about/">$(icon user) About Me</a>
-					</nav>
-				</div>
 			</div>
 		</header>
 
 		<main class="siteContent">
-			<div class="container">
-				$content
-			</div>
+			$content
 		</main>
 
 		<footer	class="siteFooter">
@@ -76,7 +58,7 @@
 					&copy; 2013-$(date +%Y) Alex Blackie. Some Rights Reserved.
 				</p>
 				<p>
-					This site is <a class="withIcon" href="https://github.com/alexblackie/watashi">$(icon github) open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
+					This site is <a href="https://github.com/alexblackie/watashi">open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
 					Powered by make, bash, and significant quantities of coffee.
 				</p>
 			</div>
