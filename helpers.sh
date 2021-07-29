@@ -66,9 +66,10 @@ getArticleContent() {
 EOF"
 }
 
-# Generate syntax-highlighted code blocks using python's pygments library.
+# Generate syntax-highlighted code blocks using Chroma, a pygments-compatible
+# Go application.
 highlight() {
-	pygmentize -f html -l "$1"
+	chroma -f html --html-only -l "$1"
 }
 
 # Determine if an article is old (> 2 years)

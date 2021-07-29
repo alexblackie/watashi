@@ -1,8 +1,0 @@
-#!/bin/sh
-
-cat > /tmp/Procfile <<-EOP
-web: ruby -run -e httpd _build -p 3000
-build: ag -l | entr -cr make
-EOP
-
-foreman start -f /tmp/Procfile -d .

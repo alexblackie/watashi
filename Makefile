@@ -11,8 +11,8 @@ staticTargets=$(staticSources:static/%=_build/%)
 all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
 
 check:
-ifeq (, $(shell which pygmentize))
-	$(error The python-pygements CLI, pygmentize, must be installed)
+ifeq (, $(shell which chroma))
+	$(error The chroma CLI must be installed. See github.com/alecthomas/chroma)
 endif
 	@true
 
