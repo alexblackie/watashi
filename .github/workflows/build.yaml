@@ -1,0 +1,17 @@
+---
+name: Test Build
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Chroma for syntax highlighting
+      run: sudo apt-get install -y chroma
+
+    - name: Compile
+      run: make clean all
