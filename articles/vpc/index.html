@@ -57,7 +57,7 @@ the system.</p>
 <p>First off we need to create the VPC itself. Head to the VPC section of the AWS
 Console and click &quot;Create VPC&quot;.</p>
 
-<p><img alt="vpc_create" width="702" height="322" src="//cdn.blackie.zone/alexblackie/vpc/vpc_create.png" /></p>
+<p><img alt="vpc_create" width="702" height="322" src="vpc_create.png" /></p>
 
 <p>I&#39;ve chosen the name <code>my-vpc</code> and the CIDR block of <code>10.20.30.0/24</code>. These both
 are fairly arbitrary and can be nearly anything you want. Depending on how many
@@ -68,7 +68,7 @@ If you&#39;re not planning on having 200+ machines per subnet, then assigning a
 <p>A keen eye will find that when creating a VPC, you are also given a DHCP Options
 Set, Route Table, and Network ACL by default.</p>
 
-<p><img alt="vpc free stuff" width="548" height="86" src="//cdn.blackie.zone/alexblackie/vpc/vpc_extras.png" /></p>
+<p><img alt="vpc free stuff" width="548" height="86" src="vpc_extras.png" /></p>
 
 <p>Other than the Route Table, you can ignore these, for the most part.</p>
 
@@ -84,12 +84,12 @@ it eventually fails.</p>
 <p>Click on &quot;Internet Gateways&quot; in the sidebar, and create one. I usually name mine
 the same as the VPC it&#39;s going to be attached to.</p>
 
-<p><img alt="create igw" width="703" height="228" src="//cdn.blackie.zone/alexblackie/vpc/igw_create.png" /></p>
+<p><img alt="create igw" width="703" height="228" src="igw_create.png" /></p>
 
 <p>Once created, select it and click &quot;Attach to VPC&quot;. Then select your VPC from the
 dropdown.</p>
 
-<p><img alt="attach igw" width="659" height="239" src="//cdn.blackie.zone/alexblackie/vpc/igw_attach.png" /></p>
+<p><img alt="attach igw" width="659" height="239" src="igw_attach.png" /></p>
 
 <p>But wait, there&#39;s more! We still haven&#39;t told anything to <em>use</em> the IGW, we&#39;ve
 just told it to associate itself with a VPC.</p>
@@ -99,7 +99,7 @@ for your new VPC. A pane will open at the bottom of the screen; navigate to the
 &quot;Routes&quot; tab and add a route for <code>0.0.0.0/0</code> that points to the new IGW (the
 target field should auto-complete when you focus it).</p>
 
-<p><img alt="add igw route" width="671" height="235" src="//cdn.blackie.zone/alexblackie/vpc/route_to_igw.png" /></p>
+<p><img alt="add igw route" width="671" height="235" src="route_to_igw.png" /></p>
 
 <p>Congratulations, you just saved yourself hours of painful debugging later.</p>
 
@@ -127,7 +127,7 @@ subnets for database instances, spread across at least two availability zones</p
   <li><code>database02</code>: <code>10.20.30.64/26</code>, <code>us-east-1c</code></li>
 </ul>
 
-<p><img alt="subnets created omg" width="1059" height="139" src="//cdn.blackie.zone/alexblackie/vpc/subnets_created.png" /></p>
+<p><img alt="subnets created omg" width="1059" height="139" src="subnets_created.png" /></p>
 
 <p>For the <code>web01</code> subnet, select it and under the actions dropdown select &quot;Modify
 Public IP&quot; and check the checkbox. We will want public IP addresses on all of
@@ -161,7 +161,7 @@ want to be able to access publicly.</p>
 <p>Following with the Opsworks theme, I&#39;m going to open up ports for HTTP and SSH
 from any IP address.</p>
 
-<p><img alt="opening http and ssh" width="750" height="280" src="//cdn.blackie.zone/alexblackie/vpc/sg_open_ports.png" /></p>
+<p><img alt="opening http and ssh" width="750" height="280" src="sg_open_ports.png" /></p>
 
 <p>The &quot;Source&quot; fields will attempt to auto-complete names of security groups in
 your VPC. Since we&#39;re entering an IP range, it will complain about &quot;No results&quot;

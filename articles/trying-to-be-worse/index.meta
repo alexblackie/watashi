@@ -1,7 +1,7 @@
 title="Build Worse Software"
 publishDate=2020-07-10
 
-coverUrl="https://cdn.blackie.zone/alexblackie/trying-to-be-worse/cover.jpg"
+coverUrl="cover.jpg"
 coverAlt="A screenshot of my first software project, X96 Panel."
 coverWidth=1347
 coverHeight=531
@@ -9,4 +9,6 @@ coverHeight=531
 openGraphTitle="$title"
 openGraphDescription="I've gone from being a teenager building WordPress sites to a professional software developer. But I've forgotten how to build software. It's time to get worse."
 openGraphPermalink="https://www.alexblackie.com/articles/trying-to-be-worse/"
+openGraphImageUrl="${openGraphPermalink}cover.jpg"
+
 nav=articles
