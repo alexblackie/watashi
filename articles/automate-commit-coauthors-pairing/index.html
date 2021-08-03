@@ -1,0 +1,152 @@
+<p>
+	Pairing is a fantastic way to quickly bounce ideas around, get help with
+	something, or even as a tool for mentoring and growth. In recent times,
+	most Git-based tools have adopted the <code>Co-Authored-By</code> trailer
+	to identify when there are multiple authors to a commit. This is great, but
+	often a pain to type out manually, especially if there are many commits or
+	multiple people involved.
+</p>
+
+<p>
+	Asking around at work, there were a few things people had &mdash; everything
+	from vim macros, to custom shell functions &mdash; but nothing quite like what I
+	wanted. So I wrote a script to do it for me.
+</p>
+
+<p>
+	It begins with <code>git-pair</code> (to be used as <code>git pair</code>).
+	This script enumerates all the commit authors in the current repo, offers
+	them to you <a href="https://github.com/jhawthorn/fzy">with a fuzzy-finder</a>,
+	and then appends those people as co-authors on every commit until you run a
+	companion script to end the session.
+</p>
+
+<div class="code">
+	<div class="code-title">~/bin/git-pair</div>
+$(highlight bash <<'EOCODE'
+#!/usr/bin/env bash
+
+set -uf -o pipefail
+
+TEMPLATE_PATH="$HOME/.config/git/template"
+
+TRAILERS=""
+
+while true ; do
+	pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
+
+	if [[ "$pick" != "" ]]; then
+		TRAILERS+="Co-authored-by: $pick\n"
+		echo "Added co-author: $pick"
+	else
+		break
+	fi
+done
+
+if [[ "$TRAILERS" != "" ]] ; then
+	echo -e "\n" > $TEMPLATE_PATH
+	echo -e "$TRAILERS" >> $TEMPLATE_PATH
+
+	echo "🧑‍💻Pairing mode enabled. Run 'git unpair' to end session."
+fi
+EOCODE
+)
+
+</div>
+
+<p>
+	This uses Git's "commit template" feature to hack in the trailers for us
+	automatically on each commit. This requires you to have a bit of Git
+	configuration to point it at a template file:
+</p>
+
+<div class="code">
+	<div class="code-title">~/.config/git/config</div>
+$(highlight ini <<'EOCODE'
+[commit]
+template = ~/.config/git/template
+EOCODE
+)
+</div>
+
+<p>
+	Unfortunately, as of 2.32 at least, template files <em>need to exist</em>
+	at all times, even if they are empty. Make sure to touch it before
+	proceeding to keep Git happy.
+</p>
+
+<p>
+	As you may have noticed, we also will want <code>git-unpair</code> to end a
+	pairing session. This script is much simpler, however, as "ending a
+	session" really just means "emptying the commit template."
+</p>
+
+<div class="code">
+	<div class="code-title">~/bin/git-unpair</div>
+$(highlight bash <<'EOCODE'
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+echo > "$HOME/.config/git/template"
+echo "👋 Disabled pairing mode."
+EOCODE
+)
+</div>
+
+<p>
+	One quick other feature, however: what if you're pairing with someone who
+	doesn't have commits in the current repo? Well, we can supplement the
+	commit author list with a static list of "known colleagues" so that even in
+	a blank git repo we have a list of people to choose from.
+</p>
+
+<div class="code">
+	<div class="code-title">~/bin/git-pair</div>
+$(highlight diff <<'EODIFF'
+TEMPLATE_PATH="$HOME/.config/git/template"
+
++if [[ -e "$HOME/.colleagues.txt" ]] ; then
++	COLLEAGUES="$(cat $HOME/.colleagues.txt)"
++else
++	COLLEAGUES=""
++fi
+
+TRAILERS=""
+
+while true ; do
+-	pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
++	pick="$(echo -e "$COLLEAGES\n$(git shortlog -e -s | cut -f2)" | uniq | fzy)"
+
+	if [[ "$pick" != "" ]]; then
+EODIFF
+)
+	</pre>
+</div>
+
+<p>
+	Then you can automate or manually maintain <code>~/.colleagues.txt</code>,
+	which should be a plain text list of <code>Name &lt;email&gt;</code> lines.
+	We pass everything through <code>uniq</code> as well, to make sure any
+	people in both lists only get one entry.
+</p>
+
+<p>
+	With all of that in place, you can now pair! It should be as easy as:
+
+	<ol>
+		<li><code>git pair</code></li>
+		<li>Fuzzy-select people (hit <code>^D</code> when done)</li>
+		<li>Make some commits</li>
+		<li><code>git unpair</code></li>
+	</ol>
+</p>
+
+<p>
+	Hopefully this makes your pairing sessions easier, with significantly less
+	awkward typing of trailers after every commit. The full source of the script, and all my other scripts and configuration, are <a href="https://github.com/alexblackie/dotfiles/tree/e1c1136e8efb278d0a5a8493bf16376cb15e328a/configs/bin">in my dotfiles repository</a>.
+</p>
+
+<p>
+	Happy pairing 🧑‍💻✨
+</p>
