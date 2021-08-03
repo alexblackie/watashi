@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+PORT="${PORT:-3000}"
+TAG="${WATASHI_TAG:-watashi-dev}"
+
+docker build -t "$TAG" -f Dockerfile.dev .
+docker run --rm -it -p $PORT:3000 -v "$(pwd):/data" "$TAG"
