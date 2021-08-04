@@ -1,5 +1,6 @@
 FROM ubuntu:20.04 as builder
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive \
+	WATASHI_ENV=production
 RUN apt-get update && apt-get install -y chroma make && apt-get clean
 ADD . /app
 RUN cd /app && make clean all
