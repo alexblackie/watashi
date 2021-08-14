@@ -1,0 +1,147 @@
+<div class="container">
+	<div class="pageIntro compress">
+		<h2>$title</h2>
+
+		<p>
+			${openGraphDescription}
+		</p>
+	</div>
+
+	<figure>
+		<img src="2021-08.jpg" alt="Two Dell monitors flanked by Yamaha HS8 studio monitors, a desk mat with mechanical keyboard and trackpad sits in front." width="940" height="500">
+	</figure>
+
+	<div class="twocol">
+		<div class="col">
+			<h2>Hardware</h2>
+
+			<p>
+				My "daily driver" computer is the <mark>Macbook Pro 13"</mark>
+				(2020, Intel). I've been a Linux-on-the-desktop person for most
+				of my life, but Apple has got their hardware game back, and the
+				ARM transition is pretty exciting, so it won me back for now.
+			</p>
+
+			<p>
+				Centre-stage are two <mark>Dell Ultrasharp U2415</mark> 24"
+				1200p displays. Generally I have preferred having two discrete
+				displays over one larger one because it helps my brain separate
+				things, and can make window mangement/fullscreen apps easier.
+			</p>
+
+			<p>
+				For input, I use a <mark>Leopold FC660C</mark> with Topre
+				Silent 45g switches. This is the best keyboard I have ever
+				owned; the extra tactility and premium softness of the
+				topre keys is heavenly. The wood wrist rest in front of it was
+				custom-made by a friend and matches the keyboard dimensions
+				exactly.
+			</p>
+
+			<p>
+				For pointing, I use an <mark>Apple Magic Trackpad 2</mark>.
+				Whenever I have used Macs, I have loved using Apple's wireless
+				trackpads, going back to the first one in 2010. I do also have
+				an original <mark>Logitech MX Master</mark> which I keep around
+				mostly for games.
+			</p>
+
+			<p>
+				For music listening, I have a pair of <mark>Yamaha HS5</mark>
+				monitors, powered by an <mark>Audient iD4</mark> audio
+				interface. I also have a pair of <mark>Beyerdynamic DT-770
+				Pros</mark> (the 250&ohm; variant) which plug into the same
+				interface. Finally, I have a pair of <mark>Airpods Pro</mark>
+				which I use for listening to stuff around or out of the house.
+			</p>
+
+			<p>
+				Working remotely means a lot of video calls, and so I use a
+				<mark>Blue Yeti</mark> microphone bolted to a shock-mount on a
+				matching Blue-branded arm. I found a generic furry pop filter
+				cover for it, which works well and looks hilarious.
+			</p>
+
+			<p>
+				Everything mentioned above is connected to my laptop with one
+				thunderbolt cable via a <mark>Caldigit TS3+</mark> dock. The
+				laptop itself is tucked behind the monitors in a
+				<mark>TwelveSouth BookArc</mark> vertical stand.
+			</p>
+		</div>
+		<div class="col">
+			<section>
+				<h2>Software</h2>
+
+				<p>
+					Probably the best resource for the details on my software
+					setup is <a href="https://github.com/alexblackie/dotfiles">my dotfiles</a>
+					and <a href="https://github.com/alexblackie/bootstart">the ansible playbooks</a>
+					that set up all my machines.
+				</p>
+
+				<p>
+					For operating systems, I of course run <mark>macOS</mark>
+					primarily, but on my non-Apple computers I generally stick
+					to <mark>Ubuntu</mark> LTS.
+				</p>
+
+				<p>
+					For getting work done, I use <mark>Firefox</mark> for
+					web-based things, <mark>Safari</mark> when Firefox annoys
+					me too much, <mark>neovim</mark> for text editing,
+					<mark>kitty</mark> for terminal emulation,
+					<mark>Docker</mark> for containing, and generally just use
+					the default Apple apps for mail and calendar. On Linux,
+					it's all the same, just with the web versions for mail and
+					calendar.
+				</p>
+
+				<p>
+					I maintain my own semi-local music library which I play
+					with <mark>Music.app</mark> and begrudgingly pay for Apple
+					Music for easier syncing between my devices. On Linux I
+					sync music with the rest of my files through Nextcloud, and
+					use the lovely <mark>Lollypop</mark> music player.
+				</p>
+
+				<p>
+					For "cloud storage" needs I run a private
+					<mark>Nextcloud</mark> instance for myself and my family,
+					which keeps our data under our control and within Canadian
+					datacentres. I <a href="/articles/nextcloud-on-k8s/">wrote a blog post</a>
+					about how I run Nextcloud, for those that are curious.
+				</p>
+			</section>
+
+			<section>
+				<h2>The Cloud&trade;</h2>
+
+				<p>
+					For cloud infrastructure, I primarily use <mark>Microsoft Azure</mark>
+					&mdash; specifically Azure Kubernetes Service, Azure
+					Container Registry, Azure Storage, and a couple standalone
+					VMs.
+				</p>
+
+				<p>
+					I run everything in Canadian regions, with the exception of
+					a real-time disaster recovery mirror in Azure's Switzerland
+					region. I also maintain regularly-tested backups of
+					everything on a second geopolitically-independent cloud
+					provider in the EU, as well as on-premises on hardware in
+					my apartment.
+				</p>
+			</section>
+		</div>
+	</div>
+</div>
+
+<style>
+@media screen and (min-width: 640px) {
+	.twocol { padding: 0 1rem; display: flex; }
+	.twocol .col { box-sizing: border-box; width: 50%; }
+	.twocol .col:first-child { padding-right: 1rem; }
+	.twocol .col:last-child { padding-left: 1rem; }
+}
+</style>

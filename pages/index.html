@@ -91,9 +91,7 @@ EOARTICLES
 	--home-sidebar-width: 34%;
 }
 
-.siteHeader .container {
-	justify-content: flex-start;
-}
+.siteHeader { background: transparent }
 
 .homeHero {
 	margin: 0 0 3rem 0;
@@ -176,6 +174,7 @@ EOARTICLES
 	.homeColumns--contact { width: var(--home-sidebar-width); }
 
 @media screen and (max-width: 640px) {
+	.siteHeader {  background-color: var(--color-bg-light) }
 	.siteHeader .container { justify-content: space-around }
 	.siteContent { padding-top: 0 }
 

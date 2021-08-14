@@ -108,6 +108,8 @@ table {
 }
 
 .siteHeader {
+	position: relative;
+	z-index: 16592;
 	height: var(--height-header);
 	background-color: var(--color-bg-light);
 }
@@ -115,7 +117,6 @@ table {
 		display: flex;
 		height: var(--height-header);
 		align-items: center;
-		justify-content: space-around;
 	}
 	.siteHeader h1 {
 		margin: 0;
@@ -133,6 +134,25 @@ table {
 			margin-right: .5rem;
 			border-radius: 100%;
 		}
+
+	.siteHeader nav {
+		display: flex;
+		margin-left: 1rem;
+	}
+		.siteHeader nav a {
+			display: inline-block;
+			border-radius: 0.5rem;
+			padding: .5rem 1rem;
+			margin-left: .5rem;
+			color: inherit;
+			text-decoration: none;
+		}
+			.siteHeader nav a:hover {
+				background-color: rgba(0,0,0, 0.05);
+			}
+			.siteHeader nav a.active {
+				background-color: var(--color-bg-content);
+			}
 
 .siteFooter {
 	margin-top: 2rem;
@@ -399,6 +419,10 @@ h2.pageTitle {
 	table td:not(:last-child) { border-bottom: none; padding-bottom: 0; }
 	table td:first-child { padding-top: 1rem; }
 	table td:last-child { padding-bottom: 1rem; }
+
+	.siteHeader { padding: 1rem; }
+	.siteHeader .container { flex-direction: column }
+	.siteHeader nav { margin-top: .5rem }
 
 	.siteFooter { padding: 2rem; }
 
