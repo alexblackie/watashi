@@ -116,7 +116,7 @@ TRAILERS=""
 
 while true ; do
 -	pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
-+	pick="$(echo -e "$COLLEAGES\n$(git shortlog -e -s | cut -f2)" | uniq | fzy)"
++	pick="$(echo -e "$COLLEAGUES\n$(git shortlog -e -s | cut -f2)" | uniq | fzy)"
 
 	if [[ "$pick" != "" ]]; then
 EODIFF
