@@ -4,8 +4,8 @@ This is the source for my website, [alexblackie.com][0].
 
 ## Building
 
-This site is constructed using a bespoke series of shell scripts (bash, sorry)
-that parse and assemble all the content and pages.
+This site is constructed using a bespoke series of shell scripts that parse and
+assemble all the content and pages.
 
 The only dependencies are the GNU coreutils (`make`, `find`, `cat`, `bash`) and
 the [`chroma` CLI][1].
