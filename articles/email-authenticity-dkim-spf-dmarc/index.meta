@@ -1,3 +1,7 @@
 title="Email Authenticity 101: DKIM, DMARC, and SPF"
 publishDate="2021-08-15"
 nav=articles
+
+openGraphTitle="$title"
+openGraphDescription="Email is critical infrastructure and needs to be trustyworthy. Learn how to set up DKIM, SPF, and DMARC to secure your email domains."
+openGraphPermalink="https://www.alexblackie.com/articles/email-authenticity-dkim-spf-dmarc/"
