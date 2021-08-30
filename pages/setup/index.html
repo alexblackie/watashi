@@ -108,9 +108,7 @@
 				<p>
 					For "cloud storage" needs I run a private
 					<mark>Nextcloud</mark> instance for myself and my family,
-					which keeps our data under our control and within Canadian
-					datacentres. I <a href="/articles/nextcloud-on-k8s/">wrote a blog post</a>
-					about how I run Nextcloud, for those that are curious.
+					which keeps our data under our control and out of US datacentres.
 				</p>
 			</section>
 
@@ -118,19 +116,14 @@
 				<h2>The Cloud&trade;</h2>
 
 				<p>
-					For cloud infrastructure, I primarily use <mark>Microsoft Azure</mark>
-					&mdash; specifically Azure Kubernetes Service, Azure
-					Container Registry, Azure Storage, and a couple standalone
-					VMs.
-				</p>
-
-				<p>
-					I run everything in Canadian regions, with the exception of
-					a real-time disaster recovery mirror in Azure's Switzerland
-					region. I also maintain regularly-tested backups of
-					everything on a second geopolitically-independent cloud
-					provider in the EU, as well as on-premises on hardware in
-					my apartment.
+					For infrastructure, I use a mixture of dedicated servers
+					and cloud instances running on <mark>Hetzner</mark> 🇩🇪 and
+					<mark>Scaleway</mark> 🇫🇷, respectively. For websites, I use
+					<mark>KeyCDN</mark> 🇨🇭 to keep them fast. I also store some
+					backups and run non-production infrastructure on
+					<mark>CloudA</mark> 🇨🇦.  In general, everything runs on
+					standard <mark>Debian</mark> servers, deployed with
+					<mark>Ansible</mark>.
 				</p>
 			</section>
 		</div>
