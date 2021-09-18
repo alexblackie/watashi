@@ -14,7 +14,12 @@
 				containers.
 			</p>
 		</div>
-		<img src="/_/portrait.jpg" alt="smiley alex">
+
+		<picture>
+			<source srcset="/_/portrait.webp" type="image/webp">
+			<source srcset="/_/portrait.jpg" type="image/jpeg">
+			<img src="/_/portrait.jpg" alt="A photo of Alex Blackie." width="348" height="290">
+		</picture>
 	</div>
 </div>
 
@@ -104,10 +109,11 @@ EOARTICLES
 		align-items: flex-end;
 		justify-content: space-between;
 	}
-	.homeHero img {
+	.homeHero picture {
 		flex-shrink: 0;
 		width: var(--home-sidebar-width);
 		height: auto;
+		line-height: 0;
 	}
 	.homeHero--body {
 		padding: var(--height-header) 2rem 1rem 0;
