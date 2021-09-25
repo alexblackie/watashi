@@ -8,11 +8,16 @@ xmlPageTargets=$(pageSources:pages/%.xml=_build/%.xml)
 staticSources=$(shell find static -type f)
 staticTargets=$(staticSources:static/%=_build/%)
 
-all: check $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
+PATH := $(addprefix ./vendor/bin:,$(PATH))
 
-check:
+all: vendor/bin/chroma $(articleTargets) $(staticTargets) $(pageTargets) $(xmlPageTargets)
+
+vendor/bin/chroma:
 ifeq (, $(shell which chroma))
-	$(error The chroma CLI must be installed. See github.com/alecthomas/chroma)
+	@# If the target system doesn't have chroma, download it since it's just a
+	@# single static binary.
+	@mkdir -p vendor/bin
+	curl -qSsL "https://github.com/alecthomas/chroma/releases/download/v0.9.2/chroma-0.9.2-linux-amd64.tar.gz" | tar -xzC vendor/bin chroma
 endif
 	@true
 
@@ -39,5 +44,6 @@ _build/%: static/%
 
 clean:
 	rm -rf _build/*
+	rm -f vendor/bin/chroma
 
-.PHONY: clean check
+.PHONY: clean
