@@ -1,0 +1,29 @@
+---
+name: Production Deployment
+on:
+  push:
+    branches:
+    - main
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      WATASHI_ENV: production
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Chroma for syntax highlighting
+      run: sudo apt-get install -y chroma
+
+    - name: Compile
+      run: make clean all
+
+    - name: Publish Artifacts
+      uses: bacongobbler/azure-blob-storage-upload@v1.2.0
+      with:
+        source_dir: _build/
+        container_name: '$web'
+        connection_string: ${{ secrets.ConnectionString }}
+        sync: true
+        # Set cache hints to 2 days
+        extra_args: '--content-cache-control=public,max-age=172800'
