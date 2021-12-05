@@ -1,13 +1,21 @@
 # Takes an ISO-8601 datestamp and formats it as a "human" date.
 formatDate() {
-	echo $(date -d "$1" +"%B %-d %Y")
+	if [ "$(uname -s)" = "Linux" ] ; then
+		echo $(date -d "$1" +"%B %-d %Y")
+	else
+		echo $(date -jf "%Y-%m-%d" "$1" +"%B %-d %Y")
+	fi
 }
 
 # Takes an ISO-8601 datestamp and formats it as an RFC-822 timestamp.
 #
 # Generally useful for RSS feeds' "pubDate".
 formatRfc822Date() {
-	echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
+	if [ "$(uname -s)" = "Linux" ] ; then
+		echo $(date -d "$1" +"%a, %d %b %Y 09:00:00 GMT")
+	else
+		echo $(date -jf "%Y-%m-%d" "$1" +"%a, %d %b %Y 09:00:00 GMT")
+	fi
 }
 
 navHighlight() {
@@ -75,8 +83,16 @@ highlight() {
 # Determine if an article is old (> 2 years)
 isThisOld() {
 	warningContent="$(while read c; do echo $c; done)"
-	postedAt=$(date --date="$1" +%s)
-	twoYearsAgo=$(date --date="-2 years" +%s)
+
+	if [ "$(uname -s)" = "Linux" ] ; then
+		postedAt=$(date --date="$1" +%s)
+		twoYearsAgo=$(date --date="-2 years" +%s)
+	else
+		postedAt=$(date -jf "%Y-%m-%d" "$1" +%s)
+		twoYearsAgo=$(date -jv"-2y" +%s)
+	fi
+
+
 	if [ "$twoYearsAgo" -gt "$postedAt" ] ; then
 		cat <<-EOF
 		$warningContent

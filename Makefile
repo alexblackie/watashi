@@ -16,8 +16,7 @@ vendor/bin/chroma:
 ifeq (, $(shell which chroma))
 	@# If the target system doesn't have chroma, download it since it's just a
 	@# single static binary.
-	@mkdir -p vendor/bin
-	curl -qSsL "https://github.com/alecthomas/chroma/releases/download/v0.9.2/chroma-0.9.2-linux-amd64.tar.gz" | tar -xzC vendor/bin chroma
+	bin/vendor-chroma
 endif
 	@true
 

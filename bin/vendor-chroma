@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+mkdir -p vendor/bin
+
+CHROMA_VERSION="0.9.4"
+
+if [[ "$(uname -sm)" = "Linux aarch64" ]] ; then
+	# ARM for linux is "aarch64" which differs from the release artifact.
+	# AFAICT it's the only aberration.
+	DOWNLOAD_URL="https://github.com/alecthomas/chroma/releases/download/v$CHROMA_VERSION/chroma-$CHROMA_VERSION-linux-arm64.tar.gz"
+else
+	DOWNLOAD_URL="https://github.com/alecthomas/chroma/releases/download/v$CHROMA_VERSION/chroma-$CHROMA_VERSION-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m).tar.gz"
+fi
+
+curl -qSsL "$DOWNLOAD_URL" | tar -xzC vendor/bin chroma
