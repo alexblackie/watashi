@@ -82,6 +82,12 @@ highlight() {
 
 # Determine if an article is old (> 2 years)
 isThisOld() {
+	if [ "${2:-}" = "true" ] ; then
+		# If "evergreen=true" on the article, then don't render the warning,
+		# even if it's technically old.
+		return
+	fi
+
 	warningContent="$(while read c; do echo $c; done)"
 
 	if [ "$(uname -s)" = "Linux" ] ; then
