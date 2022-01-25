@@ -22,8 +22,8 @@ render() {
 	ext="${ext:-html}"
 
 	# TODO: set up global meta for things like base url?
-	[[ "$pageDir" =~ ^(pages/)?((articles/)?.*)$ ]] && \
-		permalink="https://www.alexblackie.com/${BASH_REMATCH[2]}/"
+	[[ "$pageDir/" =~ ^(pages/)?((articles/)?.*)$ ]] && \
+		permalink="https://www.alexblackie.com/${BASH_REMATCH[2]}"
 
 	eval "set -r ; $(cat $metaFile)"
 
