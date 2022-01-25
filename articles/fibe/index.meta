@@ -8,6 +8,5 @@ coverHeight=537
 
 openGraphTitle="Taking Control of Bell Fibe"
 openGraphDescription="How I ditched Bell's router and plugged fibre right into my network."
-openGraphPermalink="https://www.alexblackie.com/articles/fibe/"
-openGraphImageUrl="${openGraphPermalink}sfp.jpg"
+openGraphImageUrl="${permalink}sfp.jpg"
 nav=articles

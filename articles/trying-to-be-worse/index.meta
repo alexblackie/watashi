@@ -8,7 +8,6 @@ coverHeight=531
 
 openGraphTitle="$title"
 openGraphDescription="I've gone from being a teenager building WordPress sites to a professional software developer. But I've forgotten how to build software. It's time to get worse."
-openGraphPermalink="https://www.alexblackie.com/articles/trying-to-be-worse/"
-openGraphImageUrl="${openGraphPermalink}cover.jpg"
+openGraphImageUrl="${permalink}cover.jpg"
 
 nav=articles

@@ -9,7 +9,6 @@ coverHeight=594
 
 openGraphTitle="$title"
 openGraphDescription="I am a heavy user of Nextcloud, but scaling it can be a challenge. Here is how I managed to get it to a place I can trust."
-openGraphPermalink="https://www.alexblackie.com/articles/nextcloud-on-k8s/"
-openGraphImageUrl="${openGraphPermalink}420scaleit.jpg"
+openGraphImageUrl="${permalink}420scaleit.jpg"
 
 nav=articles

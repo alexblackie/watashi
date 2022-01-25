@@ -21,6 +21,10 @@ render() {
 	layout="${2:-site}"
 	ext="${ext:-html}"
 
+	# TODO: set up global meta for things like base url?
+	[[ "$pageDir" =~ ^(pages/)?((articles/)?.*)$ ]] && \
+		permalink="https://www.alexblackie.com/${BASH_REMATCH[2]}/"
+
 	eval "set -r ; $(cat $metaFile)"
 
 	if [ "${content:-}" = "" ] ; then

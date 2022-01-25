@@ -8,6 +8,5 @@ coverHeight=529
 
 openGraphTitle="DevOps in the Closet"
 openGraphDescription="A story about running the rack in my closet behind a load balancer in the cloud."
-openGraphPermalink="https://www.alexblackie.com/articles/devops-in-the-closet/"
-openGraphImageUrl="${openGraphPermalink}cover.jpg"
+openGraphImageUrl="${permalink}cover.jpg"
 nav=articles

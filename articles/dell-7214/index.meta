@@ -8,7 +8,6 @@ coverHeight=586
 
 openGraphTitle="Review of the Dell Latitude 12 Rugged Extreme"
 openGraphDescription="I recently picked up the Dell Latitude 7214, a truly military-spec laptop. Is it useable as a day-to-day notebook?"
-openGraphPermalink="https://www.alexblackie.com/articles/dell-7214/"
-openGraphImageUrl="${openGraphPermalink}cover.jpg"
+openGraphImageUrl="${permalink}cover.jpg"
 
 nav=articles
