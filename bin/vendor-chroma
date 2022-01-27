@@ -4,7 +4,7 @@ set -euf -o pipefail
 
 mkdir -p vendor/bin
 
-CHROMA_VERSION="0.9.4"
+CHROMA_VERSION="0.10.0"
 
 if [[ "$(uname -sm)" = "Linux aarch64" ]] ; then
 	# ARM for linux is "aarch64" which differs from the release artifact.
