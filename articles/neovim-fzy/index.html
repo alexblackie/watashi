@@ -8,6 +8,21 @@
 </p>
 
 <p>
+	In vim, we're able to use the <code>system</code> function to run a command
+	synchronously and capture its output. Since neovim focuses on
+	asynchronicity, this behaviour is no longer supported. While this seemed
+	like a blocker at the time, it turns out to not be a significant problem.
+</p>
+
+<p>
+	With neovim, we can create a buffer, start an embedded terminal in it, and
+	then read the contents of that buffer when the terminal exits. Since fzy
+	prints the file you selected as its only output, we can easily use the
+	neovim buffer API's <code>nvim_buf_get_lines</code> to read the lines in
+	the buffer.
+</p>
+
+<p>
 	The neovim support for Lua configuration has really provided a comfortable
 	platform for me to build upon. Part of the reason for my sharing this
 	integration was because of how pleased I was with the brevity and clarity
@@ -46,7 +61,7 @@ EOLUA
 </p>
 
 <p>
-	Then we just delete the terminal buffer, and execute a
+	Then we delete the terminal buffer, and execute a
 	<code>vim_command</code> (<code>:e</code>, <code>:vs</code>, etc.) with the
 	file path we got.
 </p>
