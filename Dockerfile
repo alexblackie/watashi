@@ -6,4 +6,5 @@ ADD . /app
 RUN cd /app && make clean all
 
 FROM nginx:1.19-alpine
-COPY --from=builder /app/_build /usr/share/nginx/html
+ADD .nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/_build /srv/www
