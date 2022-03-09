@@ -5,6 +5,6 @@ RUN apt-get update && apt-get install -y chroma make && apt-get clean
 ADD . /app
 RUN cd /app && make clean all
 
-FROM nginx:1.19-alpine
-ADD .nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /app/_build /srv/www
+FROM cr.b8s.dev/library/static:v1.0.0
+ADD .static.yaml /config.yaml
+COPY --from=builder /app/_build /www
