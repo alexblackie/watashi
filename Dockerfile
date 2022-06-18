@@ -5,6 +5,6 @@ RUN apt-get update && apt-get install -y chroma make && apt-get clean
 ADD . /app
 RUN cd /app && make clean all
 
-FROM cr.b8s.dev/library/static:v1.0.0
+FROM ghcr.io/blackieops/static:v1.2.1
 ADD .static.yaml /config.yaml
 COPY --from=builder /app/_build /www
