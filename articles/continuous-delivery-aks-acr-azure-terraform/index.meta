@@ -1,0 +1,7 @@
+title="Continuous Delivery to AKS with a Service Principal, Securely"
+publishDate="2021-07-16"
+
+openGraphTitle="$title"
+openGraphDescription="Deploying to Azure Kubernetes Service without opening security holes can be daunting, but Terraform can help."
+
+nav=articles
