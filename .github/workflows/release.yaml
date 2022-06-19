@@ -4,7 +4,6 @@ on:
   push:
     branches:
     - main
-    - chore/ghcr
 
 env:
   IMAGE_NAME: ghcr.io/${{ github.repository }}
