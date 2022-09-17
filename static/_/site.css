@@ -171,7 +171,12 @@ table {
 .siteContent li,
 .siteContent blockquote,
 .siteContent td {
-	line-height: 1.5em;
+	line-height: 1.6em;
+}
+
+.siteContent p,
+.siteContent blockquote {
+	margin: 1.5rem 0;
 }
 
 .siteContent h2,
@@ -322,9 +327,10 @@ table {
 	max-width: 40rem;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 6rem;
 }
 	.singleArticle--body big {
-		line-height: 1.5em;
+		line-height: 1.75em;
 	}
 
 .singleArticle--header {
