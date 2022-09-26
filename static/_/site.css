@@ -167,18 +167,6 @@ table {
 		color: var(--color-text);
 	}
 
-.siteContent p,
-.siteContent li,
-.siteContent blockquote,
-.siteContent td {
-	line-height: 1.6em;
-}
-
-.siteContent p,
-.siteContent blockquote {
-	margin: 1.5rem 0;
-}
-
 .siteContent h2,
 .siteContent h3,
 .siteContent h4,
@@ -267,6 +255,13 @@ table {
 		background-color: var(--color-bg-code);
 	}
 
+.siteContent p,
+.siteContent li,
+.siteContent blockquote,
+.siteContent td {
+	line-height: 1.5em;
+}
+
 .siteContent .code {
 	margin: 2rem -6rem;
 }
@@ -331,6 +326,11 @@ table {
 }
 	.singleArticle--body big {
 		line-height: 1.75em;
+	}
+
+	.singleArticle--body p,
+	.singleArticle--body blockquote {
+		margin: 1.5rem 0;
 	}
 
 .singleArticle--header {
