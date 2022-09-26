@@ -2,22 +2,24 @@
 	<div class="container">
 		<div class="homeHero--body">
 			<p>
-				<strong>Greetings.</strong> ✨ I am a software developer,
-				usually using Elixir, Go, or Ruby, and am passionate about
-				systems thinking and DevOps. I'm based on Canada's west coast in
-				Vancouver, BC. 🇨🇦
+				<strong>Greetings.</strong> ✨
+			</p>
+
+			<p>
+				I am a <mark>software developer</mark> and <mark>infrastructure architect</mark> that
+				loves simple solutions, systems thinking, and DevOps. These
+				days I am mostly writing <mark>Go</mark>, <mark>Elixir</mark>, or <mark>Ruby</mark>
+				deployed in <mark>containers</mark>.
 			</p>
 			<p>
-				I currently work on making software easier to secure at
-				<a href="https://www.wealthsimple.com">Wealthsimple</a> as a
-				Senior Software Engineer on the Platform Security team.
+				I'm based on Canada's west coast in Vancouver, BC. 🇨🇦
 			</p>
 		</div>
 
 		<picture>
 			<source srcset="/_/portrait.webp" type="image/webp">
-			<source srcset="/_/portrait.jpg" type="image/jpeg">
-			<img src="/_/portrait.jpg" alt="A photo of Alex Blackie." width="348" height="290">
+			<source srcset="/_/portrait.png" type="image/png">
+			<img src="/_/portrait.png" alt="A photo of Alex Blackie." width="236" height="254">
 		</picture>
 	</div>
 </div>
@@ -100,16 +102,18 @@ EOARTICLES
 
 <style>
 :root {
-	--home-sidebar-width: 34%;
+	--home-sidebar-width: 32%;
 }
 
-.siteHeader { background: transparent }
+.siteHeader {
+	background-color: transparent;
+}
 
 .homeHero {
 	margin: 0 0 3rem 0;
 	margin-top: calc(var(--height-header)*-1);
-	font-size: 1.15em;
-	background-color: var(--color-bg-light);
+	font-size: 1.25em;
+	background-color: var(--color-bg-header);
 }
 	.homeHero .container {
 		display: flex;
@@ -123,9 +127,14 @@ EOARTICLES
 		line-height: 0;
 	}
 	.homeHero--body {
-		padding: var(--height-header) 2rem 1rem 0;
+		padding: var(--height-header) 1rem 1rem 0;
 	}
-
+	.homeHero--body p {
+		margin: 1rem 0;
+	}
+	.homeHero--body mark {
+		background-color: rgba(0,0,0, 0.05);
+	}
 
 .articleList {
 	margin: 0;
