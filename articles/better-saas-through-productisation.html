@@ -1,0 +1,277 @@
+title: Resiliency in SaaS codebases through productisation
+publishDate: "2020-12-14"
+lastUpdateDate: "2021-01-20"
+nav: articles
+
+openGraphTitle: Resiliency in SaaS codebases through productisation
+openGraphDescription: >
+  SaaS codebases can get messy and tightly-coupled to their dependencies. Learn
+  how to avoid this by thinking about them differently.
+---
+<section id="intro">
+	<p><big>
+		In the world of private codebases, and especially SaaS, you can easily
+		fall into the trap of thinking, "well, it's OK because no one is going
+		to see this." A mindset like that can wreck a codebase, and can fuel
+		micro-decisions that lead to painful long-term mistakes.
+	</big></p>
+
+	<p>
+		First, regarding "productisation," <a href="https://en.wiktionary.org/w/index.php?title=productization&oldid=51827427">Wiktionary</a> defines it as
+	</p>
+
+	<blockquote>
+		The act of modifying something, such as a concept or a tool internal to
+		an organization, to make it suitable as a commercial product.
+	</blockquote>
+
+	<p>
+		To put it another way, I find it very helpful to frame things from the
+		perspective of "what if someone else had to run this software?" This is
+		obviously something that open source projects have to think about quite
+		a bit, so you could also frame it as "what if this was open source?"
+	</p>
+
+	<p>
+		There are many facets to this, but I want to dive into just two:
+		<mark>reproducibility</mark> and <mark>portability</mark>. These
+		concepts frequently come up in conversations around package managers
+		and software releases, but they are also quite pertinent to SaaS.
+	</p>
+</section>
+
+<section id="reproducibility">
+	<h2>Reproducibility: I should be able to run the thing.</h2>
+
+	<aside class="aside">
+		<p>
+			Note: this is not referring to "reproducibility" in terms of
+			package integrity, à la <a href="https://reproducible-builds.org/">reproducible builds</a>.
+			I love that project and its efforts, but I am talking about
+			something else here.
+		</p>
+	</aside>
+
+	<p>
+		A while back, I was charged with spinning up a validation environment
+		for a SaaS product to provide a "safe" place for a QA team to mess
+		around with upcoming features. The goal was to have this sit somewhere
+		in between our "staging" environment, which was often quite buggy and
+		more for internal developers, and production, which we needed to keep
+		as stable as possible for customers.
+	</p>
+
+	<p>
+		"Simple enough." I said. Surely, we already have a couple other
+		environments, we can just add one more! The problem was that no one had
+		spun up a new environment for <em>several years</em>, and everyone
+		involved in doing so had long since left the company.
+	</p>
+
+	<p>
+		In the end, the new "QA" environment never fully worked. It
+		<em>mostly</em> worked, but several components would fail to integrate
+		or would mysteriously break in ways no one really understood. We tried
+		to copy production as close as we could, and still we failed to
+		replicate it.
+	</p>
+
+	<p>
+		This is what I mean by reproducibility: <mark>anyone should be able to
+			run the software you make</mark>. A production environment
+		shouldn't be an elusive, one-off occurence; you should be able to
+		recreate production, and the steps should be obvious.
+	</p>
+
+	<p>
+		This naturally leads into discussions about "DevOps" and
+		"Infrastructure as Code," both of which are definitely a key part of
+		the solution to this. Being able to understand and replicate
+		infrastructure based on playbooks or manifests solves a huge part of
+		the problem. But it's not the whole story.
+	</p>
+
+	<p>
+		Even with a fully-automated cloud, there will always be some manual
+		work, keys to rotate, service integrations to set up, etc. These
+		service dependencies have to be documented and fail safely.
+	</p>
+
+	<p>
+		In a SaaS world, it's incredibly easy to add a new service
+		dependency--for this case, let's use a hypothetical geocoding API--add
+		the keys to production, and never think about it again. By applying a
+		product focus, it becomes clearer that this dependency should be
+		optional, should be documented, and should fail gracefully.
+	</p>
+
+	<p>
+		These sorts of third-party dependencies hold their own configuration,
+		and often that configuration is difficult to export or automate. Do
+		certain options need to be enabled for your application? Do certain
+		addons need to be active? These are all questions that should have
+		documented and discoverable answers -- in code or otherwise.
+	</p>
+
+	<p>
+		Additionally, external service dependencies should be resilient against
+		missing configuration. Configuration should be validated and warnings
+		should exist; and if a service is not critical to the operation of the
+		application, it shouldn't block the rest of the app just because it's
+		unconfigured.
+	</p>
+
+	<p>
+		This level of "configuration resiliency" helps during development, as devs
+		don't need to get 1000 test API keys just to boot a console; and,
+		additionally, helps you build better software overall. By baking in
+		resiliency, you make your app more flexible in the face of failure,
+		where you <em>know</em> that you can disable many parts of it and it
+		won't break the entire experience.
+	</p>
+
+	<p>
+		In essence, <mark>you should be the downstream and the upstream</mark>;
+		you should both develop the software, but also treat yourself as a
+		consumer of it. Don't take shortcuts to production just because you own
+		the whole pipeline.
+	</p>
+
+	<p>
+		This makes it easier to deploy multiple versions of your service
+		-- whether that means on-premises for a large enterprise customer, or
+		in a different geographic region for compliance purposes. Ensuring your
+		codebase is resilient and reproducible could be a business-value
+		feature!
+	</p>
+</section>
+
+<section id="portability">
+	<h2>Portability: hedge against your integrations.</h2>
+
+	<p>
+		Being able to replicate, say, a bunch of AWS service configuration is
+		powerful, but it still leaves you tightly-coupled to AWS. That doesn't
+		help much if we want to replicate production in an on-premises
+		environment, or even locally on a laptop.
+	</p>
+
+	<p>
+		Just as building software to be resilient against missing or invalid
+		dependencies, it can be even more advantageous to take it a step
+		further, and make your software resilient <em>across vendors</em>.
+	</p>
+
+	<p>
+		This is not a new concept; really, all this means is <mark>build the
+			right abstractions</mark>. Don't leak third-party libraries around
+		your codebase, and build your interfaces with interchangeable backend
+		implementations.
+	</p>
+
+	<p>
+		For example, integrating object storage is a very common thing to
+		sprinkle across your codebase. Building a proper entrypoint and
+		abstraction around it will allow you to swap out the backing
+		implementation without having to modify your application.
+	</p>
+
+	<p>
+		In the object storage example, something like Rails'
+		<code>ActiveStorage</code> is a great example of this abstraction.
+		Depending on the environment and requirements, you can swap out backing
+		storage, be it on-disk, to cloud, etc. Your code calls a standard API,
+		and doesn't need to change to support a variety of implementations.
+	</p>
+
+	<p>
+		These sort of abstractions can facilitate portability, allowing you to
+		run your service almost anywhere, with any technology you can build an
+		implementation for. Does an enterprise customer need to store file
+		uploads on a SAN instead of object storage? Is AWS down and you need to
+		migrate production workloads to a DR site on a different provider? All
+		of this can be yours, for the low-low price of strong abstractions.
+	</p>
+
+	<p>
+		However, as with everything, <mark>you need to ensure you don't go too
+			far</mark>; you must weigh your dependencies versus any downsides
+		of abstraction.
+	</p>
+
+	<p>
+		For example, heavy abstractions on top of a database (such as
+		PostgreSQL) can add more trouble than they're worth, and have
+		performance impacts compared to a more optimized, direct
+		implementation. For these, the focus should shift from abstractions, to
+		choosing the right APIs for your application.
+	</p>
+</section>
+
+<section id="standardapis">
+	<h2>Portability, the sequel: standards are good, actually</h2>
+
+	<p>
+		For cases where making your own standard interface for dependencies is
+		not worth it or not possible, using standardized APIs is the next best
+		thing.
+	</p>
+
+	<p>
+		Take the aforementioned database example; there can be great benefits
+		in performance to optimise your usage of a database to take advantage
+		of a specific implementation. What matters in this case is the
+		technology you choose.
+	</p>
+
+	<aside class="aside">
+		<p>
+			I make a lot of comparisons to fancy cloud database offerings in
+			this section, but perhaps it's worth disclaiming that I have not
+			actually used any of these first hand. I'm a Postgres man, forever
+			and always.
+		</p>
+	</aside>
+
+	<p>
+		You can still achieve portability and resiliency through non-abstracted
+		choices, as long as those choices are either open or standardized. In
+		the database example, you can spin up a PostgreSQL server anywhere,
+		even on your own hardware. There isn't much that is stopping you from
+		moving providers or running in other environments.
+	</p>
+
+	<p>
+		For an opposite example: Google Spanner on GCP, or AWS's DynamoDB.
+		While both are very powerful technologies, they are unique to their
+		respective clouds and use non-standard APIs. You cannot move to another
+		cloud without significantly changing your application.
+	</p>
+
+	<p>
+		To be clear, this isn't a dig on "the cloud" -- this is a dig on vendor
+		lock-in. Where Google's Spanner invented their own interface, Microsoft
+		Azure's CosmosDB gives the consumer the option of various different
+		standard APIs, including SQL- or MongoDB-compatible endpoints. This is
+		a great win by combining a standard API (one that means a developer can
+		run a different MongoDB-like service locally) with the power of an
+		integrated and globally-scalable cloud solution in production.
+	</p>
+</section>
+
+<section id="conclusion">
+	<h2>Productisation doesn't mean open source</h2>
+
+	<p>
+		While I think it helps with the thought process to ask "what if this
+		was open source?", that doesn't mean you have to become open source to
+		get the benefits of that mindset. In my experience, just being aware of
+		the codebase you are building, and keeping future generations in mind,
+		is enough to hopefully put you on the right paths.
+	</p>
+
+	<p>
+		Hopefully product-focused thinking can help you clean up your codebases
+		as well.
+	</p>
+</section>

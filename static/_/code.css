@@ -1,62 +1,65 @@
-/* Pygments "emacs" theme */
-.chroma .hll { background-color: #ffffcc }
-.chroma .c { color: #008800; font-style: italic } /* Comment */
-.chroma .err { border: 1px solid #FF0000 } /* Error */
-.chroma .k { color: #AA22FF; font-weight: bold } /* Keyword */
-.chroma .o { color: #666666 } /* Operator */
-.chroma .cm { color: #008800; font-style: italic } /* Comment.Multiline */
-.chroma .cp { color: #008800 } /* Comment.Preproc */
-.chroma .c1 { color: #008800; font-style: italic } /* Comment.Single */
-.chroma .cs { color: #008800; font-weight: bold } /* Comment.Special */
-.chroma .gd { color: #A00000 } /* Generic.Deleted */
-.chroma .ge { font-style: italic } /* Generic.Emph */
-.chroma .gr { color: #FF0000 } /* Generic.Error */
-.chroma .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.chroma .gi { color: #00A000 } /* Generic.Inserted */
-.chroma .go { color: #808080 } /* Generic.Output */
-.chroma .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.chroma .gs { font-weight: bold } /* Generic.Strong */
-.chroma .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.chroma .gt { color: #0040D0 } /* Generic.Traceback */
-.chroma .kc { color: #AA22FF; font-weight: bold } /* Keyword.Constant */
-.chroma .kd { color: #AA22FF; font-weight: bold } /* Keyword.Declaration */
-.chroma .kn { color: #AA22FF; font-weight: bold } /* Keyword.Namespace */
-.chroma .kp { color: #AA22FF } /* Keyword.Pseudo */
-.chroma .kr { color: #AA22FF; font-weight: bold } /* Keyword.Reserved */
-.chroma .kt { color: #00BB00; font-weight: bold } /* Keyword.Type */
-.chroma .m { color: #666666 } /* Literal.Number */
-.chroma .s { color: #BB4444 } /* Literal.String */
-.chroma .na { color: #BB4444 } /* Name.Attribute */
-.chroma .nb { color: #AA22FF } /* Name.Builtin */
-.chroma .nc { color: #0000FF } /* Name.Class */
-.chroma .no { color: #880000 } /* Name.Constant */
-.chroma .nd { color: #AA22FF } /* Name.Decorator */
-.chroma .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.chroma .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.chroma .nf { color: #00A000 } /* Name.Function */
-.chroma .nl { color: #A0A000 } /* Name.Label */
-.chroma .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.chroma .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.chroma .nv { color: #B8860B } /* Name.Variable */
-.chroma .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.chroma .w { color: #bbbbbb } /* Text.Whitespace */
-.chroma .mf { color: #666666 } /* Literal.Number.Float */
-.chroma .mh { color: #666666 } /* Literal.Number.Hex */
-.chroma .mi { color: #666666 } /* Literal.Number.Integer */
-.chroma .mo { color: #666666 } /* Literal.Number.Oct */
-.chroma .sb { color: #BB4444 } /* Literal.String.Backtick */
-.chroma .sc { color: #BB4444 } /* Literal.String.Char */
-.chroma .sd { color: #BB4444; font-style: italic } /* Literal.String.Doc */
-.chroma .s2 { color: #BB4444 } /* Literal.String.Double */
-.chroma .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.chroma .sh { color: #BB4444 } /* Literal.String.Heredoc */
-.chroma .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.chroma .sx { color: #008000 } /* Literal.String.Other */
-.chroma .sr { color: #BB6688 } /* Literal.String.Regex */
-.chroma .s1 { color: #BB4444 } /* Literal.String.Single */
-.chroma .ss { color: #B8860B } /* Literal.String.Symbol */
-.chroma .bp { color: #AA22FF } /* Name.Builtin.Pseudo */
-.chroma .vc { color: #B8860B } /* Name.Variable.Class */
-.chroma .vg { color: #B8860B } /* Name.Variable.Global */
-.chroma .vi { color: #B8860B } /* Name.Variable.Instance */
-.chroma .il { color: #666666 } /* Literal.Number.Integer.Long */
+.chroma pre,
+.chroma code,
+.chroma .hll { padding: 6px 10px; border-radius: 3px; }
+.chroma .c { color: #999988; font-style: italic; }
+.chroma .err { color: #a61717; background-color: #e3d2d2; }
+.chroma .k { font-weight: bold; }
+.chroma .o { font-weight: bold; }
+.chroma .cm { color: #999988; font-style: italic; }
+.chroma .cp { color: #999999; font-weight: bold; }
+.chroma .c1 { color: #999988; font-style: italic; }
+.chroma .cs { color: #999999; font-weight: bold; font-style: italic; }
+.chroma .gd { color: #000000; background-color: #ffdddd; }
+.chroma .gd .x { color: #000000; background-color: #ffaaaa; }
+.chroma .ge { font-style: italic; }
+.chroma .gr { color: #aa0000; }
+.chroma .gh { color: #999999; }
+.chroma .gi { color: #000000; background-color: #ddffdd; }
+.chroma .gi .x { color: #000000; background-color: #aaffaa; }
+.chroma .go { color: #888888; }
+.chroma .gp { color: #555555; }
+.chroma .gs { font-weight: bold; }
+.chroma .gu { color: #800080; font-weight: bold; }
+.chroma .gt { color: #aa0000; }
+.chroma .kc { font-weight: bold; }
+.chroma .kd { font-weight: bold; }
+.chroma .kn { font-weight: bold; }
+.chroma .kp { font-weight: bold; }
+.chroma .kr { font-weight: bold; }
+.chroma .kt { color: #445588; font-weight: bold; }
+.chroma .m { color: #009999; }
+.chroma .s { color: #dd1144; }
+.chroma .n { color: #333333; }
+.chroma .na { color: teal; }
+.chroma .nb { color: #0086b3; }
+.chroma .nc { color: #445588; font-weight: bold; }
+.chroma .no { color: teal; }
+.chroma .ni { color: purple; }
+.chroma .ne { color: #990000; font-weight: bold; }
+.chroma .nf { color: #990000; font-weight: bold; }
+.chroma .nn { color: #555555; }
+.chroma .nt { color: navy; }
+.chroma .nv { color: teal; }
+.chroma .ow { font-weight: bold; }
+.chroma .w { color: #bbbbbb; }
+.chroma .mf { color: #009999; }
+.chroma .mh { color: #009999; }
+.chroma .mi { color: #009999; }
+.chroma .mo { color: #009999; }
+.chroma .sb { color: #dd1144; }
+.chroma .sc { color: #dd1144; }
+.chroma .sd { color: #dd1144; }
+.chroma .s2 { color: #dd1144; }
+.chroma .se { color: #dd1144; }
+.chroma .sh { color: #dd1144; }
+.chroma .si { color: #dd1144; }
+.chroma .sx { color: #dd1144; }
+.chroma .sr { color: #009926; }
+.chroma .s1 { color: #dd1144; }
+.chroma .ss { color: #990073; }
+.chroma .bp { color: #999999; }
+.chroma .vc { color: teal; }
+.chroma .vg { color: teal; }
+.chroma .vi { color: teal; }
+.chroma .il { color: #009999; }
+.chroma .gc { color: #999; background-color: #EAF2F5; }

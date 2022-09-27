@@ -1,5 +1,5 @@
-/**
- * Dracula Theme v1.2.5
+/* Dracula Theme v1.2.5
+ *
  * https://github.com/zenorocha/dracula-theme
  *
  * Copyright 2016, All rights reserved
@@ -10,8 +10,10 @@
  * @author Rob G <wowmotty@gmail.com>
  * @author Chris Bracco <chris@cbracco.me>
  * @author Zeno Rocha <hi@zenorocha.com>
-**/
+ */
 
+.chroma .hll { background-color: #f1fa8c }
+.chroma  { background: #282a36; color: #f8f8f2 }
 .chroma .c { color: #6272a4 } /* Comment */
 .chroma .err { color: #f8f8f2 } /* Error */
 .chroma .g { color: #f8f8f2 } /* Generic */
@@ -27,11 +29,11 @@
 .chroma .cpf { color: #6272a4 } /* Comment.PreprocFile */
 .chroma .c1 { color: #6272a4 } /* Comment.Single */
 .chroma .cs { color: #6272a4 } /* Comment.Special */
-.chroma .gd { color: #8b080b } /* Generic.Deleted */
+.chroma .gd { background-color: var(--color-bg-code-rem); color: inherit; } /* Generic.Deleted */
 .chroma .ge { color: #f8f8f2; text-decoration: underline } /* Generic.Emph */
 .chroma .gr { color: #f8f8f2 } /* Generic.Error */
 .chroma .gh { color: #f8f8f2; font-weight: bold } /* Generic.Heading */
-.chroma .gi { color: #f8f8f2; font-weight: bold } /* Generic.Inserted */
+.chroma .gi { background-color: var(--color-bg-code-add); color: inherit; } /* Generic.Inserted */
 .chroma .go { color: #44475a } /* Generic.Output */
 .chroma .gp { color: #f8f8f2 } /* Generic.Prompt */
 .chroma .gs { color: #f8f8f2 } /* Generic.Strong */

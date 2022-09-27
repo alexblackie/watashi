@@ -63,9 +63,6 @@
 
 	--color-bg-header: var(--color-bg-light);
 	--color-bg-code: var(--color-bg-light);
-	--color-bg-code-add: #d6f9e0;
-	--color-bg-code-rem: #ffdce0;
-	--color-bg-code-hl: cornsilk;
 
 	--height-header: 5rem;
 }
@@ -278,46 +275,6 @@ table {
 	border-bottom: 2px solid var(--color-border);
 }
 
-.siteContent .code-add,
-.siteContent .code-rem,
-.siteContent .code-hl {
-	position: relative;
-	display: inline-block;
-	width: 100%;
-	margin-left: -1.5rem;
-	margin-right: -1.5rem;
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
-
-.siteContent .code-dim {
-	color: grey;
-}
-
-.siteContent .code-add {
-	background-color: var(--color-bg-code-add);
-}
-	.siteContent .code-add::before {
-		content: "+";
-	}
-
-.siteContent .code-rem {
-	background-color: var(--color-bg-code-rem);
-}
-	.siteContent .code-rem::before {
-		content: "-";
-	}
-
-.siteContent .code-add::before,
-.siteContent .code-rem::before {
-	position: absolute;
-	left: 0.5rem;
-}
-
-.siteContent .code-hl {
-	background-color: var(--color-bg-code-hl);
-}
-
 .singleArticle--body {
 	max-width: 40rem;
 	margin-left: auto;
@@ -377,6 +334,11 @@ table {
 h2.pageTitle {
 	margin: 0 0 0.5em 0;
 	font-size: 2.75em;
+}
+
+.cover,
+.cover img {
+	border-radius: 1rem;
 }
 
 .badge {
@@ -442,7 +404,7 @@ h2.pageTitle {
 	.singleArticle--header { padding-top: 0; margin-bottom: 2rem }
 	.singleArticle--header h1 { font-size: 2em; }
 
-	.singleArticle--body { padding: 0; }
+	.singleArticle--body { padding: 0; margin-bottom: 2rem; }
 	.singleArticle figure.singleArticle--cover { margin: 0 -1rem; }
 
 	.articleOldWarning {

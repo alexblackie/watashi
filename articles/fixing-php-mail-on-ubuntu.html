@@ -1,0 +1,18 @@
+title: "Fixing PHP mail() on Ubuntu"
+publishDate: "2011-04-08"
+---
+<p>I&#8217;m still settling into the new <a href="http://web.archive.org/web/20110508180637/http://rackspacecloud.com/">Rackspace Cloud Server</a>, and I just solved a problem I was trying to fix for the last two days. And all I had to do was change three characters in an <code>.ini</code> file.</p>
+
+<p>On my server I&#8217;m running Ubuntu 10.04 Lucid LTS. I had everything working &#8211; MySQL, PHP, Apache&#8230; The only thing that wasn&#8217;t working properly was <code>sendmail</code>. It would send, but after it hung for a minute and 25 seconds (I timed it). This was bad &#8211; to comment in WordPress, the person would have to wait for a minute-and-a-half after they click &#8220;submit&#8221; before it would finally go.</p>
+
+<p>It took me two solid days of searching through forum threads and blog posts before I finally found the answer. I probably lost a bit of hair as well.</p>
+
+<p>In the end, the fix was as simple as removing the <code>-i</code> at the end of the <code>sendmail_path</code> variable in my <code>php.ini</code>.</p>
+
+<h3>How To Do That</h3>
+
+<p>First, find your PHP.ini file&#8217;s location. For me it&#8217;s under <code>/etc/php5/apache2/php.ini</code>. You can find this by using the <code>phpinfo()</code> function.</p>
+
+<p>I use <code>nano</code>, but you could use VIM or another editor of your choosing. I simply opened my <code>PHP.ini</code> file, and found the <code>sendmail_path</code> line (which, for me, is on line 1047). Just search for a line that starts with <code>sendmail_path</code>.</p>
+
+<p>Then, change the line so it says: <code>sendmail_path = /usr/sbin/sendmail -t</code>.</p>

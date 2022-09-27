@@ -1,3 +1,7 @@
+title: Canadian software developer
+slug: /
+nav: home
+---
 <div class="homeHero">
 	<div class="container">
 		<div class="homeHero--body">
@@ -27,16 +31,15 @@
 <div class="container">
 	<div class="homeColumns">
 		<div class="homeColumns--column homeColumns--articles">
-			<h2>Latest Weblog Articles <a href="/feed.xml">$(icon rss)</a></h2>
+			<h2>Latest Weblog Articles <a href="/feed.xml">{{ icon "rss" }}</a></h2>
 
 			<ol class="articleList">
-			$(renderArticles 10 <<-'EOARTICLES'
+			{{ range .Assigns.Articles }}
 				<li class="articleListItem">
-					<a href="/$article/">$title</a>
-					<div>$(formatDate $publishDate)</div>
+					<a href="{{ .Slug }}">{{ .Title }}</a>
+					<div>{{ humanDate .PublishDate }}</div>
 				</li>
-EOARTICLES
-)
+			{{ end }}
 			</ol>
 
 			<p>
@@ -49,7 +52,7 @@ EOARTICLES
 
 			<div class="contactCards">
 				<a href="mailto:alex@blackie.me" class="contactCard contactCard--email">
-					$(icon send)
+					{{ icon "send" }}
 					<div>
 						<div class="contactCard--target">Email</div>
 						<div class="contactCard--name">alex@blackie.me</div>
@@ -57,7 +60,7 @@ EOARTICLES
 				</a>
 
 				<a href="https://github.com/alexblackie" class="contactCard contactCard--github">
-					$(icon github)
+					{{ icon "github" }}
 					<div>
 						<div class="contactCard--target">Github</div>
 						<div class="contactCard--name">@alexblackie</div>
@@ -65,7 +68,7 @@ EOARTICLES
 				</a>
 
 				<a href="https://keybase.io/alexblackie" class="contactCard contactCard--keybase">
-					$(icon keybase)
+					{{ icon "keybase" }}
 					<div>
 						<div class="contactCard--target">Keybase</div>
 						<div class="contactCard--name">@alexblackie</div>
@@ -73,7 +76,7 @@ EOARTICLES
 				</a>
 
 				<a href="https://www.linkedin.com/in/alexblackie" class="contactCard contactCard--in">
-					$(icon linkedin)
+					{{ icon "linkedin" }}
 					<div>
 						<div class="contactCard--target">LinkedIn</div>
 						<div class="contactCard--name">alexblackie</div>
@@ -81,7 +84,7 @@ EOARTICLES
 				</a>
 
 				<a href="https://www.geoguessr.com/user/6068f859b3a3f6000167afc1" class="contactCard contactCard--geo">
-					$(icon pin)
+					{{ icon "pin" }}
 					<div>
 						<div class="contactCard--target">GeoGuessr</div>
 						<div class="contactCard--name">alexblackie</div>
@@ -89,7 +92,7 @@ EOARTICLES
 				</a>
 
 				<a href="https://www.worldoftrucks.com/en/profile/151074" class="contactCard contactCard--trucks">
-					$(icon truck)
+					{{ icon "truck" }}
 					<div>
 						<div class="contactCard--target">World of Trucks</div>
 						<div class="contactCard--name">alexblackie</div>
@@ -148,6 +151,7 @@ EOARTICLES
 	justify-content: space-between;
 	padding: 0.5rem 1rem;
 	margin-left: -1rem;
+	border-radius: 0.5rem;
 }
 	.articleListItem:hover {
 		background-color: var(--color-bg-light);
@@ -167,6 +171,7 @@ EOARTICLES
 	color: inherit;
 	text-decoration: none;
 	font-size: 1.15rem;
+	border-radius: 0.5rem;
 }
 	.contactCard:hover {
 		background-color: var(--color-bg-light);
