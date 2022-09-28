@@ -12,4 +12,4 @@ COPY --from=0 /src/pages /pages
 COPY --from=0 /src/static /static
 COPY --from=0 /src/icons /icons
 COPY --from=0 /src/templates /templates
-ENTRYPOINT ["/watashi"]
+ENTRYPOINT ["/watashi", "-port=3000", "-articles=/articles", "-pages=/pages"]
