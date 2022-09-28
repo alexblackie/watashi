@@ -1,6 +1,6 @@
 {{ template "begin.html" . }}
 
-{{ if .IsOld }}
+{{ if isOld .Page.Meta }}
 <div class="articleOldWarning">
 	<div class="container">
 		<aside>
@@ -18,23 +18,23 @@
 
 <article class="container singleArticle">
 	<header class="singleArticle--header">
-		<h1>{{ .Content.Meta.Title }}</h1>
+		<h1>{{ .Page.Meta.Title }}</h1>
 		<div class="singleArticle--header--meta">
-			<div class="badge"><span>Published</span>{{ humanDate .Content.Meta.PublishDate }}</div>
-			{{ if .Content.Meta.LastUpdateDate -}}
-			<div class="badge"><span>Updated</span> {{ humanDate .Content.Meta.LastUpdateDate }}</div>
+			<div class="badge"><span>Published</span>{{ humanDate .Page.Meta.PublishDate }}</div>
+			{{ if .Page.Meta.LastUpdateDate -}}
+			<div class="badge"><span>Updated</span> {{ humanDate .Page.Meta.LastUpdateDate }}</div>
 			{{- end }}
 		</div>
 	</header>
 
-	{{ if .Content.Meta.CoverURL -}}
+	{{ if .Page.Meta.CoverURL -}}
 	<figure class="singleArticle--cover cover">
-		<img src="{{ .Content.Meta.CoverURL }}" alt="{{ .Content.Meta.CoverAlt }}" width="{{ .Content.Meta.CoverWidth }}" height="{{ .Content.Meta.CoverHeight }}">
+		<img src="{{ .Page.Meta.CoverURL }}" alt="{{ .Page.Meta.CoverAlt }}" width="{{ .Page.Meta.CoverWidth }}" height="{{ .Page.Meta.CoverHeight }}">
 	</figure>
 	{{- end }}
 
 	<div class="singleArticle--body">
-		{{ .Content.HTML }}
+		{{ .Content }}
 	</div>
 </article>
 {{ template "end.html" . }}

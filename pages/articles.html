@@ -21,8 +21,8 @@ nav: articles
 		<tbody>
 			{{ range .Assigns.Articles }}
 			<tr>
-				<td>{{ humanDate .PublishDate }}</td>
-				<td><a href="{{ .Slug }}">{{ .Title }}</a></td>
+				<td>{{ humanDate .Meta.PublishDate }}</td>
+				<td><a href="{{ .Meta.Slug }}">{{ .Meta.Title }}</a></td>
 			</tr>
 			{{ end }}
 		</tbody>

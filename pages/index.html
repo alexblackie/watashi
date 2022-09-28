@@ -36,8 +36,8 @@ nav: home
 			<ol class="articleList">
 			{{ range .Assigns.Articles }}
 				<li class="articleListItem">
-					<a href="{{ .Slug }}">{{ .Title }}</a>
-					<div>{{ humanDate .PublishDate }}</div>
+					<a href="{{ .Meta.Slug }}">{{ .Meta.Title }}</a>
+					<div>{{ humanDate .Meta.PublishDate }}</div>
 				</li>
 			{{ end }}
 			</ol>

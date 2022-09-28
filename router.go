@@ -2,17 +2,24 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Router struct {
-	mux *gin.Engine
+	mux         *gin.Engine
+	PageRepo    IRepository
+	ArticleRepo IRepository
 }
 
-func NewRouter(g *gin.Engine) *Router {
-	return &Router{mux: g}
+func NewRouter(g *gin.Engine, articleRepo IRepository, pageRepo IRepository) *Router {
+	return &Router{
+		mux:         g,
+		ArticleRepo: articleRepo,
+		PageRepo:    pageRepo,
+	}
 }
 
 func (r *Router) Configure() {
@@ -25,8 +32,8 @@ func (r *Router) Configure() {
 
 	r.mux.GET("/articles/:slug/", r.handleArticle())
 	r.mux.GET("/articles/", r.handleArticleList())
-	r.mux.GET("/setup/", r.handleSetup())
-	r.mux.GET("/all-stars/", r.renderPage("all-stars.html"))
+	r.mux.GET("/setup/", r.renderPage("setup"))
+	r.mux.GET("/all-stars/", r.renderPage("all-stars"))
 	r.mux.GET("/feed.xml", r.handleFeed())
 	r.mux.GET("/", r.handleHome())
 }
@@ -37,91 +44,100 @@ func (r *Router) Listen(port int) {
 
 func (r *Router) renderPage(name string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		page, err := GetPage(name, Assigns{})
+		page, err := r.PageRepo.Find(name)
 		if err != nil {
 			fmt.Printf("Error while loading page! %v\n", err)
 			c.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
+		rr, err := Render(page, Assigns{})
+		if err != nil {
+			fmt.Printf("Error while rendering page: %v\n", err)
+			c.AbortWithStatus(http.StatusInternalServerError)
+			return
+		}
 		c.HTML(200, "page.html", gin.H{
-			"Content": page,
-			"Nav":     "none",
+			"Page":    page,
+			"Content": template.HTML(rr.Output),
+			"Nav":     page.Meta.Nav,
 		})
 	}
 }
 
 func (r *Router) handleHome() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		content, err := GetPage("index.html", Assigns{"Articles": ListArticles(10)})
+		doc, err := r.PageRepo.Find("index")
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		rr, err := Render(doc, Assigns{"Articles": r.ArticleRepo.Latest(10)})
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		c.HTML(200, "page.html", gin.H{
-			"Content": content,
-			"Nav":     content.Meta.Nav,
-		})
-	}
-}
-
-func (r *Router) handleSetup() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		page, err := GetPage("setup.html", Assigns{})
-		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-			return
-		}
-		c.HTML(200, "page.html", gin.H{
-			"Content": page,
-			"Nav":     page.Meta.Nav,
+			"Page":    doc,
+			"Content": template.HTML(rr.Output),
+			"Nav":     "",
 		})
 	}
 }
 
 func (r *Router) handleArticleList() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		content, err := GetPage("articles.html", Assigns{"Articles": ListArticles(99999)})
+		content, err := r.PageRepo.Find("articles")
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		rr, err := Render(content, Assigns{"Articles": r.ArticleRepo.Latest(99999)})
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		c.HTML(200, "page.html", gin.H{
-			"Content": content,
-			"Nav":     content.Meta.Nav,
+			"Page":    content,
+			"Content": template.HTML(rr.Output),
+			"Nav":     "articles",
 		})
 	}
 }
 
 func (r *Router) handleArticle() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		content, err := GetArticle(c.Param("slug"))
+		content, err := r.ArticleRepo.Find(c.Param("slug"))
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
+		rr, err := Render(content, Assigns{})
 		c.HTML(200, "article.html", gin.H{
-			"Content": content,
+			"Page":    content,
+			"Content": template.HTML(rr.Output),
 			"Nav":     "articles",
-			"IsOld":   IsArticleOld(content.Meta),
 		})
 	}
 }
 
 func (r *Router) handleFeed() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		var articles []*Content
-		for _, a := range ListArticles(10) {
-			full, err := GetArticle(a.Slug[len("/articles/") : len(a.Slug)-1])
+		var articles []*RenderResult
+		for _, a := range r.ArticleRepo.Latest(10) {
+			rr, err := Render(a, Assigns{})
 			if err != nil {
-				panic(err)
+				fmt.Printf("ERROR while rendering article: %v\n", err)
+				c.AbortWithStatus(http.StatusInternalServerError)
+				return
 			}
-			articles = append(articles, full)
+			articles = append(articles, rr)
 		}
-		content, err := GetPage("feed.xml", Assigns{"Articles": articles})
+		content, err := r.PageRepo.Find("feed")
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		c.Data(http.StatusOK, "application/rss+xml", []byte(*content.Parsed))
+		rr, err := Render(content, Assigns{"Articles": articles})
+		c.Data(http.StatusOK, "application/rss+xml", []byte(rr.Output))
 	}
 }

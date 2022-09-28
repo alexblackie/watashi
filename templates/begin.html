@@ -3,28 +3,28 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
-		<title>{{ .Content.Meta.Title }} - Alex Blackie</title>
+		<title>{{ .Page.Meta.Title }} - Alex Blackie</title>
 		<link rel="stylesheet" href="/_/site.css" type="text/css">
 		<link rel="stylesheet" href="/_/code.css" type="text/css">
 		<link rel="stylesheet" href="/_/code-dark.css" type="text/css" media="(prefers-color-scheme: dark)">
 		<link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
-		<link rel="canonical" href="{{ permalink .Content.Meta.Slug }}">
+		<link rel="canonical" href="{{ permalink .Page.Meta.Slug }}">
 
-		{{- if .Content.Meta.OpenGraphTitle -}}
+		{{- if .Page.Meta.OpenGraphTitle -}}
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:title" content="{{ .Content.Meta.OpenGraphTitle }}">
-		<meta name="twitter:description" content="{{ .Content.Meta.OpenGraphDescription }}">
+		<meta name="twitter:title" content="{{ .Page.Meta.OpenGraphTitle }}">
+		<meta name="twitter:description" content="{{ .Page.Meta.OpenGraphDescription }}">
 
-		<meta property="og:title" content="{{ .Content.Meta.OpenGraphTitle }}">
+		<meta property="og:title" content="{{ .Page.Meta.OpenGraphTitle }}">
 		<meta property="og:type" content="article">
-		<meta property="og:url" content="{{ permalink .Content.Meta.Slug }}">
-		<meta property="og:description" content="{{ .Content.Meta.OpenGraphDescription }}">
-		<meta property="article:published_time" content="{{ humanDate .Content.Meta.PublishDate }}">
+		<meta property="og:url" content="{{ permalink .Page.Meta.Slug }}">
+		<meta property="og:description" content="{{ .Page.Meta.OpenGraphDescription }}">
+		<meta property="article:published_time" content="{{ humanDate .Page.Meta.PublishDate }}">
 		{{- end -}}
 
-		{{- if .Content.Meta.OpenGraphImageURL -}}
-		<meta name="twitter:image" content="{{ permalink .Content.Meta.OpenGraphImageURL }}">
-		<meta property="og:image" content="{{ permalink .Content.Meta.OpenGraphImageURL }}">
+		{{- if .Page.Meta.OpenGraphImageURL -}}
+		<meta name="twitter:image" content="{{ permalink .Page.Meta.OpenGraphImageURL }}">
+		<meta property="og:image" content="{{ permalink .Page.Meta.OpenGraphImageURL }}">
 		{{- end -}}
 		{{- if .IsProduction -}}
 		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>

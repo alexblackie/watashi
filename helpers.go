@@ -15,6 +15,7 @@ func HelpersMap() template.FuncMap {
 		"permalink":    h.permalink,
 		"humanDate":    h.humanDate,
 		"rfc822Date":   h.rfc822Date,
+		"isOld":        h.isOld,
 	}
 }
 
@@ -46,4 +47,11 @@ func (h *Helpers) humanDate(t PublishDate) string {
 
 func (h *Helpers) rfc822Date(t PublishDate) string {
 	return t.Time.Format(time.RFC822)
+}
+
+func (h *Helpers) isOld(meta *DocumentMeta) bool {
+	if meta.Evergreen {
+		return false
+	}
+	return time.Now().Year()-meta.PublishDate.Time.Year() > 2
 }

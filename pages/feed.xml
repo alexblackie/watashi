@@ -12,13 +12,13 @@ slug: /feed.xml
 
 		{{ range .Assigns.Articles }}
 		<item>
-			<title>{{ .Meta.Title }}</title>
-			<link>{{ permalink .Meta.Slug }}</link>
-			<guid>{{ permalink .Meta.Slug }}</guid>
-			<pubDate>{{ rfc822Date .Meta.PublishDate }}</pubDate>
+			<title>{{ .Document.Meta.Title }}</title>
+			<link>{{ permalink .Document.Meta.Slug }}</link>
+			<guid>{{ permalink .Document.Meta.Slug }}</guid>
+			<pubDate>{{ rfc822Date .Document.Meta.PublishDate }}</pubDate>
 			<author>alex@alexblackie.com (Alex Blackie)</author>
 			<description></description>
-			<content:encoded><![CDATA[ {{ .Parsed }} ]]></content:encoded>
+			<content:encoded><![CDATA[ {{ .Output }} ]]></content:encoded>
 		</item>
 		{{ end }}
 
