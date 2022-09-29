@@ -1,34 +1,55 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"html/template"
+	"io/fs"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
+//go:embed static/_ static/favicon.ico
+var staticEmbedded embed.FS
+
+func httpSubFS(sysfs fs.FS, prefix string) http.FileSystem {
+	newFS, err := fs.Sub(sysfs, prefix)
+	if err != nil {
+		panic(err)
+	}
+	return http.FS(newFS)
+}
+
+var underscoreFS = httpSubFS(staticEmbedded, "static/_")
+var staticFS = httpSubFS(staticEmbedded, "static/favicon.ico")
+
+//go:embed templates/*
+var templateFS embed.FS
+
 type Router struct {
 	mux         *gin.Engine
+	ImagesPath  string
 	PageRepo    IRepository
 	ArticleRepo IRepository
 }
 
-func NewRouter(g *gin.Engine, articleRepo IRepository, pageRepo IRepository) *Router {
+func NewRouter(g *gin.Engine, imagesPath string, articleRepo IRepository, pageRepo IRepository) *Router {
 	return &Router{
 		mux:         g,
+		ImagesPath:  imagesPath,
 		ArticleRepo: articleRepo,
 		PageRepo:    pageRepo,
 	}
 }
 
 func (r *Router) Configure() {
-	r.mux.SetFuncMap(HelpersMap())
-	r.mux.LoadHTMLGlob("templates/*")
+	tmpls := template.Must(template.New("").Funcs(HelpersMap()).ParseFS(templateFS, "templates/*"))
+	r.mux.SetHTMLTemplate(tmpls)
 
-	r.mux.Static("/_", "static/_")
+	r.mux.StaticFS("/_", underscoreFS)
+	r.mux.StaticFileFS("/favicon.ico", "favicon.ico", staticFS)
 	r.mux.Static("/images", "static/images")
-	r.mux.StaticFile("/favicon.ico", "static/favicon.ico")
 
 	r.mux.GET("/articles/:slug/", r.handleArticle())
 	r.mux.GET("/articles/", r.handleArticleList())

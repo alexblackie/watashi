@@ -9,7 +9,7 @@ ENV GIN_MODE=release
 COPY --from=0 /src/watashi /watashi
 COPY --from=0 /src/articles /articles
 COPY --from=0 /src/pages /pages
-COPY --from=0 /src/static /static
+COPY --from=0 /src/static/images /images
 COPY --from=0 /src/icons /icons
-COPY --from=0 /src/templates /templates
-ENTRYPOINT ["/watashi", "-port=3000", "-articles=/articles", "-pages=/pages"]
+EXPOSE 3000
+ENTRYPOINT ["/watashi", "-port=3000", "-articles=/articles", "-pages=/pages", "-images=/images"]
