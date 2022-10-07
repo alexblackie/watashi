@@ -1,0 +1,16 @@
+---
+title: Some Example Content
+slug: some-example-content
+nav: examples
+
+publishDate: 2022-10-07
+lastUpdateDate: 2022-10-08
+
+openGraphTitle: Some Example Content for the Internet
+openGraphImageUrl: og-cover.jpg
+openGraphDescription: Read this content.
+
+coverUrl: cover.jpg
+coverAlt: A blank image.
+coverWidth: 600
+coverHeight: 400
