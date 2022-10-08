@@ -15,7 +15,7 @@ slug: /feed.xml
 			<title>{{ .Document.Meta.Title }}</title>
 			<link>{{ permalink .Document.Meta.Slug }}</link>
 			<guid>{{ permalink .Document.Meta.Slug }}</guid>
-			<pubDate>{{ rfc822Date .Document.Meta.PublishDate }}</pubDate>
+			<pubDate>{{ rfcDate .Document.Meta.PublishDate }}</pubDate>
 			<author>alex@alexblackie.com (Alex Blackie)</author>
 			<description></description>
 			<content:encoded><![CDATA[ {{ .Output }} ]]></content:encoded>

@@ -46,15 +46,15 @@ func TestHelpersHumanDate(t *testing.T) {
 	}
 }
 
-func TestHelpersRFC822Date(t *testing.T) {
+func TestHelpersRFCDate(t *testing.T) {
 	h := &Helpers{}
 	ts, err := time.Parse("2006-01-02", "2022-10-07")
 	if err != nil {
 		t.Fatalf("Time parsing failed? %v", err)
 	}
-	result := h.rfc822Date(PublishDate{Time: ts})
-	if result != "07 Oct 22 00:00 UTC" {
-		t.Fatalf("rfc822Date incorrectly humanized date: %v", result)
+	result := h.rfcDate(PublishDate{Time: ts})
+	if result != "Fri, 07 Oct 2022 00:00:00 +0000" {
+		t.Fatalf("rfcDate incorrectly formatted date: %v", result)
 	}
 }
 

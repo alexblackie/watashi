@@ -14,7 +14,7 @@ func HelpersMap() template.FuncMap {
 		"icon":         h.icon,
 		"permalink":    h.permalink,
 		"humanDate":    h.humanDate,
-		"rfc822Date":   h.rfc822Date,
+		"rfcDate":      h.rfcDate,
 		"isOld":        h.isOld,
 	}
 }
@@ -45,8 +45,8 @@ func (h *Helpers) humanDate(t PublishDate) string {
 	return t.Time.Format("January 2 2006")
 }
 
-func (h *Helpers) rfc822Date(t PublishDate) string {
-	return t.Time.Format(time.RFC822)
+func (h *Helpers) rfcDate(t PublishDate) string {
+	return t.Time.Format(time.RFC1123Z)
 }
 
 func (h *Helpers) isOld(meta *DocumentMeta) bool {
