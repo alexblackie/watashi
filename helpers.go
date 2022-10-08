@@ -1,11 +1,14 @@
 package main
 
 import (
+	"embed"
 	"fmt"
 	"html/template"
-	"io/ioutil"
 	"time"
 )
+
+//go:embed icons/*
+var iconsFS embed.FS
 
 func HelpersMap() template.FuncMap {
 	h := &Helpers{}
@@ -30,7 +33,7 @@ func (h *Helpers) navHighlight(have, want string) string {
 }
 
 func (h *Helpers) icon(name string) template.HTML {
-	svg, err := ioutil.ReadFile(fmt.Sprintf("icons/%s.svg", name))
+	svg, err := iconsFS.ReadFile(fmt.Sprintf("icons/%s.svg", name))
 	if err != nil {
 		return template.HTML("")
 	}
