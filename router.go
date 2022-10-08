@@ -49,7 +49,7 @@ func (r *Router) Configure() {
 
 	r.mux.StaticFS("/_", underscoreFS)
 	r.mux.StaticFileFS("/favicon.ico", "favicon.ico", staticFS)
-	r.mux.Static("/images", "static/images")
+	r.mux.Static("/images", r.ImagesPath)
 
 	r.mux.GET("/articles/:slug/", r.handleArticle())
 	r.mux.GET("/articles/", r.handleArticleList())
