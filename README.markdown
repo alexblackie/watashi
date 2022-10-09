@@ -1,5 +1,7 @@
 # 私
 
+[![Test Suite](https://github.com/alexblackie/watashi/actions/workflows/test.yaml/badge.svg)](https://github.com/alexblackie/watashi/actions/workflows/test.yaml)
+
 This is the source for my website, [alexblackie.com][0].
 
 [0]: https://www.alexblackie.com
