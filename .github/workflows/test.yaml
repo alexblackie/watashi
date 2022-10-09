@@ -1,5 +1,5 @@
 ---
-name: Test Build
+name: Test Suite
 on:
   push:
     branches:
@@ -13,9 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: '^1.19.2'
 
-    - name: Install Chroma for syntax highlighting
-      run: sudo apt-get install -y chroma
-
-    - name: Compile
-      run: make clean all
+    - run: go test ./...
