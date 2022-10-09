@@ -29,27 +29,27 @@ var templateFS embed.FS
 
 type Router struct {
 	mux         *gin.Engine
-	ImagesPath  string
+	Config      *Config
 	PageRepo    IRepository
 	ArticleRepo IRepository
 }
 
-func NewRouter(g *gin.Engine, imagesPath string, articleRepo IRepository, pageRepo IRepository) *Router {
+func NewRouter(g *gin.Engine, config *Config, articleRepo IRepository, pageRepo IRepository) *Router {
 	return &Router{
 		mux:         g,
-		ImagesPath:  imagesPath,
+		Config:      config,
 		ArticleRepo: articleRepo,
 		PageRepo:    pageRepo,
 	}
 }
 
 func (r *Router) Configure() {
-	tmpls := template.Must(template.New("").Funcs(HelpersMap()).ParseFS(templateFS, "templates/*"))
+	tmpls := template.Must(template.New("").Funcs(HelpersMap(r.Config)).ParseFS(templateFS, "templates/*"))
 	r.mux.SetHTMLTemplate(tmpls)
 
 	r.mux.StaticFS("/_", underscoreFS)
 	r.mux.StaticFileFS("/favicon.ico", "favicon.ico", staticFS)
-	r.mux.Static("/images", r.ImagesPath)
+	r.mux.Static("/images", r.Config.ImagesPath)
 
 	r.mux.GET("/articles/:slug/", r.handleArticle())
 	r.mux.GET("/articles/", r.handleArticleList())
@@ -71,13 +71,14 @@ func (r *Router) renderPage(name string) gin.HandlerFunc {
 			c.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
-		rr, err := Render(page, Assigns{})
+		rr, err := Render(page, Assigns{}, r.Config)
 		if err != nil {
 			fmt.Printf("Error while rendering page: %v\n", err)
 			c.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
 		c.HTML(200, "page.html", gin.H{
+			"Config":  r.Config,
 			"Page":    page,
 			"Content": template.HTML(rr.Output),
 			"Nav":     page.Meta.Nav,
@@ -92,12 +93,13 @@ func (r *Router) handleHome() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		rr, err := Render(doc, Assigns{"Articles": r.ArticleRepo.Latest(10)})
+		rr, err := Render(doc, Assigns{"Articles": r.ArticleRepo.Latest(10)}, r.Config)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		c.HTML(200, "page.html", gin.H{
+			"Config":  r.Config,
 			"Page":    doc,
 			"Content": template.HTML(rr.Output),
 			"Nav":     "",
@@ -112,12 +114,13 @@ func (r *Router) handleArticleList() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		rr, err := Render(content, Assigns{"Articles": r.ArticleRepo.Latest(99999)})
+		rr, err := Render(content, Assigns{"Articles": r.ArticleRepo.Latest(99999)}, r.Config)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 		c.HTML(200, "page.html", gin.H{
+			"Config":  r.Config,
 			"Page":    content,
 			"Content": template.HTML(rr.Output),
 			"Nav":     "articles",
@@ -132,8 +135,9 @@ func (r *Router) handleArticle() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		rr, err := Render(content, Assigns{})
+		rr, err := Render(content, Assigns{}, r.Config)
 		c.HTML(200, "article.html", gin.H{
+			"Config":  r.Config,
 			"Page":    content,
 			"Content": template.HTML(rr.Output),
 			"Nav":     "articles",
@@ -145,7 +149,7 @@ func (r *Router) handleFeed() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var articles []*RenderResult
 		for _, a := range r.ArticleRepo.Latest(10) {
-			rr, err := Render(a, Assigns{})
+			rr, err := Render(a, Assigns{}, r.Config)
 			if err != nil {
 				fmt.Printf("ERROR while rendering article: %v\n", err)
 				c.AbortWithStatus(http.StatusInternalServerError)
@@ -158,7 +162,7 @@ func (r *Router) handleFeed() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		rr, err := Render(content, Assigns{"Articles": articles})
+		rr, err := Render(content, Assigns{"Articles": articles}, r.Config)
 		c.Data(http.StatusOK, "application/rss+xml", []byte(rr.Output))
 	}
 }

@@ -24,8 +24,9 @@
 		{{- if .Page.Meta.OpenGraphImageURL -}}
 		<meta name="twitter:image" content="{{ permalink .Page.Meta.OpenGraphImageURL }}">
 		<meta property="og:image" content="{{ permalink .Page.Meta.OpenGraphImageURL }}">
-		{{- end -}}
-		{{- if .IsProduction -}}
+		{{- end }}
+
+		{{ if .Config.IsProduction -}}
 		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
 		{{- end }}
 	</head>

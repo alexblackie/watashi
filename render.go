@@ -20,6 +20,7 @@ type Assigns map[string]interface{}
 // RenderContext is a combination of all the various data required to render a
 // template, wrapping the metadata and any custom assigns.
 type RenderContext struct {
+	Config   *Config
 	Document *Document
 	Assigns  *Assigns
 }
@@ -31,8 +32,9 @@ type RenderResult struct {
 	Document *Document
 }
 
-func Render(doc *Document, assigns Assigns) (*RenderResult, error) {
-	content, err := ParseContent(doc.Meta.Type, &RenderContext{Document: doc, Assigns: &assigns})
+func Render(doc *Document, assigns Assigns, config *Config) (*RenderResult, error) {
+	ctx := &RenderContext{Config: config, Document: doc, Assigns: &assigns}
+	content, err := ParseContent(doc.Meta.Type, ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +59,7 @@ func parseHTMLContent(ctx *RenderContext) (string, error) {
 	var out bytes.Buffer
 	tmpl, err := template.
 		New("content").
-		Funcs(HelpersMap()).
+		Funcs(HelpersMap(ctx.Config)).
 		Parse(ctx.Document.Raw)
 
 	if err != nil {
@@ -74,7 +76,7 @@ func parseXMLContent(ctx *RenderContext) (string, error) {
 	var out bytes.Buffer
 	tmpl, err := textTemplate.
 		New("content").
-		Funcs(HelpersMap()).
+		Funcs(HelpersMap(ctx.Config)).
 		Parse(ctx.Document.Raw)
 
 	if err != nil {

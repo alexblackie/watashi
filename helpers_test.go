@@ -27,7 +27,8 @@ func TestHelpersNavHighlight(t *testing.T) {
 }
 
 func TestHelpersPermalink(t *testing.T) {
-	h := &Helpers{}
+	config := NewDefaultConfig()
+	h := &Helpers{Config: config}
 	result := h.permalink("/articles")
 	if result != "https://www.alexblackie.com/articles" {
 		t.Fatalf("Permalink returned unexpected string: %v", result)

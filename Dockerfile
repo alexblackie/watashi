@@ -5,9 +5,8 @@ WORKDIR /src
 RUN go build -a --installsuffix cgo --ldflags="-s" -o watashi
 
 FROM scratch
-ENV GIN_MODE=release
 COPY --from=0 /src/watashi /watashi
 COPY --from=0 /src/articles /articles
 COPY --from=0 /src/pages /pages
 COPY --from=0 /src/static/images /images
-ENTRYPOINT ["/watashi", "-port=8080", "-articles=/articles", "-pages=/pages", "-images=/images"]
+ENTRYPOINT ["/watashi", "-profile=production", "-port=8080", "-articles=/articles", "-pages=/pages", "-images=/images"]

@@ -13,6 +13,7 @@ var (
 	imagesPath  = flag.String("images", "./static/images", "Path to where images are stored.")
 	articlePath = flag.String("articles", "./articles", "Path to the directory containing the article documents.")
 	pagePath    = flag.String("pages", "./pages", "Path to the directory containing the page documents.")
+	profile     = flag.String("profile", "development", "Application profile. eg., 'production'")
 )
 
 func main() {
@@ -23,19 +24,29 @@ func main() {
 		panic(err)
 	}
 
-	articleRepo := NewMemoryRepository(*articlePath, "/articles")
+	config := NewDefaultConfig()
+	config.ImagesPath = *imagesPath
+	config.ArticlesPath = *articlePath
+	config.PagesPath = *pagePath
+	config.Profile = *profile
+
+	articleRepo := NewMemoryRepository(config.ArticlesPath, "/articles")
 	if err := articleRepo.Preload(); err != nil {
 		panic(err)
 	}
 
-	pageRepo := NewMemoryRepository(*pagePath, "/")
+	pageRepo := NewMemoryRepository(config.PagesPath, "/")
 	if err := pageRepo.Preload(); err != nil {
 		panic(err)
 	}
 
+	if config.IsProduction() {
+		gin.SetMode(gin.ReleaseMode)
+	}
+
 	g := gin.New()
 	g.Use(gin.Recovery(), requestLogger(logger))
-	r := NewRouter(g, *imagesPath, articleRepo, pageRepo)
+	r := NewRouter(g, config, articleRepo, pageRepo)
 	r.Configure()
 
 	r.Listen(*port)

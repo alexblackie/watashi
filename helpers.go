@@ -10,8 +10,8 @@ import (
 //go:embed icons/*
 var iconsFS embed.FS
 
-func HelpersMap() template.FuncMap {
-	h := &Helpers{}
+func HelpersMap(config *Config) template.FuncMap {
+	h := &Helpers{Config: config}
 	return template.FuncMap{
 		"navHighlight": h.navHighlight,
 		"icon":         h.icon,
@@ -23,6 +23,7 @@ func HelpersMap() template.FuncMap {
 }
 
 type Helpers struct {
+	Config *Config
 }
 
 func (h *Helpers) navHighlight(have, want string) string {
@@ -41,7 +42,7 @@ func (h *Helpers) icon(name string) template.HTML {
 }
 
 func (h *Helpers) permalink(path string) string {
-	return fmt.Sprintf("https://www.alexblackie.com%s", path)
+	return fmt.Sprintf("%s%s", h.Config.BaseURL, path)
 }
 
 func (h *Helpers) humanDate(t PublishDate) string {
