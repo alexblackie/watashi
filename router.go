@@ -22,7 +22,7 @@ func httpSubFS(sysfs fs.FS, prefix string) http.FileSystem {
 }
 
 var underscoreFS = httpSubFS(staticEmbedded, "static/_")
-var staticFS = httpSubFS(staticEmbedded, "static/favicon.ico")
+var staticFS = httpSubFS(staticEmbedded, "static")
 
 //go:embed templates/*
 var templateFS embed.FS
