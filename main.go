@@ -2,8 +2,10 @@ package main
 
 import (
 	"flag"
+	"time"
 
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 var (
@@ -16,6 +18,11 @@ var (
 func main() {
 	flag.Parse()
 
+	logger, err := zap.NewProduction()
+	if err != nil {
+		panic(err)
+	}
+
 	articleRepo := NewMemoryRepository(*articlePath, "/articles")
 	if err := articleRepo.Preload(); err != nil {
 		panic(err)
@@ -26,9 +33,24 @@ func main() {
 		panic(err)
 	}
 
-	g := gin.Default()
+	g := gin.New()
+	g.Use(gin.Recovery(), requestLogger(logger))
 	r := NewRouter(g, *imagesPath, articleRepo, pageRepo)
 	r.Configure()
 
 	r.Listen(*port)
+}
+
+func requestLogger(logger *zap.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		requestStart := time.Now()
+		c.Next()
+
+		logger.Info("Request Processed",
+			zap.String("method", c.Request.Method),
+			zap.Int("status_code", c.Writer.Status()),
+			zap.String("path", c.Request.URL.Path),
+			zap.Duration("latency", time.Since(requestStart)),
+		)
+	}
 }
