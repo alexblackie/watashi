@@ -2,27 +2,32 @@
 
 This is the source for my website, [alexblackie.com][0].
 
+[0]: https://www.alexblackie.com
+
 ## Building
 
-This site is constructed using a bespoke series of shell scripts that parse and
-assemble all the content and pages.
+This website is a custom [Go][1] program. Developing it is similar to any other
+Go project.
 
-The only dependencies are the GNU/BSD coreutils (`make`, `find`, `cat`, `bash`)
-and the [`chroma` CLI][1].
+Fetch dependencies with:
 
-To compile the site:
-
-```bash
-$ make
+```
+$ go get .
 ```
 
-The files will be placed in `./_build`.
+Run the web server with:
 
-To watch for changes, combine this with a tool such as [entr][2]:
-
-```bash
-$ find . -type f | entr make
 ```
+$ go run .
+```
+
+Run the test suite with:
+
+```
+$ go test ./...
+```
+
+[1]: https://golang.org
 
 ## License
 
@@ -30,7 +35,3 @@ Written content (prose) is (C) Alex Blackie.
 
 Computer source code is licensed under the GNU Affero General Public License,
 the full text of which is available in [`LICENSE`](./LICENSE).
-
-[0]: https://www.alexblackie.com
-[1]: https://github.com/alecthomas/chroma
-[2]: http://eradman.com/entrproject/
