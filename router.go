@@ -77,7 +77,7 @@ func (r *Router) renderPage(name string) gin.HandlerFunc {
 			c.AbortWithStatus(http.StatusInternalServerError)
 			return
 		}
-		c.HTML(200, "page.html", gin.H{
+		c.HTML(http.StatusOK, "page.html", gin.H{
 			"Config":  r.Config,
 			"Page":    page,
 			"Content": template.HTML(rr.Output),
@@ -111,7 +111,7 @@ func (r *Router) handleArticleList() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		content, err := r.PageRepo.Find("articles")
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			r.renderNotFound(c)
 			return
 		}
 		rr, err := Render(content, Assigns{"Articles": r.ArticleRepo.Latest(99999)}, r.Config)
@@ -132,7 +132,7 @@ func (r *Router) handleArticle() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		content, err := r.ArticleRepo.Find(c.Param("slug"))
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			r.renderNotFound(c)
 			return
 		}
 		rr, err := Render(content, Assigns{}, r.Config)
@@ -165,4 +165,17 @@ func (r *Router) handleFeed() gin.HandlerFunc {
 		rr, err := Render(content, Assigns{"Articles": articles}, r.Config)
 		c.Data(http.StatusOK, "application/rss+xml", []byte(rr.Output))
 	}
+}
+
+func (r *Router) renderNotFound(c *gin.Context) {
+	page := &Document{
+		Meta: &DocumentMeta{
+			Title: "Not Found!",
+		},
+	}
+	c.HTML(http.StatusNotFound, "error_not_found.html", gin.H{
+		"Config": r.Config,
+		"Page": page,
+		"Nav": "none",
+	})
 }

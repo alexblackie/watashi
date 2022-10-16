@@ -383,6 +383,31 @@ h2.pageTitle {
 	height: 1em;
 }
 
+/**
+ * Error Page
+ */
+.errorPage {
+	display: flex;
+	gap: 2rem;
+	max-width: 40rem;
+	margin: 5rem auto;
+}
+
+.errorPage--content h2 {
+	margin: 0 0 1rem 0;
+}
+
+.errorPage--icon {
+	flex-shrink: 0;
+	width: 4rem;
+	height: 4rem;
+}
+	.errorPage--icon svg {
+		color: orange;
+		width: 100%;
+		height: 100%;
+	}
+
 @media screen and (max-width: 640px) {
 	body { font-size: 15px; }
 	table, thead, tbody, th, td, tr { display: block; }
