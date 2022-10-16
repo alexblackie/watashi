@@ -47,6 +47,8 @@ func (r *Router) Configure() {
 	tmpls := template.Must(template.New("").Funcs(HelpersMap(r.Config)).ParseFS(templateFS, "templates/*"))
 	r.mux.SetHTMLTemplate(tmpls)
 
+	r.mux.NoRoute(r.renderNotFound)
+
 	r.mux.StaticFS("/_", underscoreFS)
 	r.mux.StaticFileFS("/favicon.ico", "favicon.ico", staticFS)
 	r.mux.Static("/images", r.Config.ImagesPath)
