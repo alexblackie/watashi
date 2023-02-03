@@ -44,12 +44,19 @@ func NewRouter(g *gin.Engine, config *Config, articleRepo IRepository, pageRepo 
 }
 
 func (r *Router) Configure() {
-	tmpls := template.Must(template.New("").Funcs(HelpersMap(r.Config)).ParseFS(templateFS, "templates/*"))
-	r.mux.SetHTMLTemplate(tmpls)
+	if r.Config.IsProduction() {
+		tmpls := template.Must(template.New("").Funcs(HelpersMap(r.Config)).ParseFS(templateFS, "templates/*"))
+		r.mux.SetHTMLTemplate(tmpls)
+		r.mux.StaticFS("/_", underscoreFS)
+	} else {
+		r.mux.SetFuncMap(HelpersMap(r.Config))
+		r.mux.LoadHTMLGlob("templates/*")
+		r.mux.Static("/_", "static/_")
+	}
+
 
 	r.mux.NoRoute(r.renderNotFound)
 
-	r.mux.StaticFS("/_", underscoreFS)
 	r.mux.StaticFileFS("/favicon.ico", "favicon.ico", staticFS)
 	r.mux.Static("/images", r.Config.ImagesPath)
 
