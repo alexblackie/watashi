@@ -1,5 +1,6 @@
 title: Stop Selling Your Damn Startups
-publishDate: "2022-09-17"
+slug: stop-selling-startups
+publish_date: "2022-09-17"
 nav: articles
 
 openGraphTitle: Stop Selling Your Damn Startups

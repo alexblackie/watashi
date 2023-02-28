@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}{{ article.meta.title }}{% endblock %}
+{% block content %}
+<article class="container singleArticle">
+	<header class="singleArticle--header">
+		<h1>{{ article.meta.title }}</h1>
+		<div class="singleArticle--header--meta">
+			<div class="badge"><span>Published</span> {{ article.meta.publish_date.format("%Y-%m-%d").to_string() }}</div>
+			{% if article.meta.updated_date != None %}
+			<div class="badge"><span>Updated</span> {{ article.meta.updated_date.unwrap().format("%Y-%m-%d").to_string() }}</div>
+			{%- endif %}
+		</div>
+	</header>
+
+	<div class="singleArticle--body">
+		{{ article.content }}
+	</div>
+</article>
+{% endblock %}

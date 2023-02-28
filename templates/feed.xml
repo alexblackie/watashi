@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Alex Blackie's Blog</title>
+		<link>{{ "/"|permalink }}</link>
+		<description>An RSS feed for all my published articles.</description>
+		<language>en-GB</language>
+		<atom:link href="{{ "/feed.xml"|permalink }}" rel="self" type="application/rss+xml" />
+
+		{% for article in articles %}
+		<item>
+			<title>{{ article.meta.title }}</title>
+            <link>{{ "/articles/{}/"|format(article.meta.slug)|permalink }}</link>
+            <guid>{{ "/articles/{}/"|format(article.meta.slug)|permalink }}</guid>
+			<pubDate>{{ article.meta.publish_date|rfc_2822_date }}</pubDate>
+			<author>alex@alexblackie.com (Alex Blackie)</author>
+			<description></description>
+			<content:encoded><![CDATA[ {{ article.content|safe }} ]]></content:encoded>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>

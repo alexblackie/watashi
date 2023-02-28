@@ -1,7 +1,6 @@
-title: Canadian software developer
-slug: /
-nav: home
----
+{% extends "layout.html" %}
+{% block title %}Canadian Software Developer{% endblock %}
+{% block content %}
 <div class="homeHero">
 	<div class="container">
 		<div class="homeHero--body">
@@ -32,15 +31,15 @@ nav: home
 <div class="container">
 	<div class="homeColumns">
 		<div class="homeColumns--column homeColumns--articles">
-			<h2>Latest Weblog Articles <a href="/feed.xml">{{ icon "rss" }}</a></h2>
+            <h2>Latest Weblog Articles <a href="/feed.xml">{{ "rss"|icon|safe }}</a></h2>
 
 			<ol class="articleList">
-			{{ range .Assigns.Articles }}
+			{% for meta in articles %}
 				<li class="articleListItem">
-					<a href="{{ .Meta.Slug }}">{{ .Meta.Title }}</a>
-					<div>{{ humanDate .Meta.PublishDate }}</div>
+					<a href="/articles/{{ meta.slug }}">{{ meta.title }}</a>
+                    <div>{{ meta.publish_date|human_date }}</div>
 				</li>
-			{{ end }}
+			{% endfor %}
 			</ol>
 
 			<p>
@@ -53,7 +52,7 @@ nav: home
 
 			<div class="contactCards">
 				<a href="mailto:alex@blackie.me" class="contactCard contactCard--email">
-					{{ icon "send" }}
+					{{ "send"|icon|safe }}
 					<div>
 						<div class="contactCard--target">Email</div>
 						<div class="contactCard--name">alex@blackie.me</div>
@@ -61,7 +60,7 @@ nav: home
 				</a>
 
 				<a href="https://github.com/alexblackie" class="contactCard contactCard--github">
-					{{ icon "github" }}
+					{{ "github"|icon|safe }}
 					<div>
 						<div class="contactCard--target">Github</div>
 						<div class="contactCard--name">@alexblackie</div>
@@ -69,7 +68,7 @@ nav: home
 				</a>
 
 				<a href="https://keybase.io/alexblackie" class="contactCard contactCard--keybase">
-					{{ icon "keybase" }}
+					{{ "keybase"|icon|safe }}
 					<div>
 						<div class="contactCard--target">Keybase</div>
 						<div class="contactCard--name">@alexblackie</div>
@@ -77,7 +76,7 @@ nav: home
 				</a>
 
 				<a href="https://www.linkedin.com/in/alexblackie" class="contactCard contactCard--in">
-					{{ icon "linkedin" }}
+					{{ "linkedin"|icon|safe }}
 					<div>
 						<div class="contactCard--target">LinkedIn</div>
 						<div class="contactCard--name">alexblackie</div>
@@ -85,7 +84,7 @@ nav: home
 				</a>
 
 				<a rel="me" href="https://hachyderm.io/@alexblackie" class="contactCard contactCard--mastodon">
-					{{ icon "mastodon" }}
+					{{ "mastodon"|icon|safe }}
 					<div>
 						<div class="contactCard--target">Mastodon</div>
 						<div class="contactCard--name">@alexblackie@hachyderm.io</div>
@@ -93,7 +92,7 @@ nav: home
 				</a>
 
 				<a href="https://www.worldoftrucks.com/en/profile/151074" class="contactCard contactCard--trucks">
-					{{ icon "truck" }}
+					{{ "truck"|icon|safe }}
 					<div>
 						<div class="contactCard--target">World of Trucks</div>
 						<div class="contactCard--name">alexblackie</div>
@@ -214,3 +213,4 @@ nav: home
 	.articleListItem { flex-direction: column; margin-bottom: 1rem; text-align: center; }
 }
 </style>
+{% endblock %}

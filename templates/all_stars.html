@@ -1,9 +1,9 @@
-title: All Stars
-slug: /all-stars/
----
+{% extends "layout.html" %}
+{% block title %}All Stars{% endblock %}
+{% block content %}
 <div class="container">
 	<div class="pageIntro compress">
-		<h2>{{ .Document.Meta.Title }}</h2>
+		<h2>All Stars</h2>
 
 		<p>
 			Sometimes you find an album that doesn't have a single bad song
@@ -26,10 +26,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Linkin+Park/Meteora">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4Gfnly5CzMJQqkUFfoHaP3">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -40,14 +40,14 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://theblackdahliamurder.bandcamp.com/album/miasma">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/The+Black+Dahlia+Murder/Miasma">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0yvkEhvulQu12aR16YuOg1">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -58,10 +58,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Three%20Days%20Grace/One-X">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4ZDwEvXIKxWdwhAQK8ndBU">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -72,10 +72,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Arctic+Monkeys/Favourite+Worst+Nightmare">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/6rsQnwaoJHxXJRCDBPkBRw">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -86,10 +86,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Between+the+Buried+and+Me/Colors">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/56mXsvBsKgRCXgmtzOAC22">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -100,10 +100,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Cancer+Bats/Hail+Destroyer">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4zR3343ue909iFnr6odhK3">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -114,10 +114,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Perfume/⊿">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/79CDvmQOwJBEpd6gL6zgN9">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -128,10 +128,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/The+Sword/Warp+Riders">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/0PN6KGJnEzkpTpmM1PP5z7">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -142,13 +142,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://carachangren.bandcamp.com/album/death-came-through-a-phantom-ship">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Carach+Angren/Death+Came+Through+a+Phantom+Ship">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1xLQYMtp9ZFt7n4B4Owob4">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -159,10 +159,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Lights/Siberia">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1nBu4bKl28gwUdwTQYBzBy">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -173,13 +173,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://carachangren.bandcamp.com/album/where-the-corpses-sink-forever">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Carach+Angren/Where+the+Corpses+Sink+Forever">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1FrsZ1zyAmuEPyhNvuURbO">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -190,13 +190,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://btbam.bandcamp.com/album/the-parallax-ii-future-sequence">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Between+the+Buried+and+Me/The+Parallax+II:+Future+Sequence">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1SIWICMyd07WaAwrOWKchn">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -207,10 +207,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Purity+Ring/Shrines">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/20mXbCXndSKFkikGoojprO">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -221,14 +221,14 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://badbadnotgoodofficial.bandcamp.com/album/iii">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/BADBADNOTGOOD/III">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/4E8q20fmm8onDCc7NK217d">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -239,10 +239,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Lights/Little+Machines">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/2UTk9Z3PhM8Qbzbcn0ktx7">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -253,10 +253,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Purity+Ring/Another+Eternity">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/28dGCkeoBowoDG6ePFSuYd">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -267,13 +267,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://riversofnihil.bandcamp.com/album/monarchy">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Rivers+of+Nihil/Monarchy">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/artist/3UJmyt9ApeZTmOlMvBNGLN">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -284,13 +284,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://tphb.bandcamp.com/album/mercury-fountain">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/The+Physics+House+Band/Mercury+Fountain">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/3HYb9C7ZODFw74BSsMhNCy">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -301,13 +301,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://unleashthearchers.bandcamp.com/album/apex">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Unleash+the+Archers/Apex">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/505PSAdJ9BVuKUZLuhXVFc">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -318,13 +318,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://riversofnihil.bandcamp.com/album/where-owls-know-my-name">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Rivers+of+Nihil/Where+Owls+Know+My+Name">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -335,13 +335,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://cattledecapitation.bandcamp.com/album/death-atlas">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Cattle+Decapitation/Death+Atlas">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/7pp0eBrLEcmprISZOmY4ve">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -352,13 +352,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://myrkur.bandcamp.com/album/folkesange">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Myrkur/Folkesange">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1aRhu0xtlPbAb1X8us0uOD">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -369,10 +369,10 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Purity+Ring/WOMB">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/1qUKQoS2lPswBUS5BRUpOq">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -383,13 +383,13 @@ slug: /all-stars/
 
 			<div class="album--links">
 				<a title="Bandcamp" class="album--links--bc" href="https://unleashthearchers.bandcamp.com/album/abyss">
-					{{ icon "bandcamp" }}
+					{{ "bandcamp"|icon|safe }}
 				</a>
 				<a title="last.fm" class="album--links--lastfm" href="https://www.last.fm/music/Unleash+the+Archers/Abyss">
-					{{ icon "lastfm" }}
+					{{ "lastfm"|icon|safe }}
 				</a>
 				<a title="Spotify" class="album--links--spotify" href="https://open.spotify.com/album/35Tw2Ofk21iMTXTSW3i8sD">
-					{{ icon "spotify" }}
+					{{ "spotify"|icon|safe }}
 				</a>
 			</div>
 		</article>
@@ -435,3 +435,4 @@ slug: /all-stars/
 .album--links--bc { background-color: rgb(27, 160, 194); color: white; }
 .album--links--bc:hover { box-shadow: 1px 1px 10px rgba(27, 160, 194, 0.5); }
 </style>
+{% endblock %}

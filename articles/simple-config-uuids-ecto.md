@@ -1,5 +1,6 @@
 title: Simple configuration for UUID primary keys in Ecto
-publishDate: "2021-01-20"
+slug: simple-config-uuids-ecto
+publish_date: "2021-01-20"
 
 openGraphTitle: Simple configuration for UUID primary keys in Ecto
 openGraphDescription: >

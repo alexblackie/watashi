@@ -1,5 +1,6 @@
 title: Finding files in Neovim with fzy
-publishDate: "2022-01-27"
+slug: neovim-fzy
+publish_date: "2022-01-27"
 
 coverUrl: /images/articles/neovim-fzy/nvim-fzy.png
 coverAlt: "Neovim with a floating window showing fzy searching for the string 'win'."

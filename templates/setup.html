@@ -1,7 +1,5 @@
-title: My Setup
-slug: /setup/
-nav: setup
-publishDate: "2023-02-04"
+{% extends "layout.html" %}
+{% block title %}My Setup{% endblock %}
 openGraphTitle: Alex Blackie's Setup
 openGraphImageUrl: "/images/setup/2023-02.jpg"
 openGraphDescription: >
@@ -9,13 +7,16 @@ openGraphDescription: >
   about and looking at other people's desks and workspaces, taking
   inspiration wherever I can. Hopefully this breakdown of my own helps others
   in the same way.
----
+{% block content %}
 <div class="container">
 	<div class="pageIntro compress">
-		<h2>{{ .Document.Meta.Title }}</h2>
+		<h2>My Setup</h2>
 
 		<p>
-			{{ .Document.Meta.OpenGraphDescription }}
+            I'm always trying to find ways to improve my workstation. I love
+            reading about and looking at other people's desks and workspaces,
+            taking inspiration wherever I can. Hopefully this breakdown of my
+            own helps others in the same way.
 		</p>
 	</div>
 
@@ -162,3 +163,4 @@ openGraphDescription: >
 	.twocol .col:last-child { padding-left: 1rem; }
 }
 </style>
+{% endblock %}

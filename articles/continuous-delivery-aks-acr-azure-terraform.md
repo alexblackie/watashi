@@ -1,5 +1,6 @@
 title: "Continuous Delivery to AKS with a Service Principal, Securely"
-publishDate: "2021-07-16"
+slug: continuous-delivery-aks-acr-azure-terraform
+publish_date: "2021-07-16"
 
 openGraphTitle: "Continuous Delivery to AKS with a Service Principal, Securely"
 openGraphDescription: >
