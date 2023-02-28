@@ -6,9 +6,9 @@
 	<header class="singleArticle--header">
 		<h1>{{ article.meta.title }}</h1>
 		<div class="singleArticle--header--meta">
-			<div class="badge"><span>Published</span> {{ article.meta.publish_date.format("%Y-%m-%d").to_string() }}</div>
-			{% if article.meta.updated_date != None %}
-			<div class="badge"><span>Updated</span> {{ article.meta.updated_date.unwrap().format("%Y-%m-%d").to_string() }}</div>
+			<div class="badge"><span>Published</span> {{ article.meta.publish_date|human_date }}</div>
+			{% if let Some(updated_date) = article.meta.updated_date %}
+			<div class="badge"><span>Updated</span> {{ updated_date|human_date }}</div>
 			{%- endif %}
 		</div>
 	</header>
