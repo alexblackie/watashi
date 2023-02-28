@@ -33,10 +33,17 @@ pub fn parse_article(raw: String) -> Result<Article, String> {
     match serde_yaml::from_str::<ArticleMeta>(parts.first().unwrap()) {
         Ok(meta) => Ok(Article {
             meta,
-            content: parts.last().unwrap().to_string(),
+            content: parse_content(parts.last().unwrap().to_string()),
         }),
         Err(e) => Err(format!("Failed to parse article frontmatter: {}", e)),
     }
+}
+
+fn parse_content(raw: String) -> String {
+    let mut parser = pulldown_cmark::Parser::new(&raw);
+    let mut html_output = String::new();
+    pulldown_cmark::html::push_html(&mut html_output, &mut parser);
+    html_output
 }
 
 pub fn discover(base_dir: &Path) -> Articles {

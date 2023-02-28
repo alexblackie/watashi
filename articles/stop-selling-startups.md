@@ -8,7 +8,9 @@ openGraphDescription: >
   short-sighted, innovation-destroying nature of modern startup economy.
 ---
 <big>
-	[With the recent news of Adobe consuming its staunchest rival, Figma](https://www.figma.com/blog/a-new-collaboration-with-adobe/), I am once again left in shock and awe at the truly short-sighted and innovation-destroying nature of the modern startup economy.
+
+[With the recent news of Adobe consuming its staunchest rival, Figma](https://www.figma.com/blog/a-new-collaboration-with-adobe/), I am once again left in shock and awe at the truly short-sighted and innovation-destroying nature of the modern startup economy.
+
 </big>
 
 I have struggled to come to terms with the death of startup-led disruption in recent times. A startup is a risk, an idea, and a fresh perspective; a startup is the free market working correctly in pushing innovation forward and preventing stagnation.
