@@ -1,3 +1,4 @@
+use actix_files::NamedFile;
 use actix_web::{
     dev::{Service as _, ServiceResponse},
     http::header::ContentType,
@@ -120,6 +121,10 @@ async fn all_stars() -> impl Responder {
         .body(tmpl.render().unwrap())
 }
 
+async fn favicon() -> actix_web::Result<NamedFile> {
+    Ok(NamedFile::open("./static/favicon.ico")?)
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
@@ -157,6 +162,7 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("/_", "./static/_"))
             .service(actix_files::Files::new("/images", "./static/images"))
 
+            .route("/favicon.ico", web::get().to(favicon))
             .route("/", web::get().to(index))
             .route("/setup/", web::get().to(setup))
             .route("/all-stars/", web::get().to(all_stars))

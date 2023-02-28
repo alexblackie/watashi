@@ -1,44 +1,45 @@
 <!doctype html>
 <html lang="en-CA">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
         <title>{% block title %}{{ title }}{% endblock %} - Alex Blackie</title>
-		<link rel="stylesheet" href="/_/site.css" type="text/css">
-		<link rel="stylesheet" href="/_/code.css" type="text/css">
-		<link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
-	</head>
-	<body>
-		<header class="siteHeader">
-			<div class="container">
-				<h1>
-					<a href="/">
-						<img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
-						<span>Alex Blackie</span>
-					</a>
-				</h1>
+        <link rel="stylesheet" href="/_/site.css" type="text/css">
+        <link rel="stylesheet" href="/_/code.css" type="text/css">
+        <link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <header class="siteHeader">
+            <div class="container">
+                <h1>
+                    <a href="/">
+                        <img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
+                        <span>Alex Blackie</span>
+                    </a>
+                </h1>
 
-				<nav>
+                <nav>
                     <a class="{{ nav|nav_class("articles") }}" href="/articles/">Articles</a>
                     <a class="{{ nav|nav_class("setup") }}" href="/setup/">My Setup</a>
-				</nav>
-			</div>
-		</header>
+                </nav>
+            </div>
+        </header>
 
-		<main class="siteContent">
+        <main class="siteContent">
             {% block content %}{% endblock %}
         </main>
 
         <footer	class="siteFooter">
             <div class="container">
-				<p>
-					&copy; 2011-2022 Alex Blackie. Some Rights Reserved.
-				</p>
-				<p>
-					This site is <a href="https://github.com/alexblackie/watashi">open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
-					Powered by <code>Rust</code> and significant quantities of coffee.
-				</p>
-			</div>
-		</footer>
-	</body>
+                <p>
+                    &copy; 2011-2022 Alex Blackie. Some Rights Reserved.
+                </p>
+                <p>
+                    This site is <a href="https://github.com/alexblackie/watashi">open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
+                    Powered by <code>Rust</code> and significant quantities of coffee.
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>
