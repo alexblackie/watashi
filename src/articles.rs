@@ -9,6 +9,7 @@ pub type ArticleList = Vec<ArticleMeta>;
 pub struct ArticleMeta {
     pub title: String,
     pub slug: String,
+    pub evergreen: Option<bool>,
     pub publish_date: chrono::NaiveDate,
     pub updated_date: Option<chrono::NaiveDate>,
     pub cover: Option<ArticleCover>,

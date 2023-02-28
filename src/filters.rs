@@ -14,6 +14,17 @@ pub fn rfc_2822_date(s: &NaiveDate) -> ::askama::Result<String> {
     Ok(s)
 }
 
+// askama filter to compare publish_date to today and return true if it's more than two years ago
+pub fn is_old(m: &super::articles::ArticleMeta) -> ::askama::Result<bool> {
+    if m.evergreen.unwrap_or(false) {
+        return Ok(false);
+    }
+    let today = chrono::Local::now().naive_local();
+    let two_years = chrono::Duration::days(365 * 2);
+    let two_years_ago = today - two_years;
+    Ok(&m.publish_date < &two_years_ago.date())
+}
+
 pub fn permalink(s: &str) -> ::askama::Result<String> {
     let s = format!("https://www.alexblackie.com{}", s);
     Ok(s)
