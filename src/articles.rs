@@ -11,6 +11,15 @@ pub struct ArticleMeta {
     pub slug: String,
     pub publish_date: chrono::NaiveDate,
     pub updated_date: Option<chrono::NaiveDate>,
+    pub cover: Option<ArticleCover>,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct ArticleCover {
+    pub url: String,
+    pub alt: String,
+    pub width: u32,
+    pub height: u32,
 }
 
 #[derive(Debug, Deserialize, Clone)]

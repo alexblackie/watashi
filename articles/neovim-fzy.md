@@ -2,10 +2,11 @@ title: Finding files in Neovim with fzy
 slug: neovim-fzy
 publish_date: "2022-01-27"
 
-coverUrl: /images/articles/neovim-fzy/nvim-fzy.png
-coverAlt: "Neovim with a floating window showing fzy searching for the string 'win'."
-coverWidth: 1920
-coverHeight: 571
+cover:
+  url: /images/articles/neovim-fzy/nvim-fzy.png
+  alt: "Neovim with a floating window showing fzy searching for the string 'win'."
+  width: 1920
+  height: 571
 
 openGraphTitle: Finding files in Neovim with fzy
 openGraphDescription: "Integrating the fuzzy file finder 'fzy' into Neovim with a little bit of Lua."

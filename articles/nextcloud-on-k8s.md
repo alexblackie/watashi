@@ -3,10 +3,11 @@ slug: nextcloud-on-k8s
 publish_date: "2020-07-17"
 lastUpdateDate: "2021-08-30"
 
-coverUrl: /images/articles/nextcloud-on-k8s/420scaleit.jpg
-coverAlt: "Nextcloud and Kubernetes logos on a blue background."
-coverWidth: 1739
-coverHeight: 594
+cover:
+  url: /images/articles/nextcloud-on-k8s/420scaleit.jpg
+  alt: "Nextcloud and Kubernetes logos on a blue background."
+  width: 1739
+  height: 594
 
 openGraphTitle: "Stateless Nextcloud on Kubernetes"
 openGraphDescription: "I am a heavy user of Nextcloud, but scaling it can be a challenge. Here is how I managed to get it to a place I can trust."

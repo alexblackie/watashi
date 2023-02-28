@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block title %}{{ article.meta.title }}{% endblock %}
 {% block content %}
+
 <article class="container singleArticle">
 	<header class="singleArticle--header">
 		<h1>{{ article.meta.title }}</h1>
@@ -11,6 +12,12 @@
 			{%- endif %}
 		</div>
 	</header>
+
+	{% if let Some(cover) = article.meta.cover %}
+	<figure class="singleArticle--cover cover">
+		<img src="{{ cover.url }}" alt="{{ cover.alt }}" width="{{ cover.width }}" height="{{ cover.height }}">
+	</figure>
+	{% endif %}
 
 	<div class="singleArticle--body">
 		{{ article.content }}
