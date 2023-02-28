@@ -1,7 +1,7 @@
 title: "Stateless Nextcloud on Kubernetes"
 slug: nextcloud-on-k8s
 publish_date: "2020-07-17"
-lastUpdateDate: "2021-08-30"
+updated_date: "2021-08-30"
 
 cover:
   url: /images/articles/nextcloud-on-k8s/420scaleit.jpg
