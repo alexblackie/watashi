@@ -8,9 +8,10 @@ cover:
   width: 1920
   height: 571
 
-openGraphTitle: Finding files in Neovim with fzy
-openGraphDescription: "Integrating the fuzzy file finder 'fzy' into Neovim with a little bit of Lua."
-openGraphImageUrl: /images/articles/neovim-fzy/nvim-fzy.png
+open_graph_meta:
+  title: Finding files in Neovim with fzy
+  description: "Integrating the fuzzy file finder 'fzy' into Neovim with a little bit of Lua."
+  image_url: /images/articles/neovim-fzy/nvim-fzy.png
 ---
 <p>
 	<big>

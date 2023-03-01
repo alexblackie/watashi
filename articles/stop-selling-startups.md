@@ -2,10 +2,11 @@ title: Stop Selling Your Damn Startups
 slug: stop-selling-startups
 publish_date: "2022-09-17"
 
-openGraphTitle: Stop Selling Your Damn Startups
-openGraphDescription: >
-  Figma's acquisition by Adobe should be a warning for us all of the truly
-  short-sighted, innovation-destroying nature of modern startup economy.
+open_graph_meta:
+  title: Stop Selling Your Damn Startups
+  description: >
+    Figma's acquisition by Adobe should be a warning for us all of the truly
+    short-sighted, innovation-destroying nature of modern startup economy.
 ---
 <big>
 

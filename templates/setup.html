@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
 {% block title %}My Setup{% endblock %}
-openGraphTitle: Alex Blackie's Setup
-openGraphImageUrl: "/images/setup/2023-02.jpg"
-openGraphDescription: >
-  I'm always trying to find ways to improve my workstation. I love reading
-  about and looking at other people's desks and workspaces, taking
-  inspiration wherever I can. Hopefully this breakdown of my own helps others
-  in the same way.
+
+{% block head %}
+    <meta property="og:title" content="Alex Blackie's Setup">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ "/setup/"|permalink }}">
+    <meta property="og:image" content="{{ "/images/setup/2023-02.jpg"|permalink }}">
+    <meta property="og:description" content="I'm always trying to find ways to improve my workstation. I love reading about and looking at other people's desks and workspaces, taking inspiration wherever I can. Hopefully this breakdown of my own helps others in the same way.">
+{% endblock %}
+
 {% block content %}
 <div class="container">
 	<div class="pageIntro compress">

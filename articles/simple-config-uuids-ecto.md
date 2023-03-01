@@ -2,10 +2,11 @@ title: Simple configuration for UUID primary keys in Ecto
 slug: simple-config-uuids-ecto
 publish_date: "2021-01-20"
 
-openGraphTitle: Simple configuration for UUID primary keys in Ecto
-openGraphDescription: >
-  UUID primary keys don't have to be a pain when using Ecto in your Elixir
-  projects.
+open_graph_meta:
+  title: Simple configuration for UUID primary keys in Ecto
+  description: >
+    UUID primary keys don't have to be a pain when using Ecto in your Elixir
+    projects.
 ---
 
 Using UUID's as primary keys can have many benefits, and if you're using PostgreSQL you have the advantage of solid performance and efficient storage of those UUIDs leading to good scalability even compared to `bigint`.

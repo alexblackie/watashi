@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
 {% block title %}{{ article.meta.title }}{% endblock %}
+
+{% block head %}
+    {% if let Some(og_meta) = article.meta.open_graph_meta %}
+        <meta property="og:title" content="{{ og_meta.title }}">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="{{ "/articles/{}/"|format(article.meta.slug)|permalink }}">
+        <meta property="og:description" content="{{ og_meta.description }}">
+        <meta property="article:published_time" content="{{ article.meta.publish_date|rfc_2822_date }}">
+
+        {% if let Some(image_url) = og_meta.image_url %}
+        <meta property="og:image" content="{{ image_url|permalink }}">
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 {% if article.meta|is_old %}
 <div class="articleOldWarning">

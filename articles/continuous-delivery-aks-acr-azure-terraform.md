@@ -2,10 +2,11 @@ title: "Continuous Delivery to AKS with a Service Principal, Securely"
 slug: continuous-delivery-aks-acr-azure-terraform
 publish_date: "2021-07-16"
 
-openGraphTitle: "Continuous Delivery to AKS with a Service Principal, Securely"
-openGraphDescription: >
-  Deploying to Azure Kubernetes Service without opening security holes can be
-  daunting, but Terraform can help.
+open_graph_meta:
+  title: "Continuous Delivery to AKS with a Service Principal, Securely"
+  description: >
+    Deploying to Azure Kubernetes Service without opening security holes can be
+    daunting, but Terraform can help.
 ---
 
 Azure has some great features, and leads the industry in a few different ways,

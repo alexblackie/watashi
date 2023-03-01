@@ -13,6 +13,7 @@ pub struct ArticleMeta {
     pub publish_date: chrono::NaiveDate,
     pub updated_date: Option<chrono::NaiveDate>,
     pub cover: Option<ArticleCover>,
+    pub open_graph_meta: Option<ArticleOpenGraphMeta>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -21,6 +22,13 @@ pub struct ArticleCover {
     pub alt: String,
     pub width: u32,
     pub height: u32,
+}
+
+#[derive(Debug, Deserialize, Clone)]
+pub struct ArticleOpenGraphMeta {
+    pub title: String,
+    pub description: String,
+    pub image_url: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Clone)]

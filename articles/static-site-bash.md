@@ -3,10 +3,11 @@ slug: static-site-bash
 publish_date: "2019-06-16"
 evergreen: true
 
-openGraphTitle: Generating Static Sites with Make and Bash
-openGraphDescription: >
-  You can get a pretty functional static site generator just using a bash
-  script and some common Unix tools. Come see how.
+open_graph_meta:
+  title: Generating Static Sites with Make and Bash
+  description: >
+		You can get a pretty functional static site generator just using a bash
+		script and some common Unix tools. Come see how.
 ---
 <p>
 	When you think of <code>bash</code>, you may not consider it suitable for
