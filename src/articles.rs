@@ -37,12 +37,14 @@ pub struct Article {
     pub content: String,
 }
 
-pub fn parse_article(raw: String) -> Result<Article, String> {
-    let parts: Vec<&str> = raw.split_terminator("---").collect();
-    match serde_yaml::from_str::<ArticleMeta>(parts.first().unwrap()) {
+pub fn parse_article(raw: String, ext: &str) -> Result<Article, String> {
+    let mut parts = raw.splitn(2, "---");
+    let meta = parts.next().unwrap();
+    let content = parts.next().unwrap();
+    match serde_yaml::from_str::<ArticleMeta>(meta) {
         Ok(meta) => Ok(Article {
             meta,
-            content: parse_content(parts.last().unwrap().to_string()),
+            content: if ext == "md" { parse_content(content.to_string()) } else { content.to_string() },
         }),
         Err(e) => Err(format!("Failed to parse article frontmatter: {}", e)),
     }
@@ -61,9 +63,9 @@ pub fn discover(base_dir: &Path) -> Articles {
         .expect("Failed to find articles.")
         .into_iter()
         .map(|p| p.unwrap().as_path().to_owned())
-        .for_each(|file_path| match fs::read_to_string(file_path) {
+        .for_each(|file_path| match fs::read_to_string(&file_path) {
             Ok(raw) => {
-                let article = parse_article(raw).unwrap();
+                let article = parse_article(raw, file_path.extension().unwrap().to_str().unwrap()).unwrap();
                 articles.insert(article.meta.slug.clone(), article);
             }
             Err(_) => {}
