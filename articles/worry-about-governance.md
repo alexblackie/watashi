@@ -1,10 +1,14 @@
 title: "Worry about software governance, not license"
-publishDate: "2023-03-04"
-openGraphTitle: "Worry about software governance, not license"
-openGraphDescription: >
-  Recently, an early proposal to add basic usage telemetry to the Go toolchain
-  has made the rounds, and many people are livid that such a move would come
-  from a privacy-focused and ethically-aligned company like Google...
+slug: "worry-about-governance"
+publish_date: "2023-03-04"
+
+open_graph_meta:
+  title: "Worry about software governance, not license"
+  description: >
+    Recently, an early proposal to add basic usage telemetry to the Go
+    toolchain has made the rounds, and many people are livid that such a move
+    would come from a privacy-focused and ethically-aligned company like
+    Google...
 
 ---
 
