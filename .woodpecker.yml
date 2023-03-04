@@ -1,0 +1,18 @@
+---
+
+pipeline:
+  container:
+    image: woodpeckerci/plugin-docker-buildx
+    settings:
+      registry: git.b8s.dev
+      repo: git.b8s.dev/${CI_REPO}
+      platforms: linux/amd64
+      auto_tag: true
+      tag: ${CI_COMMIT_SHA}
+      username:
+        from_secret: registry_username
+      password:
+        from_secret: registry_password
+    when:
+      branch: ${CI_REPO_DEFAULT_BRANCH}
+      event: push
