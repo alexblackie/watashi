@@ -3,11 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>{% block title %}{{ title }}{% endblock %} - Alex Blackie</title>
+        <title>{% block title %}{{ title }}{% endblock %} - {{ config.title }}</title>
         <link rel="stylesheet" href="/_/site.css" type="text/css">
         <link rel="stylesheet" href="/_/code.css" type="text/css">
         <link rel="alternate" type="application/rss+xml" title="Alex Blackie's Blog" href="/feed.xml">
         {% block head %}{% endblock %}
+
+        {% if config.profile == "production" -%}
+            <script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
+        {%- endif %}
     </head>
     <body>
         <header class="siteHeader">
@@ -15,7 +19,7 @@
                 <h1>
                     <a href="/">
                         <img src="/_/avi.jpg" alt="Avatar of Alex Blackie." width="46" height="46">
-                        <span>Alex Blackie</span>
+                        <span>{{ config.title }}</span>
                     </a>
                 </h1>
 

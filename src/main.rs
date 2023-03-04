@@ -3,10 +3,15 @@ use actix_web::{
     dev::{Service as _, ServiceResponse},
     middleware, web, App, HttpResponse, HttpServer
 };
-use std::path::Path;
+use std::{path::Path, env};
 
 pub mod articles;
 pub mod templates;
+
+pub struct AppConfig {
+    title: String,
+    profile: String,
+}
 
 async fn favicon() -> actix_web::Result<NamedFile> {
     Ok(NamedFile::open("./static/favicon.ico")?)
@@ -19,9 +24,12 @@ async fn main() -> std::io::Result<()> {
         let mut sorted_articles: articles::ArticleList = articles.values().map(|a| a.meta.clone()).collect();
         sorted_articles.sort_by(|a, b| b.publish_date.cmp(&a.publish_date));
 
+        let app_config = build_app_config();
+
         App::new()
             .app_data(web::Data::new(articles))
             .app_data(web::Data::new(sorted_articles))
+            .app_data(web::Data::new(app_config))
 
             // actix-web middleware that adds a trailing slash unless the path contains a dot, and
             // redirects to the new path.
@@ -60,4 +68,11 @@ async fn main() -> std::io::Result<()> {
     .bind(("0.0.0.0", 3000))?
     .run()
     .await
+}
+
+fn build_app_config() -> AppConfig {
+    AppConfig {
+        title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
+        profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
+    }
 }

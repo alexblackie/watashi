@@ -1,20 +1,23 @@
 use askama::Template;
 use actix_web::{web, http::header::ContentType, HttpResponse, Responder};
 use crate::articles::{ArticleList, Articles, Article};
+use crate::AppConfig;
 
 pub mod filters;
 
 #[derive(Template)]
 #[template(path = "home.html")]
 struct IndexTemplate<'a> {
+    config: &'a AppConfig,
     nav: &'a str,
     articles: ArticleList,
 }
 
-pub async fn index(articles: web::Data<ArticleList>) -> impl Responder {
+pub async fn index(config: web::Data<AppConfig>, articles: web::Data<ArticleList>) -> impl Responder {
     let mut articles = articles.to_vec();
     articles.truncate(10);
     let tmpl = IndexTemplate {
+        config: &config,
         articles: articles.to_vec(),
         nav: "home",
     };
@@ -27,12 +30,14 @@ pub async fn index(articles: web::Data<ArticleList>) -> impl Responder {
 #[derive(Template)]
 #[template(path = "article_index.html")]
 struct ArticleIndexTemplate<'a> {
+    config: &'a AppConfig,
     nav: &'a str,
     articles: ArticleList,
 }
 
-pub async fn article_index(articles: web::Data<ArticleList>) -> impl Responder {
+pub async fn article_index(config: web::Data<AppConfig>, articles: web::Data<ArticleList>) -> impl Responder {
     let tmpl = ArticleIndexTemplate {
+        config: &config,
         articles: articles.to_vec(),
         nav: "articles",
     };
@@ -64,11 +69,13 @@ pub async fn article_feed(article_map: web::Data<Articles>) -> impl Responder {
 #[derive(Template)]
 #[template(path = "article_show.html", escape = "none")]
 struct ArticleShowTemplate<'a> {
+    config: &'a AppConfig,
     nav: &'a str,
     article: &'a Article,
 }
 
 pub async fn article_show(
+    config: web::Data<AppConfig>,
     path: web::Path<String>,
     articles: web::Data<Articles>,
 ) -> impl Responder {
@@ -79,6 +86,7 @@ pub async fn article_show(
         || HttpResponse::NotFound().body("Not found!"),
         |article| {
             let tmpl = ArticleShowTemplate {
+                config: &config,
                 article,
                 nav: "articles",
             };
@@ -92,11 +100,12 @@ pub async fn article_show(
 #[derive(Template)]
 #[template(path = "setup.html")]
 struct SetupTemplate<'a> {
+    config: &'a AppConfig,
     nav: &'a str,
 }
 
-pub async fn setup() -> impl Responder {
-    let tmpl = SetupTemplate { nav: "setup" };
+pub async fn setup(config: web::Data<AppConfig>) -> impl Responder {
+    let tmpl = SetupTemplate { config: &config, nav: "setup" };
     HttpResponse::Ok()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())
@@ -105,11 +114,12 @@ pub async fn setup() -> impl Responder {
 #[derive(Template)]
 #[template(path = "all_stars.html")]
 struct AllStarsTemplate<'a> {
+    config: &'a AppConfig,
     nav: &'a str,
 }
 
-pub async fn all_stars() -> impl Responder {
-    let tmpl = AllStarsTemplate { nav: "all-stars" };
+pub async fn all_stars(config: web::Data<AppConfig>) -> impl Responder {
+    let tmpl = AllStarsTemplate { config: &config, nav: "all-stars" };
     HttpResponse::Ok()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())
