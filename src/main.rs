@@ -11,6 +11,7 @@ pub mod templates;
 pub struct AppConfig {
     title: String,
     profile: String,
+    toolchain_version: String,
 }
 
 async fn favicon() -> actix_web::Result<NamedFile> {
@@ -74,5 +75,6 @@ fn build_app_config() -> AppConfig {
     AppConfig {
         title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
         profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
+        toolchain_version: env!("TOOLCHAIN_VERSION").to_string(),
     }
 }
