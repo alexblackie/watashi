@@ -14,12 +14,12 @@ open_graph_meta:
   image_url: /images/articles/neovim-fzy/nvim-fzy.png
 ---
 <p>
-	<big>
-		I'm a big fan of <a href="https://github.com/jhawthorn/fzy">fzy</a> for
-		quickly finding things in a list. I used to use it as my fuzzy file
-		finder in vim, but lost that functionality when I moved to neovim a
-		while back. It's time to finally fix that.
-	</big>
+    <big>
+        I'm a big fan of <a href="https://github.com/jhawthorn/fzy">fzy</a> for
+        quickly finding things in a list. I used to use it as my fuzzy file
+        finder in vim, but lost that functionality when I moved to neovim a
+        while back. It's time to finally fix that.
+    </big>
 </p>
 
 In vim, we're able to use the `system` function to run a command synchronously
@@ -41,19 +41,19 @@ Here is the entirety of what it takes:
 
 ```lua
 function _G.FzyFiles(vim_command)
-	local terminal_command = 'fd -t f -H | fzy'
+    local terminal_command = 'fd -t f -H | fzy'
 
-	CreateFloatingWindow({ height = 10 })
+    CreateFloatingWindow({ height = 10 })
 
-	local opts = {
-		on_exit = function()
-			local filename = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), " ")
-			vim.cmd('bdelete!')
-			vim.fn.execute(vim_command .. ' ' .. filename)
-		end
-	}
-	vim.fn.termopen(terminal_command, opts)
-	vim.cmd('startinsert')
+    local opts = {
+        on_exit = function()
+            local filename = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), " ")
+            vim.cmd('bdelete!')
+            vim.fn.execute(vim_command .. ' ' .. filename)
+        end
+    }
+    vim.fn.termopen(terminal_command, opts)
+    vim.cmd('startinsert')
 end
 ```
 
@@ -71,26 +71,26 @@ complexity is just calculating how to centre it):
 
 ```lua
 function CreateFloatingWindow(overrides)
-	-- Window maths lovingly stolen from:
-	--   https://www.2n.pl/blog/how-to-make-ui-for-neovim-plugins-in-lua
-	local width = vim.api.nvim_get_option('columns')
-	local height = vim.api.nvim_get_option('lines')
-	local win_height = math.ceil(height * 0.8 - 4)
-	local win_width = math.ceil(width * 0.8)
-	local col = math.ceil((width - win_width) / 2)
-	local buf = vim.api.nvim_create_buf(false, true)
+    -- Window maths lovingly stolen from:
+    --   https://www.2n.pl/blog/how-to-make-ui-for-neovim-plugins-in-lua
+    local width = vim.api.nvim_get_option('columns')
+    local height = vim.api.nvim_get_option('lines')
+    local win_height = math.ceil(height * 0.8 - 4)
+    local win_width = math.ceil(width * 0.8)
+    local col = math.ceil((width - win_width) / 2)
+    local buf = vim.api.nvim_create_buf(false, true)
 
-	local opts = {
-		relative = 'editor',
-		width = win_width,
-		height = win_height,
-		col = col,
-		row = 2,
-		border = 'rounded',
-	}
-	for k,v in pairs(overrides) do opts[k] = v end
+    local opts = {
+        relative = 'editor',
+        width = win_width,
+        height = win_height,
+        col = col,
+        row = 2,
+        border = 'rounded',
+    }
+    for k,v in pairs(overrides) do opts[k] = v end
 
-	return vim.api.nvim_open_win(buf, true, opts)
+    return vim.api.nvim_open_win(buf, true, opts)
 end
 ```
 

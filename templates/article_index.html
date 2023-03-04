@@ -2,29 +2,29 @@
 {% block title %}Article Archive{% endblock %}
 {% block content %}
 <div class="container">
-	<header class="pageIntro">
-		<h2>Weblog Article Archive</h2>
-		<p>
-			Here is every published article on this web site.
-		</p>
-	</header>
+    <header class="pageIntro">
+        <h2>Weblog Article Archive</h2>
+        <p>
+            Here is every published article on this web site.
+        </p>
+    </header>
 
-	<table>
-		<thead>
-			<tr>
-				<th>Publish Date</th>
-				<th>Title</th>
-			</tr>
-		</thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Publish Date</th>
+                <th>Title</th>
+            </tr>
+        </thead>
 
-		<tbody>
+        <tbody>
             {% for meta in articles %}
-			<tr>
+            <tr>
                 <td>{{ meta.publish_date.format("%Y-%m-%d").to_string() }}</td>
-				<td><a href="/articles/{{ meta.slug }}">{{ meta.title }}</a></td>
-			</tr>
+                <td><a href="/articles/{{ meta.slug }}">{{ meta.title }}</a></td>
+            </tr>
             {% endfor %}
-		</tbody>
-	</table>
+        </tbody>
+    </table>
 </div>
 {% endblock %}

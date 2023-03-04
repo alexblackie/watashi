@@ -28,21 +28,21 @@ TEMPLATE_PATH="$HOME/.config/git/template"
 TRAILERS=""
 
 while true ; do
-	pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
+    pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
 
-	if [[ "$pick" != "" ]]; then
-		TRAILERS+="Co-authored-by: $pick\n"
-		echo "Added co-author: $pick"
-	else
-		break
-	fi
+    if [[ "$pick" != "" ]]; then
+        TRAILERS+="Co-authored-by: $pick\n"
+        echo "Added co-author: $pick"
+    else
+        break
+    fi
 done
 
 if [[ "$TRAILERS" != "" ]] ; then
-	echo -e "\n" > $TEMPLATE_PATH
-	echo -e "$TRAILERS" >> $TEMPLATE_PATH
+    echo -e "\n" > $TEMPLATE_PATH
+    echo -e "$TRAILERS" >> $TEMPLATE_PATH
 
-	echo "🧑‍💻Pairing mode enabled. Run 'git unpair' to end session."
+    echo "🧑‍💻Pairing mode enabled. Run 'git unpair' to end session."
 fi
 ```
 
@@ -81,18 +81,18 @@ git repo we have a list of people to choose from.
 TEMPLATE_PATH="$HOME/.config/git/template"
 
 +if [[ -e "$HOME/.colleagues.txt" ]] ; then
-+	COLLEAGUES="$(cat $HOME/.colleagues.txt)"
++    COLLEAGUES="$(cat $HOME/.colleagues.txt)"
 +else
-+	COLLEAGUES=""
++    COLLEAGUES=""
 +fi
 
 TRAILERS=""
 
 while true ; do
--	pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
-+	pick="$(echo -e "$COLLEAGUES\n$(git shortlog -e -s | cut -f2)" | uniq | fzy)"
+-    pick="$(echo -e "$(git shortlog -e -s | cut -f2)" | fzy)"
++    pick="$(echo -e "$COLLEAGUES\n$(git shortlog -e -s | cut -f2)" | uniq | fzy)"
 
-	if [[ "$pick" != "" ]]; then
+    if [[ "$pick" != "" ]]; then
 ```
 
 Then you can automate or manually maintain `~/.colleagues.txt`, which should be
