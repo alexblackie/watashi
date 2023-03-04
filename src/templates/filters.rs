@@ -1,6 +1,6 @@
 use std::{fmt::Display, fs::read_to_string};
-
 use chrono::NaiveDate;
+use crate::articles::ArticleMeta;
 
 // askama filter that takes a NaiveDate and formats it as a human readable string
 pub fn human_date(s: &NaiveDate) -> ::askama::Result<String> {
@@ -15,7 +15,7 @@ pub fn rfc_2822_date(s: &NaiveDate) -> ::askama::Result<String> {
 }
 
 // askama filter to compare publish_date to today and return true if it's more than two years ago
-pub fn is_old(m: &super::articles::ArticleMeta) -> ::askama::Result<bool> {
+pub fn is_old(m: &ArticleMeta) -> ::askama::Result<bool> {
     if m.evergreen.unwrap_or(false) {
         return Ok(false);
     }

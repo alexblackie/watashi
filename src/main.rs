@@ -1,125 +1,12 @@
 use actix_files::NamedFile;
 use actix_web::{
     dev::{Service as _, ServiceResponse},
-    http::header::ContentType,
-    middleware, web, App, HttpResponse, HttpServer, Responder,
+    middleware, web, App, HttpResponse, HttpServer
 };
-use askama::Template;
 use std::path::Path;
 
 pub mod articles;
-pub mod filters;
-
-#[derive(Template)]
-#[template(path = "home.html")]
-struct IndexTemplate<'a> {
-    nav: &'a str,
-    articles: articles::ArticleList,
-}
-
-async fn index(articles: web::Data<articles::ArticleList>) -> impl Responder {
-    let mut articles = articles.to_vec();
-    articles.truncate(10);
-    let tmpl = IndexTemplate {
-        articles: articles.to_vec(),
-        nav: "home",
-    };
-
-    HttpResponse::Ok()
-        .insert_header(ContentType::html())
-        .body(tmpl.render().unwrap())
-}
-
-#[derive(Template)]
-#[template(path = "article_index.html")]
-struct ArticleIndexTemplate<'a> {
-    nav: &'a str,
-    articles: articles::ArticleList,
-}
-
-async fn article_index(articles: web::Data<articles::ArticleList>) -> impl Responder {
-    let tmpl = ArticleIndexTemplate {
-        articles: articles.to_vec(),
-        nav: "articles",
-    };
-
-    HttpResponse::Ok()
-        .insert_header(ContentType::html())
-        .body(tmpl.render().unwrap())
-}
-
-#[derive(Template)]
-#[template(path = "feed.xml")]
-struct ArticleFeedTemplate<'a> {
-    articles: Vec<&'a articles::Article>,
-}
-
-async fn article_feed(article_map: web::Data<articles::Articles>) -> impl Responder {
-    // manually sort the articles because we need the full content as well
-    let mut articles: Vec<&articles::Article> = article_map.values().collect();
-    articles.sort_by(|a, b| b.meta.publish_date.cmp(&a.meta.publish_date));
-    articles.truncate(10);
-
-    let tmpl = ArticleFeedTemplate { articles };
-
-    HttpResponse::Ok()
-        .insert_header(ContentType::xml())
-        .body(tmpl.render().unwrap())
-}
-
-#[derive(Template)]
-#[template(path = "article_show.html", escape = "none")]
-struct ArticleShowTemplate<'a> {
-    nav: &'a str,
-    article: &'a articles::Article,
-}
-
-async fn article_show(
-    path: web::Path<String>,
-    articles: web::Data<articles::Articles>,
-) -> impl Responder {
-    let slug = path.into_inner();
-    let article = articles.get(slug.as_str());
-
-    article.map_or_else(
-        || HttpResponse::NotFound().body("Not found!"),
-        |article| {
-            let tmpl = ArticleShowTemplate {
-                article,
-                nav: "articles",
-            };
-            HttpResponse::Ok()
-                .insert_header(ContentType::html())
-                .body(tmpl.render().unwrap())
-        },
-    )
-}
-
-#[derive(Template)]
-#[template(path = "setup.html")]
-struct SetupTemplate<'a> {
-    nav: &'a str,
-}
-
-async fn setup() -> impl Responder {
-    let tmpl = SetupTemplate { nav: "setup" };
-    HttpResponse::Ok()
-        .insert_header(ContentType::html())
-        .body(tmpl.render().unwrap())
-}
-
-#[derive(Template)]
-#[template(path = "all_stars.html")]
-struct AllStarsTemplate<'a> {
-    nav: &'a str,
-}
-
-async fn all_stars() -> impl Responder {
-    let tmpl = AllStarsTemplate { nav: "all-stars" };
-    HttpResponse::Ok()
-        .insert_header(ContentType::html())
-        .body(tmpl.render().unwrap())
-}
+pub mod templates;
 
 async fn favicon() -> actix_web::Result<NamedFile> {
     Ok(NamedFile::open("./static/favicon.ico")?)
@@ -163,12 +50,12 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("/images", "./static/images"))
 
             .route("/favicon.ico", web::get().to(favicon))
-            .route("/", web::get().to(index))
-            .route("/setup/", web::get().to(setup))
-            .route("/all-stars/", web::get().to(all_stars))
-            .route("/feed.xml", web::get().to(article_feed))
-            .route("/articles/", web::get().to(article_index))
-            .route("/articles/{slug}/", web::get().to(article_show))
+            .route("/", web::get().to(templates::index))
+            .route("/setup/", web::get().to(templates::setup))
+            .route("/all-stars/", web::get().to(templates::all_stars))
+            .route("/feed.xml", web::get().to(templates::article_feed))
+            .route("/articles/", web::get().to(templates::article_index))
+            .route("/articles/{slug}/", web::get().to(templates::article_show))
     })
     .bind(("0.0.0.0", 3000))?
     .run()
