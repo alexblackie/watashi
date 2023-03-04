@@ -82,9 +82,8 @@ pub async fn article_show(
     let slug = path.into_inner();
     let article = articles.get(slug.as_str());
 
-    article.map_or_else(
-        || HttpResponse::NotFound().body("Not found!"),
-        |article| {
+    match article {
+        Some(article) => {
             let tmpl = ArticleShowTemplate {
                 config: &config,
                 article,
@@ -94,7 +93,8 @@ pub async fn article_show(
                 .insert_header(ContentType::html())
                 .body(tmpl.render().unwrap())
         },
-    )
+        None => render_not_found(config)
+    }
 }
 
 #[derive(Template)]
@@ -121,6 +121,24 @@ struct AllStarsTemplate<'a> {
 pub async fn all_stars(config: web::Data<AppConfig>) -> impl Responder {
     let tmpl = AllStarsTemplate { config: &config, nav: "all-stars" };
     HttpResponse::Ok()
+        .insert_header(ContentType::html())
+        .body(tmpl.render().unwrap())
+}
+
+#[derive(Template)]
+#[template(path = "error_not_found.html")]
+struct ErrorNotFoundTemplate<'a> {
+    config: &'a AppConfig,
+    nav: &'a str,
+}
+
+pub async fn error_not_found(config: web::Data<AppConfig>) -> impl Responder {
+    render_not_found(config)
+}
+
+fn render_not_found(config: web::Data<AppConfig>) -> HttpResponse {
+    let tmpl = ErrorNotFoundTemplate { config: &config, nav: "" };
+    HttpResponse::NotFound()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())
 }

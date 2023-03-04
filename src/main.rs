@@ -65,6 +65,8 @@ async fn main() -> std::io::Result<()> {
             .route("/feed.xml", web::get().to(templates::article_feed))
             .route("/articles/", web::get().to(templates::article_index))
             .route("/articles/{slug}/", web::get().to(templates::article_show))
+
+            .default_service(web::route().to(templates::error_not_found))
     })
     .bind(("0.0.0.0", 3000))?
     .run()
