@@ -8,7 +8,9 @@ open_graph_meta:
   description: >
         You can get a pretty functional static site generator just using a bash
         script and some common Unix tools. Come see how.
+
 ---
+
 <p>
     When you think of <code>bash</code>, you may not consider it suitable for
     building websites. For the most part, you are probably correct. But I

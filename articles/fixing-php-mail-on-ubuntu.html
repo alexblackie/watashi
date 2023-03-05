@@ -1,7 +1,9 @@
 title: "Fixing PHP mail() on Ubuntu"
 slug: fixing-php-mail-on-ubuntu
 publish_date: "2011-04-08"
+
 ---
+
 <p>I&#8217;m still settling into the new <a href="http://web.archive.org/web/20110508180637/http://rackspacecloud.com/">Rackspace Cloud Server</a>, and I just solved a problem I was trying to fix for the last two days. And all I had to do was change three characters in an <code>.ini</code> file.</p>
 
 <p>On my server I&#8217;m running Ubuntu 10.04 Lucid LTS. I had everything working &#8211; MySQL, PHP, Apache&#8230; The only thing that wasn&#8217;t working properly was <code>sendmail</code>. It would send, but after it hung for a minute and 25 seconds (I timed it). This was bad &#8211; to comment in WordPress, the person would have to wait for a minute-and-a-half after they click &#8220;submit&#8221; before it would finally go.</p>

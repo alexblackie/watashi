@@ -1,7 +1,9 @@
 title: Automate commit co-authors when pairing
 slug: automate-commit-coauthors-pairing
 publish_date: "2021-08-03"
+
 ---
+
 Pairing is a fantastic way to quickly bounce ideas around, get help with
 something, or even as a tool for mentoring and growth. In recent times, most
 Git-based tools have adopted the `Co-Authored-By` trailer to identify when

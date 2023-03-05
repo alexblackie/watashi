@@ -13,7 +13,9 @@ open_graph_meta:
   title: Stateless Nextcloud on Kubernetes
   description: "I am a heavy user of Nextcloud, but scaling it can be a challenge. Here is how I managed to get it to a place I can trust."
   image_url: /images/articles/nextcloud-on-k8s/420scaleit.jpg
+
 ---
+
 <p>
     <big>
         Since early 2018, I have used <a href="https://nextcloud.com">Nextcloud</a>

@@ -7,6 +7,7 @@ open_graph_meta:
   description: >
     UUID primary keys don't have to be a pain when using Ecto in your Elixir
     projects.
+
 ---
 
 Using UUID's as primary keys can have many benefits, and if you're using PostgreSQL you have the advantage of solid performance and efficient storage of those UUIDs leading to good scalability even compared to `bigint`.

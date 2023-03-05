@@ -12,7 +12,9 @@ open_graph_meta:
   title: Finding files in Neovim with fzy
   description: "Integrating the fuzzy file finder 'fzy' into Neovim with a little bit of Lua."
   image_url: /images/articles/neovim-fzy/nvim-fzy.png
+
 ---
+
 <p>
     <big>
         I'm a big fan of <a href="https://github.com/jhawthorn/fzy">fzy</a> for

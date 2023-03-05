@@ -7,6 +7,7 @@ open_graph_meta:
   description: >
     Figma's acquisition by Adobe should be a warning for us all of the truly
     short-sighted, innovation-destroying nature of modern startup economy.
+
 ---
 <big>
 
