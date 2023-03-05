@@ -13,6 +13,7 @@ pub struct AppConfig {
     profile: String,
     toolchain_version: &'static str,
     version: &'static str,
+    head_commit: &'static str,
 }
 
 async fn favicon() -> actix_web::Result<NamedFile> {
@@ -80,5 +81,6 @@ fn build_app_config() -> AppConfig {
         profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
         toolchain_version: env!("TOOLCHAIN_VERSION"),
         version: env!("CARGO_PKG_VERSION"),
+        head_commit: env!("HEAD_COMMIT"),
     }
 }
