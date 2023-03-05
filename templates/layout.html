@@ -36,12 +36,32 @@
 
         <footer class="siteFooter">
             <div class="container">
-                <p>
-                    &copy; 2011-2022 Alex Blackie. Some Rights Reserved.
-                </p>
-                <p>
-                    This site is <a href="https://github.com/alexblackie/watashi">open source</a>. Icons are from the wonderful <a href="https://feathericons.com">Feather Icons</a>.<br>
-                    Powered by <code>{{ config.toolchain_version }}</code> and significant quantities of coffee.
+                <div>
+                    <p>
+                        &copy; 2011-2023 Alex Blackie. All Rights Reserved.
+                    </p>
+
+                    <dl>
+                        <dt>Version</dt>
+                        <dd><code>watashi {{ config.version }}</code></dd>
+
+                        <dt>Compiled With</dt>
+                        <dd><code>{{ config.toolchain_version }}</code></dd>
+                    </dl>
+                </div>
+
+                <dl class="siteFooter--links">
+                    <dt>Source Code</dt>
+                    <dd><code><a href="https://github.com/alexblackie/watashi">alexblackie/watashi</a></code></dd>
+
+                    <dt>Icons</dt>
+                    <dd><a href="https://feathericons.com">Feather Icons</a></dd>
+
+                    <dt>Deployed on</dt>
+                    <dd><a href="https://kubernetes.io">Kubernetes</a></dd>
+
+                    <dt>Hosted on</dt>
+                    <dd><a href="https://azure.microsoft.com">Azure</a></dd>
                 </p>
             </div>
         </footer>
