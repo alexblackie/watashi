@@ -8,9 +8,11 @@ use std::{path::Path, env};
 pub mod articles;
 pub mod templates;
 
+#[derive(Clone)]
 pub struct AppConfig {
     title: String,
     profile: String,
+    port: u16,
     toolchain_version: &'static str,
     version: &'static str,
     head_commit: &'static str,
@@ -23,17 +25,18 @@ async fn favicon() -> actix_web::Result<NamedFile> {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
+    let app_config = build_app_config();
+    let port = app_config.port;
+
+    HttpServer::new(move || {
         let articles = articles::discover(Path::new("./articles"));
         let mut sorted_articles: articles::ArticleList = articles.values().map(|a| a.meta.clone()).collect();
         sorted_articles.sort_by(|a, b| b.publish_date.cmp(&a.publish_date));
 
-        let app_config = build_app_config();
-
         App::new()
             .app_data(web::Data::new(articles))
             .app_data(web::Data::new(sorted_articles))
-            .app_data(web::Data::new(app_config))
+            .app_data(web::Data::new(app_config.clone()))
 
             // actix-web middleware that adds a trailing slash unless the path contains a dot, and
             // redirects to the new path.
@@ -71,7 +74,7 @@ async fn main() -> std::io::Result<()> {
 
             .default_service(web::route().to(templates::error_not_found))
     })
-    .bind(("0.0.0.0", 3000))?
+    .bind(("0.0.0.0", port))?
     .run()
     .await
 }
@@ -80,6 +83,7 @@ fn build_app_config() -> AppConfig {
     AppConfig {
         title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
         profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
+        port: env::var("PORT").unwrap_or_else(|_| "3000".to_string()).parse().unwrap(),
         toolchain_version: env!("TOOLCHAIN_VERSION"),
         version: env!("CARGO_PKG_VERSION"),
         head_commit: env!("HEAD_COMMIT"),
