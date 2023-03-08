@@ -61,8 +61,8 @@ async fn main() -> std::io::Result<()> {
                   .add(("Strict-Transport-Security", "max-age=7776000"))
                   .add(("X-Frame-Options", "DENY")))
 
-            .service(actix_files::Files::new("/_", "./static/_"))
-            .service(actix_files::Files::new("/images", "./static/images"))
+            .service(actix_files::Files::new("/_", "./public/_"))
+            .service(actix_files::Files::new("/images", "./public/images"))
 
             .route("/favicon.ico", web::get().to(favicon))
             .route("/", web::get().to(templates::index))
