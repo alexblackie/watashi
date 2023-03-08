@@ -52,9 +52,10 @@
 
     --color-border: gainsboro;
     --color-bg-content: white;
-    --color-bg-mark: #feefff;
+    --color-bg-mark: #e5faff;
     --color-bg-light: whitesmoke;
-    --color-highlight: royalblue;
+    --color-highlight: #1168aa;
+    --color-highlight-alt: #14cec2;
 
     --color-text: #252525;
     --color-text-link: var(--color-highlight);
@@ -62,6 +63,8 @@
     --color-text-muted: grey;
 
     --color-bg-header: var(--color-bg-light);
+    --gradient-header: linear-gradient(32deg, rgba(27,54,74,1) 25%, rgba(50,6,56,1) 100%);
+
     --color-bg-code: var(--color-bg-light);
 
     --height-header: 5rem;
@@ -82,6 +85,7 @@ mark {
     padding: 2px 4px;
     color: inherit;
     background-color: var(--color-bg-mark);
+    border-radius: 5px;
 }
 
 table {
@@ -108,7 +112,9 @@ table td {
     position: relative;
     z-index: 16592;
     height: var(--height-header);
-    background-color: var(--color-bg-light);
+    background-color: var(--color-bg-header);
+    background-image: var(--gradient-header);
+    color: var(--color-text-inverse);
 }
 .siteHeader .container {
     display: flex;
@@ -148,7 +154,7 @@ table td {
     background-color: rgba(0,0,0, 0.05);
 }
 .siteHeader nav a.active {
-    background-color: var(--color-bg-content);
+    background-color: rgba(255,255,255, 0.15);
 }
 
 .siteFooter {
@@ -156,8 +162,9 @@ table td {
     padding: 2rem 0;
     font-size: 0.9rem;
     line-height: 1.5em;
-    color: var(--color-text-muted);
-    background-color: var(--color-bg-light);
+    color: var(--color-text-inverse);
+    background-color: var(--color-bg-header);
+    background-image: var(--gradient-header);
 }
     .siteFooter .container {
         display: grid;
@@ -166,7 +173,7 @@ table td {
     }
 
     .siteFooter a {
-        color: var(--color-text);
+        color: var(--color-highlight-alt);
     }
 
     .siteFooter--links {
@@ -294,15 +301,17 @@ table td {
     border-bottom: 2px solid var(--color-border);
 }
 
+.singleArticle {
+    margin-top: 4rem;
+}
+
 .singleArticle--body {
     max-width: 40rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6rem;
+    margin: 4rem auto 6rem;
 }
-.singleArticle--body big {
-    line-height: 1.75em;
-}
+    .singleArticle--body big {
+        line-height: 1.75em;
+    }
 
 .singleArticle--body p,
 .singleArticle--body blockquote {
@@ -337,7 +346,7 @@ table td {
 }
 
 .pageIntro {
-    margin: 2rem 0;
+    margin: 4rem 0;
 }
 .pageIntro h2 {
     margin: 0 0 0.5rem;
@@ -358,6 +367,8 @@ h2.pageTitle {
 .cover,
 .cover img {
     border-radius: 1rem;
+    box-shadow: 0 1px 2rem rgba(0,0,0, 0.1);
+    line-height: 0;
 }
 
 .badge {
@@ -482,11 +493,6 @@ h2.pageTitle {
         --color-bg-code-hl: #222200;
     }
 
-    .articleOldWarning {
-        background-color: #690000;
-    }
-
-    .siteContent code {
-        color: #cb7edb;
-    }
+    .articleOldWarning { background-color: #5e0e33; }
+    .siteContent code { color: #cb7edb; }
 }

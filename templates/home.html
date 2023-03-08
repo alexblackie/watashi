@@ -108,10 +108,17 @@
     --home-sidebar-width: 32%;
 }
 
+.siteHeader {
+    background: transparent;
+}
+
 .homeHero {
-    margin: 0 0 3rem 0;
+    margin: calc(var(--height-header) * -1) 0 3rem 0;
+    padding-top: var(--height-header);
     font-size: 1.25em;
     background-color: var(--color-bg-header);
+    background-image: var(--gradient-header);
+    color: var(--color-text-inverse);
 }
     .homeHero .container {
         display: flex;
@@ -130,8 +137,13 @@
     .homeHero--body p {
         margin: 1rem 0;
     }
+    .homeHero--body a {
+        color: var(--color-highlight-alt);
+        text-decoration: none;
+        border-bottom: 1px solid var(--color-highlight-alt);
+    }
     .homeHero--body mark {
-        background-color: rgba(0,0,0, 0.05);
+        background-color: rgba(255,255,255, 0.1);
     }
 
     .articleList {
