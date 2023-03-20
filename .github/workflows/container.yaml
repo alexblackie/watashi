@@ -29,3 +29,4 @@ jobs:
       with:
         push: true
         tags: ${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:${{ github.sha }}
+        build-args: HEAD_COMMIT=${{ github.sha }}

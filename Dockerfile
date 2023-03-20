@@ -4,6 +4,7 @@ COPY . .
 RUN npm install && npm run build
 
 FROM rust:1.67.1-bullseye as program
+ARG HEAD_COMMIT
 WORKDIR /usr/src/watashi
 COPY . .
 RUN cargo build --release
