@@ -86,7 +86,7 @@ fn build_app_config() -> AppConfig {
         port: env::var("PORT").unwrap_or_else(|_| "3000".to_string()).parse().unwrap(),
         toolchain_version: env!("TOOLCHAIN_VERSION"),
         version: env!("CARGO_PKG_VERSION"),
-        head_commit: env!("HEAD_COMMIT"),
+        head_commit: option_env!("HEAD_COMMIT").unwrap_or("HEAD"),
         infra_hostname: env::var("HOSTNAME").unwrap_or_else(|_| "localhost".to_string()),
     }
 }
