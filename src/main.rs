@@ -16,7 +16,6 @@ pub struct AppConfig {
     toolchain_version: &'static str,
     version: &'static str,
     head_commit: &'static str,
-    infra_hostname: String,
 }
 
 async fn favicon() -> actix_web::Result<NamedFile> {
@@ -87,6 +86,5 @@ fn build_app_config() -> AppConfig {
         toolchain_version: env!("TOOLCHAIN_VERSION"),
         version: env!("CARGO_PKG_VERSION"),
         head_commit: option_env!("HEAD_COMMIT").map_or("HEAD", |s| &s[0..9]),
-        infra_hostname: env::var("HOSTNAME").unwrap_or_else(|_| "localhost".to_string()),
     }
 }
