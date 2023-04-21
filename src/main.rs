@@ -1,9 +1,9 @@
 use actix_files::NamedFile;
 use actix_web::{
     dev::{Service as _, ServiceResponse},
-    middleware, web, App, HttpResponse, HttpServer
+    middleware, web, App, HttpResponse, HttpServer,
 };
-use std::{path::Path, env};
+use std::{env, path::Path};
 
 pub mod articles;
 pub mod templates;
@@ -57,8 +57,11 @@ async fn main() -> std::io::Result<()> {
                   .add(("X-Content-Type-Options", "nosniff"))
                   .add(("X-XSS-Protection", "1; mode=block"))
                   .add(("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://plausible.io; connect-src https://plausible.io"))
-                  .add(("Strict-Transport-Security", "max-age=7776000"))
-                  .add(("X-Frame-Options", "DENY")))
+                  .add(("Strict-Transport-Security", "max-age=7776000; preload"))
+                  .add(("X-Frame-Options", "DENY"))
+                  .add(("Referrer-Policy", "strict-origin-when-cross-origin"))
+                  .add(("X-Permitted-Cross-Domain-Policies", "none"))
+                  .add(("X-Download-Options", "noopen")))
 
             .service(actix_files::Files::new("/_", "./public/_"))
             .service(actix_files::Files::new("/images", "./public/images"))
@@ -82,7 +85,10 @@ fn build_app_config() -> AppConfig {
     AppConfig {
         title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
         profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
-        port: env::var("PORT").unwrap_or_else(|_| "3000".to_string()).parse().unwrap(),
+        port: env::var("PORT")
+            .unwrap_or_else(|_| "3000".to_string())
+            .parse()
+            .unwrap(),
         toolchain_version: env!("TOOLCHAIN_VERSION"),
         version: env!("CARGO_PKG_VERSION"),
         head_commit: option_env!("HEAD_COMMIT").map_or("HEAD", |s| &s[0..9]),
