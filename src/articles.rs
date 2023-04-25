@@ -44,7 +44,11 @@ pub fn parse_article(raw: String, ext: &str) -> Result<Article, String> {
     match serde_yaml::from_str::<ArticleMeta>(meta) {
         Ok(meta) => Ok(Article {
             meta,
-            content: if ext == "md" { parse_content(content.to_string()) } else { content.to_string() },
+            content: if ext == "md" {
+                parse_content(content.to_string())
+            } else {
+                content.to_string()
+            },
         }),
         Err(e) => Err(format!("Failed to parse article frontmatter: {}", e)),
     }
@@ -65,7 +69,8 @@ pub fn discover(base_dir: &Path) -> Articles {
         .map(|p| p.unwrap().as_path().to_owned())
         .for_each(|file_path| match fs::read_to_string(&file_path) {
             Ok(raw) => {
-                let article = parse_article(raw, file_path.extension().unwrap().to_str().unwrap()).unwrap();
+                let article =
+                    parse_article(raw, file_path.extension().unwrap().to_str().unwrap()).unwrap();
                 articles.insert(article.meta.slug.clone(), article);
             }
             Err(_) => {}

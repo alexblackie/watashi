@@ -1,6 +1,6 @@
-use std::{fmt::Display, fs::read_to_string};
-use chrono::NaiveDate;
 use crate::articles::ArticleMeta;
+use chrono::NaiveDate;
+use std::{fmt::Display, fs::read_to_string};
 
 // askama filter that takes a NaiveDate and formats it as a human readable string
 pub fn human_date(s: &NaiveDate) -> ::askama::Result<String> {

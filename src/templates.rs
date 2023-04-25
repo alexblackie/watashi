@@ -1,7 +1,7 @@
-use askama::Template;
-use actix_web::{web, http::header::ContentType, HttpResponse, Responder};
-use crate::articles::{ArticleList, Articles, Article};
+use crate::articles::{Article, ArticleList, Articles};
 use crate::AppConfig;
+use actix_web::{http::header::ContentType, web, HttpResponse, Responder};
+use askama::Template;
 
 pub mod filters;
 
@@ -13,7 +13,10 @@ struct IndexTemplate<'a> {
     articles: ArticleList,
 }
 
-pub async fn index(config: web::Data<AppConfig>, articles: web::Data<ArticleList>) -> impl Responder {
+pub async fn index(
+    config: web::Data<AppConfig>,
+    articles: web::Data<ArticleList>,
+) -> impl Responder {
     let mut articles = articles.to_vec();
     articles.truncate(10);
     let tmpl = IndexTemplate {
@@ -35,7 +38,10 @@ struct ArticleIndexTemplate<'a> {
     articles: ArticleList,
 }
 
-pub async fn article_index(config: web::Data<AppConfig>, articles: web::Data<ArticleList>) -> impl Responder {
+pub async fn article_index(
+    config: web::Data<AppConfig>,
+    articles: web::Data<ArticleList>,
+) -> impl Responder {
     let tmpl = ArticleIndexTemplate {
         config: &config,
         articles: articles.to_vec(),
@@ -92,8 +98,8 @@ pub async fn article_show(
             HttpResponse::Ok()
                 .insert_header(ContentType::html())
                 .body(tmpl.render().unwrap())
-        },
-        None => render_not_found(config)
+        }
+        None => render_not_found(config),
     }
 }
 
@@ -105,7 +111,10 @@ struct SetupTemplate<'a> {
 }
 
 pub async fn setup(config: web::Data<AppConfig>) -> impl Responder {
-    let tmpl = SetupTemplate { config: &config, nav: "setup" };
+    let tmpl = SetupTemplate {
+        config: &config,
+        nav: "setup",
+    };
     HttpResponse::Ok()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())
@@ -119,7 +128,10 @@ struct AllStarsTemplate<'a> {
 }
 
 pub async fn all_stars(config: web::Data<AppConfig>) -> impl Responder {
-    let tmpl = AllStarsTemplate { config: &config, nav: "all-stars" };
+    let tmpl = AllStarsTemplate {
+        config: &config,
+        nav: "all-stars",
+    };
     HttpResponse::Ok()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())
@@ -137,7 +149,10 @@ pub async fn error_not_found(config: web::Data<AppConfig>) -> impl Responder {
 }
 
 fn render_not_found(config: web::Data<AppConfig>) -> HttpResponse {
-    let tmpl = ErrorNotFoundTemplate { config: &config, nav: "" };
+    let tmpl = ErrorNotFoundTemplate {
+        config: &config,
+        nav: "",
+    };
     HttpResponse::NotFound()
         .insert_header(ContentType::html())
         .body(tmpl.render().unwrap())

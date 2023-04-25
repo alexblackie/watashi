@@ -4,5 +4,8 @@ fn main() {
         .output()
         .expect("failed to get rustc version");
 
-    println!("cargo:rustc-env=TOOLCHAIN_VERSION={}", String::from_utf8(version_output.stdout).unwrap());
+    println!(
+        "cargo:rustc-env=TOOLCHAIN_VERSION={}",
+        String::from_utf8(version_output.stdout).unwrap()
+    );
 }
