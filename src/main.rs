@@ -18,13 +18,29 @@ pub struct AppConfig {
     head_commit: &'static str,
 }
 
+impl AppConfig {
+    fn build() -> Self {
+        AppConfig {
+            title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
+            profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
+            port: env::var("PORT")
+                .unwrap_or_else(|_| "3000".to_string())
+                .parse()
+                .unwrap(),
+            toolchain_version: env!("TOOLCHAIN_VERSION"),
+            version: env!("CARGO_PKG_VERSION"),
+            head_commit: option_env!("HEAD_COMMIT").map_or("HEAD", |s| &s[0..9]),
+        }
+    }
+}
+
 async fn favicon() -> actix_web::Result<NamedFile> {
     Ok(NamedFile::open("./static/favicon.ico")?)
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    let app_config = build_app_config();
+    let app_config = AppConfig::build();
     let port = app_config.port;
 
     HttpServer::new(move || {
@@ -79,18 +95,4 @@ async fn main() -> std::io::Result<()> {
     .bind(("0.0.0.0", port))?
     .run()
     .await
-}
-
-fn build_app_config() -> AppConfig {
-    AppConfig {
-        title: env::var("APP_TITLE").unwrap_or_else(|_| "Alex Blackie".to_string()),
-        profile: env::var("APP_PROFILE").unwrap_or_else(|_| "development".to_string()),
-        port: env::var("PORT")
-            .unwrap_or_else(|_| "3000".to_string())
-            .parse()
-            .unwrap(),
-        toolchain_version: env!("TOOLCHAIN_VERSION"),
-        version: env!("CARGO_PKG_VERSION"),
-        head_commit: option_env!("HEAD_COMMIT").map_or("HEAD", |s| &s[0..9]),
-    }
 }
