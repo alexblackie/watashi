@@ -1,0 +1,274 @@
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/Inter-Regular.woff2?v=3.15") format("woff2");
+}
+
+@font-face {
+	font-family: "Inter";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("/fonts/Inter-Italic.woff2?v=3.15") format("woff2");
+}
+
+@font-face {
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("/fonts/Inter-Bold.woff2?v=3.15") format("woff2");
+}
+
+/**
+ * Global Stuff
+ */
+:root {
+	--font-family-default: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+
+	--palette-cloud: #f0f0f0;
+	--palette-smoke: #8f8f8f;
+	--palette-soot: #303030;
+	--palette-blue: navy;
+
+	--colour-text: var(--palette-soot);
+	--colour-highlight: var(--palette-blue);
+	--colour-border: var(--palette-cloud);
+	--colour-bg-dim: var(--palette-cloud);
+	--colour-text-dim: var(--palette-smoke);
+}
+
+body {
+	font-family: var(--font-family-default);
+	font-size: 18px;
+	max-width: 69rem;
+	margin: 2rem;
+	color: var(--colour-text);
+}
+
+a {
+	color: var(--colour-highlight);
+}
+
+figure {
+	margin: 1rem 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+mark {
+	background-color: papayawhip;
+	padding: 2px 6px;
+	border-radius: 5px;
+}
+
+hr {
+	margin: 2em 0;
+	height: 2px;
+	outline: 0;
+	border: none;
+	background-color: var(--colour-bg-dim);
+}
+
+code,
+pre {
+	background-color: var(--colour-bg-dim);
+}
+
+pre {
+	padding: 1rem;
+	border-radius: 1rem;
+	max-height: 50vh;
+	overflow: auto;
+}
+
+pre code {
+	padding: 0;
+	background: transparent;
+}
+
+code {
+	padding: 2px 5px;
+	border-radius: 5px;
+}
+
+/**
+ * Site Header
+ */
+.siteHeader--brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 1rem;
+	font-size: 2.25rem;
+	font-weight: bold;
+	text-decoration: none;
+	color: inherit;
+	letter-spacing: -1px;
+}
+.siteHeader--brand img {
+	line-height: 0;
+	font-size: 0;
+}
+
+.siteHeader-small .siteHeader--brand {
+	font-size: 2rem;
+}
+
+/**
+ * Site Footer
+ */
+.siteFooter {
+	margin-top: 3rem;
+	padding: 3rem 0;
+	color: var(--colour-text-dim);
+}
+
+/**
+ * Utility Classes
+ */
+.rounded {
+	border-radius: 1rem;
+}
+
+.rounded-small {
+	border-radius: 0.5rem;
+}
+
+.pull-right {
+	float: right;
+	margin-left: 1rem;
+}
+
+figure.pull-right {
+	margin-top: 0;
+}
+
+.prose {
+	max-width: 80ch;
+	line-height: 1.65em;
+}
+
+.prose h2,
+.prose h3 {
+	margin: 3rem 0 1rem;
+}
+
+.badge {
+	font-size: 80%;
+	padding: 3px 8px;
+	border-radius: 6px;
+	background-color: var(--colour-bg-dim);
+}
+
+/**
+ * Contact Card component
+ */
+.contactCards {
+	display: flex;
+	gap: 1rem;
+}
+
+.contactCard {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 1rem;
+	color: inherit;
+	text-decoration: none;
+	font-size: 1.15rem;
+	border: 2px solid var(--colour-border);
+	transition: all ease 0.15s;
+}
+.contactCard:hover {
+	border-color: var(--colour-highlight);
+	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.05);
+}
+
+.contactCard svg,
+.contactCard .feather {
+	margin-right: 1rem;
+	width: 1.25rem;
+	height: 1.5rem;
+	color: var(--colour-highlight);
+}
+
+.contactCard--target {
+	font-size: 0.75em;
+	font-weight: bold;
+	text-transform: uppercase;
+	opacity: 0.75;
+	margin-bottom: 0.15rem;
+}
+
+/**
+ * Home-specific components
+ */
+.homeVSpread {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 4rem;
+	height: 90vh;
+}
+
+.homeHero {
+	font-size: 1.75rem;
+	line-height: 1.6em;
+}
+
+.homeHero p:last-child {
+	margin-bottom: 0;
+}
+
+.homeHero--greeting {
+	margin: 0;
+	font-size: 2.25rem;
+}
+
+.homeColumns {
+	display: flex;
+	gap: 3rem;
+}
+
+.homeBio h2 {
+	margin: 3rem 0 0;
+	font-size: 1em;
+}
+.homeBio *:first-child {
+	margin-top: 0;
+}
+
+.homeColumns figure {
+	margin-top: 0;
+	flex-shrink: 0;
+}
+
+/**
+ * Article components
+ */
+.article {
+	margin: 8vh 0;
+}
+
+.article header {
+	margin-bottom: 3rem;
+}
+
+.article header h1 {
+	margin: 0 0 1rem;
+	font-size: 2.75rem;
+	letter-spacing: -1px;
+}
+
+.article--cover {
+	margin: 2rem 0;
+	padding: 0;
+}

@@ -1,0 +1,46 @@
+{{- define "main" -}}
+<header class="siteHeader siteHeader-small">
+	<a class="siteHeader--brand" href="/">
+		<img
+			src="/images/avi.jpg"
+			alt="Avatar for Alex Blackie"
+			width="40"
+			height="40"
+			class="rounded-small"
+		/>
+		Alex Blackie
+	</a>
+</header>
+
+<main>
+	<article class="article">
+		<header>
+			<h1>{{ .Title }}</h1>
+			<div class="article--meta">
+				<span class="badge">
+					Published <time>{{ .Params.publish_date }}</time>
+				</span>
+			</div>
+		</header>
+
+		{{ if .Params.cover }}
+		<figure class="article--cover">
+			<img
+				class="rounded"
+				src="{{ .Params.cover.url }}"
+				alt="{{ .Params.cover.alt }}"
+				width="{{ .Params.cover.width }}"
+				height="{{ .Params.cover.height }}"
+			/>
+		</figure>
+		{{ end }}
+
+		<div class="prose">{{ .Content }}</div>
+	</article>
+</main>
+
+<footer class="siteFooter">
+	&copy; 2011-2023 Alex Blackie. All Rights Reserved.
+</footer>
+
+{{- end -}}

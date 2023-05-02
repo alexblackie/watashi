@@ -1,0 +1,12 @@
+baseURL: "/"
+defaultContentLanguage: "en"
+
+languages:
+  en:
+    weight: 0
+    title: "Alex Blackie"
+    lang: "en"
+
+markup:
+  highlight:
+    style: friendly

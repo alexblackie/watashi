@@ -1,0 +1,6 @@
+# Ignore tempfiles
+.hugo_build.lock
+
+# Ignore compiled site
+/public
+/resources
