@@ -1,0 +1,6 @@
+import Config
+
+# Set the port for the HTTP router to listen on. Recommended to respect `PORT`
+# as many hosting environments use this for dynamic port assignment.
+config :watashi,
+  router_port: System.get_env("PORT", "4000") |> String.to_integer()
