@@ -2,7 +2,7 @@ defmodule Watashi.Router do
   use Plug.Router
 
   plug(LoggerJSON.Plug)
-  plug(Plug.Static, from: "priv/static", at: "/")
+  plug(Plug.Static, from: {:watashi, "priv/static"}, at: "/")
 
   plug(:match)
   plug(:dispatch)
