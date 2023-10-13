@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-CA">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title><%= Access.get(assigns, :title, "Untitled") %> - Alex Blackie</title>
-		<link rel="stylesheet" href="/css/site.css">
-    <%= if Mix.env() == :production do %>
-		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
-		<% end %>
-	</head>
-	<body>
-		<%= @inner_content %>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= Access.get(assigns, :title, "Untitled") %> - Alex Blackie</title>
+    <link rel="stylesheet" href="/css/site.css">
+    <%= if @current_env == :prod do %>
+      <script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
+    <% end %>
+  </head>
+  <body>
+    <%= @inner_content %>
 
-		<footer class="siteFooter">
-			&copy; 2011-<%= Date.utc_today().year %> Alex Blackie. All Rights Reserved.
-		</footer>
-	</body>
+    <footer class="siteFooter">
+      &copy; 2011-<%= Date.utc_today().year %> Alex Blackie. All Rights Reserved.
+    </footer>
+  </body>
 </html>

@@ -14,6 +14,8 @@ defmodule Watashi.Template do
   assigns to it if necessary.
   """
   def render(name, assigns \\ []) do
+    assigns = Keyword.put_new(assigns, :current_env, current_env())
+
     {result, _bindings} =
       @templates
       |> Map.get(name)
@@ -38,5 +40,9 @@ defmodule Watashi.Template do
     layout_assigns = Keyword.merge(assigns, inner_content: partial)
 
     render(layout, layout_assigns)
+  end
+
+  def current_env do
+    Application.get_env(:watashi, :env)
   end
 end
