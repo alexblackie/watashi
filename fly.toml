@@ -7,7 +7,7 @@ primary_region = "yul"
 processes = []
 
 [env]
-  APP_PROFILE = "production"
+  PORT = "8080"
 
 [experimental]
   auto_rollback = true
