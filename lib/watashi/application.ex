@@ -10,12 +10,7 @@ defmodule Watashi.Application do
     children = [
       # Starts a worker by calling: Watashi.Worker.start_link(arg)
       # {Watashi.Worker, arg}
-
-      # TODO(2023-08-20): Disabling compression for HTTP1.1 as some clients
-      # have issues with it (Firefox complains it is malformed when
-      # viewing-source), so might be some edge cases/bugs in the
-      # implementation.
-      {Bandit, plug: Watashi.Router, port: port(), http_2_options: [compress: false]},
+      {Bandit, plug: Watashi.Router, port: port()},
       Watashi.ArticleRepository
     ]
 

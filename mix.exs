@@ -25,7 +25,7 @@ defmodule Watashi.MixProject do
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:jason, "~> 1.4"},
-      {:bandit, "~> 1.0-pre"},
+      {:bandit, "~> 1.0"},
       {:logger_json, "~> 5.1"},
       {:earmark, "~> 1.4"},
       {:yaml_elixir, "~> 2.9"}
