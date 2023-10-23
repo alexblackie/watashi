@@ -1,11 +1,20 @@
 defmodule Watashi.TemplateTest do
   use ExUnit.Case, async: true
 
-  test "render/2" do
-    # Using the homepage as a test subject since we don't have any
-    # test-specific pages. This ties these tests to the content of the
-    # homepage which I don't love, but it's still a test.
+  test "render/2 renders a template" do
     html = Watashi.Template.render("home.html", articles: [])
+    assert html =~ ~s{<div class="homeHero">}
+    assert html =~ ~s{<ul class="articleList">}
+  end
+
+  test "render/2 renders a template without assigns" do
+    html = Watashi.Template.render("test.html")
+    assert html =~ "Test template"
+  end
+
+  test "render_layout/2 renders a template wrapped in the layout" do
+    html = Watashi.Template.render_layout("home.html", articles: [])
+    assert html =~ ~s{<title>}
     assert html =~ ~s{<div class="homeHero">}
     assert html =~ ~s{<ul class="articleList">}
   end

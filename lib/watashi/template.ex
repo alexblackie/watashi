@@ -32,9 +32,6 @@ defmodule Watashi.Template do
   def render_layout(name, assigns) when is_list(assigns),
     do: render_layout(name, "_layout.html", assigns)
 
-  def render_layout(name, layout) when is_binary(layout),
-    do: render_layout(name, layout, [])
-
   def render_layout(name, layout, assigns) do
     partial = render(name, assigns)
     layout_assigns = Keyword.merge(assigns, inner_content: partial)
