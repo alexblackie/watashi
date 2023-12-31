@@ -2,11 +2,16 @@ baseURL: "/"
 defaultContentLanguage: "en"
 disableHugoGeneratorInject: true
 
+params:
+  author:
+    name: Alex Blackie
+    email: alex@blackie.me
+
 languages:
   en:
     weight: 0
     title: "Alex Blackie"
-    lang: "en"
+    languageCode: "en-CA"
 
 markup:
   highlight:
