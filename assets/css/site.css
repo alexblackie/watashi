@@ -177,6 +177,10 @@ figure.pull-right {
 	background-color: var(--colour-bg-dim);
 }
 
+.shadow {
+	box-shadow: 0 0 2rem rgba(0,0,0, 0.15);
+}
+
 /**
  * Contact Card component
  */
