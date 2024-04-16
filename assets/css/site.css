@@ -49,6 +49,8 @@ body {
 	max-width: 69rem;
 	margin: 2rem auto;
 	color: var(--colour-text);
+	background-size: 100vw 100vh;
+	background-image: radial-gradient(circle, rgba(244,249,255,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 a {
@@ -65,7 +67,7 @@ img {
 }
 
 mark {
-	background-color: papayawhip;
+	background-color: rgba(252, 252, 221, 0.75);
 	padding: 2px 6px;
 	border-radius: 5px;
 }
@@ -200,9 +202,12 @@ figure.pull-right {
 	border: 2px solid var(--colour-border);
 	transition: all ease 0.15s;
 }
+
 .contactCard:hover {
+	color: var(--colour-highlight);
 	border-color: var(--colour-highlight);
-	box-shadow: 0 1px 1rem rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 2rem rgba(0, 0, 0, 0.05);
+	background-color: rgba(255, 255, 255, 0.25);
 }
 
 .contactCard svg,
