@@ -1,5 +1,6 @@
 baseURL: "/"
 defaultContentLanguage: "en"
+disableHugoGeneratorInject: true
 
 languages:
   en:

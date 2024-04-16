@@ -18,7 +18,7 @@
 			<h1>{{ .Title }}</h1>
 			<div class="article--meta">
 				<span class="badge">
-					Published <time>{{ .Params.publish_date }}</time>
+					Published <time>{{ .PublishDate.Format "January 2, 2006" }}</time>
 				</span>
 			</div>
 		</header>
@@ -38,9 +38,4 @@
 		<div class="prose">{{ .Content }}</div>
 	</article>
 </main>
-
-<footer class="siteFooter">
-	&copy; 2011-2023 Alex Blackie. All Rights Reserved.
-</footer>
-
 {{- end -}}

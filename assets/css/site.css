@@ -47,7 +47,7 @@ body {
 	font-family: var(--font-family-default);
 	font-size: 18px;
 	max-width: 69rem;
-	margin: 2rem;
+	margin: 2rem auto;
 	color: var(--colour-text);
 }
 
@@ -100,6 +100,13 @@ code {
 	border-radius: 5px;
 }
 
+p a,
+li a,
+td a {
+	text-decoration: none;
+	border-bottom: 1px solid var(--colour-highlight);
+}
+
 /**
  * Site Header
  */
@@ -107,7 +114,7 @@ code {
 	display: inline-flex;
 	align-items: center;
 	gap: 1rem;
-	font-size: 2.25rem;
+	font-size: 2rem;
 	font-weight: bold;
 	text-decoration: none;
 	color: inherit;
@@ -152,6 +159,8 @@ figure.pull-right {
 }
 
 .prose {
+	margin-left: auto;
+	margin-right: auto;
 	max-width: 80ch;
 	line-height: 1.65em;
 }
@@ -230,7 +239,7 @@ figure.pull-right {
 
 .homeHero--greeting {
 	margin: 0;
-	font-size: 2.25rem;
+	font-size: 2.75rem;
 }
 
 .homeColumns {
@@ -249,6 +258,10 @@ figure.pull-right {
 .homeColumns figure {
 	margin-top: 0;
 	flex-shrink: 0;
+}
+
+.homeWriting {
+	margin-top: 4rem;
 }
 
 /**
@@ -271,6 +284,15 @@ figure.pull-right {
 .article--cover {
 	margin: 2rem 0;
 	padding: 0;
+}
+
+.articleList {
+	width: 100%;
+}
+
+.articleList td {
+	padding: .5rem 0;
+	border-bottom: 1px solid var(--colour-border);
 }
 
 /**

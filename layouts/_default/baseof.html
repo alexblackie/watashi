@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ .Param "lang" }}">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ .Title }} - {{ .Site.Title }}</title>
-		{{ $style := resources.Get "css/site.css" | resources.Minify | fingerprint }}
-		<link rel="stylesheet" href="{{ $style.Permalink }}">
-		{{- if hugo.IsProduction -}}
-		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
-		{{- end -}}
-	</head>
-	<body>
-		{{ block "main" . }}{{ end }}
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ .Title }} - {{ .Site.Title }}</title>
+	{{ $style := resources.Get "css/site.css" | resources.Minify | fingerprint }}
+	<link rel="stylesheet" href="{{ $style.Permalink }}">
+	{{- if hugo.IsProduction -}}
+	<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
+	{{- end -}}
+</head>
+
+<body>
+	{{ block "main" . }}{{ end }}
+
+	<footer class="siteFooter">
+		&copy; 2011-2024 Alex Blackie. All Rights Reserved.
+	</footer>
+</body>
+
 </html>

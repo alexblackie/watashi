@@ -1,7 +1,7 @@
 ---
 title: Generating Static Sites with Make and Bash
 slug: static-site-bash
-publish_date: "2019-06-16"
+publishDate: "2019-06-16"
 evergreen: true
 
 open_graph_meta:
