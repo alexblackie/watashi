@@ -10,6 +10,7 @@
 		{{ end -}}
 		{{ $style := resources.Get "css/site.css" | resources.Minify | fingerprint }}
 		<link rel="stylesheet" href="{{ $style.Permalink }}">
+		<link rel="canonical" href="{{ .Permalink }}">
 		{{- if hugo.IsProduction -}}
 		<script async defer data-domain="alexblackie.com" src="https://plausible.io/js/plausible.js"></script>
 		{{- end -}}
