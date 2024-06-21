@@ -4,3 +4,6 @@
 # Ignore compiled site
 /public
 /resources
+
+# Ignore source control
+/.git
