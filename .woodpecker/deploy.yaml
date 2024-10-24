@@ -1,0 +1,16 @@
+---
+
+when:
+  - event: push
+    branch: ${CI_REPO_DEFAULT_BRANCH}
+
+steps:
+  - name: container
+    image: woodpeckerci/plugin-docker-buildx
+    secrets: [docker_username, docker_password]
+    settings:
+      registry: worktree.ca
+      repo: worktree.ca/alex/watashi
+      platforms: linux/amd64
+      auto_tag: true
+      tag: ${CI_COMMIT_SHA}
