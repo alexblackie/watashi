@@ -6,7 +6,7 @@ when:
 
 steps:
   - name: container
-    image: woodpeckerci/plugin-docker-buildx
+    image: woodpeckerci/plugin-docker-buildx:5.0.0
     secrets: [docker_username, docker_password]
     settings:
       registry: worktree.ca
