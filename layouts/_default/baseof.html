@@ -16,6 +16,15 @@
 		{{- end -}}
 	</head>
 	<body>
+		{{ if not .Params.noHeader }}
+			<header class="siteHeader">
+				<a class="siteHeader--brand" href="/">
+					<img src="/images/avi.jpg" alt="Avatar for Alex Blackie" width="64" height="64" class="rounded shadow">
+					Alex Blackie
+				</a>
+			</header>
+		{{ end }}
+
 		{{ block "main" . }}{{ end }}
 
 		<footer class="siteFooter">
