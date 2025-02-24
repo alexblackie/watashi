@@ -171,7 +171,7 @@ site generator.
 So let's do that. All this is really doing is assigning the page to a
 variable, then rendering the layout as if it was the page.
 
-```bash
+```diff
 # bin/render
 
 #!/usr/bin/env bash
@@ -180,14 +180,14 @@ set -euf -o pipefail
 
 render() {
     title="My web page"
-<span class="code-rem">    echo "$(eval "cat &lt;&lt;EOF</span>
-<span class="code-add">    content="$(eval "cat &lt;&lt;EOF</span>
-        $(&lt;${1/.meta/.html})
+-    echo "$(eval "cat <<EOF
++    content="$(eval "cat <<EOF
+        $(<${1/.meta/.html})
 EOF")"
 
-<span class="code-add">    echo "$(eval "cat &lt;&lt;-EOF</span>
-<span class="code-add">        $(&lt;layouts/site.html)</span>
-<span class="code-add">    EOF")"</span>
++    echo "$(eval "cat <<-EOF
++        $(<layouts/site.html)
++    EOF")"
 }
 
 render $@
@@ -227,14 +227,14 @@ And in the build script, all we need to do is source our `.meta` file
 dynamically, as we do with the HTML template. Since our render script is being
 given the meta file as the first argument, we can just source that:
 
-```bash
+```diff
 # bin/render
 ...
 render() {
-<span class="code-rem">    title="My web page"</span>
-<span class="code-add">    . "$1"</span>
-    content=$(eval "cat &lt;&lt;EOF
-        $(&lt;${1/.meta/.html})
+-    title="My web page"
++    . "$1"
+    content=$(eval "cat <<EOF
+        $(<<${1/.meta/.html})
 EOF")
 ...
 ```
@@ -247,16 +247,16 @@ We can just add more functions to the `bin/render` file, or if we have a lot we
 can source a second file into it... It's just a shell script, so I mean you can
 do whatever you want.
 
-```bash
+```diff
 # bin/render
 
 #!/usr/bin/env bash
 
 set -euf -o pipefail
 
-<span class="code-add">formatDate() {</span>
-<span class="code-add">    echo $(date -d "$1" +"%B %-d %Y")</span>
-<span class="code-add">}</span>
++formatDate() {
++    echo $(date -d "$1" +"%B %-d %Y")
++}
 
 render() {
 ...
