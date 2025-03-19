@@ -151,6 +151,21 @@ td a {
 	border-radius: 0.5rem;
 }
 
+.alert {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	border-radius: .5rem;
+	background-color: papayawhip;
+	border: 1px solid orange;
+	line-height: 1.5em;
+}
+.alert svg {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
 .pull-right {
 	float: right;
 	margin-left: 1rem;
