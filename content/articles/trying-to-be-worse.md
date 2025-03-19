@@ -17,12 +17,10 @@ open_graph_meta:
   image_url: /images/articles/trying-to-be-worse/cover.jpg
 ---
 
-<big>
-    One of my first software projects -- probably the first project I did that
-    wasn't just building a website theme -- was building my own CMS. The year
-    was 2010, I was a middle school student doing web design on the side, and I
-    was tired of WordPress.
-</big>
+One of my first software projects -- probably the first project I did that
+wasn't just building a website theme -- was building my own CMS. The year was
+2010, I was a middle school student doing web design on the side, and I was
+tired of WordPress.
 
 I am reminded of this project from time to time; usually I remember how much I
 enjoyed building it. I used this custom CMS for some local business websites
