@@ -8,10 +8,6 @@ title: My Setup
 			<h2>Everyday Carry</h2>
 
 			<p>
-				I try not to carry more than I need to get work done from wherever I am.
-			</p>
-
-			<p>
 				For the significant items, I have:
 			</p>
 
@@ -19,7 +15,7 @@ title: My Setup
 				<li><strong>14" Macbook Pro</strong> (2021, M1 Max, 64GB RAM, 1TB SSD)</li>
 				<li><strong>Bose QuietComfort QC45</strong> wireless headphones</li>
 				<li><strong>Apple AirPods Pro</strong> (2nd Generation)</li>
-				<li><strong>Apple iPhone 12 Mini</strong> in blue, caseless</li>
+				<li><strong>Apple iPhone 16 Pro</strong> in Natural Titanium, caseless</li>
 				<li><strong>Midori MD-Paper</strong> notebook and a couple pens.</li>
 			</ul>
 
@@ -78,7 +74,7 @@ title: My Setup
 
 	<section id="homeoffice" class="flex">
 		<figure>
-			<img class="rounded shadow" src="/images/setup-2024-04.webp"
+			<img class="rounded shadow" src="/images/setup-2025-03.webp"
 				alt="Desk with one monitor, a split keyboard, macbook, and lamp, in a corner of a room with a Montreal Métro poster and Linux clock on the wall above."
 				width="400">
 		</figure>
@@ -95,25 +91,20 @@ title: My Setup
 				<li><strong>ZSA Voyager</strong> with <a href="https://lowprokb.ca/products/ambients-silent-choc-switches">Ambients "Twilight"</a> switches</li>
 				<li><strong>Apple Magic Trackpad 2</strong></li>
 				<li><strong>Audient iD4</strong> audio interface</li>
-				<li><strong>Moondrop Chu II</strong> in-ear monitors</li>
+				<li><strong>Salnotes Dioko x Crinacle</strong> in-ear monitors</li>
 				<li><strong>Shure SM7B</strong>, amplified by a <strong>Cloudlifter CL-1</strong></li>
-				<li><strong>Blue Compass/Radius</strong> microphone arm and shock-mount.</li>
+				<li><strong>Logitech C920</strong>, the goat</li>
+				<li>Some cheap, generic microphone arm from Amazon.</li>
 			</ul>
 
 			<p>
-				I also have some non-computer items for decoration or support:
+				And as for the non-computer items:
 			</p>
 
 			<ul>
+				<li><a href="https://www.beaverpeak.com/product/wool-and-cork-desk-mats/"><strong>Beaver Peak</strong> wool desk pad</a> with cork backing</li>
 				<li><strong>IKEA NYMÅNE</strong> work light with USB-C and wireless Qi charging</li>
 				<li><strong>Fake plant</strong> from Structube</li>
-			</ul>
-
-			<p>
-				As for the furniture all this is sitting on:
-			</p>
-
-			<ul>
 				<li><strong>Flexispot E7</strong> motorized standing desk</li>
 				<li><strong>Herman Miller Mirra 2</strong> ("fully-loaded") office chair.</li>
 			</ul>
@@ -126,8 +117,8 @@ title: My Setup
 
 			<p>
 				The most accurate resource for the details on my software setup is
-				<a href="https://github.com/alexblackie/dotfiles">my dotfiles</a> and
-				<a href="https://github.com/alexblackie/setup">the Ansible playbooks</a>
+				<a href="https://worktree.ca/alex/dotfiles">my dotfiles</a> and
+				<a href="https://worktree.ca/alex/setup">the Ansible playbooks</a>
 				that set up all my machines.
 			</p>
 
@@ -137,10 +128,9 @@ title: My Setup
 
 			<ul>
 				<li><a href="https://arc.net"><strong>Arc</strong></a> for web browsing</li>
-				<li><a href="https://sw.kovidgoyal.net/kitty/"><strong>kitty</strong></a> for a terminal emulator</li>
+				<li><a href="https://ghostty.org/"><strong>Ghostty</strong></a> for a terminal emulator</li>
 				<li><a href="https://neovim.io/"><strong>neovim</strong></a> for text editing</li>
-				<li><a href="https://www.jetbrains.com/datagrip/"><strong>DataGrip</strong></a> for advanced SQL work</li>
-				<li><a href="https://brushedtype.co/doppler/"><strong>Doppler</strong></a> for playing local media</li>
+				<li><a href="https://tilosoftware.io/manet/"><strong>Manet</strong></a> for streaming my music library from Jellyfin</li>
 				<li><a href="https://obsidian.md"><strong>Obsidian</strong></a> for notetaking</li>
 				<li><a href="https://todoist.com"><strong>Todoist</strong></a> for keeping track of my life</li>
 				<li><strong>Apple apps</strong> for mail and calendar</li>
@@ -151,9 +141,9 @@ title: My Setup
 			</ul>
 		</div>
 		<figure>
-			<img class="rounded shadow" src="/images/software-setup-2024-05.webp"
+			<img class="rounded shadow" src="/images/software-setup-2025-03.webp"
 				alt="Screenshot of a macOS dock."
-				width="400">
+				width="420">
 		</figure>
 	</section>
 </main>
@@ -165,4 +155,9 @@ title: My Setup
 .prose h2 { margin-top: 0 }
 main { margin-top: 6rem }
 section { margin: 4rem 0 }
+
+@media screen and (max-width: 640px) {
+	.flex { flex-direction: column }
+	.flex figure { order: 99 }
+}
 </style>
