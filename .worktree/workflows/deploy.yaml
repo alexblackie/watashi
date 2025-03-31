@@ -20,9 +20,16 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - uses: https://github.com/bacongobbler/azure-blob-storage-upload@v3.0.0
-        with:
-          source_dir: public
-          container_name: '$web'
-          connection_string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          overwrite: 'true'
+      - name: Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+      - name: Upload to Azure Storage
+        env:
+          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+        run: |
+          az storage blob sync \
+            --account-name watashiproduction \
+            --container '$web' \
+            --source ./public/ \
+            -- --log-level=ERROR
