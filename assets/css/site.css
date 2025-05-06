@@ -319,6 +319,10 @@ figure.pull-right {
 	border-bottom: 1px solid var(--colour-border);
 }
 
+.article .prose big {
+	line-height: 1.75em;
+}
+
 /**
  * Responsive overrides
  */
