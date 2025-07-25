@@ -20,16 +20,9 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Install Azure CLI
-        run: |
-          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-      - name: Upload to Azure Storage
-        env:
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        run: |
-          az storage blob sync \
-            --account-name watashiproduction \
-            --container '$web' \
-            --source ./public/ \
-            -- --log-level=ERROR
+      - name: Deploy to Worktree Sites
+        uses: worktree/deploy-site@424d14e0613e3557ac9ac9c21dc65df767d23537
+        with:
+          source: public
+          site_id: 5wuRfsALW5tgsD86GQDnNu
+          deploy_token: ${{ secrets.SITES_DEPLOY_TOKEN }}
