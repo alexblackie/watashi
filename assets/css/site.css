@@ -32,6 +32,14 @@ code {
 	background-color: gainsboro;
 }
 
+hr {
+	margin: 2rem;
+	outline: none;
+	border: none;
+	height: 2px;
+	background-color: gainsboro;
+}
+
 #siteHeader {
 	display: flex;
 	justify-content: space-between;
