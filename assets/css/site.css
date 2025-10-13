@@ -164,6 +164,14 @@ main {
 	margin: 0;
 }
 
+.article header h1 {
+	margin: 0 0 0.5rem 0;
+}
+
+.article .meta {
+	font-style: italic;
+}
+
 @media screen and (max-width: 800px) {
 	#siteHeader {
 		flex-direction: column;
