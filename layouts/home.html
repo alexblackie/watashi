@@ -2,17 +2,17 @@
 
 {{ .Content }}
 
-<section id="writing" class="homeWriting">
+<section id="writing">
 	<h2>Writing</h2>
 
-	<table class="articleList">
+	<table cellspacing="0">
 		<tbody>
 			{{ range where .Site.RegularPages.ByPublishDate.Reverse "Section" "articles" }}
 			<tr>
-				<td width="16%">
-					<span class="badge">{{ .PublishDate.Format "January 2, 2006" }}</span>
+				<td width="30%">
+					{{ .PublishDate.Format "January 2, 2006" }}
 				</td>
-				<td width="84%">
+				<td width="70%">
 					<a href="{{ .RelPermalink }}">
 						{{ .Title }}
 					</a>
@@ -22,4 +22,21 @@
 		</tbody>
 	</table>
 </section>
+
+<style>
+main h2:first-child { margin-top: 0; }
+#writing table td {
+	padding: .5rem;
+}
+#writing table tr:not(:last-child) td {
+	border-bottom: 1px solid gainsboro;
+}
+#writing table td:first-child {
+	font-size: 80%;
+}
+#homePhoto {
+	float: right;
+	margin: 0 0 0 1rem;
+}
+</style>
 {{- end -}}

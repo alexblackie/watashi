@@ -1,47 +1,44 @@
 {{- define "main" -}}
-<main>
-	<article class="article">
-		<header>
-			<h1>{{ .Title }}</h1>
-			<div class="article--meta">
-				<span class="badge">
-					Published <time>{{ .PublishDate.Format "January 2, 2006" }}</time>
-				</span>
+<article class="article">
+	<header>
+		<h1>{{ .Title }}</h1>
+		<div>
+			<span>
+				Published <time>{{ .PublishDate.Format "January 2, 2006" }}</time>
+			</span>
+		</div>
+	</header>
+
+	{{ $delta := (time now).Sub (time .Date) }}
+	{{ $selfAge := sub .Date.Year 1996 }}
+	{{ if gt $delta.Hours 17520 }}
+		<div class="articleOldWarning">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
+			<div>
+				This article was published
+				{{ if gt $delta.Hours 87600 }}
+					<strong>more than a decade ago</strong>.
+				{{ else if gt $delta.Hours 43800 }}
+					<strong>more than five years ago</strong>.
+				{{ else }}
+					<strong>more than two years ago</strong>.
+				{{ end }}
+				{{ if lt $selfAge 20 }}(I was {{ $selfAge }} years old.){{ end }} Keep in mind that any information, opinions, or links could be outdated or incorrect.
 			</div>
-		</header>
+		</div>
+	{{ end }}
 
-		{{ $delta := (time now).Sub (time .Date) }}
-		{{ $selfAge := sub .Date.Year 1996 }}
-		{{ if gt $delta.Hours 17520 }}
-			<div class="alert">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
-				<div>
-					This article was published
-					{{ if gt $delta.Hours 87600 }}
-						<strong>more than a decade ago</strong>.
-					{{ else if gt $delta.Hours 43800 }}
-						<strong>more than five years ago</strong>.
-					{{ else }}
-						<strong>more than two years ago</strong>.
-					{{ end }}
-					{{ if lt $selfAge 20 }}(I was {{ $selfAge }} years old.){{ end }} Keep in mind that any information, opinions, or links could be outdated or incorrect.
-				</div>
-			</div>
-		{{ end }}
+	{{ if .Params.cover }}
+	<figure>
+		<img
+			src="{{ .Params.cover.url }}"
+			alt="{{ .Params.cover.alt }}"
+			width="{{ .Params.cover.width }}"
+			height="{{ .Params.cover.height }}"
+		/>
+	</figure>
+	{{ end }}
 
-		{{ if .Params.cover }}
-		<figure class="article--cover">
-			<img
-				class="rounded shadow"
-				src="{{ .Params.cover.url }}"
-				alt="{{ .Params.cover.alt }}"
-				width="{{ .Params.cover.width }}"
-				height="{{ .Params.cover.height }}"
-			/>
-		</figure>
-		{{ end }}
-
-		<div class="prose">{{ .Content }}</div>
-	</article>
-</main>
+	<div class="prose">{{ .Content }}</div>
+</article>
 {{- end -}}
