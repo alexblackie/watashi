@@ -5,7 +5,7 @@ disableHugoGeneratorInject: true
 params:
   author:
     name: Alex Blackie
-    email: alex@blackie.me
+    email: alex@blackie.ca
 
 languages:
   en:
