@@ -180,6 +180,17 @@ main {
 	font-style: italic;
 }
 
+.external {
+	display: inline-flex;
+	align-items: baseline;
+	gap: .15rem;
+}
+
+.external svg {
+	width: .75em;
+	height: .75em;
+}
+
 @media screen and (max-width: 800px) {
 	#siteHeader {
 		flex-direction: column;
