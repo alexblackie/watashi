@@ -1,2 +1,10 @@
 [tools]
 hugo = "0.150.0"
+
+[tasks.build]
+description = "Build the static site with Hugo"
+run = "hugo --minify"
+
+[tasks.watch]
+description = "Watch for changes and rebuild the site"
+run = "hugo server --watch --buildDrafts"
